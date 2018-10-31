@@ -21,11 +21,27 @@ export class AppComponent {
     }),
   });
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(
+    private formBuilder: FormBuilder
+  ) { 
     //this.createForm();
+    this.PrintParams();
   }
   
   title = 'kthb-bestall-ng';
+
+  GetParam(name){
+    const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if(!results){
+      return 0;
+    }
+    return results[1] || 0;
+  }
+
+  PrintParams() {
+    console.log('param1 = ' + this.GetParam('animal'));
+    console.log('param2 = ' + this.GetParam('param2'));
+  }
 
   cjson(obj) {
     console.log(obj);
