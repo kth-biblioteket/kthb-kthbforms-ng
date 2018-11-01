@@ -1,5 +1,5 @@
+<h1>{{formheader}}</h1>
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  
   <label>
     First Name:
     <input type="text" formControlName="firstName" required>
@@ -7,8 +7,14 @@
 
   <label>
     Last Name:
-    <input type="text" formControlName="lastName">
+    <input type="text" formControlName="lastName" required>
   </label>
+
+  <label>
+    Email:
+    <input type="text" formControlName="email" required>
+  </label>
+
   <div formGroupName="address">
     <h3>Address</h3>
   
@@ -26,7 +32,7 @@
       State:
       <input type="text" formControlName="state">
     </label>
-  
+
     <label>
       Zip Code:
       <input type="text" formControlName="zip">

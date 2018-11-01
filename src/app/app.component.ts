@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 
+import { Title }     from '@angular/platform-browser';
+
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 import { Validators } from '@angular/forms';
+
+import { AppConfigService } from './app-config.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +17,11 @@ import { Validators } from '@angular/forms';
 export class AppComponent {
   profileForm = this.formBuilder.group({
     firstName: ['', Validators.required],
-    lastName: [''],
+    lastName: ['', Validators.required],
+    email: ['', Validators.compose([
+      Validators.required,
+      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+    ])],
     address: this.formBuilder.group({
       street: [''],
       city: [''],
@@ -21,14 +30,22 @@ export class AppComponent {
     }),
   });
 
+  formheader =  this.settings.config.formheader;
+
+  
+
   constructor(
-    private formBuilder: FormBuilder
+    private titleService: Title,
+    private formBuilder: FormBuilder,
+    private settings: AppConfigService
   ) { 
-    //this.createForm();
     this.PrintParams();
+    this.setTitle(this.settings.config.apptitle);
   }
   
-  title = 'kthb-bestall-ng';
+  setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
+  }
 
   GetParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -40,15 +57,13 @@ export class AppComponent {
 
   PrintParams() {
     console.log('param1 = ' + this.GetParam('animal'));
-    console.log('param2 = ' + this.GetParam('param2'));
   }
 
   cjson(obj) {
-    console.log(obj);
     return JSON.stringify(obj);
   }
+
   onSubmit() {
-    // TODO: Use EventEmitter with form value
     console.warn(this.profileForm.value);
   }
 
