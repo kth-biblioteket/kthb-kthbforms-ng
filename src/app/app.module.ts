@@ -10,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppConfigService } from './app-config.service';
 
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+
+
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
     return appConfig.loadAppConfig();
@@ -24,7 +27,8 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    DynamicFormModule
   ],
   providers: [
     AppConfigService,

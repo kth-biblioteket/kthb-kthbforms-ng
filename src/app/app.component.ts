@@ -15,6 +15,27 @@ import { AppConfigService } from './app-config.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  config = [
+    {
+      type: 'input',
+      label: 'Full name',
+      name: 'name',
+      placeholder: 'Enter your name',
+    },
+    {
+      type: 'select',
+      label: 'Favourite food',
+      name: 'food',
+      options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+      placeholder: 'Select an option',
+    },
+    {
+      label: 'Skicka',
+      name: 'submit',
+      type: 'button',
+    },
+  ];
+
   profileForm = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -65,6 +86,10 @@ export class AppComponent {
 
   onSubmit() {
     console.warn(this.profileForm.value);
+  }
+
+  formSubmitted(value) {
+    console.log(value);
   }
 
 }
