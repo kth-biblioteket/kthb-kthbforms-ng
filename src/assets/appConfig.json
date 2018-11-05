@@ -12,7 +12,7 @@
           "type": "select",
           "label": "Favourite food",
           "name": "food",
-          "options": ["Pizza", "Hot Dogs", "Knakworstje", "Coffee"],
+          "options": ["Pizza", "Hot Dogs", "Nr", "Coffee"],
           "placeholder": "Select an option"
         },
         {

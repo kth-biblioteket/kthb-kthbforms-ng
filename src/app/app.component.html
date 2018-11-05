@@ -1,5 +1,16 @@
 <h1>{{formheader}}</h1>
-<dynamic-form [config]="config" (submitted)="formSubmitted($event)"></dynamic-form>
+<div class="form">
+  <div style="text-align:center">
+    <h1>
+      Registration Form
+    </h1>
+  </div>
+  <dynamic-form [fields]="regConfig" (submit)="submit($event)">
+  </dynamic-form>
+  <div class="margin-top">
+    {{ form.value | json }}
+  </div>
+</div>
 
 <div id="form_body">
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
@@ -46,7 +57,7 @@
   <button type="button" class="button" [disabled]="!profileForm.valid">Skicka</button>
 </div>
   <p>
-  Form Value: {{ cjson(profileForm.value) }}
+  Form Value: {{ profileForm.value | json }}
 </p>
 <p>
   Form Status: {{ profileForm.status }}

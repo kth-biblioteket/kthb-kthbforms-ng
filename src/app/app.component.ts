@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { Title }     from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-
-import { Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AppConfigService } from './app-config.service';
+
+import { FieldConfig } from "./field.interface";
+
+import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 
 
 @Component({
@@ -15,26 +17,102 @@ import { AppConfigService } from './app-config.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  config = [
+  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+ 
+  //hämta formulärfält från service(config-fil)
+  config = this.settings.config.formfields;
+
+  regConfig: FieldConfig[] = [
     {
-      type: 'input',
-      label: 'Full name',
-      name: 'name',
-      placeholder: 'Enter your name',
+      type: "input",
+      label: "Username",
+      inputType: "text",
+      name: "name",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Name Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern("^[a-zA-Z]+$"),
+          message: "Accept only text"
+        }
+      ]
     },
     {
-      type: 'select',
-      label: 'Favourite food',
-      name: 'food',
-      options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
-      placeholder: 'Select an option',
+      type: "input",
+      label: "Email Address",
+      inputType: "email",
+      name: "email",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Email Required"
+        },
+        {
+          name: "pattern",
+          validator: Validators.pattern(
+            "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$"
+          ),
+          message: "Invalid email"
+        }
+      ]
     },
     {
-      label: 'Skicka',
-      name: 'submit',
-      type: 'button',
+      type: "input",
+      label: "Password",
+      inputType: "password",
+      name: "password",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Password Required"
+        }
+      ]
     },
+    {
+      type: "radiobutton",
+      label: "Gender",
+      name: "gender",
+      options: ["Male", "Female"],
+      value: "Male"
+    },
+    {
+      type: "date",
+      label: "DOB",
+      name: "dob",
+      validations: [
+        {
+          name: "required",
+          validator: Validators.required,
+          message: "Date of Birth Required"
+        }
+      ]
+    },
+    {
+      type: "select",
+      label: "Country",
+      name: "country",
+      value: "UK",
+      options: ["India", "UAE", "UK", "US"]
+    },
+    {
+      type: "checkbox",
+      label: "Accept Terms",
+      name: "term",
+      value: true
+    },
+    {
+      type: "button",
+      label: "Save"
+    }
   ];
+
+  submit(value: any) {}
 
   profileForm = this.formBuilder.group({
     firstName: ['', Validators.required],
@@ -79,10 +157,6 @@ export class AppComponent {
 
   PrintParams() {
     console.log('param1 = ' + this.GetParam('animal'));
-  }
-
-  cjson(obj) {
-    return JSON.stringify(obj);
   }
 
   onSubmit() {
