@@ -38,7 +38,7 @@ import { HttpClient } from '@angular/common/http';
             <div *ngIf="form.get(prop.key).errors.required">
               {{ prop.label }} is required.
             </div>
-          </div>
+        </div>
       </div>
       <div class="controls">
         <input class="button" type="button" value="Skicka">
