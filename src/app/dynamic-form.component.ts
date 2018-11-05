@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'dynamic-form2',
   template: `
+  <div id="form_body">
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div *ngFor="let prop of objectProps">
         <label [attr.for]="prop">{{prop.label}}</label>
@@ -39,10 +40,11 @@ import { HttpClient } from '@angular/common/http';
             </div>
           </div>
       </div>
-      <p>
-        <button type="submit">Save</button>
-      </p>
+      <div class="controls">
+        <input class="button" type="button" value="Skicka">
+      </div>
     </form>
+    <div>
     <hr />
     <strong>Form Value</strong>
     <pre>{{ form.value | json }}</pre>
