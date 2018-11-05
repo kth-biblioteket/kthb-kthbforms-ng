@@ -1,18 +1,21 @@
 <h1>{{formheader}}</h1>
+<dynamic-form [config]="config" (submitted)="formSubmitted($event)"></dynamic-form>
+
+<div id="form_body">
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <label>
     First Name:
-    <input type="text" formControlName="firstName" required>
+    <input class="form-control medium" type="text" formControlName="firstName" required>
   </label>
 
   <label>
     Last Name:
-    <input type="text" formControlName="lastName" required>
+    <input class="form-control medium" type="text" formControlName="lastName" required>
   </label>
 
   <label>
     Email:
-    <input type="text" formControlName="email" required>
+    <input class="form-control medium" type="text" formControlName="email" required>
   </label>
 
   <div formGroupName="address">
@@ -20,101 +23,34 @@
   
     <label>
       Street:
-      <input type="text" formControlName="street">
+      <input class="form-control medium" type="text" formControlName="street">
     </label>
   
     <label>
       City:
-      <input type="text" formControlName="city">
+      <input class="form-control medium" type="text" formControlName="city">
     </label>
     
     <label>
       State:
-      <input type="text" formControlName="state">
+      <input class="form-control medium" type="text" formControlName="state">
     </label>
 
     <label>
       Zip Code:
-      <input type="text" formControlName="zip">
+      <input class="form-control medium" type="text" formControlName="zip">
     </label>
   </div>
-  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-<p>
+</form>
+<div class="controls">
+  <button type="button" class="button" [disabled]="!profileForm.valid">Skicka</button>
+</div>
+  <p>
   Form Value: {{ cjson(profileForm.value) }}
 </p>
 <p>
   Form Status: {{ profileForm.status }}
 </p>
 
-  <p class="h4 mb-4">Contact us</p>
-
-  <!-- Name -->
-  <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
-
-  <!-- Email -->
-  <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-  <!-- Subject -->
-  <label>Subject</label>
-  <select class="browser-default custom-select mb-4">
-    <option value="" disabled>Choose option</option>
-    <option value="1" selected>Feedback</option>
-    <option value="2">Report a bug</option>
-    <option value="3">Feature request</option>
-    <option value="4">Feature request</option>
-  </select>
-
-  <!-- Message -->
-  <div class="form-group">
-    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-  </div>
-
-  <!-- Copy -->
-  <div class="row">
-    <div class="col-md-6 mx-auto d-flex justify-content-center">
-      <div class="custom-control custom-checkbox mb-4">
-        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
-        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Send button -->
-  <button class="btn btn-info btn-block" type="submit">Send</button>
-
-  <div class="form-group">
-    <label>First Name</label>
-    <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-        <div *ngIf="f.firstName.errors.required">First Name is required</div>
-    </div>
 </div>
-<div class="form-group">
-    <label>Last Name</label>
-    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-    </div>
-</div>
-<div class="form-group">
-    <label>Email</label>
-    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-    </div>
-</div>
-<div class="form-group">
-    <label>Password</label>
-    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-    </div>
-</div>
-<div class="form-group">
-    <button class="btn btn-primary">Register</button>
-</div>
-</form>
 <!-- Default form contact -->
