@@ -1,5 +1,32 @@
+<header>
+  <div id="header" class="header  hasPrimaryHeader  hasSecondaryHeader">
+    <div id="primaryHeader" class="primaryHeader">
+      <div class="tlc cid-1_77257 no-categories block figure defaultTheme mainLogo" lang="sv-SE">
+        <div class="imageWrapper">
+          <a href="/"><img src="https://www.kth.se/polopoly_fs/1.77257!/KTH_Logotyp_RGB_2013-2.svg" alt="KTH:s logotyp" height="70" width="70"></a>
+        </div>
+      </div>
+      <div class="blockItemSeparator blockItemSeparatorIndex0">
+        <span class="blockItemSeparatorInner"></span>
+      </div>
+      <div class="tlc cid-1_456880 no-categories block search <c:out value='' /> <c:out value='' />" lang="sv-SE"></div>
+      <div class="blockItemSeparator blockItemSeparatorIndex1">
+          <span class="blockItemSeparatorInner"></span>
+      </div>
+      <div id="secondaryHeader" class="secondaryHeader">
+          <div class="tlc cid-1_260303 no-categories block siteName">
+              <a href="/kthb">KTH Biblioteket</a>
+          </div>
+          <div class="blockItemSeparator blockItemSeparatorIndex0"><span class="blockItemSeparatorInner"></span></div>
+          <span class="tlc cid-1_260304 no-categories block link  localeLink en-UK" lang="sv-SE"><a href="https://www.kth.se/en/kthb" hreflang="en-UK" class="localeLink en-UK">KTH Library in English</a></span>
+      </div>
+    </div>
+  </div>
+</header>
+<hr id="headerHr">
+<article>
 <h1>{{formheader}}</h1>
-<div class="form">
+<!--div class="form">
   <div style="text-align:center">
     <h1>
       Registration Form
@@ -10,9 +37,11 @@
   <div class="margin-top">
     {{ form.value | json }}
   </div>
-</div>
+</div-->
 
-<div id="form_body">
+<dynamic-form2 [dataObject]="person"></dynamic-form2>
+
+<!--div id="form_body">
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <label>
     First Name:
@@ -27,6 +56,11 @@
   <label>
     Email:
     <input class="form-control medium" type="text" formControlName="email" required>
+  </label>
+
+  <label>
+    Password:
+    <input class="form-control medium" type="text" formControlName="password" required>
   </label>
 
   <div formGroupName="address">
@@ -63,5 +97,6 @@
   Form Status: {{ profileForm.status }}
 </p>
 
-</div>
+</div-->
 <!-- Default form contact -->
+</article>

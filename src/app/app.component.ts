@@ -10,6 +10,8 @@ import { FieldConfig } from "./field.interface";
 
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 
+import { person } from './person';
+
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,8 @@ export class AppComponent {
  
   //hämta formulärfält från service(config-fil)
   config = this.settings.config.formfields;
+
+  person;
 
   regConfig: FieldConfig[] = [
     {
@@ -141,6 +145,8 @@ export class AppComponent {
   ) { 
     this.PrintParams();
     this.setTitle(this.settings.config.apptitle);
+    //this.person = person;
+    this.person = this.settings.config.formfields2
   }
   
   setTitle( newTitle: string) {

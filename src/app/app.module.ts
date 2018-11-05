@@ -22,6 +22,8 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { DynamicFieldDirective } from "./components/dynamic-field/dynamic-field.directive";
 import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
 
+import { DynamicFormComponent2 } from './dynamic-form.component';
+
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -39,7 +41,8 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     RadiobuttonComponent,
     CheckboxComponent,
     DynamicFieldDirective,
-    DynamicFormComponent
+    DynamicFormComponent,
+    DynamicFormComponent2
   ],
   imports: [
     BrowserModule,
