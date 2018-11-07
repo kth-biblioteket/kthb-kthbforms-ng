@@ -15,6 +15,20 @@ import { HttpClient } from '@angular/common/http';
             [formControlName]="prop.key"
             [id]="prop.key" [type]="prop.type">
           
+          <div *ngSwitchCase="'textarea'">
+            <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
+          </div>
+
+          <div *ngSwitchCase="'checkbox'">
+            <label *ngFor="let option of prop.options">
+              <input
+                type="checkbox"
+                [name]="prop.key"
+                [formControlName]="prop.key"
+                [value]="option.value"> {{option.label}}
+            </label>
+          </div>
+
           <div *ngSwitchCase="'radio'">
             <label *ngFor="let option of prop.options">
               <input
