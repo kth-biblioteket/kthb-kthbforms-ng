@@ -8,51 +8,52 @@ import { HttpClient } from '@angular/common/http';
   <div id="form_body">
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div *ngFor="let prop of objectProps">
-        <label [attr.for]="prop">{{prop.label}}</label>
-
-        <div [ngSwitch]="prop.type">
-          <input class="form-control medium" *ngSwitchCase="'text'" 
-            [formControlName]="prop.key"
-            [id]="prop.key" [type]="prop.type">
-          
-          <div *ngSwitchCase="'textarea'">
-            <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
-          </div>
-
-          <div *ngSwitchCase="'checkbox'">
-            <label *ngFor="let option of prop.options">
-              <input
-                type="checkbox"
-                [name]="prop.key"
-                [formControlName]="prop.key"
-                [value]="option.value"> {{option.label}}
-            </label>
-          </div>
-
-          <div *ngSwitchCase="'radio'">
-            <label *ngFor="let option of prop.options">
-              <input
-                type="radio"
-                [name]="prop.key"
-                [formControlName]="prop.key"
-                [value]="option.value"> {{option.label}}
-            </label>
-          </div>
-
-          <div *ngSwitchCase="'select'">
-            <select [formControlName]="prop.key">
-              <option *ngFor="let option of prop.options" [value]="option.value">
-                {{ option.label }}
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
-            <div *ngIf="form.get(prop.key).errors.required">
-              {{ prop.label }} is required.
+        <div *ngIf="prop.enabled">
+          <label [attr.for]="prop">{{prop.label}}</label>
+          <div [ngSwitch]="prop.type">
+            <input class="form-control medium" *ngSwitchCase="'text'" 
+              [formControlName]="prop.key"
+              [id]="prop.key" [type]="prop.type">
+            
+            <div *ngSwitchCase="'textarea'">
+              <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
             </div>
-        </div>
+
+            <div *ngSwitchCase="'checkbox'">
+              <label *ngFor="let option of prop.options">
+                <input 
+                  type="checkbox"
+                  [name]="prop.key"
+                  [formControlName]="prop.key"
+                  [value]="option.value"> {{option.label}}
+              </label>
+            </div>
+
+            <div *ngSwitchCase="'radio'">
+              <label *ngFor="let option of prop.options">
+                <input
+                  type="radio"
+                  [name]="prop.key"
+                  [formControlName]="prop.key"
+                  [value]="option.value"> {{option.label}}
+              </label>
+            </div>
+
+            <div *ngSwitchCase="'select'">
+              <select [formControlName]="prop.key">
+                <option *ngFor="let option of prop.options" [value]="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+              <div *ngIf="form.get(prop.key).errors.required">
+                {{ prop.label }} is required.
+              </div>
+          </div>
+        </div>          
       </div>
       <div class="controls">
         <input class="button" type="button" value="Skicka">

@@ -27,6 +27,7 @@
           "label": "Jag vill beställa",
           "value": "",
           "type": "radio",
+          "enabled": true,
           "options": [
             { "label": "Bok", "value": "B"},
             { "label": "Artikel", "value": "A"},
@@ -41,6 +42,7 @@
           "label": "Titel",
           "value": "",
           "type": "text",
+          "enabled": true,
           "validation": {
             "required": "true"
           }
@@ -48,37 +50,44 @@
         "Författare": {
           "label": "Författare",
           "value": "",
-          "type": "text"
+          "type": "text",
+          "enabled": true
         },
         "År": {
           "label": "År",
           "value": "",
-          "type": "text"
+          "type": "text",
+          "enabled": true
         },
         "ISBN": {
           "label": "ISBN",
           "value": "",
-          "type": "text"
+          "type": "text",
+          "enabled": true
         },
         "Upplaga": {
           "label": "Upplaga",
           "value": "",
-          "type": "text"
+          "type": "text",
+          "enabled": true
         },
         "Volym/Del": {
           "label": "Volym/Del",
           "value": "",
-          "type": "text"
+          "type": "text",
+          "enabled": true
         },
         "Meddelande till biblioteket": {
           "label": "Meddelande till biblioteket",
           "value": "",
-          "type": "textarea"
+          "type": "textarea",
+          "enabled": true
         },
         "Hämtas i": {
           "label": "Hämtas i",
           "value": "H",
           "type": "radio",
+          "enabled": true,
           "options": [
             { "label": "Huvudbibioteket", "value": "H"},
             { "label": "Kista", "value": "K"},
@@ -89,6 +98,7 @@
           "label": "Jag är",
           "value": "",
           "type": "radio",
+          "enabled": true,
           "options": [
             { "label": "Student KTH Boklån inom Norden avgiftsfria - artiklar/kopior 80-150 kr/styck. Prislista", "value": "S"},
             { "label": "Personal/Doktorander KTH Boklån och artiklar/kopior avgiftsfria.", "value": "P"},
@@ -96,15 +106,34 @@
             { "label": "Övriga Endast beställning från bibliotekets magasin.", "value": "F"}
           ]
         },
+        "Tillhörighet på KTH": {
+          "label": "Tillhörighet på KTH",
+          "value": "",
+          "type": "radio",
+          "enabled": false,
+          "options": [
+            { "label": "ABE", "value": "ABE"},
+            { "label": "CBH", "value": "CBH"},
+            { "label": "EECS", "value": "EECS"},
+            { "label": "ITM", "value": "ITM"},
+            { "label": "SCI", "value": "SCI"},
+            { "label": "UF", "value": "UF"}
+          ],
+          "validation": {
+            "required": "true"
+          }
+        },
         "Användarnamn": {
           "label": "Användarnamn",
           "value": "",
-          "type": "text"
+          "type": "text",
+          "enabled": true
         },
         "Jag accepterar eventuella kostnader": {
           "label": "",
           "value": "" ,
           "type": "checkbox",
+          "enabled": true,
           "options": [
             { "label": "Jag accepterar eventuella kostnader", "value": "accept"}
           ],
@@ -115,7 +144,8 @@
         "skicka": {
           "label": "Skicka",
           "value": "Skicka",
-          "type": "submit"
+          "type": "submit",
+          "enabled": true
         }
       }
 }
