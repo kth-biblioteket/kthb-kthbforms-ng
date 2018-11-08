@@ -103,7 +103,7 @@
             { "label": "Student KTH Boklån inom Norden avgiftsfria - artiklar/kopior 80-150 kr/styck. Prislista", "value": "S"},
             { "label": "Personal/Doktorander KTH Boklån och artiklar/kopior avgiftsfria.", "value": "P"},
             { "label": "Företag Boklån och artiklar/kopior avgiftsbelagda. Prislista", "value": "F"},
-            { "label": "Övriga Endast beställning från bibliotekets magasin.", "value": "F"}
+            { "label": "Övriga Endast beställning från bibliotekets magasin.", "value": "O"}
           ]
         },
         "Tillhörighet på KTH": {
@@ -127,7 +127,10 @@
           "label": "Användarnamn",
           "value": "",
           "type": "text",
-          "enabled": true
+          "enabled": true,
+          "validation": {
+            "required": "true"
+          }
         },
         "Jag accepterar eventuella kostnader": {
           "label": "",

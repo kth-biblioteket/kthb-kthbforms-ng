@@ -31,7 +31,7 @@ import { HttpClient } from '@angular/common/http';
 
             <div *ngSwitchCase="'radio'">
               <label *ngFor="let option of prop.options">
-                <input
+                <input (click)="activateformobject(option.label)"
                   type="radio"
                   [name]="prop.key"
                   [formControlName]="prop.key"
@@ -110,6 +110,10 @@ export class DynamicFormComponent2 implements OnInit {
     }
 
     return formValidators;
+  }
+
+  activateformobject(object){
+    console.log(object);
   }
 
   onSubmit(form) {
