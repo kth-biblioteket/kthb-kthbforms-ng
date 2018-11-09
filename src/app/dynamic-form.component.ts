@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
-          <label [attr.for]="prop">{{prop.label}}</label>
+          <label [attr.for]="prop.key">{{prop.label}}</label>
           <div [ngSwitch]="prop.type">
             <input class="form-control medium" *ngSwitchCase="'text'" 
               [formControlName]="prop.key"
@@ -31,7 +31,7 @@ import { HttpClient } from '@angular/common/http';
 
             <div *ngSwitchCase="'radio'">
               <label *ngFor="let option of prop.options">
-                <input (click)="activateformobject(option.label)"
+                <input (click)="activateformobject(option.label)" (change)="onchangeformobject(this,prop.key)"
                   type="radio"
                   [name]="prop.key"
                   [formControlName]="prop.key"
@@ -56,7 +56,7 @@ import { HttpClient } from '@angular/common/http';
         </div>          
       </div>
       <div class="controls">
-        <input class="button" type="button" value="Skicka">
+        <input [disabled]="!form.valid" class="form-control button" type="submit" value="Skicka">
       </div>
     </form>
     <div>
@@ -67,6 +67,9 @@ import { HttpClient } from '@angular/common/http';
   `,
   styles: [
     `
+    input[type=submit] {
+      width:unset;
+    }
     .error { color: red; }
     `
   ]
@@ -94,6 +97,7 @@ export class DynamicFormComponent2 implements OnInit {
     }
 
     this.form = new FormGroup(formGroup);
+    console.log(this.form)
   }
 
   private mapValidators(validators) {
@@ -113,7 +117,37 @@ export class DynamicFormComponent2 implements OnInit {
   }
 
   activateformobject(object){
-    console.log(object);
+    console.log("activateformobject: "  + object);
+  }
+
+  onchangeformobject(domobj, object){
+    console.log(this.form);
+    console.log("onchangeformobject: "  + this.form.get(object).value);
+    //kolla om något annat formulärobjekt är beroende av aktuellt objekts värde
+    var show;
+    //for(let prop of Object.keys(this.dataObject)) {
+    for(let prop of this.objectProps) {
+      show = false;
+      if (prop.showcriteria==object) {
+        for(let index of Object.keys(prop.showvalues)){
+          if(this.form.get(object).value == prop.showvalues[index]) {
+            show = true;
+            break;
+          }
+        }
+        if (show){
+          this.form.get(prop.key).enable();
+          prop.enabled = true;
+        } else {
+          this.form.get(prop.key).disable();
+          prop.enabled = false;
+        }
+      }
+    }
+  }
+
+  setclass(classname) {
+    return classname;
   }
 
   onSubmit(form) {
