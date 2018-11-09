@@ -55,7 +55,10 @@
           "type": "text",
           "enabled": false,
           "showcriteria": "materialtype",
-          "showvalues" : ["K"]
+          "showvalues" : ["K"],
+          "validation": {
+            "required": "true"
+          }
         },
         "forfattare": {
           "label": "Författare",
@@ -63,7 +66,10 @@
           "type": "text",
           "enabled": false,
           "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K"]
+          "showvalues" : ["B","A","K"],
+          "validation": {
+            "required": "true"
+          }
         },
         "År": {
           "label": "År",
@@ -150,7 +156,7 @@
         },
         "hamtas": {
           "label": "Hämtas i",
-          "value": "H",
+          "value": "",
           "type": "radio",
           "enabled": false,
           "showcriteria": "materialtype",
@@ -159,7 +165,10 @@
             { "label": "Huvudbibioteket", "value": "H"},
             { "label": "Kista", "value": "K"},
             { "label": "Södertälje", "value": "S"}
-          ]
+          ],
+          "validation": {
+            "required": "true"
+          }
         },
         "jagar": {
           "label": "Jag är",
@@ -173,7 +182,10 @@
             { "label": "Personal/Doktorander KTH Boklån och artiklar/kopior avgiftsfria.", "value": "P"},
             { "label": "Företag Boklån och artiklar/kopior avgiftsbelagda. Prislista", "value": "F"},
             { "label": "Övriga Endast beställning från bibliotekets magasin.", "value": "O"}
-          ]
+          ],
+          "validation": {
+            "required": "true"
+          }
         },
         "tillhorighet": {
           "label": "Tillhörighet på KTH",
@@ -200,7 +212,7 @@
           "type": "text",
           "enabled": false,
           "showcriteria": "jagar",
-          "showvalues" : ["S","P","F","O"],
+          "showvalues" : ["any"],
           "validation": {
             "required": "true"
           }
@@ -210,9 +222,19 @@
           "value": "" ,
           "type": "checkbox",
           "enabled": false,
+          "showcriteria": "jagar",
+          "showvalues" : ["any"],
           "options": [
             { "label": "Jag accepterar eventuella kostnader", "value": "accept"}
           ]
+        },
+        "skicka": {
+          "label": "",
+          "value": "Skicka" ,
+          "type": "submit",
+          "enabled": false,
+          "showcriteria": "jagar",
+          "showvalues" : ["any"]
         }
       }
 }

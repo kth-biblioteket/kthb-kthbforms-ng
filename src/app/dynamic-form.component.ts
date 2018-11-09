@@ -46,6 +46,12 @@ import { HttpClient } from '@angular/common/http';
                 </option>
               </select>
             </div>
+
+            <!--div class="controls" *ngSwitchCase="'submit'">
+              <input [attr.disabled]="!form.valid" class="form-control button" *ngSwitchCase="'submit'" 
+                [formControlName]="prop.key"
+                [id]="prop.key" [type]="prop.type">
+            </div-->
           </div>
 
           <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
@@ -60,7 +66,7 @@ import { HttpClient } from '@angular/common/http';
       </div>
     </form>
     <div>
-    <hr />
+    <br />
     <strong>Form Value</strong>
     <pre>{{ form.value | json }}</pre>
     <strong>Form is valid:</strong> {{form.valid}}
@@ -68,7 +74,8 @@ import { HttpClient } from '@angular/common/http';
   styles: [
     `
     input[type=submit] {
-      width:unset;
+      width: unset;
+      float: right;
     }
     .error { color: red; }
     `
@@ -125,12 +132,11 @@ export class DynamicFormComponent2 implements OnInit {
     console.log("onchangeformobject: "  + this.form.get(object).value);
     //kolla om något annat formulärobjekt är beroende av aktuellt objekts värde
     var show;
-    //for(let prop of Object.keys(this.dataObject)) {
     for(let prop of this.objectProps) {
       show = false;
       if (prop.showcriteria==object) {
         for(let index of Object.keys(prop.showvalues)){
-          if(this.form.get(object).value == prop.showvalues[index]) {
+          if(this.form.get(object).value == prop.showvalues[index] || (prop.showvalues[index] == "any" && this.form.get(object).value!="")) {
             show = true;
             break;
           }
