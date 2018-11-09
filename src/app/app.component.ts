@@ -136,8 +136,6 @@ export class AppComponent {
 
   formheader =  this.settings.config.formheader;
 
-  
-
   constructor(
     private titleService: Title,
     private formBuilder: FormBuilder,
