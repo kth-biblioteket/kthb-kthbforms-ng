@@ -56,7 +56,10 @@ import { HttpClient } from '@angular/common/http';
 
           <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
               <div *ngIf="form.get(prop.key).errors.required">
-                {{ prop.label }} is required.
+                {{ prop.label }} {{ prop.validation.required.errormessage }}
+              </div>
+              <div *ngIf="form.get(prop.key).errors.pattern">
+                {{ prop.label }} {{ prop.validation.pattern.errormessage }}
               </div>
           </div>
         </div>          
@@ -66,7 +69,7 @@ import { HttpClient } from '@angular/common/http';
       </div>
     </form>
     <div>
-    <br />
+    <br/>
     <strong>Form Value</strong>
     <pre>{{ form.value | json }}</pre>
     <strong>Form is valid:</strong> {{form.valid}}
@@ -89,24 +92,33 @@ export class DynamicFormComponent2 implements OnInit {
   constructor() {
   }
 
+  /***************************************************************************************
+   * 
+   * 
+   * Skapa formulär från inläst JSON
+   ***************************************************************************************/
   ngOnInit() {
-    // remap the API to be suitable for iterating over it
     this.objectProps = 
       Object.keys(this.dataObject)
         .map(prop => {
           return Object.assign({}, { key: prop} , this.dataObject[prop]);
         });
-
-    // setup the form
+    
     const formGroup = {};
     for(let prop of Object.keys(this.dataObject)) {
       formGroup[prop] = new FormControl(this.dataObject[prop].value || '', this.mapValidators(this.dataObject[prop].validation));
     }
 
     this.form = new FormGroup(formGroup);
-    console.log(this.form)
   }
 
+
+  /***************************************************************************************
+   * 
+   * @param validators 
+   * 
+   * Skapa eventuella valideringar utifrån inlästa JSON
+   ***************************************************************************************/
   private mapValidators(validators) {
     const formValidators = [];
 
@@ -115,7 +127,9 @@ export class DynamicFormComponent2 implements OnInit {
         if(validation === 'required') {
           formValidators.push(Validators.required);
         } else if(validation === 'min') {
-          formValidators.push(Validators.min(validators[validation]));
+          formValidators.push(Validators.min(validators[validation].value));
+        } else if (validation === 'pattern') {
+          formValidators.push(Validators.pattern(validators[validation].value));
         }
       }
     }
@@ -123,10 +137,14 @@ export class DynamicFormComponent2 implements OnInit {
     return formValidators;
   }
 
-  activateformobject(object){
-    console.log("activateformobject: "  + object);
-  }
-
+  /***************************************************************************************
+   * 
+   * @param domobj 
+   * 
+   * @param object 
+   * 
+   * Hantera klick på formulärkontroller och aktivera/inaktivera beroende på inläst JSON
+   ***************************************************************************************/
   onchangeformobject(domobj, object){
     console.log(this.form);
     console.log("onchangeformobject: "  + this.form.get(object).value);
@@ -152,10 +170,12 @@ export class DynamicFormComponent2 implements OnInit {
     }
   }
 
-  setclass(classname) {
-    return classname;
-  }
-
+  /***************************************************************************************
+   * 
+   * @param form 
+   * 
+   * Hantera beställningen
+   ***************************************************************************************/
   onSubmit(form) {
     console.log(form);
   }
