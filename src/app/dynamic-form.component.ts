@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
-          <label [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}</label>
+          <label [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
           <div *ngIf="prop.description">{{language=='swedish' ? prop.description.swedish : prop.description.english}}</div>
           <div [ngSwitch]="prop.type">
             <input class="form-control medium" *ngSwitchCase="'text'" 
@@ -129,7 +129,9 @@ export class DynamicFormComponent2 implements OnInit {
     if(validators) {
       for(const validation of Object.keys(validators)) {
         if(validation === 'required') {
-          formValidators.push(Validators.required);
+          if (validators[validation].value) {
+            formValidators.push(Validators.required);
+          }
         } else if(validation === 'min') {
           formValidators.push(Validators.min(validators[validation].value));
         } else if (validation === 'pattern') {

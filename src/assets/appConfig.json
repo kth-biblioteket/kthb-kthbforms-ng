@@ -51,7 +51,7 @@
       ],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -112,7 +112,7 @@
       ],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -133,7 +133,7 @@
       "showvalues" : ["any"],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -180,7 +180,7 @@
       ],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -197,7 +197,7 @@
       "showvalues" : ["B","A","K","T"],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -214,7 +214,7 @@
       "showvalues" : ["K"],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -231,7 +231,7 @@
       "showvalues" : ["B","A","K"],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -245,7 +245,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["B","A","K"]
+      "showvalues" : ["B","A","K"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "ISBN": {
       "label": {
@@ -256,7 +262,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["B","K"]
+      "showvalues" : ["B","K"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "ISSN": {
       "label": {
@@ -267,7 +279,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["A"]
+      "showvalues" : ["A"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "upplaga": {
       "label": {
@@ -278,7 +296,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["B","K"]
+      "showvalues" : ["B","K"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "volymdel": {
       "label": {
@@ -289,7 +313,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["B","A","K"]
+      "showvalues" : ["B","A","K"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "tidskrift": {
       "label": {
@@ -303,7 +333,7 @@
       "showvalues" : ["A"],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
@@ -317,7 +347,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["A"]
+      "showvalues" : ["A"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "sidor": {
       "label": {
@@ -330,6 +366,7 @@
       "showcriteria": "materialtype",
       "showvalues" : ["B","A","K"],
       "validation": {
+        "required": "false",
         "pattern": {
           "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
           "errormessage" : "must be a valid email!"
@@ -345,7 +382,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["A"]
+      "showvalues" : ["A"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "coursecode": {
       "label": {
@@ -356,7 +399,13 @@
       "type": "text",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["B"]
+      "showvalues" : ["B"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "meddelande": {
       "label": {
@@ -367,7 +416,13 @@
       "type": "textarea",
       "enabled": false,
       "showcriteria": "materialtype",
-      "showvalues" : ["B","A","K","T"]
+      "showvalues" : ["B","A","K","T"],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage" : ""
+        } 
+      }
     },
     "hamtas": {
       "label": {
@@ -404,17 +459,20 @@
       ],
       "validation": {
         "required": {
-          "value": "true",
+          "value": true,
           "errormessage" : "is required!"
         } 
       }
     },
     "kostnader": {
       "label": {
-        "swedish": "",
-        "english": ""
+        "swedish": "Kostnader",
+        "english": "Costs"
       },
-      "description": "Artiklar/kopior kostar 80-150 kr/styck. Se prislista",
+      "description": {
+        "swedish": "Artiklar/kopior kostar 80-150 kr/styck. Se prislista",
+        "english": "Articles/copies cost 80-150 SEK a piece. Priceslist"
+      },
       "value": "" ,
       "type": "radio",
       "enabled": false,
@@ -435,7 +493,13 @@
           }, 
           "value": "contact"
         }
-      ]
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage" : ""
+        } 
+      }
     }
   }
 }
