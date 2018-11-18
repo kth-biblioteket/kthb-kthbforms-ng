@@ -1,265 +1,441 @@
 {
-    "apptitle" : "Beställ material",
-    "formheader": "Beställ/föreslå material",
-    "formfields" : [
-      {
-        "type": "input",
-        "label": "Full name",
-        "name": "name",
-        "placeholder": "Enter your name"
+  "apptitle" : "Beställ material",
+  "form" : {
+    "header" : {
+      "swedish": "Beställ material",
+      "english": "Request material"
+    },
+    "text": {
+      "swedish": "Behöver du en bok, artikel, tidskrift eller annat material som biblioteket inte har tillgång till idag? I de flesta fall kan vi beställa materialet till dig genom fjärrlån, d.v.s. lån från ett annat bibliotek, eller inköp. Gör en beställning eller lämna ett inköpsförslag genom att fylla i formuläret nedan så återkommer vi till dig.",
+      "english": "Do you need a book, article, journal or some other material that the library does not have access to yet? In most cases we can order the material for you by making an interlibrary loan, e.g. a loan from another library, or a purchase. Request the material you need by filling out our form and we will get back to you."
+    }
+  },
+  "formfields" : {
+    "jagar": {
+      "label": {
+        "swedish": "Jag är",
+        "english": "I am a"
       },
-      {
-        "type": "select",
-        "label": "Favourite food",
-        "name": "food",
-        "options": ["Pizza", "Hot Dogs", "Nr", "Coffee"],
-        "placeholder": "Select an option"
-      },
-      {
-        "label": "Submit",
-        "name": "submit",
-        "type": "button"
+      "value": "",
+      "type": "radio",
+      "enabled": true,
+      "options": [
+        { 
+          "label": {
+            "swedish": "Student på KTH",
+            "english": "Student at KTH"
+          }, 
+          "value": "S"
+        },
+        { 
+          "label": {
+            "swedish": "Anställd/Doktorand på KTH",
+            "english": "Staff/Doctoral student at KTH"
+          }, 
+          "value": "P"
+        },
+        { 
+          "label": {
+            "swedish": "Företag",
+            "english": "Business"
+          }, 
+          "value": "F"
+        },
+        { 
+          "label": {
+            "swedish": "Övriga",
+            "english": "Other"
+          }, 
+          "value": "O"
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
       }
-    ],
-    "formfields2" : 
-      {
-        "materialtype": {
-          "label": "Jag vill beställa",
-          "value": "",
-          "type": "radio",
-          "enabled": true,
-          "options": [
-            { "label": "Bok", "value": "B"},
-            { "label": "Artikel", "value": "A"},
-            { "label": "Kapitel i bok", "value": "K"},
-            { "label": "Tidskrift/Databas (föreslå abonnemang)", "value": "T"}
-          ],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
-        }, 
-        "titel": {
-          "label": "Titel",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K","T"],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
+    },
+    "tillhorighet": {
+      "label": {
+        "swedish": "Tillhörighet på KTH",
+        "english": "I am a"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": false,
+      "showcriteria": "jagar",
+      "showvalues" : ["P"],
+      "options": [
+        { 
+          "label": {
+            "swedish": "ABE",
+            "english": "ABE"
+          }, 
+          "value": "ABE"
         },
-        "kapiteltitel": {
-          "label": "Kapitel titel",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["K"],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
+        { 
+          "label": {
+            "swedish": "CBH",
+            "english": "CBH"
+          }, 
+          "value": "CBH"
         },
-        "forfattare": {
-          "label": "Författare",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K"],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
+        { 
+          "label": {
+            "swedish": "EECS",
+            "english": "EECS"
+          }, 
+          "value": "EECS"
         },
-        "År": {
-          "label": "År",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K"]
+        { 
+          "label": {
+            "swedish": "ITM",
+            "english": "ITM"
+          }, 
+          "value": "ITM"
         },
-        "ISBN": {
-          "label": "ISBN",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","K"]
+        { 
+          "label": {
+            "swedish": "SCI",
+            "english": "SCI"
+          }, 
+          "value": "SCI"
         },
-        "ISSN": {
-          "label": "ISSN",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["A"]
+        { 
+          "label": {
+            "swedish": "UF",
+            "english": "UF"
+          }, 
+          "value": "UF"
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "anvandarnamn": {
+      "label": {
+        "swedish": "Användarnamn",
+        "english": "Username"
+      },
+      "description": {
+        "swedish": "För att kunna beställa material behöver du vara registrerad som användare i bibliotekssystemet. Är du registrerad än? Registrera dig som ny användare",
+        "english": "To order material..."
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "jagar",
+      "showvalues" : ["any"],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "materialtype": {
+      "label": {
+        "swedish": "Jag vill beställa",
+        "english": "I want to order"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": false,
+      "showcriteria": "jagar",
+      "showvalues" : ["any"],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Bok",
+            "english": "Book"
+          }, 
+          "value": "B"
         },
-        "upplaga": {
-          "label": "Upplaga",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","K"]
+        { 
+          "label": {
+            "swedish": "Artikel (skickas per post till adressen på ditt bibliotekskonto)",
+            "english": "Article (sent by mail to...)"
+          }, 
+          "value": "A"
         },
-        "volymdel": {
-          "label": "Volym/Del",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K"]
+        { 
+          "label": {
+            "swedish": "Kapitel i bok",
+            "english": "Chapter in book"
+          }, 
+          "value": "K"
         },
-        "tidskrift": {
-          "label": "Tidskrift",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["A"],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
-        },
-        "nummer": {
-          "label": "Nummer",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["A"]
-        },
-        "sidor": {
-          "label": "Sidor",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K"],
-          "validation": {
-            "pattern": {
-              "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
-              "errormessage" : "must be a valid email!"
-            }
-          }
-        },
-        "doi": {
-          "label": "Doi", 
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["A"]
-        },
-        "meddelande": {
-          "label": "Meddelande till biblioteket",
-          "value": "",
-          "type": "textarea",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K","T"]
-        },
-        "hamtas": {
-          "label": "Hämtas i",
-          "value": "",
-          "type": "radio",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B"],
-          "options": [
-            { "label": "Huvudbibioteket", "value": "H"},
-            { "label": "Kista", "value": "K"},
-            { "label": "Södertälje", "value": "S"}
-          ],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
-        },
-        "jagar": {
-          "label": "Jag är",
-          "value": "",
-          "type": "radio",
-          "enabled": false,
-          "showcriteria": "materialtype",
-          "showvalues" : ["B","A","K","T"],
-          "options": [
-            { "label": "Student KTH Boklån inom Norden avgiftsfria - artiklar/kopior 80-150 kr/styck. Prislista", "value": "S"},
-            { "label": "Personal/Doktorander KTH Boklån och artiklar/kopior avgiftsfria.", "value": "P"},
-            { "label": "Företag Boklån och artiklar/kopior avgiftsbelagda. Prislista", "value": "F"},
-            { "label": "Övriga Endast beställning från bibliotekets magasin.", "value": "O"}
-          ],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
-        },
-        "tillhorighet": {
-          "label": "Tillhörighet på KTH",
-          "value": "",
-          "type": "radio",
-          "enabled": false,
-          "showcriteria": "jagar",
-          "showvalues" : ["P"],
-          "options": [
-            { "label": "ABE", "value": "ABE"},
-            { "label": "CBH", "value": "CBH"},
-            { "label": "EECS", "value": "EECS"},
-            { "label": "ITM", "value": "ITM"},
-            { "label": "SCI", "value": "SCI"},
-            { "label": "UF", "value": "UF"}
-          ],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
-        },
-        "anvandarnamn": {
-          "label": "Användarnamn",
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "showcriteria": "jagar",
-          "showvalues" : ["any"],
-          "validation": {
-            "required": {
-              "value": "true",
-              "errormessage" : "is required!"
-            } 
-          }
-        },
-        "kostnader": {
-          "label": "",
-          "value": "" ,
-          "type": "checkbox",
-          "enabled": false,
-          "showcriteria": "jagar",
-          "showvalues" : ["any"],
-          "options": [
-            { "label": "Jag accepterar eventuella kostnader", "value": "accept"}
-          ]
+        { 
+          "label": {
+            "swedish": "Tidskrift/Databas (föreslå abonnemang)",
+            "english": "Journal/Database (suggest...)"
+          }, 
+          "value": "T"
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    }, 
+    "titel": {
+      "label": {
+        "swedish": "Titel",
+        "english": "Title"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","A","K","T"],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "kapiteltitel": {
+      "label": {
+        "swedish": "Kapitel titel",
+        "english": "Chapter title"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["K"],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "forfattare": {
+      "label": {
+        "swedish": "Författare",
+        "english": "Author"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","A","K"],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "År": {
+      "label": {
+        "swedish": "År",
+        "english": "Year"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","A","K"]
+    },
+    "ISBN": {
+      "label": {
+        "swedish": "ISBN",
+        "english": "ISBN"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","K"]
+    },
+    "ISSN": {
+      "label": {
+        "swedish": "ISSN",
+        "english": "ISSN"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["A"]
+    },
+    "upplaga": {
+      "label": {
+        "swedish": "Upplaga",
+        "english": "Issue"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","K"]
+    },
+    "volymdel": {
+      "label": {
+        "swedish": "Volym/Del",
+        "english": "Volume/..."
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","A","K"]
+    },
+    "tidskrift": {
+      "label": {
+        "swedish": "Tidskrift",
+        "english": "Journal"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["A"],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "nummer": {
+      "label": {
+        "swedish": "Nummer",
+        "english": "Number"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["A"]
+    },
+    "sidor": {
+      "label": {
+        "swedish": "Sidor",
+        "english": "Pages"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","A","K"],
+      "validation": {
+        "pattern": {
+          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+          "errormessage" : "must be a valid email!"
         }
       }
+    },
+    "doi": {
+      "label": {
+        "swedish": "DOI",
+        "english": "DOI"
+      }, 
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["A"]
+    },
+    "coursecode": {
+      "label": {
+        "swedish": "Eventuell kurskod på KTH",
+        "english": "Course code at KTH"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B"]
+    },
+    "meddelande": {
+      "label": {
+        "swedish": "Meddelande till biblioteket",
+        "english": "Message to the library"
+      },
+      "value": "",
+      "type": "textarea",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B","A","K","T"]
+    },
+    "hamtas": {
+      "label": {
+        "swedish": "Hämtas i",
+        "english": "Pick up at"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["B"],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Huvudbibioteket",
+            "english": "Main Library"
+          }, 
+          "value": "H"
+        },
+        { 
+          "label": {
+            "swedish": "Kista",
+            "english": "Kista"
+          }, 
+          "value": "K"
+        },
+        { 
+          "label": {
+            "swedish": "Södertälje",
+            "english": "Södertälje"
+          }, 
+          "value": "S"
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": "true",
+          "errormessage" : "is required!"
+        } 
+      }
+    },
+    "kostnader": {
+      "label": {
+        "swedish": "",
+        "english": ""
+      },
+      "description": "Artiklar/kopior kostar 80-150 kr/styck. Se prislista",
+      "value": "" ,
+      "type": "radio",
+      "enabled": false,
+      "showcriteria": "materialtype",
+      "showvalues" : ["A"],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Jag accepterar eventuella kostnader",
+            "english": "I accept charges..."
+          }, 
+          "value": "accept"
+        },
+        { 
+          "label": {
+            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
+            "english": "I want the library to contact me..."
+          }, 
+          "value": "contact"
+        }
+      ]
+    }
+  }
 }

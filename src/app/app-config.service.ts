@@ -14,7 +14,8 @@ export class AppConfigService {
     loadAppConfig() {
         let http = this.injector.get(HttpClient);
 
-        return http.get('https://apps.lib.kth.se/forms/bestallng/assets/appConfig.json')
+        //return http.get('https://apps.lib.kth.se/forms/bestallng/assets/appConfig.json')
+        return http.get('/assets/appConfig.json')
         .toPromise()
         .then(data => {
             this.appConfig = data;

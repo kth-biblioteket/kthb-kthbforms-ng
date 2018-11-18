@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
-          <label [attr.for]="prop.key">{{prop.label}}</label>
+          <label [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}</label>
+          <div *ngIf="prop.description">{{language=='swedish' ? prop.description.swedish : prop.description.english}}</div>
           <div [ngSwitch]="prop.type">
             <input class="form-control medium" *ngSwitchCase="'text'" 
               [formControlName]="prop.key"
@@ -25,24 +26,24 @@ import { HttpClient } from '@angular/common/http';
                   type="checkbox"
                   [name]="prop.key"
                   [formControlName]="prop.key"
-                  [value]="option.value"> {{option.label}}
+                  [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
               </label>
             </div>
 
             <div *ngSwitchCase="'radio'">
               <label *ngFor="let option of prop.options">
-                <input (click)="activateformobject(option.label)" (change)="onchangeformobject(this,prop.key)"
+                <input (change)="onchangeformobject(this,prop.key)"
                   type="radio"
                   [name]="prop.key"
                   [formControlName]="prop.key"
-                  [value]="option.value"> {{option.label}}
+                  [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
               </label>
             </div>
 
             <div *ngSwitchCase="'select'">
               <select [formControlName]="prop.key">
                 <option *ngFor="let option of prop.options" [value]="option.value">
-                  {{ option.label }}
+                  {{ language=='swedish' ? option.label.swedish : option.label.english}}
                 </option>
               </select>
             </div>
@@ -86,6 +87,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DynamicFormComponent2 implements OnInit {
   @Input() dataObject;
+  @Input() language;
   form: FormGroup;
   objectProps;
 
