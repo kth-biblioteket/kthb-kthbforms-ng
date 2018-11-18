@@ -86,8 +86,10 @@ import { HttpClient } from '@angular/common/http';
   ]
 })
 export class DynamicFormComponent2 implements OnInit {
-  @Input() dataObject;
-  @Input() language;
+  // inputvariabler som skickas med från App
+  @Input() dataObject; //formulärfält
+  @Input() language; //språk från URL-parameter
+
   form: FormGroup;
   objectProps;
 
@@ -148,8 +150,6 @@ export class DynamicFormComponent2 implements OnInit {
    * Hantera klick på formulärkontroller och aktivera/inaktivera beroende på inläst JSON
    ***************************************************************************************/
   onchangeformobject(domobj, object){
-    console.log(this.form);
-    console.log("onchangeformobject: "  + this.form.get(object).value);
     //kolla om något annat formulärobjekt är beroende av aktuellt objekts värde
     var show;
     for(let prop of this.objectProps) {
@@ -177,6 +177,8 @@ export class DynamicFormComponent2 implements OnInit {
    * @param form 
    * 
    * Hantera beställningen
+   * 
+   * Skicka via http post
    ***************************************************************************************/
   onSubmit(form) {
     console.log(form);

@@ -25,8 +25,7 @@
 </header>
 <hr id="headerHr">
 <article>
-<h1>{{language=='swedish' ? header.swedish : header.english}}</h1>
-{{language=='swedish' ? text.swedish : text.english}}
-<dynamic-form2 [language]="language" [dataObject]="formfields"></dynamic-form2>
-<!-- Default form contact -->
+  <h1>{{language=='swedish' ? header.swedish : header.english}}</h1>
+  {{language=='swedish' ? text.swedish : text.english}}
+  <dynamic-form2 [language]="language" [dataObject]="formfields"></dynamic-form2>
 </article>
