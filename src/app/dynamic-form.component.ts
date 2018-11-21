@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div style="margin-top:15px" *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
-          <label style="margin-top:0px;" [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
-          <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+          <label [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
+          <div class="error" *ngIf="isValidFormSubmitted != null && !isValidFormSubmitted && form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
             <div *ngIf="form.get(prop.key).errors.required">
               {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
             </div>
@@ -94,6 +94,8 @@ export class DynamicFormComponent2 implements OnInit {
 
   form: FormGroup;
   objectProps;
+
+  isValidFormSubmitted = null;
 
   constructor() {
   }
@@ -270,5 +272,10 @@ export class DynamicFormComponent2 implements OnInit {
    ***************************************************************************************/
   onSubmit(form) {
     console.log(form);
+    this.isValidFormSubmitted = false;
+     if (this.form.invalid) {
+        return;
+     }
+     this.isValidFormSubmitted = true;
   }
 }
