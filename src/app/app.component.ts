@@ -6,18 +6,13 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 import { AppConfigService } from './app-config.service';
 
-import { FieldConfig } from "./field.interface";
-
-import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  //@ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
   formfields;
 
@@ -51,14 +46,7 @@ export class AppComponent {
   }
 
   PrintParams() {
-    console.log('param1 = ' + this.GetParam('animal'));
-  }
-
-  onSubmit() {
-  }
-
-  formSubmitted(value) {
-    console.log(value);
+    console.log("app");
   }
 
 }

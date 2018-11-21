@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'dynamic-form2',
+  selector: 'dynamic-form',
   template: `
   <div id="form_body">
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
@@ -87,7 +87,7 @@ import { HttpClient } from '@angular/common/http';
     `
   ]
 })
-export class DynamicFormComponent2 implements OnInit {
+export class DynamicFormComponent implements OnInit {
   // inputvariabler som skickas med från App
   @Input() dataObject; //formulärfält
   @Input() language; //språk från URL-parameter
