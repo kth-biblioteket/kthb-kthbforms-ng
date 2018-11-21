@@ -24,7 +24,7 @@ export class AppComponent {
   submit(value: any) {}
 
   header =  this.settings.config.form.header;
-  text =  this.settings.config.form.text;
+  description =  this.settings.config.form.description;
   language = "";
 
   constructor(

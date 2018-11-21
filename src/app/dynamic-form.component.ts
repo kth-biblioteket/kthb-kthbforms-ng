@@ -7,12 +7,21 @@ import { HttpClient } from '@angular/common/http';
   template: `
   <div id="form_body">
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
-      <div *ngFor="let prop of objectProps">
+      <div style="margin-top:15px" *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
-          <label [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
+          <label style="margin-top:0px;" [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
+          <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+            <div *ngIf="form.get(prop.key).errors.required">
+              {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
+            </div>
+            <div *ngIf="form.get(prop.key).errors.pattern">
+              {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.pattern.errormessage.swedish : prop.validation.pattern.errormessage.english }}
+            </div>
+          </div>
           <div *ngIf="prop.description">{{language=='swedish' ? prop.description.swedish : prop.description.english}}</div>
+          <div *ngIf="prop.link"><a target="_new" href="{{language=='swedish' ? prop.link.swedish.url : prop.link.english.url}}">{{language=='swedish' ? prop.link.swedish.text : prop.link.english.text}}</a></div>
           <div [ngSwitch]="prop.type">
-            <input class="form-control medium" *ngSwitchCase="'text'" 
+            <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'text'" 
               [formControlName]="prop.key"
               [id]="prop.key" [type]="prop.type">
             
@@ -21,7 +30,7 @@ import { HttpClient } from '@angular/common/http';
             </div>
 
             <div *ngSwitchCase="'checkbox'">
-              <label *ngFor="let option of prop.options">
+              <label style="margin-top:0px;font-weight: normal;" *ngFor="let option of prop.options">
                 <input 
                   type="checkbox"
                   [name]="prop.key"
@@ -31,13 +40,15 @@ import { HttpClient } from '@angular/common/http';
             </div>
 
             <div *ngSwitchCase="'radio'">
-              <label *ngFor="let option of prop.options">
+              <div *ngFor="let option of prop.options">
+                <label style="margin-top:0px;font-weight: normal;" *ngIf="option.enabled">
                 <input (change)="onchangeformobject(this,prop.key)"
                   type="radio"
                   [name]="prop.key"
                   [formControlName]="prop.key"
                   [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
-              </label>
+                </label>
+              </div>
             </div>
 
             <div *ngSwitchCase="'select'">
@@ -54,15 +65,6 @@ import { HttpClient } from '@angular/common/http';
                 [id]="prop.key" [type]="prop.type">
             </div-->
           </div>
-
-          <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
-              <div *ngIf="form.get(prop.key).errors.required">
-                {{ prop.label }} {{ prop.validation.required.errormessage }}
-              </div>
-              <div *ngIf="form.get(prop.key).errors.pattern">
-                {{ prop.label }} {{ prop.validation.pattern.errormessage }}
-              </div>
-          </div>
         </div>          
       </div>
       <div class="controls">
@@ -71,9 +73,9 @@ import { HttpClient } from '@angular/common/http';
     </form>
     <div>
     <br/>
-    <strong>Form Value</strong>
+    <strong>Formulärvärden</strong>
     <pre>{{ form.value | json }}</pre>
-    <strong>Form is valid:</strong> {{form.valid}}
+    <strong>Formulär är giltigt:</strong> {{form.valid}}
   `,
   styles: [
     `
@@ -152,14 +154,98 @@ export class DynamicFormComponent2 implements OnInit {
    * Hantera klick på formulärkontroller och aktivera/inaktivera beroende på inläst JSON
    ***************************************************************************************/
   onchangeformobject(domobj, object){
+    //console.log(this.form)
     //kolla om något annat formulärobjekt är beroende av aktuellt objekts värde
+    /*
     var show;
+    //console.log(this.objectProps);
     for(let prop of this.objectProps) {
       show = false;
-      if (prop.showcriteria==object) {
-        for(let index of Object.keys(prop.showvalues)){
-          if(this.form.get(object).value == prop.showvalues[index] || (prop.showvalues[index] == "any" && this.form.get(object).value!="")) {
+      if (prop.showcriteria) {
+        //console.log(Object.keys(prop.showcriteria));
+        for(let index1 of Object.keys(prop.showcriteria)){
+          //console.log(prop.showcriteria[index1]);
+          //console.log(object);
+          if (prop.showcriteria[index1].field==object) {
+            for(let index of Object.keys(prop.showcriteria[index1].values)){
+              if(this.form.get(object).value == prop.showcriteria[index1].values[index] || (prop.showcriteria[index1].values[index] == "any" && this.form.get(object).value!="")) {
+                show = true;
+                break;
+              }
+            }
+            if (show){
+              this.form.get(prop.key).enable();
+              prop.enabled = true;
+            } else {
+              this.form.get(prop.key).disable();
+              prop.enabled = false;
+            }
+          }
+        }
+      }
+    }*/
+    //kolla igenom alla fält(som hämtats via JSON) och sätt enable = true/false beroende på aktuella värden
+    var validfield;
+    var show;
+    var optionvalidchoice;
+    var enableoption;
+    for(let prop of this.objectProps) {
+      show = false;
+      //om fältet har kriterier för att visas
+      if (prop.showcriteria) {
+        //hämta kriterier
+        
+        for(let index1 of Object.keys(prop.showcriteria)){
+          //för varje, kolla om kriterie är uppfyllt
+          //console.log(prop.showcriteria[index1].field);
+          //console.log(this.form.get(prop.showcriteria[index1].field).value);
+          validfield = false;
+          for(let index2 of Object.keys(prop.showcriteria[index1].values)){
+            if (this.form.get(prop.showcriteria[index1].field).value == prop.showcriteria[index1].values[index2] || prop.showcriteria[index1].values[index2] == "any") {
+              validfield = true;
+              break;
+            } else {
+              validfield = false;
+            }
+          }
+
+          if (validfield){
             show = true;
+            //om en radio/checkbox-kontroll, kolla också kriterier för varje option
+            if(prop.type=="radio") {
+              //om options finns
+              if(prop.options) {
+                for (let index3 of Object.keys(prop.options) ){
+                  optionvalidchoice = false                  
+                  if (prop.options[index3].showcriteria) {
+                    for(let index4 of Object.keys(prop.options[index3].showcriteria)){
+                      enableoption = false;
+                      for(let index5 of Object.keys(prop.options[index3].showcriteria[index4].values)){
+                        if (this.form.get(prop.options[index3].showcriteria[index4].field).value == prop.options[index3].showcriteria[index4].values[index5] || prop.options[index3].showcriteria[index4].values[index5] == "any") {
+                          optionvalidchoice = true;
+                          break;                       
+                        } else {
+                          optionvalidchoice = false;
+                        }
+                      }
+                      if (optionvalidchoice){
+                        enableoption = true;
+                      } else {
+                        enableoption = false;
+                        break;
+                      }
+                    }
+                    if (enableoption){
+                      prop.options[index3].enabled = true;
+                    } else {
+                      prop.options[index3].enabled = false;
+                    }
+                  }
+                }
+              }
+            }
+          } else {
+            show = false;
             break;
           }
         }
