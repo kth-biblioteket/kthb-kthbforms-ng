@@ -1,16 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { BackendService } from './backend.service';
 
 @Component({
   selector: 'dynamic-form',
   template: `
+  <div class="webform message">
+    <div *ngIf="showtoperrormessage" id="formd_error_message" class="alert alert-danger"><p>Formuläret är inte korrekt ifyllt! Se rödmarkerad text nedan.</p>
+    </div>
+  </div>
   <div id="form_body">
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
       <div style="margin-top:15px" *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
           <label [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
-          <div class="error" *ngIf="isValidFormSubmitted != null && !isValidFormSubmitted && form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+          <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
             <div *ngIf="form.get(prop.key).errors.required">
               {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
             </div>
@@ -97,7 +101,9 @@ export class DynamicFormComponent implements OnInit {
 
   isValidFormSubmitted = null;
 
-  constructor() {
+  showtoperrormessage = false;
+
+  constructor(public backend:BackendService) {
   }
 
   /***************************************************************************************
@@ -186,6 +192,12 @@ export class DynamicFormComponent implements OnInit {
         }
       }
     }*/
+    console.log(this.form.get(object));
+    if (!this.form.get(object).valid) {
+      this.showtoperrormessage = true;
+    } else {
+      this.showtoperrormessage = false;
+    }
     //kolla igenom alla fält(som hämtats via JSON) och sätt enable = true/false beroende på aktuella värden
     var validfield;
     var show;
@@ -262,6 +274,14 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
+  postformvalues(form) {
+    this.backend.postForm(form).subscribe((result) => {
+     console.log(result);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
   /***************************************************************************************
    * 
    * @param form 
@@ -277,5 +297,10 @@ export class DynamicFormComponent implements OnInit {
         return;
      }
      this.isValidFormSubmitted = true;
+
+     if(this.form.valid) {
+      /* Any API call logic via services goes here */
+      this.postformvalues(form);
+  }
   }
 }

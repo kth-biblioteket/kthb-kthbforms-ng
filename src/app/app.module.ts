@@ -5,8 +5,7 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { HttpModule }      from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -31,7 +30,6 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpModule,
     HttpClientModule
   ],
   providers: [

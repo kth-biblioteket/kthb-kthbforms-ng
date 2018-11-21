@@ -10,7 +10,7 @@
       "english": "Do you need a book, article, journal or some other material that the library does not have access to yet? In most cases we can order the material for you by making an interlibrary loan, e.g. a loan from another library, or a purchase. Request the material you need by filling out our form and we will get back to you."
     }
   },
-  "posturl": "https://apps.lib.kth.se/forms/bestallng/postform.php",
+  "posturl": "http://localhost:3000",
   "formfields" : {
     "iam": {
       "label": {

@@ -1,8 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
-
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AppConfigService } from './app-config.service';
 
@@ -12,25 +10,22 @@ import { AppConfigService } from './app-config.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  //@ViewChild(DynamicFormComponent) form: DynamicFormComponent;
-
   formfields;
-
-  submit(value: any) {}
-
   header =  this.settings.config.form.header;
   description =  this.settings.config.form.description;
   language = "";
 
   constructor(
     private titleService: Title,
-    private formBuilder: FormBuilder,
-    private settings: AppConfigService
+    private settings: AppConfigService,
+    private elementRef: ElementRef
   ) { 
+    console.log("KTHB-form-app");
     this.PrintParams();
     this.setTitle(this.settings.config.apptitle);
-    this.formfields = this.settings.config.formfields
-    this.language = this.GetParam('lang')
+    this.formfields = this.settings.config.formfields;
+    this.language = this.GetParam('lang');
+    this.elementRef.nativeElement.getAttribute('language') == 'swedish' ? this.language = 'swedish' : this.language = 'english';
   }
   
   setTitle( newTitle: string) {
@@ -46,7 +41,6 @@ export class AppComponent {
   }
 
   PrintParams() {
-    console.log("app");
   }
 
 }
