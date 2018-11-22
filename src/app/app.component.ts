@@ -11,9 +11,11 @@ import { AppConfigService } from './app-config.service';
 })
 export class AppComponent {
   formfields;
-  header =  this.settings.config.form.header;
-  description =  this.settings.config.form.description;
+  header;
+  description;
   language = "";
+  formid = "";
+  form;
 
   constructor(
     private titleService: Title,
@@ -21,18 +23,33 @@ export class AppComponent {
     private elementRef: ElementRef
   ) { 
     console.log("KTHB-form-app");
-    this.PrintParams();
-    this.setTitle(this.settings.config.apptitle);
-    this.formfields = this.settings.config.formfields;
-    this.language = this.GetParam('lang');
+    this.printParams();
+    this.language = this.getParam('lang');
     this.elementRef.nativeElement.getAttribute('language') == 'swedish' ? this.language = 'swedish' : this.language = 'english';
+    this.formid = this.elementRef.nativeElement.getAttribute('formid');
+
+    //hämta rätt formulärdata beroende på angivet formid i app-root attribute
+    this.form = this.getFormdata (this.formid)
+
+    this.setTitle(this.form.name);
+    this.formfields = this.form.formfields;
+    this.header =  this.form.header;
+    this.description = this.form.description;
   }
   
+  getFormdata (formid) {
+    var formArray = this.settings.config.forms;
+    for (var i = 0; i < formArray.length; i++) {
+        if (formArray[i].id == formid) {
+          return formArray[i];
+        }
+    }
+  }
   setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
   }
 
-  GetParam(name){
+  getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if(!results){
       return "english";
@@ -40,7 +57,7 @@ export class AppComponent {
     return results[1] || "english";
   }
 
-  PrintParams() {
+  printParams() {
   }
 
 }

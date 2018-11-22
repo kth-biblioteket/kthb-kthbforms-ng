@@ -1,5 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class AppConfigService {
@@ -10,12 +11,14 @@ export class AppConfigService {
     /**
      * 
      * Läs in konfiguration från JSON
+     * 
+     * Anpassa hämtning av konfiguration beroende på development eller production
+     * via environment
+     * 
      */
     loadAppConfig() {
         let http = this.injector.get(HttpClient);
-
-        //return http.get('https://apps.lib.kth.se/forms/bestallng/assets/appConfig.json')
-        return http.get('./assets/appConfig.json')
+        return http.get(environment.configurl)
         .toPromise()
         .then(data => {
             this.appConfig = data;
