@@ -94,7 +94,8 @@ import { BackendService } from './backend.service';
 export class DynamicFormComponent implements OnInit {
   // inputvariabler som skickas med från App
   @Input() dataObject; //formulärfält
-  @Input() language; //språk från URL-parameter
+  @Input() language; //språk
+  @Input() formid; //formid 
 
   form: FormGroup;
   objectProps;
@@ -275,7 +276,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   postformvalues(form) {
-    this.backend.postForm(form).subscribe((result) => {
+    this.backend.postForm(form, this.formid).subscribe((result) => {
      console.log(result);
     }, (err) => {
       console.log(err);

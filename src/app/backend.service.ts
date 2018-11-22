@@ -17,7 +17,7 @@ const httpOptions = {
 
 export class BackendService {
   
-  endpoint = this.settings.config.posturl; //  'http://localhost:3000';
+  form;
 
   constructor(
     private http: HttpClient,
@@ -26,11 +26,20 @@ export class BackendService {
     }
 
   
-  
-  postForm(payload): Observable<any> {
-    
-    console.log(this.endpoint);
-    return this.http.post<any>(this.endpoint, payload, httpOptions).pipe(
+  getFormdata (formid) {
+    var formArray = this.settings.config.forms;
+    for (var i = 0; i < formArray.length; i++) {
+        if (formArray[i].id == formid) {
+          return formArray[i];
+        }
+    }
+  }
+
+  postForm(payload, formid): Observable<any> {
+     //hämta rätt formulärdata beroende på angivet formid i app-root attribute
+    this.form = this.getFormdata (formid)
+    console.log(this.form.posturl);
+    return this.http.post<any>(this.form.posturl, payload, httpOptions).pipe(
       //tap((product) => console.log(`added product w/ id=${product.id}`)),
       catchError(this.handleError<any>('postForm'))
     );

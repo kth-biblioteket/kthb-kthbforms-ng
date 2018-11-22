@@ -45,6 +45,7 @@ export class AppComponent {
         }
     }
   }
+  
   setTitle( newTitle: string) {
     this.titleService.setTitle( newTitle );
   }
