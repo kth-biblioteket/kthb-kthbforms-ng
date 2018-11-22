@@ -24,7 +24,7 @@ export class AppComponent {
   ) { 
     console.log("KTHB-form-app");
     this.printParams();
-    this.language = this.getParam('lang');
+    //this.language = this.getParam('lang');
     this.elementRef.nativeElement.getAttribute('language') == 'swedish' ? this.language = 'swedish' : this.language = 'english';
     this.formid = this.elementRef.nativeElement.getAttribute('formid');
 
@@ -53,9 +53,9 @@ export class AppComponent {
   getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if(!results){
-      return "english";
+      return "";
     }
-    return results[1] || "english";
+    return results[1] || "";
   }
 
   printParams() {

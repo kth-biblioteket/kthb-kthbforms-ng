@@ -11,7 +11,7 @@ import { BackendService } from './backend.service';
   </div>
   <div id="form_body">
     <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
-      <div style="margin-top:15px" *ngFor="let prop of objectProps">
+      <div style="margin-bottom:15px" *ngFor="let prop of objectProps">
         <div *ngIf="prop.enabled">
           <label [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
           <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
@@ -23,7 +23,7 @@ import { BackendService } from './backend.service';
             </div>
           </div>
           <div *ngIf="prop.description">{{language=='swedish' ? prop.description.swedish : prop.description.english}}</div>
-          <div *ngIf="prop.link"><a target="_new" href="{{language=='swedish' ? prop.link.swedish.url : prop.link.english.url}}">{{language=='swedish' ? prop.link.swedish.text : prop.link.english.text}}</a></div>
+          <div style="margin-bottom:10px" *ngIf="prop.link"><a target="_new" href="{{language=='swedish' ? prop.link.swedish.url : prop.link.english.url}}">{{language=='swedish' ? prop.link.swedish.text : prop.link.english.text}}</a></div>
           <div [ngSwitch]="prop.type">
             <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'text'" 
               [formControlName]="prop.key"
