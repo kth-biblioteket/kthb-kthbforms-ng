@@ -104,7 +104,8 @@ export class DynamicFormComponent implements OnInit {
    * 
    * @param object 
    * 
-   * Se till att en checkbox inte har något värde alls när den inte är checked.
+   * Se till att en checkbox inte har något värde alls när den inte är checked
+   * annars valideras den som giltig.
    */
   checkboxchange(object) {
     console.log(this.form.get(object).value);
