@@ -11,7 +11,7 @@
       <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
         <div style="margin-bottom:15px" *ngFor="let prop of objectProps">
           <div *ngIf="prop.enabled">
-            <!-- Label för varje fält, inte fet stil om fält ingår i gruppering -->
+            <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox -->
             <label *ngIf="prop.type!='checkbox'" [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">
               {{language=='swedish' ? prop.label.swedish : prop.label.english}}
               <!-- Fält valfritt? -->
@@ -47,13 +47,16 @@
               <div *ngSwitchCase="'textarea'">
                 <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
               </div>
-
+              
+              <!-- Använd grupperingsfält som label -->
               <div *ngSwitchCase="'checkbox'">
-                  <input 
-                    type="checkbox"
-                    [name]="prop.key"
-                    [formControlName]="prop.key"
-                    [value]="prop.value"> {{language=='swedish' ? prop.label.swedish : prop.label.english}}
+                  <label style="margin-top:0px;font-weight: normal;">
+                    <input (change)="checkboxchange(prop.key)"
+                      type="checkbox"
+                      [name]="prop.key"
+                      [formControlName]="prop.key"
+                      [value]=""> {{language=='swedish' ? prop.label.swedish : prop.label.english}}
+                  </label>
               </div>
 
               <div *ngSwitchCase="'radio'">

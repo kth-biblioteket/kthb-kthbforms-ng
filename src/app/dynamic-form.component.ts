@@ -102,6 +102,20 @@ export class DynamicFormComponent implements OnInit {
 
   /**
    * 
+   * @param object 
+   * 
+   * Se till att en checkbox inte har något värde alls när den inte är checked.
+   */
+  checkboxchange(object) {
+    console.log(this.form.get(object).value);
+    if (!this.form.get(object).value){
+      this.form.get(object).setValue("");
+    }
+    
+  }
+
+  /**
+   * 
    * @param domobj 
    * 
    * @param object 
@@ -114,6 +128,7 @@ export class DynamicFormComponent implements OnInit {
     } else {
       this.showtoperrormessage = false;
     }
+
     //kolla igenom alla fält(som hämtats via JSON) och sätt enable = true/false beroende på aktuella värden
     var validfield;
     var show;
