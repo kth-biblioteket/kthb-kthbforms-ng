@@ -281,7 +281,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   postformvalues(form) {
-    this.backend.postForm(this.posturl, form, this.formid).subscribe((result) => {
+    this.backend.postForm(this.posturl, form).subscribe((result) => {
      console.log(result);
     }, (err) => {
       console.log(err);
