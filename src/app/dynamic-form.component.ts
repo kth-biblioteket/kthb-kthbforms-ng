@@ -1,85 +1,97 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { BackendService } from './backend.service';
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
+//TODO Flytta style från inline template till css
 @Component({
   selector: 'dynamic-form',
   template: `
-  <div class="webform message">
-    <div *ngIf="showtoperrormessage" id="formd_error_message" class="alert alert-danger"><p>Formuläret är inte korrekt ifyllt! Se rödmarkerad text nedan.</p>
+  <div *ngIf="init">
+    <div style="margin-top:15px;margin-bottom:15px">{{language=='swedish' ? description.swedish : description.english}}</div>
+    <div class="webform message">
+      <div *ngIf="showtoperrormessage" id="formd_error_message" class="alert alert-danger"><p>Formuläret är inte korrekt ifyllt! Se rödmarkerad text nedan.</p>
+      </div>
     </div>
-  </div>
-  <div id="form_body">
-    <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
-      <div style="margin-bottom:15px" *ngFor="let prop of objectProps">
-        <div *ngIf="prop.enabled">
-          <label [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">{{language=='swedish' ? prop.label.swedish : prop.label.english}}{{prop.validation.required.value ? ' *': ''}}</label>
-          <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
-            <div *ngIf="form.get(prop.key).errors.required">
-              {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
-            </div>
-            <div *ngIf="form.get(prop.key).errors.pattern">
-              {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.pattern.errormessage.swedish : prop.validation.pattern.errormessage.english }}
-            </div>
-          </div>
-          <div *ngIf="prop.description">{{language=='swedish' ? prop.description.swedish : prop.description.english}}</div>
-          <div style="margin-bottom:10px" *ngIf="prop.link"><a target="_new" href="{{language=='swedish' ? prop.link.swedish.url : prop.link.english.url}}">{{language=='swedish' ? prop.link.swedish.text : prop.link.english.text}}</a></div>
-          <div [ngSwitch]="prop.type">
-            <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'text'" 
-              [formControlName]="prop.key"
-              [id]="prop.key" [type]="prop.type">
-            
-            <div *ngSwitchCase="'textarea'">
-              <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
-            </div>
-
-            <div *ngSwitchCase="'checkbox'">
-              <label style="margin-top:0px;font-weight: normal;" *ngFor="let option of prop.options">
-                <input 
-                  type="checkbox"
-                  [name]="prop.key"
-                  [formControlName]="prop.key"
-                  [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
-              </label>
-            </div>
-
-            <div *ngSwitchCase="'radio'">
-              <div *ngFor="let option of prop.options">
-                <label style="margin-top:0px;font-weight: normal;" *ngIf="option.enabled">
-                <input (change)="onchangeformobject(this,prop.key)"
-                  type="radio"
-                  [name]="prop.key"
-                  [formControlName]="prop.key"
-                  [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
-                </label>
+    <div id="form_body">
+      <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+        <div style="margin-bottom:15px" *ngFor="let prop of objectProps">
+          <div *ngIf="prop.enabled">
+            <label [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">
+              {{language=='swedish' ? prop.label.swedish : prop.label.english}}
+              <span style="font-style:italic;font-weight:normal">
+                {{!prop.validation.required.value && language=='swedish' ? '(' + optionalfieldtext.swedish + ')': ''}}{{!prop.validation.required.value && language=='english' ? '(' + optionalfieldtext.english + ')' : ''}}
+              </span>
+            </label>
+            <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+              <div *ngIf="form.get(prop.key).errors.required">
+                {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
+              </div>
+              <div *ngIf="form.get(prop.key).errors.pattern">
+                {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.pattern.errormessage.swedish : prop.validation.pattern.errormessage.english }}
               </div>
             </div>
-
-            <div *ngSwitchCase="'select'">
-              <select [formControlName]="prop.key">
-                <option *ngFor="let option of prop.options" [value]="option.value">
-                  {{ language=='swedish' ? option.label.swedish : option.label.english}}
-                </option>
-              </select>
-            </div>
-
-            <!--div class="controls" *ngSwitchCase="'submit'">
-              <input [attr.disabled]="!form.valid" class="form-control button" *ngSwitchCase="'submit'" 
+            <div *ngIf="prop.description">{{language=='swedish' ? prop.description.swedish : prop.description.english}}</div>
+            <div style="margin-bottom:10px" *ngIf="prop.link"><a target="_new" href="{{language=='swedish' ? prop.link.swedish.url : prop.link.english.url}}">{{language=='swedish' ? prop.link.swedish.text : prop.link.english.text}}</a></div>
+            <div [ngSwitch]="prop.type">
+              <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'text'" 
                 [formControlName]="prop.key"
                 [id]="prop.key" [type]="prop.type">
-            </div-->
-          </div>
-        </div>          
-      </div>
-      <div class="controls">
-        <input [disabled]="!form.valid" class="form-control button" type="submit" value="Skicka">
-      </div>
-    </form>
+              
+              <div *ngSwitchCase="'textarea'">
+                <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
+              </div>
+
+              <div *ngSwitchCase="'checkbox'">
+                <label style="margin-top:0px;font-weight: normal;" *ngFor="let option of prop.options">
+                  <input 
+                    type="checkbox"
+                    [name]="prop.key"
+                    [formControlName]="prop.key"
+                    [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
+                </label>
+              </div>
+
+              <div *ngSwitchCase="'radio'">
+                <div *ngFor="let option of prop.options">
+                  <label style="margin-top:0px;font-weight: normal;" *ngIf="option.enabled">
+                  <input (change)="onchangeformobject(this,prop.key)"
+                    type="radio"
+                    [name]="prop.key"
+                    [formControlName]="prop.key"
+                    [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
+                  </label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'select'">
+                <select [formControlName]="prop.key">
+                  <option *ngFor="let option of prop.options" [value]="option.value">
+                    {{ language=='swedish' ? option.label.swedish : option.label.english}}
+                  </option>
+                </select>
+              </div>
+
+              <!--div class="controls" *ngSwitchCase="'submit'">
+                <input [attr.disabled]="!form.valid" class="form-control button" *ngSwitchCase="'submit'" 
+                  [formControlName]="prop.key"
+                  [id]="prop.key" [type]="prop.type">
+              </div-->
+            </div>
+          </div>          
+        </div>
+        <div class="controls">
+          <input [disabled]="!form.valid" class="form-control button" type="submit" value="Skicka">
+        </div>
+      </form>
+      <div>
+      <br/>
+      <strong>Formulärvärden</strong>
+      <pre>{{ form.value | json }}</pre>
+      <strong>Formulär är giltigt:</strong> {{form.valid}}
     <div>
-    <br/>
-    <strong>Formulärvärden</strong>
-    <pre>{{ form.value | json }}</pre>
-    <strong>Formulär är giltigt:</strong> {{form.valid}}
   `,
   styles: [
     `
@@ -93,38 +105,62 @@ import { BackendService } from './backend.service';
 })
 export class DynamicFormComponent implements OnInit {
   // inputvariabler som skickas med från App
-  @Input() dataObject; //formulärfält
+  //@Input() dataObject; //formulärfält
   @Input() language; //språk
   @Input() formid; //formid 
 
   form: FormGroup;
   objectProps;
-
+  init = false;
+  optionalfieldtext;
+  description;
   isValidFormSubmitted = null;
-
   showtoperrormessage = false;
+  posturl;
 
-  constructor(public backend:BackendService) {
+  constructor(
+    public backend:BackendService,
+    private http: HttpClient,
+    private titleService: Title
+  ) {
   }
 
   /***************************************************************************************
    * 
    * 
    * Skapa formulär från inläst JSON
+   * 
    ***************************************************************************************/
-  ngOnInit() {
-    this.objectProps = 
-      Object.keys(this.dataObject)
-        .map(prop => {
-          return Object.assign({}, { key: prop} , this.dataObject[prop]);
-        });
-    
-    const formGroup = {};
-    for(let prop of Object.keys(this.dataObject)) {
-      formGroup[prop] = new FormControl(this.dataObject[prop].value || '', this.mapValidators(this.dataObject[prop].validation));
-    }
 
-    this.form = new FormGroup(formGroup);
+  //hämta rätt formulärdata beroende på angivet formid i app-root attribute
+  async getFormData() {
+    let formdata:any;
+    formdata = await this.http.get(environment.formdataurl + this.formid + ".json").toPromise();
+    this.setTitle(formdata.header.swedish);
+    this.optionalfieldtext = formdata.optionalfieldtext;
+    this.posturl = formdata.posturl;
+    this.description = formdata.description;
+    this.objectProps = 
+      Object.keys(formdata.formfields)
+        .map(prop => {
+          return Object.assign({}, { key: prop} , formdata.formfields[prop]);
+        });
+        
+      const formGroup = {};
+      for(let prop of Object.keys(formdata.formfields)) {
+        formGroup[prop] = new FormControl(formdata.formfields[prop].value || '', this.mapValidators(formdata.formfields[prop].validation));
+      }
+ 
+      this.form = new FormGroup(formGroup);
+      this.init = true;
+  }
+
+  ngOnInit() {
+    this.getFormData(); 
+  }
+
+  setTitle( newTitle: string) {
+    this.titleService.setTitle( newTitle );
   }
 
 
@@ -163,37 +199,6 @@ export class DynamicFormComponent implements OnInit {
    * Hantera klick på formulärkontroller och aktivera/inaktivera beroende på inläst JSON
    ***************************************************************************************/
   onchangeformobject(domobj, object){
-    //console.log(this.form)
-    //kolla om något annat formulärobjekt är beroende av aktuellt objekts värde
-    /*
-    var show;
-    //console.log(this.objectProps);
-    for(let prop of this.objectProps) {
-      show = false;
-      if (prop.showcriteria) {
-        //console.log(Object.keys(prop.showcriteria));
-        for(let index1 of Object.keys(prop.showcriteria)){
-          //console.log(prop.showcriteria[index1]);
-          //console.log(object);
-          if (prop.showcriteria[index1].field==object) {
-            for(let index of Object.keys(prop.showcriteria[index1].values)){
-              if(this.form.get(object).value == prop.showcriteria[index1].values[index] || (prop.showcriteria[index1].values[index] == "any" && this.form.get(object).value!="")) {
-                show = true;
-                break;
-              }
-            }
-            if (show){
-              this.form.get(prop.key).enable();
-              prop.enabled = true;
-            } else {
-              this.form.get(prop.key).disable();
-              prop.enabled = false;
-            }
-          }
-        }
-      }
-    }*/
-    console.log(this.form.get(object));
     if (!this.form.get(object).valid) {
       this.showtoperrormessage = true;
     } else {
@@ -276,7 +281,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   postformvalues(form) {
-    this.backend.postForm(form, this.formid).subscribe((result) => {
+    this.backend.postForm(this.posturl, form, this.formid).subscribe((result) => {
      console.log(result);
     }, (err) => {
       console.log(err);
@@ -292,7 +297,6 @@ export class DynamicFormComponent implements OnInit {
    * Skicka via http post
    ***************************************************************************************/
   onSubmit(form) {
-    console.log(form);
     this.isValidFormSubmitted = false;
      if (this.form.invalid) {
         return;
@@ -300,7 +304,6 @@ export class DynamicFormComponent implements OnInit {
      this.isValidFormSubmitted = true;
 
      if(this.form.valid) {
-      /* Any API call logic via services goes here */
       this.postformvalues(form);
   }
   }

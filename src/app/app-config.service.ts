@@ -6,7 +6,9 @@ import { environment } from '../environments/environment';
 export class AppConfigService {
     private appConfig;
 
-    constructor (private injector: Injector) { }
+    constructor (
+        private injector: Injector
+    ) { }
 
     /**
      * 
