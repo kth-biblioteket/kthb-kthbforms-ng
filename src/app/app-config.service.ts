@@ -16,7 +16,6 @@ export class AppConfigService {
      * 
      * Anpassa hämtning av konfiguration beroende på development eller production
      * via environment
-     * 
      */
     loadAppConfig() {
         let http = this.injector.get(HttpClient);

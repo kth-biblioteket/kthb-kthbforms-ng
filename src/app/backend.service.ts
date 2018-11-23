@@ -20,12 +20,26 @@ export class BackendService {
     ) {
     }
 
+  /**
+   * 
+   * @param url 
+   * @param payload 
+   * 
+   * Posta formulärdata(payload) till backend(url)
+   */
   postForm(url, payload): Observable<any> {
     return this.http.post<any>(url, payload, httpOptions).pipe(
       catchError(this.handleError<any>('postForm'))
     );
   }
 
+  /**
+   * 
+   * @param operation 
+   * @param result 
+   * 
+   * Hantera eventuella fel.
+   */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   

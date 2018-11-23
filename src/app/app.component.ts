@@ -23,7 +23,12 @@ export class AppComponent implements OnInit {
     this.formid = this.elementRef.nativeElement.getAttribute('formid');
   }
 
-  //hämta eventuella urlparametrar
+  /**
+   * 
+   * @param name 
+   * 
+   * hämta eventuella urlparametrar
+   */
   getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if(!results){
