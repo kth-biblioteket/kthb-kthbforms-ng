@@ -135,7 +135,7 @@ export class DynamicFormComponent implements OnInit {
   //hämta rätt formulärdata beroende på angivet formid i app-root attribute
   async getFormData() {
     let formdata:any;
-    formdata = await this.http.get(environment.formdataurl + this.formid + ".json").toPromise();
+    formdata = await this.http.get(environment.formdataurl + this.formid + ".json" + '?time=' + Date.now()).toPromise();
     this.setTitle(formdata.header.swedish);
     this.optionalfieldtext = formdata.optionalfieldtext;
     this.posturl = formdata.posturl;
