@@ -974,6 +974,62 @@
               }
             } 
           }
+        },
+        "testheader": {
+          "label": {
+            "swedish": "Välj mat",
+            "english": "Choose food"
+          },
+          "value": "test",
+          "type": "grouplabel",
+          "enabled": true,
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "meat": {
+          "label": {
+            "swedish": "Kött",
+            "english": "Meat"
+          },
+          "value": "",
+          "type": "checkbox",
+          "isgrouped": true,
+          "enabled": true,
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "fish": {
+          "label": {
+            "swedish": "Fisk",
+            "english": "Fish"
+          },
+          "value": "",
+          "type": "checkbox",
+          "isgrouped": true,
+          "enabled": true,
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
         }
       }
     }
