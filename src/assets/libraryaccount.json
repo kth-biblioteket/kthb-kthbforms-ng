@@ -1,0 +1,282 @@
+    {
+      "id": "libraryaccount",
+      "name" : "Ansökan om bibliotekskonto",
+      "header" : {
+          "swedish": "Registera dig",
+          "english": "Register"
+      },
+      "status": "open",
+      "description": {
+        "open": {
+          "swedish": "För att kunna reservera, låna och beställa material från biblioteket behöver du registrera dig som användare i vårt bibliotekssystem.",
+          "english": "To be able to..."
+        },
+        "closed": {
+          "swedish": "Stängt",
+          "english": "Closed"
+        }
+      },
+      "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/libraryaccount",
+      "optionalfieldtext" : {
+        "swedish": "Valfri",
+        "english": "Optional"
+      }, 
+      "formfields" : {
+        "iam": {
+          "label": {
+            "swedish": "Jag är",
+            "english": "I am a"
+          },
+          "value": "",
+          "type": "radio",
+          "enabled": true,
+          "options": [
+            { 
+              "label": {
+                "swedish": "Student eller anställd på KTH",
+                "english": "Student or staff at KTH"
+              }, 
+              "value": "S",
+              "enabled": true
+            },
+            { 
+              "label": {
+                "swedish": "Privatperson / Övrig",
+                "english": "Private person / Other"
+              }, 
+              "value": "O",
+              "enabled": true
+            }
+          ],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "otherinfo": {
+          "label": {
+            "swedish": "Privatperson / övrig",
+            "english": "Privateperson / övrig"
+          },
+          "value": "",
+          "type": "radio",
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["O"]
+          }],
+          "options": [
+            { 
+              "label": {
+                "swedish": "Mellan 16 och 18 år",
+                "english": "Between 16 and 18 years old"
+              }, 
+              "value": "16_18",
+              "enabled": true
+            },
+            { 
+              "label": {
+                "swedish": "Över 18 år men inte folkbokförd i Sverige",
+                "english": "Över 18 år men inte folkbokförd i Sverige"
+              }, 
+              "value": "18_not_swedish",
+              "enabled": true
+            },
+            { 
+              "label": {
+                "swedish": "Anställd på Scania",
+                "english": "Anställd på Scania"
+              }, 
+              "value": "scania",
+              "enabled": true
+            },
+            { 
+              "label": {
+                "swedish": "Övriga",
+                "english": "Other"
+              }, 
+              "value": "other",
+              "enabled": true
+            }
+          ],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "informationbox": {
+          "label": {
+            "swedish": "infobox",
+            "english": "Privateperson / övrig"
+          },
+          "description": {
+            "placement": "after",
+            "swedish": "Om du inte är KTH-anknuten och dessutom mellan 16 och 18 år eller inte folkbokförd i Sverige, behöver du lämna en borgensförbindelse. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras.",
+            "english": "If you are not....KTH-anknuten och dessutom mellan 16 och 18 år eller inte folkbokförd i Sverige, behöver du lämna en borgensförbindelse. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras."
+          },
+          "link": {
+            "placement": "after",
+            "swedish" : {
+              "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
+              "text": "Registrera dig som ny användare"
+            },
+            "english" : {
+              "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
+              "text": "Register as new user"
+            }
+          },
+          "value": "informationbox",
+          "type": "informationbox",
+          "enabled": false,
+          "showcriteria": [{
+            "field": "otherinfo",
+            "values": ["16_18","18_not_swedish"]
+          }],
+          "validation": {
+            "required": {
+              "value": false,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "informationheader": {
+          "label": {
+            "swedish": "Uppgifter",
+            "english": "Information"
+          },
+          "value": "information",
+          "type": "grouplabel",
+          "enabled": false,
+          "showcriteria": [
+            {
+              "field": "iam",
+              "values": ["S","O"]
+            }
+          ],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "firstname": {
+          "label": {
+            "swedish": "Förnamn",
+            "english": "First name"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["S","O"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "lastname": {
+          "label": {
+            "swedish": "Efternamn",
+            "english": "Last name"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["S","O"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "personalnumber": {
+          "label": {
+            "swedish": "Personnummer",
+            "english": "Personal number"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["S","O"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "accept": {
+          "label": {
+            "swedish": "Jag godkänner KTH Bibliotekets lånevillkor",
+            "english": "I accept KTH Bibliotekets lånevillkor"
+          },
+          "link": {
+            "placement": "after",
+            "swedish" : {
+              "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
+              "text": "Lånevillkor"
+            },
+            "english" : {
+              "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
+              "text": "Lånevillkor"
+            }
+          },
+          "value": "",
+          "type": "checkbox",
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["S","O"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        }
+      }
+    }

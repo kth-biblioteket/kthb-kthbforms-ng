@@ -114,7 +114,6 @@ export class DynamicFormComponent implements OnInit {
     if (!this.form.get(object).value){
       this.form.get(object).setValue("");
     }
-    
   }
 
   /**
