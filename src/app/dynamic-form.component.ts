@@ -22,6 +22,7 @@ export class DynamicFormComponent implements OnInit {
   //Variabel för att hålla reda på om formuläret initierats och är redo att visas i template
   init = false;
   optionalfieldtext;
+  status;
   description;
   isValidFormSubmitted = null;
   showtoperrormessage = false;
@@ -44,6 +45,7 @@ export class DynamicFormComponent implements OnInit {
     this.setTitle(formdata.header.swedish);
     this.optionalfieldtext = formdata.optionalfieldtext;
     this.posturl = formdata.posturl;
+    this.status = formdata.status;
     this.description = formdata.description;
     this.objectProps = 
       Object.keys(formdata.formfields)
