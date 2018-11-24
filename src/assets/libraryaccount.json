@@ -2,7 +2,7 @@
       "id": "libraryaccount",
       "name" : "Ansökan om bibliotekskonto",
       "header" : {
-          "swedish": "Registera dig",
+          "swedish": "Registrera dig",
           "english": "Register"
       },
       "status": "open",
@@ -64,7 +64,7 @@
             "english": "Privateperson / övrig"
           },
           "value": "",
-          "type": "radio",
+          "type": "select",
           "enabled": false,
           "showcriteria": [{
             "field": "iam",
