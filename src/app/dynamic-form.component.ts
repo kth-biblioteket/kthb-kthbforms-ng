@@ -47,23 +47,61 @@ export class DynamicFormComponent implements OnInit {
     this.posturl = formdata.posturl;
     this.status = formdata.status;
     this.description = formdata.description;
+    //skapa ett object som t ex formulärtemplate kan iterera.
     this.objectProps = 
       Object.keys(formdata.formfields)
         .map(prop => {
           return Object.assign({}, { key: prop} , formdata.formfields[prop]);
         });
         
-      const formGroup = {};
-      for(let prop of Object.keys(formdata.formfields)) {
-        formGroup[prop] = new FormControl(formdata.formfields[prop].value || '', this.mapValidators(formdata.formfields[prop].validation));
+    const formGroup = {};
+    for(let prop of Object.keys(formdata.formfields)) {
+      formGroup[prop] = new FormControl(formdata.formfields[prop].value || '', this.mapValidators(formdata.formfields[prop].validation));
+    }
+
+    this.form = new FormGroup(formGroup);
+    this.init = true;
+    //Hämta eventuella url-parametrar
+    //Exempelvis om någon klickat på länk i Primo, Libris...
+    if(this.getParam("source")!= ""){
+      console.log("Formulär som skapats via klick från Primo etc...");
+      //Fyll i fält från parametrar (exvis genre(materialtype))
+      for(let prop of this.objectProps) {
+        if(this.getParam("genre")!= "") {
+          if(prop.key=="materialtype") {
+            this.form.get("materialtype").setValue(this.getParam("genre")); 
+            //sätt fältet till prefilled
+            prop.prefilled = true;
+          }
+        }
+        if(this.getParam("title")!= "") {
+          if(prop.key=="title") {
+            this.form.get("title").setValue(decodeURI(this.getParam("title"))); 
+            //sätt fältet till prefilled
+            prop.prefilled = true;
+          }
+        }
       }
- 
-      this.form = new FormGroup(formGroup);
-      this.init = true;
+    };
+
   }
 
   ngOnInit() {
-    this.getFormData(); 
+    this.getFormData();
+  }
+
+  /**
+   * 
+   * @param name 
+   * 
+   * hämta eventuella urlparametrar
+   */
+  getParam(name){
+    const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if(!results){
+      return "";
+    }
+    return results[1] || "";
   }
 
   /**
@@ -194,11 +232,19 @@ export class DynamicFormComponent implements OnInit {
           }
         }
         if (show){
+          //gör fältet klickbart
           this.form.get(prop.key).enable();
+          //visar fältet
           prop.enabled = true;
         } else {
+          // gör fältet låst
           this.form.get(prop.key).disable();
+          // döljer fältet
           prop.enabled = false;
+        }
+        if(prop.prefilled) {
+          //gör fältet låst
+          this.form.get(prop.key).disable();
         }
       }
     }

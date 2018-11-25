@@ -192,6 +192,7 @@
           "value": "",
           "type": "radio",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "iam",
             "values": ["any"]
@@ -596,7 +597,7 @@
             } 
           }
         },
-        "detailsheader": {
+        "materialdetails": {
           "label": {
             "swedish": "Detaljer om materialet",
             "english": "Details about the material"
@@ -628,7 +629,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","A","K","T"]
@@ -651,7 +654,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["K"]
@@ -674,7 +679,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","A","K"]
@@ -697,7 +704,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","A","K"]
@@ -720,7 +729,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","K"]
@@ -743,7 +754,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["A"]
@@ -766,7 +779,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","K"]
@@ -789,7 +804,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","A","K"]
@@ -812,7 +829,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["A"]
@@ -835,7 +854,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["A"]
@@ -858,7 +879,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["B","A","K"]
@@ -882,7 +905,9 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
+          "prefilled": false,
           "showcriteria": [{
             "field": "materialtype",
             "values": ["A"]
@@ -905,6 +930,7 @@
           "value": "",
           "type": "text",
           "isgrouped": true,
+          "group":"materialdetails",
           "enabled": false,
           "showcriteria": [
             {
