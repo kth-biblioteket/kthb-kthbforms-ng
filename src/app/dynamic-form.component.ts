@@ -74,6 +74,13 @@ export class DynamicFormComponent implements OnInit {
             prop.prefilled = true;
           }
         }
+        if(this.getParam("article")!= "") {
+          if(prop.key=="title") {
+            this.form.get("title").setValue(decodeURI(this.getParam("title"))); 
+            //sätt fältet till prefilled
+            prop.prefilled = true;
+          }
+        }
         if(this.getParam("title")!= "") {
           if(prop.key=="title") {
             this.form.get("title").setValue(decodeURI(this.getParam("title"))); 
