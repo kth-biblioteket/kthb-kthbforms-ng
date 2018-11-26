@@ -21,7 +21,11 @@
       "optionalfieldtext" : {
         "swedish": "Valfri",
         "english": "Optional"
-      }, 
+      },
+      "openurlboxlabel": {
+        "swedish": "Jag vill beställa",
+        "english": "I would like to order"
+      },
       "formfields" : {
         "iam": {
           "label": {

@@ -24,6 +24,7 @@ export class DynamicFormComponent implements OnInit {
   objectProps;
   //Variabel för att hålla reda på om formuläret initierats och är redo att visas i template
   init = false;
+  openurlboxlabel;
   optionalfieldtext;
   status;
   description;
@@ -47,6 +48,7 @@ export class DynamicFormComponent implements OnInit {
     formdata = await this.http.get(environment.formdataurl + this.formid + ".json" + '?time=' + Date.now()).toPromise();
     this.setTitle(formdata.header.swedish);
     this.optionalfieldtext = formdata.optionalfieldtext;
+    this.openurlboxlabel = formdata.openurlboxlabel;
     this.posturl = formdata.posturl;
     this.status = formdata.status;
     this.description = formdata.description;
