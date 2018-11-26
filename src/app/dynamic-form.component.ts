@@ -18,6 +18,9 @@ export class DynamicFormComponent implements OnInit {
   @Input() formid; //formid 
 
   form: FormGroup;
+  isopenurl = false;
+  openurljson:any;
+  objectOpenurl;
   objectProps;
   //Variabel för att hålla reda på om formuläret initierats och är redo att visas i template
   init = false;
@@ -61,36 +64,50 @@ export class DynamicFormComponent implements OnInit {
 
     this.form = new FormGroup(formGroup);
     this.init = true;
-    //Hämta eventuella url-parametrar
-    //Exempelvis om någon klickat på länk i Primo, Libris...
+    
+    //Hämta eventuella url-parametrar(exempelvis om någon klickat på länk i Primo, Libris, Lean Library...)
+    //Finns source så är det openurl-reuqest
     if(this.getParam("source")!= ""){
+      this.isopenurl = true;
+      /*
+      //Alternativ 1
+      //Sätt värden på fält och se till att de är disabled
       console.log("Formulär som skapats via klick från Primo etc...");
-      //Fyll i fält från parametrar (exvis genre(materialtype))
+      //Gå igenom alla fält och fyll i från parametrar.
       for(let prop of this.objectProps) {
-        if(this.getParam("genre")!= "") {
-          if(prop.key=="materialtype") {
-            this.form.get("materialtype").setValue(this.getParam("genre")); 
-            //sätt fältet till prefilled
-            prop.prefilled = true;
-          }
-        }
-        if(this.getParam("article")!= "") {
-          if(prop.key=="title") {
-            this.form.get("title").setValue(decodeURI(this.getParam("title"))); 
-            //sätt fältet till prefilled
-            prop.prefilled = true;
-          }
-        }
-        if(this.getParam("title")!= "") {
-          if(prop.key=="title") {
-            this.form.get("title").setValue(decodeURI(this.getParam("title"))); 
-            //sätt fältet till prefilled
-            prop.prefilled = true;
-          }
+        this.prefillfieldfromurl (prop);
+      }
+      */
+
+      //Alternativ 2
+      //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i
+      //Gör parametrar till payload som kan skickas till backend
+      this.openurljson = this.openurlparametersToJSON();
+      //skapa ett object som t ex formulärtemplate kan iterera.
+      this.objectOpenurl = 
+      Object.keys(this.openurljson)
+        .map(prop => {
+          return Object.assign({}, { key: prop} , this.openurljson[prop]);
+        });
+      console.log(this.openurljson);
+      //Lägg till ett hidden genre-fält så att de beroende fälten visas.
+      for(let prop of this.objectProps) {
+        if(prop.key == 'genre') {
+          this.prefillfieldfromurl (prop);
         }
       }
+    } else {
     };
+  }
 
+  prefillfieldfromurl (field) {
+    if(this.getParam(field.key)!= "") {
+      this.form.get(field.key).setValue(decodeURI(this.getParam(field.key))); 
+      //sätt fältet till prefilled
+      //field.prefilled = true;
+      //sätt till hidden
+      field.hidden = true;
+    }
   }
 
   ngOnInit() {
@@ -105,10 +122,21 @@ export class DynamicFormComponent implements OnInit {
    */
   getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    console.log(results);
     if(!results){
       return "";
     }
     return results[1] || "";
+  }
+
+  openurlparametersToJSON() {	    		
+    var pairs = location.search.slice(1).split('&');
+    var result = {};
+    pairs.forEach(function(pair:any) {
+      pair = pair.split('=');
+      result[pair[0]] = decodeURIComponent(pair[1] || '');
+    });
+    return JSON.parse(JSON.stringify(result));
   }
 
   /**
@@ -249,9 +277,20 @@ export class DynamicFormComponent implements OnInit {
           // döljer fältet
           prop.enabled = false;
         }
+        
+        //Alternativ 1
+        /*
         if(prop.prefilled) {
           //gör fältet låst
           this.form.get(prop.key).disable();
+        }
+        */
+        
+        // Alternativ 2
+        if(this.isopenurl && !prop.openurlenabled) {
+          //gör fältet låst och dolt
+          this.form.get(prop.key).disable();
+          prop.enabled = false;
         }
       }
     }

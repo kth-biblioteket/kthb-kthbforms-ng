@@ -10,9 +10,25 @@
       </div>
       <!-- Formuläret -->
       <div id="form_body">
+        <!-- OpenUrl-ruta-->
+        <label>Jag vill beställa</label>
+        <div class="alert alert-info" *ngIf="openurljson">
+          <div>
+              {{openurljson.source}}
+          </div>
+          <div>
+              {{openurljson.genre}}
+          </div>
+          <div>
+              {{openurljson.jtitle}}
+          </div>
+          <div>
+              {{openurljson.atitle}}
+          </div>
+        </div>
         <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
           <div style="margin-bottom:15px" *ngFor="let prop of objectProps">
-            <div *ngIf="prop.enabled">
+            <div *ngIf="prop.enabled && !prop.hidden">
               <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
               <label *ngIf="prop.type!='checkbox' && prop.type!='informationbox'" [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">
                 {{language=='swedish' ? prop.label.swedish : prop.label.english}}
@@ -110,5 +126,6 @@
     <br/>
     <strong>Formulärvärden</strong>
     <pre>{{ form.value | json }}</pre>
+    <pre>{{ openurljson | json }}</pre>
     <strong>Formulär är giltigt:</strong> {{form.valid}}
     </div>
