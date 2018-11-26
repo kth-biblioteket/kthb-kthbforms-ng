@@ -91,7 +91,7 @@ export class DynamicFormComponent implements OnInit {
         .map(prop => {
           return Object.assign({}, { key: prop} , this.openurljson[prop]);
         });
-      console.log(this.openurljson);
+      //console.log(this.openurljson);
       //Lägg till ett hidden genre-fält så att de beroende fälten visas.
       for(let prop of this.objectProps) {
         if(prop.key == 'genre') {
@@ -124,7 +124,7 @@ export class DynamicFormComponent implements OnInit {
    */
   getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    console.log(results);
+    //console.log(results);
     if(!results){
       return "";
     }
@@ -300,7 +300,10 @@ export class DynamicFormComponent implements OnInit {
 
   postformvalues(form) {
     this.backend.postForm(this.posturl, form).subscribe((result) => {
-     console.log(result);
+      console.log(result);
+      if(result.status == 201){
+        console.log(result.statusText)
+      }
     }, (err) => {
       console.log(err);
     });
@@ -322,7 +325,15 @@ export class DynamicFormComponent implements OnInit {
      this.isValidFormSubmitted = true;
 
      if(this.form.valid) {
-      this.postformvalues(form);
+      // skapa ett objekt av form och openurljson
+      var newjson = {
+        "form" : {},
+        "openurl": {}
+      };
+      newjson.form=form;
+      newjson.openurl = this.openurljson;
+      //console.log(form);
+      this.postformvalues(newjson);
   }
   }
 }

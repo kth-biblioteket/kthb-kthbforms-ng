@@ -11,13 +11,30 @@
       <!-- Formuläret -->
       <div id="form_body">
         <!-- OpenUrl-ruta-->
-        <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
-        <div class="alert alert-info" *ngIf="openurljson">
-          <div>
-              <strong>{{openurljson.jtitle}}</strong>
-          </div>
-          <div>
-              <strong>{{openurljson.atitle}}</strong>
+        <div *ngIf="isopenurl">
+          <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
+          <div class="alert alert-info">
+            <div>
+                <strong>{{openurljson.atitle}}</strong>
+            </div>
+            <div>
+                <strong>{{openurljson.jtitle}}</strong>
+            </div>
+            <div>
+                <strong>{{openurljson.btitle}}</strong>
+            </div>
+            <div>
+                <strong>{{openurljson.volume}}</strong>
+            </div>
+            <div>
+                <strong>{{openurljson.issue}}</strong>
+            </div>
+            <div>
+                <strong>{{openurljson.au}}</strong>
+            </div>
+            <div>
+                <strong>{{openurljson.pages}}</strong>
+            </div>
           </div>
         </div>
         <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
@@ -27,12 +27,24 @@ export class BackendService {
    * 
    * Posta formulärdata(payload) till backend(url)
    */
+  /*
   postForm(url, payload): Observable<any> {
+    
     return this.http.post<any>(url, payload, httpOptions).pipe(
       catchError(this.handleError<any>('postForm'))
     );
   }
+  */
 
+ postForm(url,payload) : Observable<HttpResponse<any>>{
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    }); 
+    return this.http.post<any>(url, payload,{
+		  headers: httpHeaders,
+		  observe: 'response'
+		});
+  }
   /**
    * 
    * @param operation 
