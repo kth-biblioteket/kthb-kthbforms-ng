@@ -13,7 +13,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class DynamicFormComponent implements OnInit {
   // inputvariabler som skickas med från App
-  //@Input() dataObject; //formulärfält
   @Input() language; //språk
   @Input() formid; //formid 
 
@@ -33,6 +32,8 @@ export class DynamicFormComponent implements OnInit {
   isValidFormSubmitted = null;
   showtoperrormessage = false;
   posturl;
+  backendresponse = false;
+  backendresult;
 
   constructor(
     public backend:BackendService,
@@ -71,9 +72,8 @@ export class DynamicFormComponent implements OnInit {
     this.init = true;
     
     //Hämta eventuella url-parametrar(exempelvis om någon klickat på länk i Primo, Libris, Lean Library...)
-    //Kolla vilka sourceparametrar som finns "openurlsources", om någon av dessa finns i url så är det en openurlrequest
-
-    for(let source of formdata.openurlsources) {
+    //Kolla vilka sourceparametrar som finns angivna i "openurlsourceparameters", om någon av dessa finns i url så får det anses vara en openurlrequest
+    for(let source of formdata.openurlsourceparameters) {
       if(this.getParam(source)!= ""){
         this.isopenurl = true;
         this.openurlsource = this.getParam(source);
@@ -82,17 +82,6 @@ export class DynamicFormComponent implements OnInit {
     }
     if(this.isopenurl){
       console.log("Formulär som skapats via klick från Primo etc...");
-      /*
-      //Alternativ 1
-      //Sätt värden på fält och se till att de är disabled
-      console.log("Formulär som skapats via klick från Primo etc...");
-      //Gå igenom alla fält och fyll i från parametrar.
-      for(let prop of this.objectProps) {
-        this.prefillfieldfromurl (prop);
-      }
-      */
-
-      //Alternativ 2
       //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i
       //Gör parametrar till payload som kan skickas till backend som body
       this.openurljson = this.openurlparametersToJSON();
@@ -108,22 +97,10 @@ export class DynamicFormComponent implements OnInit {
         if(prop.key == "genre") {
           this.form.get(prop.key).setValue(decodeURI(this.getParam(this.openurlparameters[this.openurlsource][0]))); 
           prop.hidden = true;
-          //this.prefillfieldfromurl (prop);
         }
       }
     } else {
     };
-  }
-
-  prefillfieldfromurl (field) {
-    if(this.getParam(field.key)!= "") {
-      
-      this.form.get(field.key).setValue(decodeURI(this.getParam(field.key))); 
-      //sätt fältet till prefilled
-      //field.prefilled = true;
-      //sätt till hidden
-      field.hidden = true;
-    }
   }
 
   ngOnInit() {
@@ -138,7 +115,6 @@ export class DynamicFormComponent implements OnInit {
    */
   getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    //console.log(results);
     if(!results){
       return "";
     }
@@ -173,7 +149,6 @@ export class DynamicFormComponent implements OnInit {
    */
   private mapValidators(validators) {
     const formValidators = [];
-
     if(validators) {
       for(const validation of Object.keys(validators)) {
         if(validation === 'required') {
@@ -187,7 +162,6 @@ export class DynamicFormComponent implements OnInit {
         }
       }
     }
-
     return formValidators;
   }
 
@@ -199,7 +173,6 @@ export class DynamicFormComponent implements OnInit {
    * annars valideras den som giltig.
    */
   checkboxchange(object) {
-    console.log(this.form.get(object).value);
     if (!this.form.get(object).value){
       this.form.get(object).setValue("");
     }
@@ -282,7 +255,7 @@ export class DynamicFormComponent implements OnInit {
             break;
           }
         }
-        if (show){
+        if (show) {
           //gör fältet klickbart
           this.form.get(prop.key).enable();
           //visar fältet
@@ -293,16 +266,7 @@ export class DynamicFormComponent implements OnInit {
           // döljer fältet
           prop.enabled = false;
         }
-        
-        //Alternativ 1
-        /*
-        if(prop.prefilled) {
-          //gör fältet låst
-          this.form.get(prop.key).disable();
-        }
-        */
-        
-        // Alternativ 2
+        //hantera om formuläret är openurl(visa inte de fält som kommer via openurl)
         if(this.isopenurl && !prop.openurlenabled) {
           //gör fältet låst och dolt
           this.form.get(prop.key).disable();
@@ -314,9 +278,10 @@ export class DynamicFormComponent implements OnInit {
 
   postformvalues(form) {
     this.backend.postForm(this.posturl, form).subscribe((result) => {
-      console.log(result);
       if(result.status == 201){
-        console.log(result.statusText)
+        this.backendresponse = true;
+        this.backendresult = result;
+        window.scrollTo(0,0);
       }
     }, (err) => {
       console.log(err);
@@ -339,14 +304,13 @@ export class DynamicFormComponent implements OnInit {
      this.isValidFormSubmitted = true;
 
      if(this.form.valid) {
-      // skapa ett objekt av form och openurljson
+      // skapa ett sammanslaget objekt av form och openurljson
       var newjson = {
         "form" : {},
         "openurl": {}
       };
       newjson.form=form;
       newjson.openurl = this.openurljson;
-      //console.log(form);
       this.postformvalues(newjson);
   }
   }

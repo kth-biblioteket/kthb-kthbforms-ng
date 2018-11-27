@@ -16,10 +16,10 @@
           "english": "Closed"
         }
       },
-      "openurlsources" : ["source","rfr.id"],
+      "openurlsourceparameters" : ["source","rfr.id"],
       "openurlparameters" : {
-        "primo": ["genre","article","journal","bookTitle","volume","issue","pages"],
-        "info:sid/libris.kb.se:libris": ["rft.genre","rft.atitle","rft.jtitle","rft.btitle","rft.volume","rft.issue","rft.pages"]
+        "primo": ["genre","article","journal","bookTitle","volume","issue","pages","au"],
+        "info:sid/libris.kb.se:libris": ["rft.genre","rft.atitle","rft.jtitle","rft.btitle","rft.volume","rft.issue","rft.pages","rft.au"]
       },
       "openurlboxlabel": {
         "swedish": "Jag vill beställa",
@@ -64,7 +64,7 @@
                 "swedish": "Student på KTH",
                 "english": "Student at KTH"
               }, 
-              "value": "S",
+              "value": "student",
               "enabled": true
             },
             { 
@@ -72,7 +72,7 @@
                 "swedish": "Anställd/Doktorand på KTH",
                 "english": "Staff/Doctoral student at KTH"
               }, 
-              "value": "E",
+              "value": "employee",
               "enabled": true
             },
             { 
@@ -88,7 +88,7 @@
                 "swedish": "Övriga",
                 "english": "Other"
               }, 
-              "value": "O",
+              "value": "other",
               "enabled": true
             }
           ],
@@ -113,7 +113,7 @@
           "openurlenabled": true,
           "showcriteria": [{
             "field": "iam",
-            "values": ["E"]
+            "values": ["employee"]
           }],
           "options": [
             { 
@@ -223,9 +223,8 @@
           "type": "radio",
           "enabled": false,
           "openurlenabled": true,
-          "openurlname": ["genre","rft.genre"],
           "hidden": false,
-          "prefilled": false,
+          
           "showcriteria": [{
             "field": "iam",
             "values": ["any"]
@@ -264,7 +263,7 @@
               "enabled": true,
               "showcriteria": [{
                 "field": "iam",
-                "values": ["S","E"]
+                "values": ["student","employee"]
               }]
             },
             { 
@@ -276,7 +275,7 @@
               "enabled": true,
               "showcriteria": [{
                 "field": "iam",
-                "values": ["S","E"]
+                "values": ["student","employee"]
               }]
             }
           ],
@@ -318,7 +317,7 @@
           "showcriteria": [
             {
               "field": "iam",
-              "values": ["S"]
+              "values": ["student"]
             },
             {
               "field": "genre",
@@ -381,7 +380,7 @@
           "showcriteria": [
             {
               "field": "iam",
-              "values": ["S"]
+              "values": ["student"]
             },
             {
               "field": "genre",
@@ -444,7 +443,7 @@
           "showcriteria": [
             {
               "field": "iam",
-              "values": ["S"]
+              "values": ["student"]
             },
             {
               "field": "genre",
@@ -586,7 +585,7 @@
           "showcriteria": [
             {
               "field": "iam",
-              "values": ["O"]
+              "values": ["other"]
             },
             {
               "field": "genre",
@@ -620,7 +619,7 @@
           "showcriteria": [
             {
               "field": "iam",
-              "values": ["O"]
+              "values": ["other"]
             },
             {
               "field": "genre",
@@ -663,15 +662,15 @@
         },
         "atitle": {
           "label": {
-            "swedish": "Titel",
-            "english": "Title"
+            "swedish": "Artikeltitel",
+            "english": "Article title"
           },
           "value": "",
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
           "enabled": false,
-          "prefilled": false,
+          
           "showcriteria": [{
             "field": "genre",
             "values": ["article"]
@@ -688,15 +687,15 @@
         },
         "jtitle": {
           "label": {
-            "swedish": "Titel",
-            "english": "Title"
+            "swedish": "Tidskriftstitel",
+            "english": "Journal title"
           },
           "value": "",
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
           "enabled": false,
-          "prefilled": false,
+          
           "showcriteria": [{
             "field": "genre",
             "values": ["journal"]
@@ -713,15 +712,14 @@
         },
         "btitle": {
           "label": {
-            "swedish": "Titel",
-            "english": "Title"
+            "swedish": "Boktitel",
+            "english": "Book title"
           },
           "value": "",
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
           "enabled": false,
-          "prefilled": false,
           "showcriteria": [{
             "field": "genre",
             "values": ["book","bookitem"]
@@ -746,7 +744,6 @@
           "isgrouped": true,
           "group":"genredetails",
           "enabled": false,
-          "prefilled": false,
           "showcriteria": [{
             "field": "genre",
             "values": ["bookitem"]
@@ -770,8 +767,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,         
           "showcriteria": [{
             "field": "genre",
             "values": ["book","article","bookitem"]
@@ -795,8 +791,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,        
           "showcriteria": [{
             "field": "genre",
             "values": ["book","article","bookitem"]
@@ -820,8 +815,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,        
           "showcriteria": [{
             "field": "genre",
             "values": ["book","bookitem"]
@@ -845,8 +839,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,         
           "showcriteria": [{
             "field": "genre",
             "values": ["article"]
@@ -870,8 +863,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,       
           "showcriteria": [{
             "field": "genre",
             "values": ["book","bookitem"]
@@ -895,8 +887,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,        
           "showcriteria": [{
             "field": "genre",
             "values": ["book","article","bookitem"]
@@ -920,8 +911,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,         
           "showcriteria": [{
             "field": "genre",
             "values": ["article"]
@@ -945,8 +935,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,         
           "showcriteria": [{
             "field": "genre",
             "values": ["article"]
@@ -970,8 +959,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,          
           "showcriteria": [{
             "field": "genre",
             "values": ["book","article","bookitem"]
@@ -996,8 +984,7 @@
           "type": "text",
           "isgrouped": true,
           "group":"genredetails",
-          "enabled": false,
-          "prefilled": false,
+          "enabled": false,        
           "showcriteria": [{
             "field": "genre",
             "values": ["article"]
@@ -1029,7 +1016,7 @@
             },
             {
               "field": "iam",
-              "values": ["S","E"]
+              "values": ["student","employee"]
             }
           ],
           "validation": {
@@ -1098,66 +1085,10 @@
                 "swedish": "Södertälje",
                 "english": "Södertälje"
               }, 
-              "value": "S",
+              "value": "student",
               "enabled": true
             }
           ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "testheader": {
-          "label": {
-            "swedish": "Välj mat",
-            "english": "Choose food"
-          },
-          "value": "test",
-          "type": "grouplabel",
-          "enabled": true,
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "meat": {
-          "label": {
-            "swedish": "Kött",
-            "english": "Meat"
-          },
-          "value": "",
-          "type": "checkbox",
-          "isgrouped": true,
-          "enabled": true,
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "fish": {
-          "label": {
-            "swedish": "Fisk",
-            "english": "Fish"
-          },
-          "value": "",
-          "type": "checkbox",
-          "isgrouped": true,
-          "enabled": true,
           "validation": {
             "required": {
               "value": true,

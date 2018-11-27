@@ -27,16 +27,8 @@ export class BackendService {
    * 
    * Posta formulärdata(payload) till backend(url)
    */
-  /*
-  postForm(url, payload): Observable<any> {
-    
-    return this.http.post<any>(url, payload, httpOptions).pipe(
-      catchError(this.handleError<any>('postForm'))
-    );
-  }
-  */
 
- postForm(url,payload) : Observable<HttpResponse<any>>{
+  postForm(url,payload) : Observable<HttpResponse<any>>{
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json'
     }); 

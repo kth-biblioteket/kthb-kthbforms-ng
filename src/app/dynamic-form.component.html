@@ -4,6 +4,10 @@
       {{language=='swedish' ? description.closed.swedish : description.closed.english}}
     </div>
     <div *ngIf="status=='open'">
+      <!-- Inforruta svar från API-->
+      <div *ngIf="backendresponse" class="alert alert-success">
+        {{backendresult | json}}
+      </div>
       <div style="margin-bottom:15px">{{language=='swedish' ? description.open.swedish : description.open.english}}</div>
       <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
       <div class="webform message">
