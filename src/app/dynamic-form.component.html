@@ -1,6 +1,8 @@
 <div *ngIf="init">
     <!-- Informationstext/Beskrivning -->
-    <div *ngIf="status=='closed'" style="margin-bottom:15px">{{language=='swedish' ? description.closed.swedish : description.closed.english}}</div>
+    <div *ngIf="status=='closed'" style="margin-bottom:15px">
+      {{language=='swedish' ? description.closed.swedish : description.closed.english}}
+    </div>
     <div *ngIf="status=='open'">
       <div style="margin-bottom:15px">{{language=='swedish' ? description.open.swedish : description.open.english}}</div>
       <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
@@ -14,31 +16,13 @@
         <div *ngIf="isopenurl">
           <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
           <div class="alert alert-info">
-            <div>
-                <strong>{{openurljson.atitle}}</strong>
-            </div>
-            <div>
-                <strong>{{openurljson.jtitle}}</strong>
-            </div>
-            <div>
-                <strong>{{openurljson.btitle}}</strong>
-            </div>
-            <div>
-                <strong>{{openurljson.volume}}</strong>
-            </div>
-            <div>
-                <strong>{{openurljson.issue}}</strong>
-            </div>
-            <div>
-                <strong>{{openurljson.au}}</strong>
-            </div>
-            <div>
-                <strong>{{openurljson.pages}}</strong>
+            <div *ngFor="let parameter of openurlparameters[openurlsource]">
+              {{openurljson[parameter]}}
             </div>
           </div>
         </div>
         <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
-          <div style="margin-bottom:15px" *ngFor="let prop of objectProps">
+          <div style="margin-bottom:15px" *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
               <label *ngIf="prop.type!='checkbox' && prop.type!='informationbox'" [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">

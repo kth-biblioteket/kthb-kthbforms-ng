@@ -16,17 +16,39 @@
           "english": "Closed"
         }
       },
-      "source": "",
-      "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
-      "optionalfieldtext" : {
-        "swedish": "Valfri",
-        "english": "Optional"
+      "openurlsources" : ["source","rfr.id"],
+      "openurlparameters" : {
+        "primo": ["genre","article","journal","bookTitle","volume","issue","pages"],
+        "info:sid/libris.kb.se:libris": ["rft.genre","rft.atitle","rft.jtitle","rft.btitle","rft.volume","rft.issue","rft.pages"]
       },
       "openurlboxlabel": {
         "swedish": "Jag vill beställa",
         "english": "I would like to order"
       },
+      "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
+      "optionalfieldtext" : {
+        "swedish": "Valfri",
+        "english": "Optional"
+      },
       "formfields" : {
+        "isopenurl": {
+          "label": {
+            "swedish": "",
+            "english": ""
+          },
+          "value": "true",
+          "type": "checkbox",
+          "enabled": false,
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
         "iam": {
           "label": {
             "swedish": "Jag är",
@@ -201,6 +223,7 @@
           "type": "radio",
           "enabled": false,
           "openurlenabled": true,
+          "openurlname": ["genre","rft.genre"],
           "hidden": false,
           "prefilled": false,
           "showcriteria": [{

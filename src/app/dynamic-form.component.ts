@@ -19,9 +19,11 @@ export class DynamicFormComponent implements OnInit {
 
   form: FormGroup;
   isopenurl = false;
+  openurlsource;
   openurljson:any;
   objectOpenurl;
-  objectProps;
+  objectFormfields;
+  openurlparameters;
   //Variabel för att hålla reda på om formuläret initierats och är redo att visas i template
   init = false;
   openurlboxlabel;
@@ -49,11 +51,12 @@ export class DynamicFormComponent implements OnInit {
     this.setTitle(formdata.header.swedish);
     this.optionalfieldtext = formdata.optionalfieldtext;
     this.openurlboxlabel = formdata.openurlboxlabel;
+    this.openurlparameters = formdata.openurlparameters;
     this.posturl = formdata.posturl;
     this.status = formdata.status;
     this.description = formdata.description;
     //skapa ett object som t ex formulärtemplate kan iterera.
-    this.objectProps = 
+    this.objectFormfields = 
       Object.keys(formdata.formfields)
         .map(prop => {
           return Object.assign({}, { key: prop} , formdata.formfields[prop]);
@@ -68,9 +71,17 @@ export class DynamicFormComponent implements OnInit {
     this.init = true;
     
     //Hämta eventuella url-parametrar(exempelvis om någon klickat på länk i Primo, Libris, Lean Library...)
-    //Finns source så är det openurl-reuqest
-    if(this.getParam("source")!= ""){
-      this.isopenurl = true;
+    //Kolla vilka sourceparametrar som finns "openurlsources", om någon av dessa finns i url så är det en openurlrequest
+
+    for(let source of formdata.openurlsources) {
+      if(this.getParam(source)!= ""){
+        this.isopenurl = true;
+        this.openurlsource = this.getParam(source);
+        break;
+      }
+    }
+    if(this.isopenurl){
+      console.log("Formulär som skapats via klick från Primo etc...");
       /*
       //Alternativ 1
       //Sätt värden på fält och se till att de är disabled
@@ -83,7 +94,7 @@ export class DynamicFormComponent implements OnInit {
 
       //Alternativ 2
       //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i
-      //Gör parametrar till payload som kan skickas till backend
+      //Gör parametrar till payload som kan skickas till backend som body
       this.openurljson = this.openurlparametersToJSON();
       //skapa ett object som t ex formulärtemplate kan iterera.
       this.objectOpenurl = 
@@ -91,11 +102,13 @@ export class DynamicFormComponent implements OnInit {
         .map(prop => {
           return Object.assign({}, { key: prop} , this.openurljson[prop]);
         });
-      //console.log(this.openurljson);
-      //Lägg till ett hidden genre-fält så att de beroende fälten visas.
-      for(let prop of this.objectProps) {
-        if(prop.key == 'genre') {
-          this.prefillfieldfromurl (prop);
+      //Sätt värdet på genre till värdet från akutell genre-urlparameter  
+      //Sätt genre-fält till hidden (men enabled) så att de beroende fälten visas.
+      for(let prop of this.objectFormfields) {
+        if(prop.key == "genre") {
+          this.form.get(prop.key).setValue(decodeURI(this.getParam(this.openurlparameters[this.openurlsource][0]))); 
+          prop.hidden = true;
+          //this.prefillfieldfromurl (prop);
         }
       }
     } else {
@@ -104,6 +117,7 @@ export class DynamicFormComponent implements OnInit {
 
   prefillfieldfromurl (field) {
     if(this.getParam(field.key)!= "") {
+      
       this.form.get(field.key).setValue(decodeURI(this.getParam(field.key))); 
       //sätt fältet till prefilled
       //field.prefilled = true;
@@ -211,7 +225,7 @@ export class DynamicFormComponent implements OnInit {
     var show;
     var optionvalidchoice;
     var enableoption;
-    for(let prop of this.objectProps) {
+    for(let prop of this.objectFormfields) {
       show = false;
       //om fältet har kriterier för att visas
       if (prop.showcriteria) {
