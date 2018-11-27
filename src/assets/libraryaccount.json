@@ -17,6 +17,10 @@
         }
       },
       "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/libraryaccount",
+      "postresponsetext" : {
+        "swedish": "Tack för din beställning...",
+        "english": "Thank you for ordering..."
+      },
       "optionalfieldtext" : {
         "swedish": "Valfri",
         "english": "Optional"
@@ -36,7 +40,7 @@
                 "swedish": "Student eller anställd på KTH",
                 "english": "Student or staff at KTH"
               }, 
-              "value": "S",
+              "value": "student",
               "enabled": true
             },
             { 
@@ -44,7 +48,7 @@
                 "swedish": "Privatperson / Övrig",
                 "english": "Private person / Other"
               }, 
-              "value": "O",
+              "value": "other",
               "enabled": true
             }
           ],
@@ -68,7 +72,7 @@
           "enabled": false,
           "showcriteria": [{
             "field": "iam",
-            "values": ["O"]
+            "values": ["other"]
           }],
           "options": [
             { 
@@ -163,7 +167,7 @@
           "showcriteria": [
             {
               "field": "iam",
-              "values": ["S","O"]
+              "values": ["student","other"]
             }
           ],
           "validation": {
@@ -187,7 +191,7 @@
           "enabled": false,
           "showcriteria": [{
             "field": "iam",
-            "values": ["S","O"]
+            "values": ["student","other"]
           }],
           "validation": {
             "required": {
@@ -210,7 +214,7 @@
           "enabled": false,
           "showcriteria": [{
             "field": "iam",
-            "values": ["S","O"]
+            "values": ["student","other"]
           }],
           "validation": {
             "required": {
@@ -233,7 +237,7 @@
           "enabled": false,
           "showcriteria": [{
             "field": "iam",
-            "values": ["S","O"]
+            "values": ["student","other"]
           }],
           "validation": {
             "required": {
@@ -266,7 +270,7 @@
           "enabled": false,
           "showcriteria": [{
             "field": "iam",
-            "values": ["S","O"]
+            "values": ["student","other"]
           }],
           "validation": {
             "required": {

@@ -26,6 +26,10 @@
         "english": "I would like to order"
       },
       "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
+      "postresponsetext" : {
+        "swedish": "Tack för din beställning...",
+        "english": "Thank you for ordering..."
+      },
       "optionalfieldtext" : {
         "swedish": "Valfri",
         "english": "Optional"

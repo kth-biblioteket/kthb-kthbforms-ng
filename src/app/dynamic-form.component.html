@@ -6,7 +6,12 @@
     <div *ngIf="status=='open'">
       <!-- Inforruta svar från API-->
       <div *ngIf="backendresponse" class="alert alert-success">
-        {{backendresult | json}}
+          <h3>
+            {{language=='swedish' ? formdata.postresponsetext.swedish : formdata.postresponsetext.english}}
+          </h3>
+          <div>
+            {{backendresult | json}}
+          </div>
       </div>
       <div style="margin-bottom:15px">{{language=='swedish' ? description.open.swedish : description.open.english}}</div>
       <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->

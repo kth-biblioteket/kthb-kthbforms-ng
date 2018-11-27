@@ -17,6 +17,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() formid; //formid 
 
   form: FormGroup;
+  formdata:any;
   isopenurl = false;
   openurlsource;
   openurljson:any;
@@ -47,25 +48,24 @@ export class DynamicFormComponent implements OnInit {
    * Hämta rätt formulärdata från JSON beroende på angivet formid i app-root attribute
    */
   async getFormData() {
-    let formdata:any;
-    formdata = await this.http.get(environment.formdataurl + this.formid + ".json" + '?time=' + Date.now()).toPromise();
-    this.setTitle(formdata.header.swedish);
-    this.optionalfieldtext = formdata.optionalfieldtext;
-    this.openurlboxlabel = formdata.openurlboxlabel;
-    this.openurlparameters = formdata.openurlparameters;
-    this.posturl = formdata.posturl;
-    this.status = formdata.status;
-    this.description = formdata.description;
+    this.formdata = await this.http.get(environment.formdataurl + this.formid + ".json" + '?time=' + Date.now()).toPromise();
+    this.setTitle(this.formdata.header.swedish);
+    this.optionalfieldtext = this.formdata.optionalfieldtext;
+    this.openurlboxlabel = this.formdata.openurlboxlabel;
+    this.openurlparameters = this.formdata.openurlparameters;
+    this.posturl = this.formdata.posturl;
+    this.status = this.formdata.status;
+    this.description = this.formdata.description;
     //skapa ett object som t ex formulärtemplate kan iterera.
     this.objectFormfields = 
-      Object.keys(formdata.formfields)
+      Object.keys(this.formdata.formfields)
         .map(prop => {
-          return Object.assign({}, { key: prop} , formdata.formfields[prop]);
+          return Object.assign({}, { key: prop} , this.formdata.formfields[prop]);
         });
         
     const formGroup = {};
-    for(let prop of Object.keys(formdata.formfields)) {
-      formGroup[prop] = new FormControl(formdata.formfields[prop].value || '', this.mapValidators(formdata.formfields[prop].validation));
+    for(let prop of Object.keys(this.formdata.formfields)) {
+      formGroup[prop] = new FormControl(this.formdata.formfields[prop].value || '', this.mapValidators(this.formdata.formfields[prop].validation));
     }
 
     this.form = new FormGroup(formGroup);
@@ -73,13 +73,16 @@ export class DynamicFormComponent implements OnInit {
     
     //Hämta eventuella url-parametrar(exempelvis om någon klickat på länk i Primo, Libris, Lean Library...)
     //Kolla vilka sourceparametrar som finns angivna i "openurlsourceparameters", om någon av dessa finns i url så får det anses vara en openurlrequest
-    for(let source of formdata.openurlsourceparameters) {
-      if(this.getParam(source)!= ""){
-        this.isopenurl = true;
-        this.openurlsource = this.getParam(source);
-        break;
+    if(this.formdata.openurlsourceparameters) {
+      for(let source of this.formdata.openurlsourceparameters) {
+        if(this.getParam(source)!= ""){
+          this.isopenurl = true;
+          this.openurlsource = this.getParam(source);
+          break;
+        }
       }
     }
+
     if(this.isopenurl){
       console.log("Formulär som skapats via klick från Primo etc...");
       //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i

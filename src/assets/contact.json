@@ -1,0 +1,122 @@
+{
+    "id": "contact",
+    "name" : "Kontakta biblioteket",
+    "header" : {
+        "swedish": "Kontakta oss",
+        "english": "Contact us"
+    },
+    "status": "open",
+    "description": {
+      "open": {
+        "swedish": "Har du en fråga eller synpunkt? Kontakta oss genom formuläret nedan. Vi återkommer till dig inom kort.",
+        "english": "Do you have a question or feedback to us? Contact us by using the form below. We will get back to you shortly."
+      },
+      "closed": {
+        "swedish": "Stängt",
+        "english": "Closed"
+      }
+    },
+    "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
+    "postresponsetext" : {
+      "swedish": "Tack för din beställning...",
+      "english": "Thank you for ordering..."
+    },
+    "optionalfieldtext" : {
+      "swedish": "Valfri",
+      "english": "Optional"
+    }, 
+    "formfields" : {
+        "contactdetails": {
+            "label": {
+              "swedish": "Kontaktuppgifter",
+              "english": "Contact details"
+            },
+            "value": "details",
+            "type": "grouplabel",
+            "enabled": true,
+            "validation": {
+              "required": {
+                "value": true,
+                "errormessage": {
+                  "swedish": "måste fyllas i",
+                  "english": "is required"
+                }
+              } 
+            }
+          },
+      "name": {
+        "label": {
+          "swedish": "Namn",
+          "english": "Name"
+        },
+        "value": "",
+        "type": "text",
+        "isgrouped": true,
+        "enabled": true,
+        "validation": {
+          "required": {
+            "value": true,
+            "errormessage": {
+              "swedish": "måste fyllas i",
+              "english": "is required"
+            }
+          } 
+        }
+      },
+      "email": {
+        "label": {
+          "swedish": "E-postadress",
+          "english": "E-mail address"
+        },
+        "value": "",
+        "type": "text",
+        "isgrouped": true,
+        "enabled": true,
+        "validation": {
+          "required": {
+            "value": true,
+            "errormessage": {
+              "swedish": "måste fyllas i",
+              "english": "is required"
+            }
+          } 
+        }
+      },
+      "subject": {
+        "label": {
+          "swedish": "Ämne",
+          "english": "Subject"
+        },
+        "value": "",
+        "type": "text",
+        "enabled": true,
+        "validation": {
+          "required": {
+            "value": true,
+            "errormessage": {
+              "swedish": "måste fyllas i",
+              "english": "is required"
+            }
+          } 
+        }
+      },
+      "question": {
+        "label": {
+          "swedish": "Din fråga eller synpunkt",
+          "english": "Your question or feedback"
+        },
+        "value": "",
+        "type": "textarea",
+        "enabled": true,
+        "validation": {
+          "required": {
+            "value": true,
+            "errormessage": {
+              "swedish": "måste fyllas i",
+              "english": "is required"
+            }
+          } 
+        }
+      }
+    }
+  }
