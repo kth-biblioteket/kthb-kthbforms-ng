@@ -78,6 +78,7 @@ export class DynamicFormComponent implements OnInit {
         if(this.getParam(source)!= ""){
           this.isopenurl = true;
           this.openurlsource = this.getParam(source);
+          console.log(this.openurlsource);
           break;
         }
       }
@@ -98,7 +99,7 @@ export class DynamicFormComponent implements OnInit {
       //Sätt genre-fält till hidden (men enabled) så att de beroende fälten visas.
       for(let prop of this.objectFormfields) {
         if(prop.key == "genre") {
-          this.form.get(prop.key).setValue(decodeURI(this.getParam(this.openurlparameters[this.openurlsource][0]))); 
+          this.form.get(prop.key).setValue(decodeURI(this.getParam(this.openurlparameters[0].name[this.openurlsource]))); 
           prop.hidden = true;
         }
       }
@@ -129,7 +130,7 @@ export class DynamicFormComponent implements OnInit {
     var result = {};
     pairs.forEach(function(pair:any) {
       pair = pair.split('=');
-      result[pair[0]] = decodeURIComponent(pair[1] || '');
+      result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
     });
     return JSON.parse(JSON.stringify(result));
   }

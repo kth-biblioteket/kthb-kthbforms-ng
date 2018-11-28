@@ -16,7 +16,7 @@
           "english": "Closed"
         }
       },
-      "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/libraryaccount",
+      "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
       "postresponsetext" : {
         "swedish": "Tack för din beställning...",
         "english": "Thank you for ordering..."
@@ -230,6 +230,190 @@
           "label": {
             "swedish": "Personnummer",
             "english": "Personal number"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "phone1": {
+          "label": {
+            "swedish": "Telefon 1",
+            "english": "Phone 1"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "phone2": {
+          "label": {
+            "swedish": "Telefon 2",
+            "english": "Phone 2"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": false,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "email": {
+          "label": {
+            "swedish": "E-post",
+            "english": "E-email"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "password": {
+          "label": {
+            "swedish": "Lösenord",
+            "english": "Password"
+          },
+          "value": "",
+          "type": "password",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "pin": {
+          "label": {
+            "swedish": "PIN-kod",
+            "english": "PIN-code"
+          },
+          "value": "",
+          "type": "password",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "streetadress": {
+          "label": {
+            "swedish": "Gatuadress",
+            "english": "Street adress"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "zipcode": {
+          "label": {
+            "swedish": "Postnummer",
+            "english": "Zip code"
+          },
+          "value": "",
+          "type": "text",
+          "isgrouped": true,
+          "enabled": false,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","other"]
+          }],
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
+              }
+            } 
+          }
+        },
+        "city": {
+          "label": {
+            "swedish": "Ort",
+            "english": "City"
           },
           "value": "",
           "type": "text",

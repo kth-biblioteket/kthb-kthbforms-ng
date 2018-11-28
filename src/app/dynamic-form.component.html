@@ -1,18 +1,21 @@
+<!-- Inforruta, svar från API-->
+<div *ngIf="backendresponse" class="alert alert-success">
+    <div class="card-body">
+      <h3>
+        {{language=='swedish' ? formdata.postresponsetext.swedish : formdata.postresponsetext.english}}
+      </h3>
+      <div>
+        {{backendresult | json}}
+      </div>
+    </div>
+</div>
+<!-- Om formuläret initierats -->
 <div *ngIf="init">
     <!-- Informationstext/Beskrivning -->
     <div *ngIf="status=='closed'" style="margin-bottom:15px">
       {{language=='swedish' ? description.closed.swedish : description.closed.english}}
     </div>
     <div *ngIf="status=='open'">
-      <!-- Inforruta svar från API-->
-      <div *ngIf="backendresponse" class="alert alert-success">
-          <h3>
-            {{language=='swedish' ? formdata.postresponsetext.swedish : formdata.postresponsetext.english}}
-          </h3>
-          <div>
-            {{backendresult | json}}
-          </div>
-      </div>
       <div style="margin-bottom:15px">{{language=='swedish' ? description.open.swedish : description.open.english}}</div>
       <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
       <div class="webform message">
@@ -24,9 +27,13 @@
         <!-- OpenUrl-ruta-->
         <div *ngIf="isopenurl">
           <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
-          <div class="alert alert-info">
-            <div *ngFor="let parameter of openurlparameters[openurlsource]">
-              {{openurljson[parameter]}}
+          <div class="card">
+            <div class="card-body">
+              <div *ngFor="let parameter of openurlparameters">
+                <div *ngIf="openurljson[parameter.name[openurlsource]]">
+                  <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{openurljson[parameter.name[openurlsource]]}}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -34,7 +41,7 @@
           <div style="margin-bottom:15px" *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
-              <label *ngIf="prop.type!='checkbox' && prop.type!='informationbox'" [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px'}" [attr.for]="prop.key">
+              <label *ngIf="prop.type!='checkbox' && prop.type!='informationbox'" [ngStyle]="prop.isgrouped ? {'margin-top':'0px','font-weight': 'normal'} : {'margin-top':'0px','font-weight': 'bold'}" [attr.for]="prop.key">
                 {{language=='swedish' ? prop.label.swedish : prop.label.english}}
                 <!-- Fält valfritt? -->
                 <span style="font-style:italic;font-weight:normal">
@@ -66,12 +73,16 @@
                 <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'text'" 
                   [formControlName]="prop.key"
                   [id]="prop.key" [type]="prop.type">
+
+                <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'password'" 
+                  [formControlName]="prop.key"
+                  [id]="prop.key" [type]="prop.type">
                 
                 <div *ngSwitchCase="'textarea'">
                   <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
                 </div>
                 
-                <!-- Använd grupperingsfält som label -->
+                <!-- Använd grupperingsfält som label for checkbox -->
                 <div *ngSwitchCase="'checkbox'">
                     <label style="margin-top:0px;font-weight: normal;">
                       <input (change)="checkboxchange(prop.key)"
@@ -119,7 +130,7 @@
           </div>
           <!-- Skickaknapp -->
           <div class="controls">
-            <input [disabled]="!form.valid" class="form-control button" type="submit" value="Skicka">
+            <input [disabled]="!form.valid" class="form-control btn-success" type="submit" value="Skicka">
           </div>
         </form>
         <div>

@@ -6,3 +6,7 @@ input[type=submit] {
 .error { 
     color: red; 
 }
+
+.btn-success[disabled]:hover {
+    cursor: not-allowed;
+}
