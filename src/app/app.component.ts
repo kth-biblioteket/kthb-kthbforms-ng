@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { AppConfigService } from './app-config.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-kthbforms',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
