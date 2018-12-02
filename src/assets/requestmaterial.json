@@ -126,24 +126,6 @@
         "english": "Optional"
       },
       "formfields" : {
-        "isopenurl": {
-          "label": {
-            "swedish": "",
-            "english": ""
-          },
-          "value": "true",
-          "type": "checkbox",
-          "enabled": false,
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
         "iam": {
           "label": {
             "swedish": "Jag är",

@@ -315,6 +315,7 @@ export class DynamicFormComponent implements OnInit {
       };
       newjson.form=form;
       newjson.openurl = this.openurljson;
+      console.log(JSON.stringify(newjson));
       this.postformvalues(newjson);
   }
   }

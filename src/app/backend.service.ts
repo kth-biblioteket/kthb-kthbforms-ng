@@ -3,12 +3,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angul
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    //'Content-Type':  'application/json'
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +28,7 @@ export class BackendService {
     }); 
     return this.http.post<any>(url, payload,{
 		  headers: httpHeaders,
-		  observe: 'response'
+		  observe: 'response' //ser till att även status etc returneras
 		});
   }
   /**
