@@ -1,1180 +1,1180 @@
-    {
-      "id": "requestmaterial",
-      "name" : "Beställ material",
-      "header" : {
-          "swedish": "Beställ material",
-          "english": "Request material"
-      },
-      "status": "open",
-      "description": {
-        "open": {
-          "swedish": "Behöver du en bok, artikel, tidskrift eller annat material som biblioteket inte har tillgång till idag? I de flesta fall kan vi beställa materialet till dig genom fjärrlån, d.v.s. lån från ett annat bibliotek, eller inköp. Gör en beställning eller lämna ett inköpsförslag genom att fylla i formuläret nedan så återkommer vi till dig.",
-          "english": "Do you need a book, article, journal or some other material that the library does not have access to yet? In most cases we can order the material for you by making an interlibrary loan, e.g. a loan from another library, or a purchase. Request the material you need by filling out our form and we will get back to you."
+{
+  "id": "requestmaterial",
+  "name" : "Beställ material",
+  "header" : {
+      "swedish": "Beställ material",
+      "english": "Request material"
+  },
+  "status": "open",
+  "description": {
+    "open": {
+      "swedish": "Behöver du en bok, artikel, tidskrift eller annat material som biblioteket inte har tillgång till idag? I de flesta fall kan vi beställa materialet till dig genom fjärrlån, d.v.s. lån från ett annat bibliotek, eller inköp. Gör en beställning eller lämna ett inköpsförslag genom att fylla i formuläret nedan så återkommer vi till dig.",
+      "english": "Do you need a book, article, journal or some other material that the library does not have access to yet? In most cases we can order the material for you by making an interlibrary loan, e.g. a loan from another library, or a purchase. Request the material you need by filling out our form and we will get back to you."
+    },
+    "closed": {
+      "swedish": "Stängt",
+      "english": "Closed"
+    }
+  },
+  "openurlsourceparameters" : ["source","rfr.id"],
+  "openurlparameters" : [
+      {
+        "name": {
+          "primo": "genre",
+          "info:sid/libris.kb.se:libris": "rft.genre"
         },
-        "closed": {
-          "swedish": "Stängt",
-          "english": "Closed"
+        "label":{
+          "swedish" : "Materialtyp",
+          "english":  "Type of material"
         }
       },
-      "openurlsourceparameters" : ["source","rfr.id"],
-      "openurlparameters" : [
-          {
-            "name": {
-              "primo": "genre",
-              "info:sid/libris.kb.se:libris": "rft.genre"
-            },
-            "label":{
-              "swedish" : "Materialtyp",
-              "english":  "Type of material"
-            }
-          },
-          {
-            "name": {
-              "primo": "article",
-              "info:sid/libris.kb.se:libris": "rft.atitle"
-            },
-            "label":{
-              "swedish" : "Artikeltitel",
-              "english":  "Article title"
-            }
-          },
-          {
-            "name": {
-              "primo": "journal",
-              "info:sid/libris.kb.se:libris": "rft.jtitle"
-            },
-            "label":{
-              "swedish" : "Tidskriftstitel",
-              "english":  "Journal title"
-            }
-          },
-          {
-            "name": {
-              "primo": "bookTitle",
-              "info:sid/libris.kb.se:libris": "rft.btitle"
-            },
-            "label":{
-              "swedish" : "Boktitel",
-              "english":  "Book title"
-            }
-          },
-          {
-            "name": {
-              "primo": "published",
-              "info:sid/libris.kb.se:libris": "rft.pub"
-            },
-            "label":{
-              "swedish" : "Publicerad av",
-              "english":  "Publisher"
-            }
-          },
-          {
-            "name": {
-              "primo": "volume",
-              "info:sid/libris.kb.se:libris": "rft.volume"
-            },
-            "label":{
-              "swedish" : "Volym",
-              "english":  "Volume"
-            }
-          },
-          {
-            "name": {
-              "primo": "issue",
-              "info:sid/libris.kb.se:libris": "rft.issue"
-            },
-            "label":{
-              "swedish" : "Nummer",
-              "english":  "Issue"
-            }
-          },
-          {
-            "name": {
-              "primo": "pages",
-              "info:sid/libris.kb.se:libris": "rft.pages"
-            },
-            "label":{
-              "swedish" : "Sidor",
-              "english":  "Pages"
-            }
-          },
-          {
-            "name": {
-              "primo": "isbn",
-              "info:sid/libris.kb.se:libris": "rft.isbn"
-            },
-            "label":{
-              "swedish" : "ISBN",
-              "english":  "ISBN"
-            }
-          }
-        ],
-        "test": ["genre","article","journal","bookTitle","volume","issue","pages","au"],
-        "info:sid/libris.kb.se:libris": ["rft.genre","rft.atitle","rft.jtitle","rft.btitle","rft.volume","rft.issue","rft.pages","rft.au","rft.place","rft.pub","rft.isbn","rft.issn"]
-      ,
-      "openurlboxlabel": {
-        "swedish": "Jag vill beställa",
-        "english": "I would like to order"
+      {
+        "name": {
+          "primo": "article",
+          "info:sid/libris.kb.se:libris": "rft.atitle"
+        },
+        "label":{
+          "swedish" : "Artikeltitel",
+          "english":  "Article title"
+        }
       },
-      "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
-      "postresponsetext" : {
-        "swedish": "Tack för din beställning...",
-        "english": "Thank you for ordering..."
+      {
+        "name": {
+          "primo": "journal",
+          "info:sid/libris.kb.se:libris": "rft.jtitle"
+        },
+        "label":{
+          "swedish" : "Tidskriftstitel",
+          "english":  "Journal title"
+        }
       },
-      "optionalfieldtext" : {
-        "swedish": "Valfri",
-        "english": "Optional"
+      {
+        "name": {
+          "primo": "bookTitle",
+          "info:sid/libris.kb.se:libris": "rft.btitle"
+        },
+        "label":{
+          "swedish" : "Boktitel",
+          "english":  "Book title"
+        }
       },
-      "formfields" : {
-        "iam": {
-          "label": {
-            "swedish": "Jag är",
-            "english": "I am a"
-          },
-          "value": "",
-          "type": "radio",
-          "enabled": true,
-          "openurlenabled": true,
-          "options": [
-            { 
-              "label": {
-                "swedish": "Student på KTH",
-                "english": "Student at KTH"
-              }, 
-              "value": "student",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Anställd/Doktorand på KTH",
-                "english": "Staff/Doctoral student at KTH"
-              }, 
-              "value": "employee",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Företag",
-                "english": "Business"
-              }, 
-              "value": "business",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Övriga",
-                "english": "Other"
-              }, 
-              "value": "other",
-              "enabled": true
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+      {
+        "name": {
+          "primo": "published",
+          "info:sid/libris.kb.se:libris": "rft.pub"
         },
-        "kthaffiliation": {
-          "label": {
-            "swedish": "Tillhörighet på KTH",
-            "english": "Affilation at KTH"
-          },
-          "value": "",
-          "type": "radio",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["employee"]
-          }],
-          "options": [
-            { 
-              "label": {
-                "swedish": "ABE",
-                "english": "ABE"
-              }, 
-              "value": "ABE",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "CBH",
-                "english": "CBH"
-              }, 
-              "value": "CBH",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "EECS",
-                "english": "EECS"
-              }, 
-              "value": "EECS",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "ITM",
-                "english": "ITM"
-              }, 
-              "value": "ITM",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "SCI",
-                "english": "SCI"
-              }, 
-              "value": "SCI",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "UF",
-                "english": "UF"
-              }, 
-              "value": "UF",
-              "enabled": true
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+        "label":{
+          "swedish" : "Publicerad av",
+          "english":  "Publisher"
+        }
+      },
+      {
+        "name": {
+          "primo": "volume",
+          "info:sid/libris.kb.se:libris": "rft.volume"
         },
-        "username": {
-          "label": {
-            "swedish": "Användarnamn",
-            "english": "Username"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "För att kunna beställa material behöver du vara registrerad som användare i bibliotekssystemet. Är du registrerad än?",
-            "english": "To order material..."
-          },
-          "link": {
-            "placement": "before",
-            "swedish" : {
-              "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-              "text": "Registrera dig som ny användare"
-            },
-            "english" : {
-              "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-              "text": "Register as new user"
-            }
-          },
-          "value": "",
-          "type": "text",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["any"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+        "label":{
+          "swedish" : "Volym",
+          "english":  "Volume"
+        }
+      },
+      {
+        "name": {
+          "primo": "issue",
+          "info:sid/libris.kb.se:libris": "rft.issue"
         },
-        "genre": {
-          "label": {
-            "swedish": "Jag vill beställa",
-            "english": "I want to order"
-          },
-          "value": "",
-          "type": "radio",
-          "enabled": false,
-          "openurlenabled": true,
-          "hidden": false,
-          
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["any"]
-          }],
-          "options": [
-            { 
-              "label": {
-                "swedish": "Bok",
-                "english": "Book"
-              }, 
-              "value": "book",
-              "enabled": true,
-              "showcriteria": [{
-                "field": "iam",
-                "values": ["any"]
-              }]
-            },
-            { 
-              "label": {
-                "swedish": "Artikel (skickas per post till adressen på ditt bibliotekskonto)",
-                "english": "Article (sent by mail to...)"
-              }, 
-              "value": "article",
-              "enabled": true,
-              "showcriteria": [{
-                "field": "iam",
-                "values": ["any"]
-              }]
-            },
-            { 
-              "label": {
-                "swedish": "Kapitel i bok",
-                "english": "Chapter in book"
-              }, 
-              "value": "bookitem",
-              "enabled": true,
-              "showcriteria": [{
-                "field": "iam",
-                "values": ["student","employee"]
-              }]
-            },
-            { 
-              "label": {
-                "swedish": "Tidskrift/Databas (föreslå abonnemang)",
-                "english": "Journal/Database (suggest...)"
-              }, 
-              "value": "journal",
-              "enabled": true,
-              "showcriteria": [{
-                "field": "iam",
-                "values": ["student","employee"]
-              }]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        }, 
-        "costsarticle": {
-          "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Artiklar/kopior kostar 80-150 kr/styck.",
-            "english": "Articles/copies cost 80-150 SEK a piece."
-          },
-          "link": {
-            "placement": "before",
-            "swedish" : {
-              "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Se prislista"
-            },
-            "english" : {
-              "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Pricelist"
-            }
-          },
-          "value": "" ,
-          "type": "radio",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["student"]
-            },
-            {
-              "field": "genre",
-              "values": ["article"]
-            }
-          ],
-          "options": [
-            { 
-              "label": {
-                "swedish": "Jag accepterar eventuella kostnader",
-                "english": "I accept charges..."
-              }, 
-              "value": "accept",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-                "english": "I want the library to contact me..."
-              }, 
-              "value": "contact",
-              "enabled": true
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+        "label":{
+          "swedish" : "Nummer",
+          "english":  "Issue"
+        }
+      },
+      {
+        "name": {
+          "primo": "pages",
+          "info:sid/libris.kb.se:libris": "rft.pages"
         },
-        "costsbooks": {
-          "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden kan det tillkomma en avgift på 300 kr.",
-            "english": "If we need to borrow the book.... "
-          },
-          "link": {
-            "placement": "before",
-            "swedish" : {
-              "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Se prislista"
-            },
-            "english" : {
-              "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Pricelist"
-            }
-          },
-          "value": "" ,
-          "type": "radio",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["student"]
-            },
-            {
-              "field": "genre",
-              "values": ["book"]
-            }
-          ],
-          "options": [
-            { 
-              "label": {
-                "swedish": "Jag accepterar eventuella kostnader",
-                "english": "I accept charges..."
-              }, 
-              "value": "accept",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-                "english": "I want the library to contact me..."
-              }, 
-              "value": "contact",
-              "enabled": true
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+        "label":{
+          "swedish" : "Sidor",
+          "english":  "Pages"
+        }
+      },
+      {
+        "name": {
+          "primo": "isbn",
+          "info:sid/libris.kb.se:libris": "rft.isbn"
         },
-        "costsbookchapters": {
+        "label":{
+          "swedish" : "ISBN",
+          "english":  "ISBN"
+        }
+      }
+    ],
+    "test": ["genre","article","journal","bookTitle","volume","issue","pages","au"],
+    "info:sid/libris.kb.se:libris": ["rft.genre","rft.atitle","rft.jtitle","rft.btitle","rft.volume","rft.issue","rft.pages","rft.au","rft.place","rft.pub","rft.isbn","rft.issn"]
+  ,
+  "openurlboxlabel": {
+    "swedish": "Jag vill beställa",
+    "english": "I would like to order"
+  },
+  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
+  "postresponsetext" : {
+    "swedish": "Tack för din beställning...",
+    "english": "Thank you for ordering..."
+  },
+  "optionalfieldtext" : {
+    "swedish": "Valfri",
+    "english": "Optional"
+  },
+  "formfields" : {
+    "iam": {
+      "label": {
+        "swedish": "Jag är",
+        "english": "I am a"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": true,
+      "openurlenabled": true,
+      "options": [
+        { 
           "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Det kan tillkomma en avgift för beställningar av kapitel i bok. ",
-            "english": "There might be costs... "
-          },
-          "link": {
-            "placement": "before",
-            "swedish" : {
-              "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Se prislista"
-            },
-            "english" : {
-              "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Pricelist"
-            }
-          },
-          "value": "" ,
-          "type": "radio",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["student"]
-            },
-            {
-              "field": "genre",
-              "values": ["bookitem"]
-            }
-          ],
-          "options": [
-            { 
-              "label": {
-                "swedish": "Jag accepterar eventuella kostnader",
-                "english": "I accept charges..."
-              }, 
-              "value": "accept",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-                "english": "I want the library to contact me..."
-              }, 
-              "value": "contact",
-              "enabled": true
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "costsbusinessbooks": {
-          "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Boklån är avgiftsbelagda för företag.",
-            "english": "There are costs..."
-          },
-          "link": {
-            "placement": "before",
-            "swedish" : {
-              "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Se prislista"
-            },
-            "english" : {
-              "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Pricelist"
-            }
-          },
-          "value": "" ,
-          "type": "info",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["business"]
-            },
-            {
-              "field": "genre",
-              "values": ["book"]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "costsbusinessarticles": {
-          "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Artiklar/kopior är avgiftsbelagda för företag.",
-            "english": "There are costs..."
-          },
-          "link": {
-            "placement": "before",
-            "swedish" : {
-              "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Se prislista"
-            },
-            "english" : {
-              "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-              "text": "Pricelist"
-            }
-          },
-          "value": "" ,
-          "type": "info",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["business"]
-            },
-            {
-              "field": "genre",
-              "values": ["article"]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "costsotherbooks": {
-          "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Som privatperson kan du endast göra bokbeställningar från KTH Bibliotekets magasin eller äldre boksamling",
-            "english": "As a private person you can only..."
-          },
-          "value": "" ,
-          "type": "info",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["other"]
-            },
-            {
-              "field": "genre",
-              "values": ["book"]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "costsotherarticles": {
-          "label": {
-            "swedish": "Kostnader",
-            "english": "Costs"
-          },
-          "description": {
-            "placement": "before",
-            "swedish": "Som privatperson kan du endast göra artikelbeställningar från KTH Bibliotekets magasin",
-            "english": "As a private person you can only..."
-          },
-          "value": "" ,
-          "type": "info",
-          "enabled": false,
-          "openurlenabled": true,
-          "showcriteria": [
-            {
-              "field": "iam",
-              "values": ["other"]
-            },
-            {
-              "field": "genre",
-              "values": ["article"]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "genredetails": {
-          "label": {
-            "swedish": "Detaljer om materialet",
-            "english": "Details about the material"
-          },
-          "value": "details",
-          "type": "grouplabel",
-          "enabled": false,
-          "showcriteria": [
-            {
-              "field": "genre",
-              "values": ["book","article","bookitem","journal"]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "atitle": {
-          "label": {
-            "swedish": "Artikeltitel",
-            "english": "Article title"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,
-          
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["article"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "jtitle": {
-          "label": {
-            "swedish": "Tidskriftstitel",
-            "english": "Journal title"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,
-          
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["journal"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "btitle": {
-          "label": {
-            "swedish": "Boktitel",
-            "english": "Book title"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "chaptertitle": {
-          "label": {
-            "swedish": "Kapitlets titel",
-            "english": "Chapter title"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "au": {
-          "label": {
-            "swedish": "Författare",
-            "english": "Author"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,         
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","article","bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "year": {
-          "label": {
-            "swedish": "År",
-            "english": "Year"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,        
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","article","bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "isbn": {
-          "label": {
-            "swedish": "ISBN",
-            "english": "ISBN"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,        
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "issn": {
-          "label": {
-            "swedish": "ISSN",
-            "english": "ISSN"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,         
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["article"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "edition": {
-          "label": {
-            "swedish": "Upplaga",
-            "english": "Edition"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,       
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "volumepart": {
-          "label": {
-            "swedish": "Volym/Del",
-            "english": "Volume/Part"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,        
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","article","bookitem"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "journal": {
-          "label": {
-            "swedish": "Tidskrift",
-            "english": "Journal"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,         
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["article"]
-          }],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "issue": {
-          "label": {
-            "swedish": "Nummer",
-            "english": "Issue"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,         
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["article"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
-        },
-        "pages": {
-          "label": {
-            "swedish": "Sidor",
-            "english": "Pages"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,          
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","article","bookitem"]
-          }],
-          "validation": {
-            "required": false,
-            "pattern": {
-              "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
-              "errormessage": {
-                "swedish": "måste vara en godkänd emailadresss",
-                "english": "must be valid email"
-              }
-            }
-          }
-        },
-        "doi": {
-          "label": {
-            "swedish": "DOI",
-            "english": "DOI"
+            "swedish": "Student på KTH",
+            "english": "Student at KTH"
           }, 
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,        
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["article"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+          "value": "student",
+          "enabled": true
         },
-        "coursecode": {
+        { 
           "label": {
-            "swedish": "Eventuell kurskod på KTH",
-            "english": "Course code at KTH"
-          },
-          "value": "",
-          "type": "text",
-          "isgrouped": true,
-          "group":"genredetails",
-          "enabled": false,
-          "showcriteria": [
-            {
-              "field": "genre",
-              "values": ["book"]
-            },
-            {
-              "field": "iam",
-              "values": ["student","employee"]
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+            "swedish": "Anställd/Doktorand på KTH",
+            "english": "Staff/Doctoral student at KTH"
+          }, 
+          "value": "employee",
+          "enabled": true
         },
-        "message": {
+        { 
           "label": {
-            "swedish": "Meddelande till biblioteket",
-            "english": "Message to the library"
-          },
-          "value": "",
-          "type": "textarea",
-          "enabled": false,
-          "showcriteria": [{
-            "field": "genre",
-            "values": ["book","article","bookitem","journal"]
-          }],
-          "validation": {
-            "required": {
-              "value": false,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
-          }
+            "swedish": "Företag",
+            "english": "Business"
+          }, 
+          "value": "business",
+          "enabled": true
         },
-        "pickup": {
+        { 
           "label": {
-            "swedish": "Hämtas i",
-            "english": "Pick up at"
-          },
-          "value": "",
-          "type": "radio",
-          "enabled": false,
+            "swedish": "Övriga",
+            "english": "Other"
+          }, 
+          "value": "other",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "kthaffiliation": {
+      "label": {
+        "swedish": "Tillhörighet på KTH",
+        "english": "Affilation at KTH"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [{
+        "field": "iam",
+        "values": ["employee"]
+      }],
+      "options": [
+        { 
+          "label": {
+            "swedish": "ABE",
+            "english": "ABE"
+          }, 
+          "value": "ABE",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "CBH",
+            "english": "CBH"
+          }, 
+          "value": "CBH",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "EECS",
+            "english": "EECS"
+          }, 
+          "value": "EECS",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "ITM",
+            "english": "ITM"
+          }, 
+          "value": "ITM",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "SCI",
+            "english": "SCI"
+          }, 
+          "value": "SCI",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "UF",
+            "english": "UF"
+          }, 
+          "value": "UF",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "username": {
+      "label": {
+        "swedish": "Användarnamn",
+        "english": "Username"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "För att kunna beställa material behöver du vara registrerad som användare i bibliotekssystemet. Är du registrerad än?",
+        "english": "To order material..."
+      },
+      "link": {
+        "placement": "before",
+        "swedish" : {
+          "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
+          "text": "Registrera dig som ny användare"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
+          "text": "Register as new user"
+        }
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [{
+        "field": "iam",
+        "values": ["any"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "genre": {
+      "label": {
+        "swedish": "Jag vill beställa",
+        "english": "I want to order"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": false,
+      "openurlenabled": true,
+      "hidden": false,
+      
+      "showcriteria": [{
+        "field": "iam",
+        "values": ["any"]
+      }],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Bok",
+            "english": "Book"
+          }, 
+          "value": "book",
+          "enabled": true,
           "showcriteria": [{
-            "field": "genre",
-            "values": ["book"]
-          }],
-          "options": [
-            { 
-              "label": {
-                "swedish": "Huvudbibioteket",
-                "english": "Main Library"
-              }, 
-              "value": "H",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Kista",
-                "english": "Kista"
-              }, 
-              "value": "bookitem",
-              "enabled": true
-            },
-            { 
-              "label": {
-                "swedish": "Södertälje",
-                "english": "Södertälje"
-              }, 
-              "value": "student",
-              "enabled": true
-            }
-          ],
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
-            } 
+            "field": "iam",
+            "values": ["any"]
+          }]
+        },
+        { 
+          "label": {
+            "swedish": "Artikel (skickas per post till adressen på ditt bibliotekskonto)",
+            "english": "Article (sent by mail to...)"
+          }, 
+          "value": "article",
+          "enabled": true,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["any"]
+          }]
+        },
+        { 
+          "label": {
+            "swedish": "Kapitel i bok",
+            "english": "Chapter in book"
+          }, 
+          "value": "bookitem",
+          "enabled": true,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","employee"]
+          }]
+        },
+        { 
+          "label": {
+            "swedish": "Tidskrift/Databas (föreslå abonnemang)",
+            "english": "Journal/Database (suggest...)"
+          }, 
+          "value": "journal",
+          "enabled": true,
+          "showcriteria": [{
+            "field": "iam",
+            "values": ["student","employee"]
+          }]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    }, 
+    "costsarticle": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Artiklar/kopior kostar 80-150 kr/styck.",
+        "english": "Articles/copies cost 80-150 SEK a piece."
+      },
+      "link": {
+        "placement": "before",
+        "swedish" : {
+          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Se prislista"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Pricelist"
+        }
+      },
+      "value": "" ,
+      "type": "radio",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["student"]
+        },
+        {
+          "field": "genre",
+          "values": ["article"]
+        }
+      ],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Jag accepterar eventuella kostnader",
+            "english": "I accept charges..."
+          }, 
+          "value": "accept",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
+            "english": "I want the library to contact me..."
+          }, 
+          "value": "contact",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "costsbooks": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden kan det tillkomma en avgift på 300 kr.",
+        "english": "If we need to borrow the book.... "
+      },
+      "link": {
+        "placement": "before",
+        "swedish" : {
+          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Se prislista"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Pricelist"
+        }
+      },
+      "value": "" ,
+      "type": "radio",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["student"]
+        },
+        {
+          "field": "genre",
+          "values": ["book"]
+        }
+      ],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Jag accepterar eventuella kostnader",
+            "english": "I accept charges..."
+          }, 
+          "value": "accept",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
+            "english": "I want the library to contact me..."
+          }, 
+          "value": "contact",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "costsbookchapters": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Det kan tillkomma en avgift för beställningar av kapitel i bok. ",
+        "english": "There might be costs... "
+      },
+      "link": {
+        "placement": "before",
+        "swedish" : {
+          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Se prislista"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Pricelist"
+        }
+      },
+      "value": "" ,
+      "type": "radio",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["student"]
+        },
+        {
+          "field": "genre",
+          "values": ["bookitem"]
+        }
+      ],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Jag accepterar eventuella kostnader",
+            "english": "I accept charges..."
+          }, 
+          "value": "accept",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
+            "english": "I want the library to contact me..."
+          }, 
+          "value": "contact",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "costsbusinessbooks": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Boklån är avgiftsbelagda för företag.",
+        "english": "There are costs..."
+      },
+      "link": {
+        "placement": "before",
+        "swedish" : {
+          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Se prislista"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Pricelist"
+        }
+      },
+      "value": "" ,
+      "type": "info",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["business"]
+        },
+        {
+          "field": "genre",
+          "values": ["book"]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "costsbusinessarticles": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Artiklar/kopior är avgiftsbelagda för företag.",
+        "english": "There are costs..."
+      },
+      "link": {
+        "placement": "before",
+        "swedish" : {
+          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Se prislista"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "text": "Pricelist"
+        }
+      },
+      "value": "" ,
+      "type": "info",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["business"]
+        },
+        {
+          "field": "genre",
+          "values": ["article"]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "costsotherbooks": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Som privatperson kan du endast göra bokbeställningar från KTH Bibliotekets magasin eller äldre boksamling",
+        "english": "As a private person you can only..."
+      },
+      "value": "" ,
+      "type": "info",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["other"]
+        },
+        {
+          "field": "genre",
+          "values": ["book"]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "costsotherarticles": {
+      "label": {
+        "swedish": "Kostnader",
+        "english": "Costs"
+      },
+      "description": {
+        "placement": "before",
+        "swedish": "Som privatperson kan du endast göra artikelbeställningar från KTH Bibliotekets magasin",
+        "english": "As a private person you can only..."
+      },
+      "value": "" ,
+      "type": "info",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["other"]
+        },
+        {
+          "field": "genre",
+          "values": ["article"]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "genredetails": {
+      "label": {
+        "swedish": "Detaljer om materialet",
+        "english": "Details about the material"
+      },
+      "value": "details",
+      "type": "grouplabel",
+      "enabled": false,
+      "showcriteria": [
+        {
+          "field": "genre",
+          "values": ["book","article","bookitem","journal"]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "atitle": {
+      "label": {
+        "swedish": "Artikeltitel",
+        "english": "Article title"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,
+      
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["article"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "jtitle": {
+      "label": {
+        "swedish": "Tidskriftstitel",
+        "english": "Journal title"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,
+      
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["journal"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "btitle": {
+      "label": {
+        "swedish": "Boktitel",
+        "english": "Book title"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "chaptertitle": {
+      "label": {
+        "swedish": "Kapitlets titel",
+        "english": "Chapter title"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "au": {
+      "label": {
+        "swedish": "Författare",
+        "english": "Author"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,         
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","article","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "year": {
+      "label": {
+        "swedish": "År",
+        "english": "Year"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,        
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","article","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "isbn": {
+      "label": {
+        "swedish": "ISBN",
+        "english": "ISBN"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,        
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "issn": {
+      "label": {
+        "swedish": "ISSN",
+        "english": "ISSN"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,         
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["article"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "edition": {
+      "label": {
+        "swedish": "Upplaga",
+        "english": "Edition"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,       
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "volumepart": {
+      "label": {
+        "swedish": "Volym/Del",
+        "english": "Volume/Part"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,        
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","article","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "journal": {
+      "label": {
+        "swedish": "Tidskrift",
+        "english": "Journal"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,         
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["article"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "issue": {
+      "label": {
+        "swedish": "Nummer",
+        "english": "Issue"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,         
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["article"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "pages": {
+      "label": {
+        "swedish": "Sidor",
+        "english": "Pages"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,          
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","article","bookitem"]
+      }],
+      "validation": {
+        "required": false,
+        "pattern": {
+          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+          "errormessage": {
+            "swedish": "måste vara en godkänd emailadresss",
+            "english": "must be valid email"
           }
         }
       }
+    },
+    "doi": {
+      "label": {
+        "swedish": "DOI",
+        "english": "DOI"
+      }, 
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,        
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["article"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "coursecode": {
+      "label": {
+        "swedish": "Eventuell kurskod på KTH",
+        "english": "Course code at KTH"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,
+      "showcriteria": [
+        {
+          "field": "genre",
+          "values": ["book"]
+        },
+        {
+          "field": "iam",
+          "values": ["student","employee"]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "message": {
+      "label": {
+        "swedish": "Meddelande till biblioteket",
+        "english": "Message to the library"
+      },
+      "value": "",
+      "type": "textarea",
+      "enabled": false,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","article","bookitem","journal"]
+      }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "pickup": {
+      "label": {
+        "swedish": "Hämtas i",
+        "english": "Pick up at"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": false,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book"]
+      }],
+      "options": [
+        { 
+          "label": {
+            "swedish": "Huvudbibioteket",
+            "english": "Main Library"
+          }, 
+          "value": "H",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Kista",
+            "english": "Kista"
+          }, 
+          "value": "bookitem",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Södertälje",
+            "english": "Södertälje"
+          }, 
+          "value": "student",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
     }
+  }
+}
