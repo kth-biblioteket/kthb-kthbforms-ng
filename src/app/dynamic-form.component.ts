@@ -80,7 +80,6 @@ export class DynamicFormComponent implements OnInit {
           this.isopenurl = true;
           this.openurlsource = this.getParam(source);
           this.form.get('source').setValue(this.openurlsource);
-          console.log(this.openurlsource);
           break;
         }
       }
