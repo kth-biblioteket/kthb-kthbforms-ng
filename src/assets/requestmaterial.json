@@ -1222,7 +1222,7 @@
             "swedish": "Huvudbibioteket",
             "english": "Main Library"
           }, 
-          "value": "H",
+          "value": "MAIN",
           "enabled": true
         },
         { 
@@ -1230,7 +1230,7 @@
             "swedish": "Kista",
             "english": "Kista"
           }, 
-          "value": "bookitem",
+          "value": "ELECTRUM",
           "enabled": true
         },
         { 
@@ -1238,7 +1238,7 @@
             "swedish": "Södertälje",
             "english": "Södertälje"
           }, 
-          "value": "student",
+          "value": "TELGE",
           "enabled": true
         }
       ],
