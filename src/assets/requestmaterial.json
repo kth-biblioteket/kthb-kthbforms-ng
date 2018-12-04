@@ -20,6 +20,7 @@
   "openurlparameters" : [
       {
         "name": {
+          "standard": "genre",
           "primo": "genre",
           "info:sid/libris.kb.se:libris": "rft.genre"
         },
@@ -30,16 +31,18 @@
       },
       {
         "name": {
+          "standard": "atitle",
           "primo": "article",
           "info:sid/libris.kb.se:libris": "rft.atitle"
         },
         "label":{
-          "swedish" : "Artikeltitel",
-          "english":  "Article title"
+          "swedish" : "Artikelns/kapitlets titel",
+          "english":  "Article/chapter title"
         }
       },
       {
         "name": {
+          "standard": "jtitle",
           "primo": "journal",
           "info:sid/libris.kb.se:libris": "rft.jtitle"
         },
@@ -50,6 +53,7 @@
       },
       {
         "name": {
+          "standard": "btitle",
           "primo": "bookTitle",
           "info:sid/libris.kb.se:libris": "rft.btitle"
         },
@@ -60,8 +64,31 @@
       },
       {
         "name": {
-          "primo": "published",
+          "standard": "au",
+          "primo": "author",
+          "info:sid/libris.kb.se:libris": "rft.au"
+        },
+        "label":{
+          "swedish" : "Författare",
+          "english":  "Author"
+        }
+      },
+      {
+        "name": {
+          "standard": "pub",
+          "primo": "rft.pub",
           "info:sid/libris.kb.se:libris": "rft.pub"
+        },
+        "label":{
+          "swedish" : "Publicerad av",
+          "english":  "Publisher name"
+        }
+      },
+      {
+        "name": {
+          "standard": "publisher",
+          "primo": "publisher",
+          "info:sid/libris.kb.se:libris": "rft.publisher"
         },
         "label":{
           "swedish" : "Publicerad av",
@@ -70,6 +97,7 @@
       },
       {
         "name": {
+          "standard": "volume",
           "primo": "volume",
           "info:sid/libris.kb.se:libris": "rft.volume"
         },
@@ -80,6 +108,7 @@
       },
       {
         "name": {
+          "standard": "issue",
           "primo": "issue",
           "info:sid/libris.kb.se:libris": "rft.issue"
         },
@@ -90,6 +119,7 @@
       },
       {
         "name": {
+          "standard": "pages",
           "primo": "pages",
           "info:sid/libris.kb.se:libris": "rft.pages"
         },
@@ -100,14 +130,82 @@
       },
       {
         "name": {
-          "primo": "isbn",
+          "standard": "isbn",
+          "primo": "ISBN",
           "info:sid/libris.kb.se:libris": "rft.isbn"
         },
         "label":{
           "swedish" : "ISBN",
           "english":  "ISBN"
         }
+      },
+      {
+        "name": {
+          "standard": "issn",
+          "primo": "ISSN",
+          "info:sid/libris.kb.se:libris": "rft.issn"
+        },
+        "label":{
+          "swedish" : "ISSN",
+          "english":  "ISSN"
+        }
+      },
+      {
+        "name": {
+          "standard": "doi",
+          "primo": "rft.doi",
+          "info:sid/libris.kb.se:libris": "rft.doi"
+        },
+        "label":{
+          "swedish" : "DOI",
+          "english":  "DOI"
+        }
+      },
+      {
+        "name": {
+          "standard": "year",
+          "primo": "year",
+          "info:sid/libris.kb.se:libris": "rft.year"
+        },
+        "label":{
+          "swedish" : "År",
+          "english":  "Year"
+        }
+      },
+      {
+        "name": {
+          "standard": "month",
+          "primo": "month",
+          "info:sid/libris.kb.se:libris": "rft.month"
+        },
+        "label":{
+          "swedish" : "Månad",
+          "english":  "Month"
+        }
+      },
+      {
+        "name": {
+          "standard": "number",
+          "primo": "rft.number",
+          "info:sid/libris.kb.se:libris": "rft.number"
+        },
+        "label":{
+          "swedish" : "Patentnummer",
+          "english":  "Patent number"
+        }
+      },
+      {
+        "name": {
+          "standard": "place",
+          "primo": "publiPlace",
+          "info:sid/libris.kb.se:libris": "rft.place"
+        },
+        "label":{
+          "swedish" : "Publiceringsort",
+          "english":  "Publication place"
+        }
       }
+      
     ],
     "test": ["genre","article","journal","bookTitle","volume","issue","pages","au"],
     "info:sid/libris.kb.se:libris": ["rft.genre","rft.atitle","rft.jtitle","rft.btitle","rft.volume","rft.issue","rft.pages","rft.au","rft.place","rft.pub","rft.isbn","rft.issn"]
@@ -126,6 +224,10 @@
     "english": "Optional"
   },
   "formfields" : {
+    "source": {
+      "value": "kthbforms",
+      "enabled": false
+    },
     "iam": {
       "label": {
         "swedish": "Jag är",
@@ -737,10 +839,34 @@
         } 
       }
     },
+    "btitle": {
+      "label": {
+        "swedish": "Boktitel",
+        "english": "Book title"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "group":"genredetails",
+      "enabled": false,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["book","bookitem"]
+      }],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
     "atitle": {
       "label": {
-        "swedish": "Artikeltitel",
-        "english": "Article title"
+        "swedish": "Artikelns/kapitlets titel",
+        "english": "Article/chapter title"
       },
       "value": "",
       "type": "text",
@@ -750,7 +876,7 @@
       
       "showcriteria": [{
         "field": "genre",
-        "values": ["article"]
+        "values": ["article", "bookitem"]
       }],
       "validation": {
         "required": {
@@ -776,54 +902,6 @@
       "showcriteria": [{
         "field": "genre",
         "values": ["journal"]
-      }],
-      "validation": {
-        "required": {
-          "value": true,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
-    },
-    "btitle": {
-      "label": {
-        "swedish": "Boktitel",
-        "english": "Book title"
-      },
-      "value": "",
-      "type": "text",
-      "isgrouped": true,
-      "group":"genredetails",
-      "enabled": false,
-      "showcriteria": [{
-        "field": "genre",
-        "values": ["book","bookitem"]
-      }],
-      "validation": {
-        "required": {
-          "value": true,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
-    },
-    "chaptertitle": {
-      "label": {
-        "swedish": "Kapitlets titel",
-        "english": "Chapter title"
-      },
-      "value": "",
-      "type": "text",
-      "isgrouped": true,
-      "group":"genredetails",
-      "enabled": false,
-      "showcriteria": [{
-        "field": "genre",
-        "values": ["bookitem"]
       }],
       "validation": {
         "required": {
@@ -1083,8 +1161,6 @@
       },
       "value": "",
       "type": "text",
-      "isgrouped": true,
-      "group":"genredetails",
       "enabled": false,
       "showcriteria": [
         {

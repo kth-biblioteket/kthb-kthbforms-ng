@@ -34,7 +34,8 @@ export class DynamicFormComponent implements OnInit {
   showtoperrormessage = false;
   posturl;
   backendresponse = false;
-  backendresult;
+  backendresult = false;
+  backendresulterror;
 
   constructor(
     public backend:BackendService,
@@ -78,6 +79,7 @@ export class DynamicFormComponent implements OnInit {
         if(this.getParam(source)!= ""){
           this.isopenurl = true;
           this.openurlsource = this.getParam(source);
+          this.form.get('source').setValue(this.openurlsource);
           console.log(this.openurlsource);
           break;
         }
@@ -128,11 +130,20 @@ export class DynamicFormComponent implements OnInit {
   openurlparametersToJSON() {	    		
     var pairs = location.search.slice(1).split('&');
     var result = {};
+    var openurlparameters = this.openurlparameters;
+    var openurlsource = this.openurlsource;
     pairs.forEach(function(pair:any) {
       pair = pair.split('=');
       result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
+      //matcha mot openurlparameters och döp om till "standard"
+      for(let parameter of openurlparameters) {
+        if(pair[0] == parameter.name[openurlsource]) {
+          pair[0] = parameter.name.standard
+        };
+      }
     });
-    return JSON.parse(JSON.stringify(result));
+    
+    return result;
   }
 
   /**
@@ -281,15 +292,21 @@ export class DynamicFormComponent implements OnInit {
   }
 
   postformvalues(form) {
-    this.backend.postForm(this.posturl, form).subscribe((result) => {
-      if(result.status == 201){
+    this.backend.postForm(this.posturl, form).subscribe(
+      (result) => {
+        if(result.status == 201) {
+          this.backendresponse = true;
+          this.backendresult = true;
+          window.scrollTo(0,0);
+        }
+      }, (err) => {
         this.backendresponse = true;
-        this.backendresult = result;
+        this.backendresult = false;
+        this.backendresulterror = err.error.message;
         window.scrollTo(0,0);
+        console.log(err);
       }
-    }, (err) => {
-      console.log(err);
-    });
+    );
   }
 
   /**
@@ -315,8 +332,8 @@ export class DynamicFormComponent implements OnInit {
       };
       newjson.form=form;
       newjson.openurl = this.openurljson;
-      console.log(JSON.stringify(newjson));
+      //console.log(JSON.stringify(newjson));
       this.postformvalues(newjson);
-  }
+    }
   }
 }
