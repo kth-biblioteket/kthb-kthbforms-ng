@@ -37,8 +37,8 @@
           <div class="card">
             <div class="card-body">
               <div *ngFor="let parameter of openurlparameters">
-                <div *ngIf="openurljson[parameter.name[openurlsource]]">
-                  <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{openurljson[parameter.name[openurlsource]]}}
+                <div *ngIf="openurljson[parameter.name['standard']]">
+                  <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{openurljson[parameter.name['standard']]}}
                 </div>
               </div>
             </div>

@@ -90,6 +90,7 @@ export class DynamicFormComponent implements OnInit {
       //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i
       //Gör parametrar till payload som kan skickas till backend som body
       this.openurljson = this.openurlparametersToJSON();
+      console.log(this.openurljson);
       //skapa ett object som t ex formulärtemplate kan iterera.
       this.objectOpenurl = 
       Object.keys(this.openurljson)
@@ -133,13 +134,15 @@ export class DynamicFormComponent implements OnInit {
     var openurlsource = this.openurlsource;
     pairs.forEach(function(pair:any) {
       pair = pair.split('=');
-      result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
       //matcha mot openurlparameters och döp om till "standard"
+      console.log(pair[0]);
       for(let parameter of openurlparameters) {
         if(pair[0] == parameter.name[openurlsource]) {
           pair[0] = parameter.name.standard
         };
       }
+      console.log(pair[0]);
+      result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
     });
     
     return result;
