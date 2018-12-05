@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kthb-bestall-ng": {
+    "kthb-kthbforms-ng": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kthb-bestall-ng",
+            "outputPath": "dist/kthb-kthbforms-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kthb-bestall-ng:build"
+            "browserTarget": "kthb-kthbforms-ng:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "kthb-bestall-ng:build:production"
+              "browserTarget": "kthb-kthbforms-ng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kthb-bestall-ng:build"
+            "browserTarget": "kthb-kthbforms-ng:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "kthb-bestall-ng-e2e": {
+    "kthb-kthbforms-ng-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "kthb-bestall-ng:serve"
+            "devServerTarget": "kthb-kthbforms-ng:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "kthb-bestall-ng:serve:production"
+              "devServerTarget": "kthb-kthbforms-ng:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "kthb-bestall-ng"
+  "defaultProject": "kthb-kthbforms-ng"
 }
