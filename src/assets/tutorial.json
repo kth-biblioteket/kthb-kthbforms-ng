@@ -1,0 +1,297 @@
+{
+  "if" : "tutorial",
+  "header" : {
+    "swedish": "Boka handledning",
+    "english": "Book a consultation"
+  },
+  "description": {
+    "swedish": "Behöver du hjälp med informationssökning, referenshantering eller sökning i patentdatabaser eller andra databaser? Behöver du råd kring hur du kan göra dina publikationer fritt tillgängliga, så kallad Open Access, eller har du andra publiceringsfrågor? Boka enskild handledning genom KTH Biblioteket! Handledningen tar ca en timme.",
+    "english": "Do you need help with information retrieval, reference management or searching in patent databases or other databases? Do you need advice on how to make your publications freely available, so called Open Access, or do you have other questions related to publishing? Book a consultation! The consultation will take about an hour."
+  },
+  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/tutorial",
+  "formfields" : {
+    "iam": {
+      "label": {
+        "swedish": "Jag är",
+        "english": "I am a"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": true,
+      "options": [
+        { 
+          "label": {
+            "swedish": "Student på KTH",
+            "english": "Student at KTH"
+          }, 
+          "value": "S",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Doktorand/Forskare på KTH",
+            "english": "PhD student/Researcher at KTH"
+          }, 
+          "value": "E",
+          "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Övrig personal på KTH",
+            "english": "Other staff member at KTH"
+          }, 
+          "value": "O",
+          "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "name": {
+      "label": {
+        "swedish": "Namn",
+        "english": "Name"
+      },
+      "description": {
+        "swedish": "",
+        "english": ""
+      },
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+	"phone": {
+      "label": {
+        "swedish": "Telefonnummer",
+        "english": "Phone"
+      },
+      "description": {
+        "swedish": "",
+        "english": ""
+      },
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "email": {
+      "label": {
+        "swedish": "E-postadress",
+        "english": "E-mail address"
+      }, 
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        },
+		"pattern": {
+          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+          "errormessage": {
+            "swedish": "måste vara en godkänd emailadresss",
+            "english": "must be valid email"
+          }
+        }		
+      }
+    },
+     "library": {
+      "label": {
+        "swedish": "Ditt bibliotek",
+        "english": "Your library"
+      },
+      "value": "",
+      "type": "radio",
+      "enabled": true,
+      "options": [
+        { 
+          "label": {
+            "swedish": "Huvudbibioteket",
+            "english": "Main Library"
+          }, 
+          "value": "H",
+		  "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Kista",
+            "english": "Kista"
+          }, 
+          "value": "K",
+		  "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Södertälje",
+            "english": "Södertälje"
+          }, 
+          "value": "S",
+		  "enabled": true
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+	"program": {
+      "label": {
+        "swedish": "Program/institution",
+        "english": "Programme/institution"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "informationabout": {
+      "label": {
+        "swedish": "Vad söker du information om? Beskriv syfte och frågeställning.",
+        "english": "What do you need information on? Describe the purpose and aim of your study."
+      },
+      "value": "",
+      "type": "textarea",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "informationwhere": {
+      "label": {
+        "swedish": "Var har du tidigare sökt efter information",
+        "english": "Where have you previously searched for information?"
+      },
+      "value": "",
+      "type": "textarea",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "searchwords": {
+      "label": {
+        "swedish": "Ge exempel på sökord och termer som är relevanta för ämnet.",
+        "english": "Please list some keywords and search terms relevant to the subject"
+      },
+      "value": "",
+      "type": "textarea",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+	"suggesteddate1": {
+      "label": {
+        "swedish": "Föreslå tre möjliga datum för handledningen",
+        "english": "Suggest three possible dates for the consultation"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+	"suggesteddate2": {
+      "label": {
+        "swedish": "",
+        "english": ""
+      },
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+	"suggesteddate3": {
+      "label": {
+        "swedish": "",
+        "english": ""
+      },
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    }
+  }
+}

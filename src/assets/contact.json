@@ -16,10 +16,11 @@
         "english": "Closed"
       }
     },
-    "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
+    "contactemail": "tholind@kth.se",
+    "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/contact",
     "postresponsetext" : {
-      "swedish": "Tack för din beställning...",
-      "english": "Thank you for ordering..."
+      "swedish": "Tack för din förfrågan. Vi kontaktar dig snart.",
+      "english": "Thanks for your request. We will contact you soon."
     },
     "optionalfieldtext" : {
       "swedish": "Valfri",

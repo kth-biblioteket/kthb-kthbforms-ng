@@ -296,10 +296,13 @@ export class DynamicFormComponent implements OnInit {
   postformvalues(form) {
     this.backend.postForm(this.posturl, form).subscribe(
       (result) => {
-        if(result.status == 201) {
+        if(result.status == 201 || result.status == 200) {
           this.backendresponse = true;
           this.backendresult = true;
           window.scrollTo(0,0);
+          //Rensa formulär eller inte?
+          
+          //this.form.reset();
         }
       }, (err) => {
         this.backendresponse = true;
