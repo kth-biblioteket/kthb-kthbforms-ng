@@ -16,6 +16,17 @@
     </div>
   </div>
 </div>
+<!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
+<div class="">
+  <div *ngIf="showtoperrormessage && form.invalid" id="formd_error_message" class="alert alert-danger">
+    <h4>
+      Formuläret är inte korrekt ifyllt!
+    </h4>
+    <div>
+      Se rödmarkerad text nedan.
+    </div>
+  </div>
+</div>
 <!-- Om formuläret initierats -->
 <div *ngIf="init">
     <!-- Informationstext/Beskrivning -->
@@ -24,11 +35,6 @@
     </div>
     <div *ngIf="status=='open'">
       <div style="margin-bottom:15px">{{language=='swedish' ? description.open.swedish : description.open.english}}</div>
-      <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
-      <div class="webform message">
-        <div *ngIf="showtoperrormessage" id="formd_error_message" class="alert alert-danger"><p>Formuläret är inte korrekt ifyllt! Se rödmarkerad text nedan.</p>
-        </div>
-      </div>
       <!-- Formuläret -->
       <div id="form_body">
         <!-- OpenUrl-ruta-->
@@ -56,7 +62,8 @@
                 </span>
               </label>
               <!-- Felmeddelanden vid ogiltigt/inte ifyllt -->
-              <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+              <!--div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)"-->
+              <div class="error" *ngIf="submitted && form.get(prop.key).invalid">
                 <div *ngIf="form.get(prop.key).errors.required">
                   {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
                 </div>
@@ -137,7 +144,8 @@
           </div>
           <!-- Skickaknapp -->
           <div class="controls">
-            <input [disabled]="!form.valid" class="form-control btn-success" type="submit" value="Skicka">
+            <!--input [disabled]="!form.valid" class="form-control btn-success" type="submit" value="Skicka"-->
+            <input class="form-control btn-success" type="submit" value="Skicka">
           </div>
         </form>
         <div>

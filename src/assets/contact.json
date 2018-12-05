@@ -42,7 +42,7 @@
                   "swedish": "måste fyllas i",
                   "english": "is required"
                 }
-              } 
+              }
             }
           },
       "name": {
@@ -80,7 +80,14 @@
               "swedish": "måste fyllas i",
               "english": "is required"
             }
-          } 
+          },
+          "pattern": {
+            "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+            "errormessage": {
+              "swedish": "måste vara en godkänd emailadresss",
+              "english": "must be valid email"
+            }
+          }
         }
       },
       "subject": {

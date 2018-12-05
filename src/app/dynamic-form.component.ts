@@ -30,6 +30,7 @@ export class DynamicFormComponent implements OnInit {
   optionalfieldtext;
   status;
   description;
+  submitted = false;
   isValidFormSubmitted = null;
   showtoperrormessage = false;
   posturl;
@@ -204,12 +205,6 @@ export class DynamicFormComponent implements OnInit {
    * Hantera klick på formulärfält och aktivera/inaktivera beroende på inläst JSON
    */
   onchangeformobject(domobj, object){
-    if (!this.form.get(object).valid) {
-      this.showtoperrormessage = true;
-    } else {
-      this.showtoperrormessage = false;
-    }
-
     //kolla igenom alla fält(som hämtats via JSON) och sätt enable = true/false beroende på aktuella värden
     var validfield;
     var show;
@@ -299,7 +294,7 @@ export class DynamicFormComponent implements OnInit {
         if(result.status == 201 || result.status == 200) {
           this.backendresponse = true;
           this.backendresult = true;
-          window.scrollTo(0,0);
+          window.scroll(0,0);
           //Rensa formulär eller inte?
           
           //this.form.reset();
@@ -308,7 +303,7 @@ export class DynamicFormComponent implements OnInit {
         this.backendresponse = true;
         this.backendresult = false;
         this.backendresulterror = err.error.message;
-        window.scrollTo(0,0);
+        window.scroll(0,0);
         console.log(err);
       }
     );
@@ -323,13 +318,15 @@ export class DynamicFormComponent implements OnInit {
    * Skicka via http post
    */
   onSubmit(form) {
+    this.submitted = true;
     this.isValidFormSubmitted = false;
-     if (this.form.invalid) {
-        return;
-     }
-     this.isValidFormSubmitted = true;
-
-     if(this.form.valid) {
+    if (this.form.invalid) {
+      this.showtoperrormessage = true;
+      return;
+    }
+    this.isValidFormSubmitted = true;
+    if(this.form.valid) {
+      this.showtoperrormessage = false;
       // skapa ett sammanslaget objekt av form och openurljson
       var newjson = {
         "form" : {},
