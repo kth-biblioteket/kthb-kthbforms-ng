@@ -1,13 +1,20 @@
 <!-- Inforruta, svar från API-->
-<div *ngIf="backendresponse" class="alert alert-success">
-    <div class="card-body">
-      <h3>
+<div *ngIf="backendresponse && backendresult" class="alert alert-success">
+    <div class="casrd-body">
+      <h4>
         {{language=='swedish' ? formdata.postresponsetext.swedish : formdata.postresponsetext.english}}
-      </h3>
-      <div>
-        {{backendresult | json}}
-      </div>
+      </h4>
     </div>
+</div>
+<div *ngIf="backendresponse && !backendresult" class="alert alert-danger">
+  <div class="cardd-body">
+    <h4>
+      {{language=='swedish' ? "Något gick fel" : "Something went wrong"}}
+    </h4>
+    <div>
+      {{backendresulterror}}
+    </div>
+  </div>
 </div>
 <!-- Om formuläret initierats -->
 <div *ngIf="init">
@@ -30,8 +37,8 @@
           <div class="card">
             <div class="card-body">
               <div *ngFor="let parameter of openurlparameters">
-                <div *ngIf="openurljson[parameter.name[openurlsource]]">
-                  <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{openurljson[parameter.name[openurlsource]]}}
+                <div *ngIf="openurljson[parameter.name['standard']]">
+                  <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{openurljson[parameter.name['standard']]}}
                 </div>
               </div>
             </div>
