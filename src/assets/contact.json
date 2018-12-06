@@ -1,130 +1,140 @@
 {
-    "id": "contact",
-    "name" : "Kontakta biblioteket",
-    "header" : {
-        "swedish": "Kontakta oss",
-        "english": "Contact us"
+  "id": "contact",
+  "name": "Kontakta biblioteket",
+  "header": {
+    "swedish": "Kontakta oss",
+    "english": "Contact us"
+  },
+  "status": "open",
+  "description": {
+    "open": {
+      "swedish": "Har du en fråga eller synpunkt? Kontakta oss genom formuläret nedan. Vi återkommer till dig inom kort.",
+      "english": "Do you have a question or feedback to us? Contact us by using the form below. We will get back to you shortly."
     },
-    "status": "open",
-    "description": {
-      "open": {
-        "swedish": "Har du en fråga eller synpunkt? Kontakta oss genom formuläret nedan. Vi återkommer till dig inom kort.",
-        "english": "Do you have a question or feedback to us? Contact us by using the form below. We will get back to you shortly."
-      },
-      "closed": {
-        "swedish": "Stängt",
-        "english": "Closed"
-      }
-    },
-    "contactemail": "tholind@kth.se",
-    "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/contact",
-    "postresponsetext" : {
-      "swedish": "Tack för din förfrågan. Vi kontaktar dig snart.",
-      "english": "Thanks for your request. We will contact you soon."
-    },
-    "optionalfieldtext" : {
-      "swedish": "Valfri",
-      "english": "Optional"
+    "closed": {
+      "swedish": "Stängt",
+      "english": "Closed"
+    }
+  },
+  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/contact",
+  "postresponsetext": {
+    "swedish": "Tack för din förfrågan. Vi kontaktar dig snart.",
+    "english": "Thanks for your request. We will contact you soon."
+  },
+  "optionalfieldtext": {
+    "swedish": "Valfri",
+    "english": "Optional"
+  },
+  "invalidforminfo": {
+    "header": {
+      "swedish": "Formuläret är inte korrekt ifyllt!",
+      "english": "Form not correct!"
     }, 
-    "formfields" : {
-        "contactdetails": {
-            "label": {
-              "swedish": "Kontaktuppgifter",
-              "english": "Contact details"
-            },
-            "value": "details",
-            "type": "grouplabel",
-            "enabled": true,
-            "validation": {
-              "required": {
-                "value": true,
-                "errormessage": {
-                  "swedish": "måste fyllas i",
-                  "english": "is required"
-                }
+    "text": {
+      "swedish": "Se rödmarkerad text nedan.",
+      "english": "Please see text marked as red below"
+    }
+  },
+  "contactemail": "tholind@kth.se",
+  "formfields": {
+      "contactdetails": {
+          "label": {
+            "swedish": "Kontaktuppgifter",
+            "english": "Contact details"
+          },
+          "value": "details",
+          "type": "grouplabel",
+          "enabled": true,
+          "validation": {
+            "required": {
+              "value": true,
+              "errormessage": {
+                "swedish": "måste fyllas i",
+                "english": "is required"
               }
             }
-          },
-      "name": {
-        "label": {
-          "swedish": "Namn",
-          "english": "Name"
+          }
         },
-        "value": "",
-        "type": "text",
-        "isgrouped": true,
-        "enabled": true,
-        "validation": {
-          "required": {
-            "value": true,
-            "errormessage": {
-              "swedish": "måste fyllas i",
-              "english": "is required"
-            }
-          } 
-        }
+    "name": {
+      "label": {
+        "swedish": "Namn",
+        "english": "Name"
       },
-      "email": {
-        "label": {
-          "swedish": "E-postadress",
-          "english": "E-mail address"
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "email": {
+      "label": {
+        "swedish": "E-postadress",
+        "english": "E-mail address"
+      },
+      "value": "",
+      "type": "text",
+      "isgrouped": true,
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
         },
-        "value": "",
-        "type": "text",
-        "isgrouped": true,
-        "enabled": true,
-        "validation": {
-          "required": {
-            "value": true,
-            "errormessage": {
-              "swedish": "måste fyllas i",
-              "english": "is required"
-            }
-          },
-          "pattern": {
-            "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
-            "errormessage": {
-              "swedish": "måste vara en godkänd emailadresss",
-              "english": "must be valid email"
-            }
+        "pattern": {
+          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+          "errormessage": {
+            "swedish": "måste vara en godkänd emailadresss",
+            "english": "must be valid email"
           }
         }
+      }
+    },
+    "subject": {
+      "label": {
+        "swedish": "Ämne",
+        "english": "Subject"
       },
-      "subject": {
-        "label": {
-          "swedish": "Ämne",
-          "english": "Subject"
-        },
-        "value": "",
-        "type": "text",
-        "enabled": true,
-        "validation": {
-          "required": {
-            "value": true,
-            "errormessage": {
-              "swedish": "måste fyllas i",
-              "english": "is required"
-            }
-          } 
-        }
+      "value": "",
+      "type": "text",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "question": {
+      "label": {
+        "swedish": "Din fråga eller synpunkt",
+        "english": "Your question or feedback"
       },
-      "question": {
-        "label": {
-          "swedish": "Din fråga eller synpunkt",
-          "english": "Your question or feedback"
-        },
-        "value": "",
-        "type": "textarea",
-        "enabled": true,
-        "validation": {
-          "required": {
-            "value": true,
-            "errormessage": {
-              "swedish": "måste fyllas i",
-              "english": "is required"
-            }
-          } 
-        }
+      "value": "",
+      "type": "textarea",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
       }
     }
   }
+}

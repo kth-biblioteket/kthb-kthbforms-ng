@@ -1,15 +1,57 @@
 {
-  "if" : "tutorial",
-  "header" : {
+  "id": "consultation",
+  "name": "Handledning",
+  "header": {
     "swedish": "Boka handledning",
     "english": "Book a consultation"
   },
+  "status": "open",
   "description": {
-    "swedish": "Behöver du hjälp med informationssökning, referenshantering eller sökning i patentdatabaser eller andra databaser? Behöver du råd kring hur du kan göra dina publikationer fritt tillgängliga, så kallad Open Access, eller har du andra publiceringsfrågor? Boka enskild handledning genom KTH Biblioteket! Handledningen tar ca en timme.",
-    "english": "Do you need help with information retrieval, reference management or searching in patent databases or other databases? Do you need advice on how to make your publications freely available, so called Open Access, or do you have other questions related to publishing? Book a consultation! The consultation will take about an hour."
+    "open": {
+      "swedish": "Behöver du hjälp med informationssökning, referenshantering eller sökning i patentdatabaser eller andra databaser? Behöver du råd kring hur du kan göra dina publikationer fritt tillgängliga, så kallad Open Access, eller har du andra publiceringsfrågor? Boka enskild handledning genom KTH Biblioteket! Handledningen tar ca en timme.",
+      "english": "Do you need help with information retrieval, reference management or searching in patent databases or other databases? Do you need advice on how to make your publications freely available, so called Open Access, or do you have other questions related to publishing? Book a consultation! The consultation will take about an hour."
+    },
+    "closed": {
+      "swedish": "Stängt",
+      "english": "Closed"
+    }
   },
-  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/tutorial",
-  "formfields" : {
+  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/consultation",
+  "postresponsetext" : {
+    "header": {
+      "swedish": "Tack för din förfrågan!",
+      "english": "Thank you for your booking request!"
+    },
+    "text": {
+      "swedish": "Vi kommer att kontakta dig för att bekräfta din bokning inom två arbetsdagar.",
+      "english": "We will confirm your booking within two days."
+    }
+  },
+  "posterrorresponsetext" : {
+    "header": {
+      "swedish": "Något gick fel!",
+      "english": "Something went wrong!"
+    },
+    "text": {
+      "swedish": "Kontakta bilioteket...",
+      "english": "Please contact the library..."
+    }
+  },
+  "optionalfieldtext" : {
+    "swedish": "Valfri",
+    "english": "Optional"
+  },
+  "invalidforminfo": {
+    "header": {
+      "swedish": "Formuläret är inte korrekt ifyllt!",
+      "english": "Form not correct!"
+    }, 
+    "text": {
+      "swedish": "Se rödmarkerad text nedan.",
+      "english": "Please see text marked as red below"
+    }
+  },
+  "formfields": {
     "iam": {
       "label": {
         "swedish": "Jag är",
@@ -76,7 +118,7 @@
         } 
       }
     },
-	"phone": {
+	  "phone": {
       "label": {
         "swedish": "Telefonnummer",
         "english": "Phone"
@@ -123,7 +165,7 @@
         }		
       }
     },
-     "library": {
+    "library": {
       "label": {
         "swedish": "Ditt bibliotek",
         "english": "Your library"
@@ -167,7 +209,7 @@
         } 
       }
     },
-	"program": {
+	  "program": {
       "label": {
         "swedish": "Program/institution",
         "english": "Programme/institution"
@@ -187,8 +229,8 @@
     },
     "informationabout": {
       "label": {
-        "swedish": "Vad söker du information om? Beskriv syfte och frågeställning.",
-        "english": "What do you need information on? Describe the purpose and aim of your study."
+        "swedish": "Vad söker du information om? Beskriv syfte och frågeställning",
+        "english": "What do you need information on? Describe the purpose and aim of your study"
       },
       "value": "",
       "type": "textarea",
@@ -206,7 +248,7 @@
     "informationwhere": {
       "label": {
         "swedish": "Var har du tidigare sökt efter information",
-        "english": "Where have you previously searched for information?"
+        "english": "Where have you previously searched for information"
       },
       "value": "",
       "type": "textarea",
@@ -223,7 +265,7 @@
     },
     "searchwords": {
       "label": {
-        "swedish": "Ge exempel på sökord och termer som är relevanta för ämnet.",
+        "swedish": "Ge exempel på sökord och termer som är relevanta för ämnet",
         "english": "Please list some keywords and search terms relevant to the subject"
       },
       "value": "",
@@ -239,7 +281,7 @@
         } 
       }
     },
-	"suggesteddate1": {
+	  "suggesteddate1": {
       "label": {
         "swedish": "Föreslå tre möjliga datum för handledningen",
         "english": "Suggest three possible dates for the consultation"
@@ -257,7 +299,7 @@
         } 
       }
     },
-	"suggesteddate2": {
+	  "suggesteddate2": {
       "label": {
         "swedish": "",
         "english": ""
@@ -275,7 +317,7 @@
         } 
       }
     },
-	"suggesteddate3": {
+	  "suggesteddate3": {
       "label": {
         "swedish": "",
         "english": ""

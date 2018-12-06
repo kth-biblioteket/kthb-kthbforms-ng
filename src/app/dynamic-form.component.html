@@ -1,16 +1,24 @@
 <!-- Inforruta, svar från API-->
 <div *ngIf="backendresponse && backendresult" class="alert alert-success">
-    <div class="casrd-body">
+    <div class="card-body">
       <h4>
-        {{language=='swedish' ? formdata.postresponsetext.swedish : formdata.postresponsetext.english}}
+        {{language=='swedish' ? formdata.postresponsetext.header.swedish : formdata.postresponsetext.header.english}}
       </h4>
+      <div>
+        {{language=='swedish' ? formdata.postresponsetext.text.swedish : formdata.postresponsetext.text.english}}
+      </div>
     </div>
 </div>
 <div *ngIf="backendresponse && !backendresult" class="alert alert-danger">
-  <div class="cardd-body">
-    <h4>
-      {{language=='swedish' ? "Något gick fel" : "Something went wrong"}}
-    </h4>
+  <div class="card-body">
+    <div class="card-body">
+      <h4>
+        {{language=='swedish' ? formdata.posterrorresponsetext.header.swedish : formdata.posterrorresponsetext.header.english}}
+      </h4>
+      <div>
+        {{language=='swedish' ? formdata.posterrorresponsetext.text.swedish : formdata.posterrorresponsetext.text.english}}
+      </div>
+    </div>
     <div>
       {{backendresulterror}}
     </div>
@@ -18,12 +26,14 @@
 </div>
 <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
 <div class="">
-  <div *ngIf="showtoperrormessage && form.invalid" id="formd_error_message" class="alert alert-danger">
-    <h4>
-      Formuläret är inte korrekt ifyllt!
-    </h4>
-    <div>
-      Se rödmarkerad text nedan.
+  <div *ngIf="showtoperrormessage && form.invalid" class="alert alert-danger">
+    <div class="card-body">
+      <h4>
+        {{language=='swedish' ? formdata.invalidforminfo.header.swedish : formdata.invalidforminfo.header.english}}
+      </h4>
+      <div>
+        {{language=='swedish' ? formdata.invalidforminfo.text.swedish : formdata.invalidforminfo.text.english}}
+      </div>
     </div>
   </div>
 </div>
