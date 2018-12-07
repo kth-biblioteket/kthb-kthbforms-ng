@@ -16,6 +16,25 @@
       "english": "Closed"
     }
   },
+  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
+  "postresponsetext" : {
+    "swedish": "Tack för din beställning...",
+    "english": "Thank you for ordering..."
+  },
+  "optionalfieldtext" : {
+    "swedish": "Valfri",
+    "english": "Optional"
+  },
+  "invalidforminfo": {
+    "header": {
+      "swedish": "Formuläret är inte korrekt ifyllt!",
+      "english": "Form not correct!"
+    }, 
+    "text": {
+      "swedish": "Se rödmarkerad text nedan.",
+      "english": "Please see text marked as red below"
+    }
+  },
   "openurlsourceparameters" : ["source","rfr.id"],
   "openurlparameters" : [
       {
@@ -214,16 +233,7 @@
     "swedish": "Jag vill beställa",
     "english": "I would like to order"
   },
-  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
-  "postresponsetext" : {
-    "swedish": "Tack för din beställning...",
-    "english": "Thank you for ordering..."
-  },
-  "optionalfieldtext" : {
-    "swedish": "Valfri",
-    "english": "Optional"
-  },
-  "formfields" : {
+  "formfields": {
     "source": {
       "value": "kthbforms",
       "enabled": false

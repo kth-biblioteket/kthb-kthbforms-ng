@@ -323,6 +323,7 @@ export class DynamicFormComponent implements OnInit {
     this.isValidFormSubmitted = false;
     if (this.form.invalid) {
       this.showtoperrormessage = true;
+      window.scroll(0,0);
       return;
     }
     this.isValidFormSubmitted = true;
