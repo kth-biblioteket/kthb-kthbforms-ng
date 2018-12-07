@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log("KTHB-form-app");
+    console.log("kthbforms-app");
     this.elementRef.nativeElement.getAttribute('language') == 'swedish' ? this.language = 'swedish' : this.language = 'english';
     this.formid = this.elementRef.nativeElement.getAttribute('formid');
   }

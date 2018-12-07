@@ -37,6 +37,7 @@ export class DynamicFormComponent implements OnInit {
   isValidFormSubmitted = null;
   showtoperrormessage = false;
   posturl;
+  warning = false;
   backendresponse = false;
   backendresult = false;
   backendresulterror;
@@ -302,6 +303,18 @@ export class DynamicFormComponent implements OnInit {
           
           //this.form.reset();
         }
+        //delvis ok, exvis användare skapad men mail misslyckades
+        if(result.status == 202) {
+          this.backendresponse = true;
+          this.backendresult = true;
+          this.warning = true;
+          this.backendresulterror = result.body.message;
+          console.log(this.backendresulterror);
+          window.scroll(0,0);
+          //Rensa formulär eller inte?
+          
+          //this.form.reset();
+        }
       }, (err) => {
         this.backendresponse = true;
         this.backendresult = false;
@@ -322,6 +335,7 @@ export class DynamicFormComponent implements OnInit {
    */
   onSubmit(form) {
     this.backendresponse = false;
+    this.warning = false;
     this.submitted = true;
     this.isValidFormSubmitted = false;
     if (this.form.invalid) {

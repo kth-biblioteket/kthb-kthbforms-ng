@@ -1,5 +1,5 @@
-<!-- Inforruta, svar från API-->
-<div *ngIf="backendresponse && backendresult" class="alert alert-success">
+<!-- Inforruta, OK svar från API-->
+<div *ngIf="backendresponse && backendresult && !warning" class="alert alert-success">
     <div class="">
       <h4>
         {{language=='swedish' ? formdata.postresponsetext.header.swedish : formdata.postresponsetext.header.english}}
@@ -9,6 +9,28 @@
       </div>
     </div>
 </div>
+<!-- Varning -->
+<div *ngIf="backendresponse && warning" class="alert alert-info">
+  <div class="">
+    <div class="">
+      <h4>
+        {{language=='swedish' ? formdata.postresponsetext.header.swedish : formdata.postresponsetext.header.english}}
+      </h4>
+      <div>
+        {{language=='swedish' ? formdata.postresponsetext.text.swedish : formdata.postresponsetext.text.english}}
+      </div>
+    </div>
+    <div>
+        <h4>
+          {{language=='swedish' ? formdata.posterrorresponsetext.header.swedish : formdata.posterrorresponsetext.header.english}}
+        </h4>
+        <div>
+          {{backendresulterror}}
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Fel! -->
 <div *ngIf="backendresponse && !backendresult" class="alert alert-danger">
   <div class="">
     <div class="">
@@ -107,7 +129,7 @@
                   [formControlName]="prop.key"
                   [id]="prop.key" [type]="prop.type">
                 
-                <!-- Datum textruta -->
+                <!-- Datum inputruta -->
                 <div *ngSwitchCase="'datebox'" class="datebox" style="display:flex; flex-direction: row;">
                   <input style="margin-top:0px;" class="form-control medium" 
                     [formControlName]="prop.key"
