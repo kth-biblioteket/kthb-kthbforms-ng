@@ -74,6 +74,10 @@ textarea.form-control {
   content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%2086%2086%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M43%2086c23.7482%200%2043-19.2518%2043-43S66.7482%200%2043%200%200%2019.2518%200%2043s19.2518%2043%2043%2043z%22%20fill%3D%22%2362922E%22%2F%3E%0A%20%20%20%20%3Cimage%20x%3D%2228%22%20y%3D%2224.5581%22%20width%3D%2233%22%20height%3D%2234.7907%22%20xlink%3Ahref%3D%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAACMAAAAkCAYAAAAD3IPhAAAAAXNSR0IArs4c6QAAAkZJREFUWAm9mElLAzEUxwe%2FgCdPfhNvXrx40KsHz4IIPXgQQaSC6EUULypIxRWL4I4Xl6pYcaOl1brWsYutbV1aFyx2jfOEDNOazMJkJqUkk6R5v3lJ%2F3kJx5mcpnf70PN7GP1kv4VvGkVe%2Fci21Y1MxuA4ACkWC6g85Qs51LvQbB5Q61gN%2BkwnyznE58vQkXkwLn5HNEwqJFIhc2CGVttQgTA9UijTYJ7fI1K7xLI3cIAqjF7FjnM7qqqsljWTzWe4lZMR2T66G9sn6lAm90P0hLRyyzNn%2FHrhY%2BdSm8Ry3IyFO7PXj4rCRy6B5gyvW4z1ipKmYEAX7zAWBBaakqYADAggQOtemHIDqNEUmD67c9BYEICMp4J4Fqj5%2FZPHeJBt7zwVADfAX71rttFYGKaasnw8ikAXgokrBNLcOd2giZ6ZptxF3diLYi5ItGoNYKYpE9tWYsADVOnMl6KHmGrKvm9R9AapEH3jZaeLqaaometT%2FyYRiLmm7PuWSA4pqaOJFHNNgUA4l8%2BWGCc9gD702JtEDxmmKetnNpL9f3UvH9E%2FGKaaQtpbLoKH%2F4yTKtz8Lrp%2BPCU1ldTpjlPgzVkkJnFKx1S9qjBRCZhZnAJbO%2BnUpwSA25nHKWqEDBuX5jQJIK1RTXWxZEBqR1VZb5xCPTcNrLRwwi2B6heAs8%2Bkw6q6v%2BaOcGugdCzFLjPl7OO8XsP2qLluTdHipvDLLRWEiaZogbGM11LvVo5uNsT9SsuYuvoCUCz5IJ4S4QoMplDXoGU%2F%2FgXeUvAwNHkFugAAAABJRU5ErkJggg%3D%3D%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A');
 }
 
+/* Datebox */
+.datebox {
+  position: relative;
+}
 /* Datumfältet */
 .datebox input {
   border-radius: 0.25rem 0rem 0rem 0.25rem;
@@ -90,5 +94,10 @@ button.calendar, button.calendar:active {
   border-left: none;
 }
 
+/* Kalender, placering under knappen */
+ngb-datepicker {
+  left: auto !important;
+  right: 0px;
+}
 
 

@@ -9,7 +9,7 @@
   "description": {
     "open": {
       "swedish": "Behöver du hjälp med informationssökning, referenshantering eller sökning i patentdatabaser eller andra databaser? Behöver du råd kring hur du kan göra dina publikationer fritt tillgängliga, så kallad Open Access, eller har du andra publiceringsfrågor? Boka enskild handledning genom KTH Biblioteket! Handledningen tar ca en timme.",
-      "english": "Do you need help with information retrieval, reference management or searching in patent databases or other databases? Do you need advice on how to make your publications freely available, so called Open Access, or do you have other questions related to publishing? Book a consultation! The consultation will take about an hour."
+      "english": ""
     },
     "closed": {
       "swedish": "Stängt",
@@ -51,6 +51,7 @@
       "english": "Please see text marked as red below"
     }
   },
+  "consultationemail": "tholind@kth.se",
   "formfields": {
     "iam": {
       "label": {
