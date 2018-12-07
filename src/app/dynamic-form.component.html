@@ -1,6 +1,6 @@
 <!-- Inforruta, svar från API-->
 <div *ngIf="backendresponse && backendresult" class="alert alert-success">
-    <div class="card-body">
+    <div class="">
       <h4>
         {{language=='swedish' ? formdata.postresponsetext.header.swedish : formdata.postresponsetext.header.english}}
       </h4>
@@ -10,8 +10,8 @@
     </div>
 </div>
 <div *ngIf="backendresponse && !backendresult" class="alert alert-danger">
-  <div class="card-body">
-    <div class="card-body">
+  <div class="">
+    <div class="">
       <h4>
         {{language=='swedish' ? formdata.posterrorresponsetext.header.swedish : formdata.posterrorresponsetext.header.english}}
       </h4>
@@ -27,7 +27,7 @@
 <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
 <div class="">
   <div *ngIf="showtoperrormessage && form.invalid" class="alert alert-danger">
-    <div class="card-body">
+    <div class="">
       <h4>
         {{language=='swedish' ? formdata.invalidforminfo.header.swedish : formdata.invalidforminfo.header.english}}
       </h4>
@@ -44,7 +44,9 @@
       {{language=='swedish' ? description.closed.swedish : description.closed.english}}
     </div>
     <div *ngIf="status=='open'">
-      <div style="margin-bottom:15px">{{language=='swedish' ? description.open.swedish : description.open.english}}</div>
+      <div *ngIf="description.open.swedish!='' && description.open.english!=''" style="margin-bottom:15px">
+        {{language=='swedish' ? description.open.swedish : description.open.english}}
+      </div>
       <!-- Formuläret -->
       <div id="form_body">
         <!-- OpenUrl-ruta-->
@@ -61,6 +63,7 @@
           </div>
         </div>
         <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+            
           <div style="margin-bottom:15px" *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
@@ -94,14 +97,26 @@
               </div>
               <!-- Fälten -->
               <div [ngSwitch]="prop.type">
+                <!-- Vanlig textruta -->
                 <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'text'" 
                   [formControlName]="prop.key"
                   [id]="prop.key" [type]="prop.type">
-
+                
+                <!-- Password textruta -->
                 <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'password'" 
                   [formControlName]="prop.key"
                   [id]="prop.key" [type]="prop.type">
                 
+                <!-- Datum textruta -->
+                <div *ngSwitchCase="'datebox'" class="datebox" style="display:flex; flex-direction: row;">
+                  <input style="margin-top:0px;" class="form-control medium" 
+                    [formControlName]="prop.key"
+                    [id]="prop.key"
+                    ngbDatepicker #d="ngbDatepicker">
+                  <button class="form-control calendar" (click)="d.toggle()" type="button"></button>
+                </div>
+
+                <!-- Meddelanderuta -->
                 <div *ngSwitchCase="'textarea'">
                   <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
                 </div>
@@ -116,7 +131,8 @@
                         [value]=""> {{language=='swedish' ? prop.label.swedish : prop.label.english}}
                     </label>
                 </div>
-
+                
+                <!-- Radio -->
                 <div *ngSwitchCase="'radio'">
                   <div *ngFor="let option of prop.options">
                     <label style="margin-top:0px;font-weight: normal;" *ngIf="option.enabled">
@@ -128,7 +144,8 @@
                     </label>
                   </div>
                 </div>
-
+                
+                <!-- Select -->
                 <div *ngSwitchCase="'select'">
                   <select [formControlName]="prop.key">
                     <option *ngFor="let option of prop.options" [value]="option.value">
@@ -136,7 +153,8 @@
                     </option>
                   </select>
                 </div>
-              </div>
+              </div
+              >
               <!-- Om placement=after, border om det är en informationsbox-->
               <div [ngStyle]="prop.type=='informationbox' ? {'border': '1px solid', 'padding': '5px'} : {}">
                   <!-- Eventuell extra information/beskrivning-->

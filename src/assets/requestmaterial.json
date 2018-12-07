@@ -9,7 +9,7 @@
   "description": {
     "open": {
       "swedish": "Behöver du en bok, artikel, tidskrift eller annat material som biblioteket inte har tillgång till idag? I de flesta fall kan vi beställa materialet till dig genom fjärrlån, d.v.s. lån från ett annat bibliotek, eller inköp. Gör en beställning eller lämna ett inköpsförslag genom att fylla i formuläret nedan så återkommer vi till dig.",
-      "english": "Do you need a book, article, journal or some other material that the library does not have access to yet? In most cases we can order the material for you by making an interlibrary loan, e.g. a loan from another library, or a purchase. Request the material you need by filling out our form and we will get back to you."
+      "english": ""
     },
     "closed": {
       "swedish": "Stängt",
@@ -18,8 +18,24 @@
   },
   "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
   "postresponsetext" : {
-    "swedish": "Tack för din beställning...",
-    "english": "Thank you for ordering..."
+    "header": {
+      "swedish": "Tack för din beställning...",
+      "english": "Thank you for ordering..."
+    },
+    "text": {
+      "swedish": "Vi kontaktar dig snart.",
+      "english": "We will contact you soon."
+    }
+  },
+  "posterrorresponsetext" : {
+    "header": {
+      "swedish": "Något gick fel!",
+      "english": "Something went wrong!"
+    },
+    "text": {
+      "swedish": "Kontakta bilioteket...",
+      "english": "Please contact the library..."
+    }
   },
   "optionalfieldtext" : {
     "swedish": "Valfri",

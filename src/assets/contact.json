@@ -9,7 +9,7 @@
   "description": {
     "open": {
       "swedish": "Har du en fråga eller synpunkt? Kontakta oss genom formuläret nedan. Vi återkommer till dig inom kort.",
-      "english": "Do you have a question or feedback to us? Contact us by using the form below. We will get back to you shortly."
+      "english": ""
     },
     "closed": {
       "swedish": "Stängt",
@@ -17,9 +17,25 @@
     }
   },
   "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/contact",
-  "postresponsetext": {
-    "swedish": "Tack för din förfrågan. Vi kontaktar dig snart.",
-    "english": "Thanks for your request. We will contact you soon."
+  "postresponsetext" : {
+    "header": {
+      "swedish": "Tack för din förfrågan.",
+      "english": "Thanks for your request."
+    },
+    "text": {
+      "swedish": "Vi kontaktar dig snart.",
+      "english": "We will contact you soon."
+    }
+  },
+  "posterrorresponsetext" : {
+    "header": {
+      "swedish": "Något gick fel!",
+      "english": "Something went wrong!"
+    },
+    "text": {
+      "swedish": "Kontakta bilioteket...",
+      "english": "Please contact the library..."
+    }
   },
   "optionalfieldtext": {
     "swedish": "Valfri",

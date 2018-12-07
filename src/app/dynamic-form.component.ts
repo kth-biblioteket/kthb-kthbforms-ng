@@ -16,6 +16,9 @@ export class DynamicFormComponent implements OnInit {
   @Input() language; //språk
   @Input() formid; //formid 
 
+  //datepicker
+  dpmodel;
+  
   form: FormGroup;
   formdata:any;
   isopenurl = false;

@@ -13,6 +13,8 @@ import { AppConfigService } from './app-config.service';
 
 import { DynamicFormComponent } from './dynamic-form.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -30,7 +32,8 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     AppConfigService,
