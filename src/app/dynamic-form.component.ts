@@ -318,6 +318,7 @@ export class DynamicFormComponent implements OnInit {
    * Skicka via http post
    */
   onSubmit(form) {
+    this.backendresponse = false;
     this.submitted = true;
     this.isValidFormSubmitted = false;
     if (this.form.invalid) {
