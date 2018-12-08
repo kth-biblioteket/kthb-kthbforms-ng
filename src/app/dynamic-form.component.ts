@@ -316,9 +316,15 @@ export class DynamicFormComponent implements OnInit {
           //this.form.reset();
         }
       }, (err) => {
-        this.backendresponse = true;
-        this.backendresult = false;
-        this.backendresulterror = err.error.message;
+        if(err.status == 422) {
+          this.backendresponse = true;
+          this.backendresult = false;
+          this.backendresulterror = JSON.stringify(err.error);
+        } else {
+          this.backendresponse = true;
+          this.backendresult = false;
+          this.backendresulterror = err.error.message;
+        }
         window.scroll(0,0);
         console.log(err);
       }
