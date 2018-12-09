@@ -1,6 +1,6 @@
 <!-- Laddningsikon att visa vid exvis apianrop-->
 <div *ngIf="loading" class="loading">
-  <img class="loading-image" src="assets/ajax_loader_blue_512.gif" alt="Loading..." />
+  <img class="loading-image" src="{{loaderurl}}" alt="Loading..." />
 </div>
 <!-- Inforruta, OK svar från API-->
 <div *ngIf="backendresponse && backendresult && !warning" class="alert alert-success">

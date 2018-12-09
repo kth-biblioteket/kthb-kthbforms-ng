@@ -21,6 +21,7 @@ export class DynamicFormComponent implements OnInit {
 
   //laddar-ikkonen
   loading = false;
+  loaderurl;
   
   form: FormGroup;
   formdata:any;
@@ -63,6 +64,7 @@ export class DynamicFormComponent implements OnInit {
     this.openurlboxlabel = this.formdata.openurlboxlabel;
     this.openurlparameters = this.formdata.openurlparameters;
     this.posturl = this.formdata.posturl;
+    this.loaderurl = this.formdata.loaderurl;
     this.status = this.formdata.status;
     this.description = this.formdata.description;
     //skapa ett object som t ex formulärtemplate kan iterera.
