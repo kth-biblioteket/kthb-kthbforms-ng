@@ -88,6 +88,17 @@
     },
     {
       "name": {
+        "standard": "stitle",
+        "primo": "abbrev",
+        "info:sid/libris.kb.se:libris": "rft.stitle"
+      },
+      "label":{
+        "swedish" : "Förkortad tidskriftstitel",
+        "english":  "Abbreviated Journal title"
+      }
+    },
+    {
+      "name": {
         "standard": "btitle",
         "primo": "bookTitle",
         "info:sid/libris.kb.se:libris": "rft.btitle"
@@ -150,6 +161,17 @@
       "label":{
         "swedish" : "Nummer",
         "english":  "Issue"
+      }
+    },
+    {
+      "name": {
+        "standard": "edition",
+        "primo": "rft.edition",
+        "info:sid/libris.kb.se:libris": "rft.edition"
+      },
+      "label":{
+        "swedish" : "Upplaga",
+        "english":  "Edition"
       }
     },
     {

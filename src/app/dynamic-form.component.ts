@@ -18,6 +18,9 @@ export class DynamicFormComponent implements OnInit {
 
   //datepicker
   dpmodel;
+
+  //laddar-ikkonen
+  loading = false;
   
   form: FormGroup;
   formdata:any;
@@ -292,12 +295,19 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   * @param form 
+   * 
+   * Posta till backend
+   */
   postformvalues(form) {
     this.backend.postForm(this.posturl, form).subscribe(
       (result) => {
         if(result.status == 201 || result.status == 200) {
           this.backendresponse = true;
           this.backendresult = true;
+          this.loading = false;
           window.scroll(0,0);
           //Rensa formulär eller inte?
           
@@ -310,6 +320,7 @@ export class DynamicFormComponent implements OnInit {
           this.warning = true;
           this.backendresulterror = result.body.message;
           console.log(this.backendresulterror);
+          this.loading = false;
           window.scroll(0,0);
           //Rensa formulär eller inte?
           
@@ -319,6 +330,7 @@ export class DynamicFormComponent implements OnInit {
         this.backendresponse = true;
         this.backendresult = false;
         this.backendresulterror = err.error.message;
+        this.loading = false;
         window.scroll(0,0);
         console.log(err);
       }
@@ -345,6 +357,7 @@ export class DynamicFormComponent implements OnInit {
     }
     this.isValidFormSubmitted = true;
     if(this.form.valid) {
+      this.loading = true;
       this.showtoperrormessage = false;
       // skapa ett sammanslaget objekt av form och openurljson
       var newjson = {

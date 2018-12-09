@@ -53,24 +53,24 @@
   },
   "contactemail": "tholind@kth.se",
   "formfields": {
-      "contactdetails": {
-          "label": {
-            "swedish": "Kontaktuppgifter",
-            "english": "Contact details"
-          },
-          "value": "details",
-          "type": "grouplabel",
-          "enabled": true,
-          "validation": {
-            "required": {
-              "value": true,
-              "errormessage": {
-                "swedish": "måste fyllas i",
-                "english": "is required"
-              }
+    "contactdetails": {
+        "label": {
+          "swedish": "Kontaktuppgifter",
+          "english": "Contact details"
+        },
+        "value": "details",
+        "type": "grouplabel",
+        "enabled": true,
+        "validation": {
+          "required": {
+            "value": true,
+            "errormessage": {
+              "swedish": "måste fyllas i",
+              "english": "is required"
             }
           }
-        },
+        }
+      },
     "name": {
       "label": {
         "swedish": "Namn",
@@ -108,10 +108,10 @@
           }
         },
         "pattern": {
-          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+          "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
           "errormessage": {
-            "swedish": "måste vara en godkänd emailadresss",
-            "english": "must be valid email"
+            "swedish": "måste vara en godkänd emailadress",
+            "english": "must be valid email address"
           }
         }
       }

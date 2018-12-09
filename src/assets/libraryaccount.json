@@ -277,7 +277,7 @@
           "value": "^(19|20)?[0-9]{6}[- ]?[0-9|T]{1}[0-9]{3}$",
           "errormessage": {
             "swedish": "måste vara ett godkänt personnummer",
-            "english": "must be valid email"
+            "english": "must be valid personal number"
           }
         }
       }
@@ -302,7 +302,14 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
-        } 
+        },
+        "pattern": {
+          "value": "^\\+?\\d+$",
+          "errormessage": {
+            "swedish": "måste vara ett godkänt telefonnummer",
+            "english": "must be a valid phone number"
+          }
+        }
       }
     },
     "phone2": {
@@ -325,13 +332,20 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
-        } 
+        },
+        "pattern": {
+          "value": "^\\+?\\d+$",
+          "errormessage": {
+            "swedish": "måste vara ett godkänt telefonnummer",
+            "english": "must be a valid phone number"
+          }
+        }
       }
     },
     "email": {
       "label": {
-        "swedish": "E-post",
-        "english": "E-email"
+        "swedish": "E-post(användarnamn)",
+        "english": "E-email(username)"
       },
       "value": "",
       "type": "text",
@@ -350,10 +364,10 @@
           }
         },
         "pattern": {
-          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+          "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
           "errormessage": {
-            "swedish": "måste vara en godkänd emailadresss",
-            "english": "must be valid email"
+            "swedish": "måste vara en godkänd emailadress",
+            "english": "must be valid email address"
           }
         }
       }
@@ -378,7 +392,14 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
-        } 
+        },
+        "pattern": {
+          "value": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$",
+          "errormessage": {
+            "swedish": "måste innehålla minst 8 tecken med minst en stor bokstav och en liten bokstav och en siffra.",
+            "english": "must contain at least 8 characters, at least one upper case letter and one lower case letter and one number."
+          }
+        }
       }
     },
     "pin": {
@@ -401,7 +422,14 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
-        } 
+        },
+        "pattern": {
+          "value": "^[0-9]{4}$",
+          "errormessage": {
+            "swedish": "måste vara 4 siffror",
+            "english": "must be 4 digits"
+          }
+        }
       }
     },
     "streetadress": {
