@@ -110,7 +110,7 @@
                   {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.pattern.errormessage.swedish : prop.validation.pattern.errormessage.english }}
                 </div>
               </div>
-              <!-- Om placement=after -->
+              <!-- Om placement=before -->
               <!-- Eventuell extra information/beskrivning-->
               <div *ngIf="prop.description && prop.description.placement=='before'">
                   {{language=='swedish' ? prop.description.swedish : prop.description.english}}
@@ -182,7 +182,7 @@
               </div
               >
               <!-- Om placement=after, border om det är en informationsbox-->
-              <div [ngStyle]="prop.type=='informationbox' ? {'border': '1px solid', 'padding': '5px'} : {}">
+              <div [ngClass]="{'alert alert-info': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationbox' ? {'border': '1px solid', 'padding': '5px', 'position': 'relative'} : {}">
                   <!-- Eventuell extra information/beskrivning-->
                   <div *ngIf="prop.description && prop.description.placement=='after'">
                       {{language=='swedish' ? prop.description.swedish : prop.description.english}}

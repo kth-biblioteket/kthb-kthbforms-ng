@@ -90,11 +90,11 @@
     },
     "otherinfo": {
       "label": {
-        "swedish": "Privatperson / övrig",
-        "english": "Privateperson / övrig"
+        "swedish": "Privatperson / Övrig",
+        "english": "Privateperson / Övrig"
       },
       "value": "",
-      "type": "select",
+      "type": "radio",
       "enabled": false,
       "showcriteria": [{
         "field": "iam",
