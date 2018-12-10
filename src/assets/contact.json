@@ -38,6 +38,21 @@
       "english": "Please contact the library..."
     }
   },
+  "contactemail": "tholind@kth.se",
+  "emailbody": {
+    "swedish": [
+      "<div><p>Fråga till: KTH Biblioteket</p></div>",
+      "<div><p>Från: @@name, @@email</p></div>",
+      "<div><p><h3>Meddelande/fråga</h3></div>", 
+      "<div><p>@@question</p></div>"
+    ],
+    "english": [
+      "<div><p>Question for: KTH Library</p></div>",
+      "<div><p>From: @@name, @@email</p></div>",
+      "<div><p><h3>Message/Question</h3></div>", 
+      "<div><p>@@question</p></div>"
+    ]
+  },
   "optionalfieldtext": {
     "swedish": "Valfri",
     "english": "Optional"
@@ -52,7 +67,6 @@
       "english": "Please see text marked as red below"
     }
   },
-  "contactemail": "tholind@kth.se",
   "formfields": {
     "contactdetails": {
         "label": {

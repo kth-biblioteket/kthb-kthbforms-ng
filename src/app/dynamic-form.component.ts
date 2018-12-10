@@ -98,11 +98,9 @@ export class DynamicFormComponent implements OnInit {
     }
 
     if(this.isopenurl){
-      console.log("Formulär som skapats via klick från Primo etc...");
       //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i
       //Gör parametrar till payload som kan skickas till backend som body
       this.openurljson = this.openurlparametersToJSON();
-      console.log(this.openurljson);
       //skapa ett object som t ex formulärtemplate kan iterera.
       this.objectOpenurl = 
       Object.keys(this.openurljson)
@@ -122,7 +120,6 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(environment.production);
     this.getFormData();
   }
 
@@ -148,13 +145,12 @@ export class DynamicFormComponent implements OnInit {
     pairs.forEach(function(pair:any) {
       pair = pair.split('=');
       //matcha mot openurlparameters och döp om till "standard"
-      console.log(pair[0]);
+      //om endast "standard" tillåts behövs inte detta
       for(let parameter of openurlparameters) {
         if(pair[0] == parameter.name[openurlsource]) {
           pair[0] = parameter.name.standard
         };
       }
-      console.log(pair[0]);
       result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
     });
     
@@ -307,7 +303,7 @@ export class DynamicFormComponent implements OnInit {
    * Posta till backend
    */
   postformvalues(form) {
-    this.backend.postForm(this.posturl, form).subscribe(
+    this.backend.postForm(this.posturl + "?language=" + this.language, form).subscribe(
       (result) => {
         if(result.status == 201 || result.status == 200) {
           this.backendresponse = true;
@@ -324,7 +320,6 @@ export class DynamicFormComponent implements OnInit {
           this.backendresult = true;
           this.warning = true;
           this.backendresulterror = result.body.message;
-          console.log(this.backendresulterror);
           this.loading = false;
           window.scroll(0,0);
           //Rensa formulär eller inte?
@@ -346,7 +341,6 @@ export class DynamicFormComponent implements OnInit {
           this.backendresulterror = err.error.message;
         }
         window.scroll(0,0);
-        console.log(err);
       }
     );
   }
@@ -380,7 +374,6 @@ export class DynamicFormComponent implements OnInit {
       };
       newjson.form=form;
       newjson.openurl = this.openurljson;
-      //console.log(JSON.stringify(newjson));
       this.postformvalues(newjson);
     }
   }

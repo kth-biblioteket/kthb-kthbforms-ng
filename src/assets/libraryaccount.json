@@ -25,7 +25,7 @@
     },
     "text": {
       "swedish": "För att slutföra registreringen måste du besöka något av våra bibliotek. Ta med dig giltig ID-handling.",
-      "english": "To finish the registration you have to visit on of our libraries. Please bring a valid ID."
+      "english": "To finish the registration you have to visit one of our libraries. Please bring a valid ID."
     }
   },
   "posterrorresponsetext" : {
@@ -38,17 +38,32 @@
       "english": "Please contact the library..."
     }
   },
-  "emailsubject": "Lyckad registering av bibliotekskonto",
-  "emailbody": [
-    "<div><p>Hej,</p></div>",
-    "<div><p>Tack för din registrering. Du kan aktivera ditt konto på Huvudbiblioteket eller något av våra filialbibliotek. Var vänlig ta med ID.</p></div>",
-    "<div>Ditt användarnamn är: </div>",
-    "<div><p>Vänligen</p></div>",
-    "<div>KTH Biblioteket</div>",
-    "<div>Bibliotekspersonalen</div>",
-    "<div>Telefon: 08 - 790 70 88</div>",
-    "<div>Webb: www.kth.se/kthb</div>"
-  ],
+  "emailsubject": {
+    "swedish": "Lyckad registering av bibliotekskonto",
+    "english": "Sucessfull library account registration"
+  },
+  "emailbody": {
+    "swedish": [
+      "<div><p>Hej,</p></div>",
+      "<div><p>Tack för din registrering. Du kan aktivera ditt konto på Huvudbiblioteket eller något av våra filialbibliotek. Var vänlig ta med ID.</p></div>",
+      "<div>Ditt användarnamn är: @@email</div> ",
+      "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Bibliotekspersonalen</div>",
+      "<div>Telefon: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/kthb</div>"
+    ],
+    "english": [
+      "<div><p>Hi,</p></div>",
+      "<div><p>Thank you for registrering. You kan activate your account at the Main library or one of our... Please bring a valid ID.</p></div>",
+      "<div>Your username is: @@email</div>",
+      "<div><p>Kindly</p></div>",
+      "<div>KTH Library</div>",
+      "<div>The library staff</div>",
+      "<div>Phone: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/en/kthb</div>"
+    ]
+  },
   "optionalfieldtext" : {
     "swedish": "Valfri",
     "english": "Optional"
