@@ -135,10 +135,10 @@
                 
                 <!-- Datum inputruta -->
                 <div *ngSwitchCase="'datebox'" class="datebox" style="display:flex; flex-direction: row;">
-                  <input style="margin-top:0px;" class="form-control medium" 
+                  <input readonly="readonly" style="margin-top:0px;" class="form-control medium" 
                     [formControlName]="prop.key"
                     [id]="prop.key"
-                    ngbDatepicker #d="ngbDatepicker">
+                    ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
                   <button class="form-control calendar" (click)="d.toggle()" type="button"></button>
                 </div>
 
@@ -198,18 +198,20 @@
           </div>
           <!-- Skickaknapp -->
           <div class="controls">
-            <!--input [disabled]="!form.valid" class="form-control btn-success" type="submit" value="Skicka"-->
+            <!--input [disabled]="!form.valid" class="form-control btn-success" type="submit" value="Skicka" -->
             <input class="form-control btn-success" type="submit" value="Skicka">
           </div>
         </form>
         <div>
       <div>
     </div>  
-    <!-- Nedan endast för development-->
-    <div style="clear:both">
-    <br/>
-    <strong>Formulärvärden</strong>
-    <pre>{{ form.value | json }}</pre>
-    <pre>{{ openurljson | json }}</pre>
-    <strong>Formulär är giltigt:</strong> {{form.valid}}
+    <!-- Nedan endast för development -->
+    <div *ngIf="!isprod">
+      <div style="clear:both">
+      <br/>
+      <strong>Formulärvärden</strong>
+      <pre>{{ form.value | json }}</pre>
+      <pre>{{ openurljson | json }}</pre>
+      <strong>Formulär är giltigt:</strong> {{form.valid}}
+      </div>
     </div>

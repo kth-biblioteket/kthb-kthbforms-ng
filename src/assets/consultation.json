@@ -53,6 +53,7 @@
     }
   },
   "consultationemail": "tholind@kth.se",
+  "emailbody": "<div></div>",
   "formfields": {
     "iam": {
       "label": {
@@ -68,7 +69,7 @@
             "swedish": "Student på KTH",
             "english": "Student at KTH"
           }, 
-          "value": "S",
+          "value": "Student på KTH",
           "enabled": true
         },
         { 
@@ -76,7 +77,7 @@
             "swedish": "Doktorand/Forskare på KTH",
             "english": "PhD student/Researcher at KTH"
           }, 
-          "value": "E",
+          "value": "Doktorand/Forskare på KTH",
           "enabled": true
         },
         { 
@@ -84,7 +85,7 @@
             "swedish": "Övrig personal på KTH",
             "english": "Other staff member at KTH"
           }, 
-          "value": "O",
+          "value": "Övrig personal på KTH",
           "enabled": true
         }
       ],
@@ -188,7 +189,7 @@
             "swedish": "Huvudbibioteket",
             "english": "Main Library"
           }, 
-          "value": "H",
+          "value": "Huvudbibioteket",
 		  "enabled": true
         },
         { 
@@ -196,7 +197,7 @@
             "swedish": "Kista",
             "english": "Kista"
           }, 
-          "value": "K",
+          "value": "Kista",
 		  "enabled": true
         },
         { 
@@ -204,7 +205,7 @@
             "swedish": "Södertälje",
             "english": "Södertälje"
           }, 
-          "value": "S",
+          "value": "Södertälje",
 		  "enabled": true
         }
       ],

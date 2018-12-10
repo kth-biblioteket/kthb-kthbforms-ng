@@ -1165,14 +1165,7 @@
         "values": ["book","article","bookitem"]
       }],
       "validation": {
-        "required": false,
-        "pattern": {
-          "value": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
-          "errormessage": {
-            "swedish": "måste vara en godkänd emailadresss",
-            "english": "must be valid email"
-          }
-        }
+        "required": false
       }
     },
     "doi": {

@@ -16,10 +16,12 @@ export class DynamicFormComponent implements OnInit {
   @Input() language; //språk
   @Input() formid; //formid 
 
-  //datepicker
+  // Prod/dev?
+  isprod = environment.production;
+  // datepicker
   dpmodel;
 
-  //laddar-ikkonen
+  // laddar-ikkonen
   loading = false;
   loaderurl;
   
@@ -120,6 +122,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(environment.production);
     this.getFormData();
   }
 
