@@ -38,6 +38,17 @@
       "english": "Please contact the library..."
     }
   },
+  "emailsubject": "Lyckad registering av bibliotekskonto",
+  "emailbody": [
+    "<div><p>Hej,</p></div>",
+    "<div><p>Tack för din registrering. Du kan aktivera ditt konto på Huvudbiblioteket eller något av våra filialbibliotek. Var vänlig ta med ID.</p></div>",
+    "<div>Ditt användarnamn är: </div>",
+    "<div><p>Vänligen</p></div>",
+    "<div>KTH Biblioteket</div>",
+    "<div>Bibliotekspersonalen</div>",
+    "<div>Telefon: 08 - 790 70 88</div>",
+    "<div>Webb: www.kth.se/kthb</div>"
+  ],
   "optionalfieldtext" : {
     "swedish": "Valfri",
     "english": "Optional"
