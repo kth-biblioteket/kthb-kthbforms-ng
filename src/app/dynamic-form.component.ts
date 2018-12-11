@@ -32,7 +32,7 @@ export class DynamicFormComponent implements OnInit {
   openurljson:any;
   objectOpenurl;
   objectFormfields;
-  openurlparameters;
+  //openurlparameters;
   //Variabel för att hålla reda på om formuläret initierats och är redo att visas i template
   init = false;
   openurlboxlabel;
@@ -64,7 +64,7 @@ export class DynamicFormComponent implements OnInit {
     this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
-    this.openurlparameters = this.formdata.openurlparameters;
+    //this.openurlparameters = this.formdata.openurlparameters;
     this.posturl = this.formdata.posturl;
     this.loaderurl = this.formdata.loaderurl;
     this.status = this.formdata.status;
@@ -91,6 +91,7 @@ export class DynamicFormComponent implements OnInit {
         if(this.getParam(source)!= ""){
           this.isopenurl = true;
           this.openurlsource = this.getParam(source);
+          //sätt värde på source till form-fält
           this.form.get('source').setValue(this.openurlsource);
           break;
         }
@@ -98,21 +99,15 @@ export class DynamicFormComponent implements OnInit {
     }
 
     if(this.isopenurl){
-      //Hantera färdigifyllda genom en textruta ovan formuläret där infon fylls i
+      //Hantera de som kommer via openurl genom en textruta ovan formuläret där infon fylls i
       //Gör parametrar till payload som kan skickas till backend som body
       this.openurljson = this.openurlparametersToJSON();
-      //skapa ett object som t ex formulärtemplate kan iterera.
-      this.objectOpenurl = 
-      Object.keys(this.openurljson)
-        .map(prop => {
-          return Object.assign({}, { key: prop} , this.openurljson[prop]);
-        });
       //Sätt värdet på genre till värdet från akutell genre-urlparameter  
       //Sätt genre-fält till hidden (men enabled) så att de beroende fälten visas.
       for(let prop of this.objectFormfields) {
-        if(prop.key == "genre") {
-          this.form.get(prop.key).setValue(decodeURI(this.getParam(this.openurlparameters[0].name[this.openurlsource]))); 
-          prop.hidden = true;
+        //om openurlparameter matchar fält i formulär sätt fältets värde = värdet i parameter
+        if(this.openurljson[prop.key]) {
+          this.form.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
         }
       }
     } else {
@@ -140,17 +135,45 @@ export class DynamicFormComponent implements OnInit {
   openurlparametersToJSON() {	    		
     var pairs = location.search.slice(1).split('&');
     var result = {};
-    var openurlparameters = this.openurlparameters;
+    //var openurlparameters = this.openurlparameters;
+    var form=this.form;
     var openurlsource = this.openurlsource;
+    var formfields = this.objectFormfields;
+    var formfields1 = this.formdata.formfields;
     pairs.forEach(function(pair:any) {
+      
       pair = pair.split('=');
+      /*
+      console.log(pair[0]);
+      if(typeof formfields1[pair[0]] !== "undefined") {
+        console.log(formfields1[pair[0]]);
+      }
+      */
+      for(let field of formfields) {
+        //ta bort validering för alla openurlfält
+        if (field.openurl) {
+          console.log(field.key);
+          form.get(field.key).clearValidators();
+          //this.form.get(field.key).updateValueAndValidity()
+        }
+        if(typeof field.openurlnames !== "undefined") {
+          if(field.openurlnames[openurlsource]==[pair[0]]){
+            //console.log(field.openurlnames['standard']);
+            pair[0] = field.openurlnames['standard'];
+            break;
+          }
+        }
+      }
+      
       //matcha mot openurlparameters och döp om till "standard"
       //om endast "standard" tillåts behövs inte detta
+      /*
       for(let parameter of openurlparameters) {
         if(pair[0] == parameter.name[openurlsource]) {
           pair[0] = parameter.name.standard
         };
       }
+      */
       result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
     });
     
@@ -237,7 +260,7 @@ export class DynamicFormComponent implements OnInit {
 
           if (validfield){
             show = true;
-            //om ett radio/checkbox-fält, kolla också kriterier för varje option
+            //om ett radio-fält, kolla också kriterier för varje option
             if(prop.type=="radio") {
               //om options finns
               if(prop.options) {
@@ -276,20 +299,21 @@ export class DynamicFormComponent implements OnInit {
           }
         }
         if (show) {
-          //gör fältet klickbart
+          //gör fältet aktivt
           this.form.get(prop.key).enable();
           //visar fältet
           prop.enabled = true;
         } else {
-          // gör fältet låst
+          // gör fältet inaktivt
           this.form.get(prop.key).disable();
           // döljer fältet
           prop.enabled = false;
         }
         //hantera om formuläret är openurl(visa inte de fält som kommer via openurl)
         if(this.isopenurl && !prop.openurlenabled) {
-          //gör fältet låst och dolt
-          this.form.get(prop.key).disable();
+          //gör fältet inaktivt
+          //this.form.get(prop.key).disable();
+          //gör fältet dolt
           prop.enabled = false;
         }
       }

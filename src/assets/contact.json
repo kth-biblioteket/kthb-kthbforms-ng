@@ -108,7 +108,7 @@
     "email": {
       "label": {
         "swedish": "E-postadress",
-        "english": "E-mail address"
+        "english": "email address"
       },
       "value": "",
       "type": "text",
@@ -125,7 +125,7 @@
         "pattern": {
           "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
           "errormessage": {
-            "swedish": "måste vara en godkänd emailadress",
+            "swedish": "måste vara en godkänd e-postadress",
             "english": "must be valid email address"
           }
         }

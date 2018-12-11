@@ -76,7 +76,7 @@
       <!-- Formuläret -->
       <div id="form_body">
         <!-- OpenUrl-ruta-->
-        <div *ngIf="isopenurl">
+        <!--div *ngIf="isopenurl">
           <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
           <div class="card">
             <div class="card-body">
@@ -87,9 +87,26 @@
               </div>
             </div>
           </div>
+        </div-->
+        <!-- OpenUrl-ruta 2-->
+        <div *ngIf="isopenurl">
+          <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
+          <div class="card">
+            <div class="card-body">
+              <div *ngFor="let parameter of objectFormfields">                
+                <div *ngIf="parameter.openurl">
+                  <div *ngIf="openurljson[parameter.openurlnames['standard']] != null && openurljson[parameter.openurlnames['standard']] != '' && parameter.key=='genre' ">
+                    <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{language=='swedish' ? formdata.genrenames[openurljson[parameter.openurlnames['standard']]].swedish : formdata.genrenames[openurljson[parameter.openurlnames['standard']]].english }}
+                  </div>
+                  <div *ngIf="openurljson[parameter.openurlnames['standard']] != null && openurljson[parameter.openurlnames['standard']] != '' && parameter.key!='genre' ">
+                    <strong>{{language=='swedish' ? parameter.label.swedish: parameter.label.english}}:</strong> {{ openurljson[parameter.openurlnames['standard']] }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
-            
           <div style="margin-bottom:15px" *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
