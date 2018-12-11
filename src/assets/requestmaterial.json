@@ -38,15 +38,24 @@
       "english": "Please contact the library..."
     }
   },
-  "requestemail": "tholind@kth.se",
-  "emailsubject": {
+  "requestemailedge": "tholind@kth.se",
+  "emailsubjectuser": {
     "swedish": "Beställning",
     "english": "Request"
   },
-  "emailbody": {
+  "emailbodyuser": {
     "swedish": [
-      "<div><strong>Titel: </strong></div>",
-      "<div>@@title</div>",
+      "<div><p>Hej,</p></div>",
+      "<div><p>Tack för din beställning av följande material:</p></div>",
+      "<div>@@title</div> ",
+      "<div>@@jtitle</div> ",
+      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
+      "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Bibliotekspersonalen</div>",
+      "<div>Telefon: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/kthb</div>",
+      "<br>",
       "<div><strong>Dokumenttyp</strong></div>",
       "<div>@@genre</div>",
       "<div><strong>Bibliografisk information</strong></div>",
@@ -60,28 +69,46 @@
       "<div>Förlag: @@publisher</div>",
       "<div>År: @@year</div>",
       "<div>Volym: @@volume</div>",
-      "<div><strong>Källa för beställningen/Source for the request</strong></div>",
+      "<div>Kapitel: @@chaptertitle</div>",
+      "<div>DOI: @@doi</div>",
+      "<br>",
+      "<div><strong>Källa för beställningen</strong></div>",
       "<div>@@source</div>",
-      "<div>strong>Önskar hämta på/Pick up location</strong></div>",
+      "<br>",
+      "<div><strong>Önskar hämta på</strong></div>",
       "<div>@@pickup</div>",
+      "<br>",
       "<div><strong>Kategori/Category</strong></div>",
       "<div>@@iam</div>",
-      "<div>strong>Användarid/Userid</strong></div>",
-      "<div>@@email</div>",
-      "<div><p><strong>E-postadress</strong><br></div>",
-      "<div>@@email</div>",
+      "<br>",
+      "<div><strong>Användarid/Userid</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>E-postadress</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
       "<div><strong>Accepterar kostnad</strong></div>",
       "<div>@@cost</div>",
+      "<br>",
       "<div><strong>Meddelande från beställare</strong></div>",
       "<div>@@message</div>"
     ],
     "english": [
-      "<div><strong>Titel: </strong></div>",
-      "<div>@@title</div>",
+      "<div><p>Hej,</p></div>",
+      "<div><p>Tack för din beställning av följande material:</p></div>",
+      "<div>@@title</div> ",
+      "<div>@@jtitle</div> ",
+      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
+      "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Bibliotekspersonalen</div>",
+      "<div>Telefon: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/kthb</div>",
+      "<br>",
       "<div><strong>Dokumenttyp</strong></div>",
       "<div>@@genre</div>",
       "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare:  @@au</div>",
+      "<div>Författare: @@au</div>",
       "<div>Upplaga: @@edition</div>",
       "<div>Nummer: @@issue</div>", 
       "<div>Sidor: @@pages</div>",
@@ -91,18 +118,123 @@
       "<div>Förlag: @@publisher</div>",
       "<div>År: @@year</div>",
       "<div>Volym: @@volume</div>",
-      "<div><strong>Källa för beställningen/Source for the request</strong></div>",
+      "<div>Kapitel: @@chaptertitle</div>",
+      "<div>DOI: @@doi</div>",
+      "<br>",
+      "<div><strong>Källa för beställningen</strong></div>",
       "<div>@@source</div>",
-      "<div>strong>Önskar hämta på/Pick up location</strong></div>",
+      "<br>",
+      "<div><strong>Önskar hämta på</strong></div>",
       "<div>@@pickup</div>",
+      "<br>",
       "<div><strong>Kategori/Category</strong></div>",
       "<div>@@iam</div>",
-      "<div>strong>Användarid/Userid</strong></div>",
-      "<div>@@email</div>",
-      "<div><p><strong>E-postadress</strong><br></div>",
-      "<div>@@email</div>",
+      "<br>",
+      "<div><strong>Användarid/Userid</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>E-postadress</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
       "<div><strong>Accepterar kostnad</strong></div>",
       "<div>@@cost</div>",
+      "<br>",
+      "<div><strong>Meddelande från beställare</strong></div>",
+      "<div>@@message</div>"
+    ]
+  },
+  "emailsubjectedge": {
+    "swedish": "Förslag på prenumeration / Beställning",
+    "english": "Suggestion for subscription / Request"
+  },
+  "emailbodyedge": {
+    "swedish": [
+      "<div><strong>Titel</strong></div>",
+      "<div>@@title</div> ",
+      "<div>@@jtitle</div> ",
+      "<br>",
+      "<div><strong>Dokumenttyp</strong></div>",
+      "<div>@@genre</div>",
+      "<br>",
+      "<div><strong>Bibliografisk information</strong></div>",
+      "<div>Författare: @@au</div>",
+      "<div>Upplaga: @@edition</div>",
+      "<div>Nummer: @@issue</div>", 
+      "<div>Sidor: @@pages</div>",
+      "<div>ISSN: @@issn</div>",
+      "<div>ISBN: @@isbn</div>",
+      "<div>Plats: @@place</div>",
+      "<div>Förlag: @@publisher</div>",
+      "<div>År: @@year</div>",
+      "<div>Volym: @@volume</div>",
+      "<div>Kapitel: @@chaptertitle</div>",
+      "<div>DOI: @@doi</div>",
+      "<br>",
+      "<div><strong>Källa för beställningen</strong></div>",
+      "<div>@@source</div>",
+      "<br>",
+      "<div><strong>Önskar hämta på</strong></div>",
+      "<div>@@pickup</div>",
+      "<br>",
+      "<div><strong>Beställarens namn</strong></div>",
+      "<div>@@fullname</div>",
+      "<br>",
+      "<div><strong>Kategori/Category</strong></div>",
+      "<div>@@iam</div>",
+      "<br>",
+      "<div><strong>Användarid/Userid</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>E-postadress</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div>@@cost</div>",
+      "<br>",
+      "<div><strong>Meddelande från beställare</strong></div>",
+      "<div>@@message</div>"
+    ],
+    "english": [
+      "<div><p>Titel</p></div>",
+      "<div>@@title</div> ",
+      "<div>@@jtitle</div> ",
+      "<div><strong>Dokumenttyp</strong></div>",
+      "<div>@@genre</div>",
+      "<div><strong>Bibliografisk information</strong></div>",
+      "<div>Författare: @@au</div>",
+      "<div>Upplaga: @@edition</div>",
+      "<div>Nummer: @@issue</div>", 
+      "<div>Sidor: @@pages</div>",
+      "<div>ISSN: @@issn</div>",
+      "<div>ISBN: @@isbn</div>",
+      "<div>Plats: @@place</div>",
+      "<div>Förlag: @@publisher</div>",
+      "<div>År: @@year</div>",
+      "<div>Volym: @@volume</div>",
+      "<div>Kapitel: @@chaptertitle</div>",
+      "<div>DOI: @@doi</div>",
+      "<br>",
+      "<div><strong>Källa för beställningen</strong></div>",
+      "<div>@@source</div>",
+      "<br>",
+      "<div><strong>Önskar hämta på</strong></div>",
+      "<div>@@pickup</div>",
+      "<br>",
+      "<div><strong>Beställarens namn</strong></div>",
+      "<div>@@user</div>",
+      "<br>",
+      "<div><strong>Kategori/Category</strong></div>",
+      "<div>@@iam</div>",
+      "<br>",
+      "<div><strong>Användarid/Userid</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>E-postadress</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div>@@cost</div>",
+      "<br>",
       "<div><strong>Meddelande från beställare</strong></div>",
       "<div>@@message</div>"
     ]
@@ -373,8 +505,8 @@
       "english": "Chapter in book"
     },
     "journal": {
-      "swedish": "Tidskrift",
-      "english": "Journal"
+      "swedish": "Tidskrift / Databas",
+      "english": "Journal / Database"
     },
     "conference": {
       "swedish": "Konferens",
@@ -1082,13 +1214,13 @@
     },
     "jtitle": {
       "label": {
-        "swedish": "Tidskriftstitel",
-        "english": "Journal title"
+        "swedish": "Tidskriftstitel / Databas",
+        "english": "Journal title / Database"
       },
       "openurl": true,
       "openurlnames": {
         "standard": "jtitle",
-        "primo": "jtitle",
+        "primo": "journal",
         "info:sid/libris.kb.se:libris": "rft.jtitle"
       },
       "value": "",
@@ -1096,10 +1228,9 @@
       "isgrouped": true,
       "group":"genredetails",
       "enabled": false,
-      
       "showcriteria": [{
         "field": "genre",
-        "values": ["journal"]
+        "values": ["article","journal"]
       }],
       "validation": {
         "required": {
@@ -1119,7 +1250,7 @@
       "openurl": true,
       "openurlnames": {
         "standard": "au",
-        "primo": "au",
+        "primo": "author",
         "info:sid/libris.kb.se:libris": "rft.au"
       },
       "value": "",
@@ -1291,36 +1422,6 @@
         } 
       }
     },
-    "journal": {
-      "label": {
-        "swedish": "Tidskrift",
-        "english": "Journal"
-      },
-      "openurl": true,
-      "openurlnames": {
-        "standard": "journal",
-        "primo": "journal",
-        "info:sid/libris.kb.se:libris": "rft.journal"
-      },
-      "value": "",
-      "type": "text",
-      "isgrouped": true,
-      "group":"genredetails",
-      "enabled": false,         
-      "showcriteria": [{
-        "field": "genre",
-        "values": ["article"]
-      }],
-      "validation": {
-        "required": {
-          "value": true,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
-    },
     "issue": {
       "label": {
         "swedish": "Nummer",
@@ -1390,11 +1491,7 @@
       "type": "text",
       "isgrouped": true,
       "group":"genredetails",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "genre",
-        "values": ["article"]
-      }],
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1418,11 +1515,31 @@
       }, 
       "value": "",
       "type": "text",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "",
-        "values": []
-      }],
+      "enabled": false,
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "publisher": {
+      "label": {
+        "swedish": "Publicerad av",
+        "english": "Publisher name"
+      },
+      "openurl": true,
+      "openurlnames": {
+        "standard": "publisher",
+        "primo": "publisher",
+        "info:sid/libris.kb.se:libris": "rft.publisher"
+      }, 
+      "value": "",
+      "type": "text",
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1441,16 +1558,12 @@
       "openurl": true,
       "openurlnames": {
         "standard": "stitle",
-        "primo": "stitle",
+        "primo": "abbrev",
         "info:sid/libris.kb.se:libris": "rft.stitle"
       }, 
       "value": "",
       "type": "text",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "",
-        "values": []
-      }],
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1474,11 +1587,7 @@
       }, 
       "value": "",
       "type": "text",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "",
-        "values": []
-      }],
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1502,11 +1611,7 @@
       },
       "value": "",
       "type": "text",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "",
-        "values": []
-      }],
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1530,11 +1635,7 @@
       },
       "value": "",
       "type": "text",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "",
-        "values": []
-      }],
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1553,16 +1654,12 @@
       "openurl": true,
       "openurlnames": {
         "standard": "place",
-        "primo": "place",
+        "primo": "publiPlace",
         "info:sid/libris.kb.se:libris": "rft.place"
       },
       "value": "",
       "type": "text",
-      "enabled": false,        
-      "showcriteria": [{
-        "field": "",
-        "values": []
-      }],
+      "enabled": false,
       "validation": {
         "required": {
           "value": false,
@@ -1609,6 +1706,7 @@
       "value": "",
       "type": "textarea",
       "enabled": false,
+      "openurlenabled": true,
       "showcriteria": [{
         "field": "genre",
         "values": ["book","article","bookitem","journal"]

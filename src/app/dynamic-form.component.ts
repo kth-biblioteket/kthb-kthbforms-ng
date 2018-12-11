@@ -64,7 +64,6 @@ export class DynamicFormComponent implements OnInit {
     this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
-    //this.openurlparameters = this.formdata.openurlparameters;
     this.posturl = this.formdata.posturl;
     this.loaderurl = this.formdata.loaderurl;
     this.status = this.formdata.status;
@@ -75,43 +74,36 @@ export class DynamicFormComponent implements OnInit {
         .map(prop => {
           return Object.assign({}, { key: prop} , this.formdata.formfields[prop]);
         });
-        
     const formGroup = {};
     for(let prop of Object.keys(this.formdata.formfields)) {
       formGroup[prop] = new FormControl(this.formdata.formfields[prop].value || '', this.mapValidators(this.formdata.formfields[prop].validation));
     }
-
     this.form = new FormGroup(formGroup);
     this.init = true;
-    
-    //Hämta eventuella url-parametrar(exempelvis om någon klickat på länk i Primo, Libris, Lean Library...)
-    //Kolla vilka sourceparametrar som finns angivna i "openurlsourceparameters", om någon av dessa finns i url så får det anses vara en openurlrequest
+    //Kolla vilka sourceparametrar som finns angivna i "openurlsourceparameters" 
+    //om någon av dessa finns i url så får det anses vara en openurlrequest
     if(this.formdata.openurlsourceparameters) {
       for(let source of this.formdata.openurlsourceparameters) {
         if(this.getParam(source)!= ""){
           this.isopenurl = true;
           this.openurlsource = this.getParam(source);
           //sätt värde på source till form-fält
-          this.form.get('source').setValue(this.openurlsource);
+          //this.form.get('source').setValue(this.openurlsource);
           break;
         }
       }
     }
 
     if(this.isopenurl){
-      //Hantera de som kommer via openurl genom en textruta ovan formuläret där infon fylls i
-      //Gör parametrar till payload som kan skickas till backend som body
+      //Gör parametrar till payload
       this.openurljson = this.openurlparametersToJSON();
-      //Sätt värdet på genre till värdet från akutell genre-urlparameter  
-      //Sätt genre-fält till hidden (men enabled) så att de beroende fälten visas.
+      //om openurlparameter matchar fält i formulär sätt fältets värde = värdet i parameter
       for(let prop of this.objectFormfields) {
-        //om openurlparameter matchar fält i formulär sätt fältets värde = värdet i parameter
         if(this.openurljson[prop.key]) {
           this.form.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
         }
       }
-    } else {
-    };
+    }
   }
 
   ngOnInit() {
@@ -135,45 +127,19 @@ export class DynamicFormComponent implements OnInit {
   openurlparametersToJSON() {	    		
     var pairs = location.search.slice(1).split('&');
     var result = {};
-    //var openurlparameters = this.openurlparameters;
-    var form=this.form;
     var openurlsource = this.openurlsource;
     var formfields = this.objectFormfields;
-    var formfields1 = this.formdata.formfields;
     pairs.forEach(function(pair:any) {
-      
       pair = pair.split('=');
-      /*
-      console.log(pair[0]);
-      if(typeof formfields1[pair[0]] !== "undefined") {
-        console.log(formfields1[pair[0]]);
-      }
-      */
+      //Översätt openurlparametrar som eventuellt har andra namn än standard
       for(let field of formfields) {
-        //ta bort validering för alla openurlfält
-        if (field.openurl) {
-          console.log(field.key);
-          form.get(field.key).clearValidators();
-          //this.form.get(field.key).updateValueAndValidity()
-        }
         if(typeof field.openurlnames !== "undefined") {
           if(field.openurlnames[openurlsource]==[pair[0]]){
-            //console.log(field.openurlnames['standard']);
             pair[0] = field.openurlnames['standard'];
             break;
           }
         }
       }
-      
-      //matcha mot openurlparameters och döp om till "standard"
-      //om endast "standard" tillåts behövs inte detta
-      /*
-      for(let parameter of openurlparameters) {
-        if(pair[0] == parameter.name[openurlsource]) {
-          pair[0] = parameter.name.standard
-        };
-      }
-      */
       result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
     });
     
@@ -236,7 +202,7 @@ export class DynamicFormComponent implements OnInit {
    * Hantera klick på formulärfält och aktivera/inaktivera beroende på inläst JSON
    */
   onchangeformobject(domobj, object){
-    //kolla igenom alla fält(som hämtats via JSON) och sätt enable = true/false beroende på aktuella värden
+    //kolla igenom alla fält och sätt enable = true/false beroende på aktuella värden
     var validfield;
     var show;
     var optionvalidchoice;
@@ -257,7 +223,6 @@ export class DynamicFormComponent implements OnInit {
               validfield = false;
             }
           }
-
           if (validfield){
             show = true;
             //om ett radio-fält, kolla också kriterier för varje option
@@ -309,12 +274,19 @@ export class DynamicFormComponent implements OnInit {
           // döljer fältet
           prop.enabled = false;
         }
-        //hantera om formuläret är openurl(visa inte de fält som kommer via openurl)
+        //hantera om formuläret är openurl
+          //visa inte de fält som kommer via openurl
+          
         if(this.isopenurl && !prop.openurlenabled) {
           //gör fältet inaktivt
           //this.form.get(prop.key).disable();
           //gör fältet dolt
           prop.enabled = false;
+        }
+        //Se till att de som är openurl är aktiva och inte behöver valideras
+        if(this.isopenurl && prop.openurl) {
+          this.form.get(prop.key).enable();
+          this.form.get(prop.key).clearValidators();
         }
       }
     }
@@ -329,28 +301,31 @@ export class DynamicFormComponent implements OnInit {
   postformvalues(form) {
     this.backend.postForm(this.posturl + "?language=" + this.language, form).subscribe(
       (result) => {
+        //Allt är OK
         if(result.status == 201 || result.status == 200) {
           this.backendresponse = true;
           this.backendresult = true;
           this.loading = false;
+          this.submitted = false;
           window.scroll(0,0);
-          //Rensa formulär eller inte?
-          
-          //this.form.reset();
+          this.form.reset();
+          this.getFormData();
         }
-        //delvis ok, exvis användare skapad men mail misslyckades
+        //Delvis OK (exvis användare skapad men mail misslyckades)
         if(result.status == 202) {
           this.backendresponse = true;
           this.backendresult = true;
           this.warning = true;
           this.backendresulterror = result.body.message;
           this.loading = false;
+          this.submitted = false;
           window.scroll(0,0);
-          //Rensa formulär eller inte?
-          
-          //this.form.reset();
+          this.form.reset();
+          this.getFormData();
         }
-      }, (err) => {
+      },
+      //FEL, api har gett ett felmeddelande(diverse orsaker) 
+      (err) => {
         this.backendresponse = true;
         this.backendresult = false;
         this.backendresulterror = err.error.message;
@@ -373,7 +348,7 @@ export class DynamicFormComponent implements OnInit {
    * 
    * @param form 
    * 
-   * Hantera beställningen
+   * Skicka formulärdata till backend
    * 
    * Skicka via http post
    */
@@ -391,6 +366,7 @@ export class DynamicFormComponent implements OnInit {
     if(this.form.valid) {
       this.loading = true;
       this.showtoperrormessage = false;
+      /*
       // skapa ett sammanslaget objekt av form och openurljson
       var newjson = {
         "form" : {},
@@ -398,7 +374,12 @@ export class DynamicFormComponent implements OnInit {
       };
       newjson.form=form;
       newjson.openurl = this.openurljson;
-      this.postformvalues(newjson);
+      */
+      var postform = {
+        "form" : {}
+      };
+      postform.form = form;
+      this.postformvalues(postform);
     }
   }
 }
