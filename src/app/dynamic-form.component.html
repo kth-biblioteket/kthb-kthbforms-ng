@@ -203,8 +203,8 @@
                 </div>
               </div
               >
-              <!-- Om placement=after, border om det är en informationsbox-->
-              <div [ngClass]="{'alert alert-info': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationbox' ? {'border': '1px solid', 'position': 'relative'} : {}">
+              <!-- Om placement=after -->
+              <div [ngClass]="{'alert alert-info': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationbox' ? {'position': 'relative'} : {}">
                   <!-- Eventuell extra information/beskrivning-->
                   <div *ngIf="prop.description && prop.description.placement=='after'">
                       {{language=='swedish' ? prop.description.swedish : prop.description.english}}
