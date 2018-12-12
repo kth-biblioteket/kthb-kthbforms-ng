@@ -38,7 +38,13 @@
       "english": "Please contact the library..."
     }
   },
-  "contactemail": "tholind@kth.se",
+  "contactemail": {
+    "emailaddress": "tholind@kth.se",
+    "name": {
+      "swedish": "EDGE",
+      "english": "EDGE"
+    }
+  },
   "emailbody": {
     "swedish": [
       "<div><p>Fråga till: KTH Biblioteket</p></div>",

@@ -12,38 +12,32 @@ import { Title } from '@angular/platform-browser';
   styleUrls: [ './dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  // inputvariabler som skickas med från App
-  @Input() language; //språk
-  @Input() formid; //formid 
+  @Input() language;
+  @Input() formid;
 
-  // Prod/dev?
   isprod = environment.production;
-  // datepicker
-  dpmodel;
 
-  // laddar-ikkonen
   loading = false;
   loaderurl;
-  
-  form: FormGroup;
-  formdata:any;
+
   isopenurl = false;
   openurlsource;
   openurljson:any;
   objectOpenurl;
   objectFormfields;
-  //openurlparameters;
-  //Variabel för att hålla reda på om formuläret initierats och är redo att visas i template
-  init = false;
-  openurlboxlabel;
+  openurlboxlabel;  
+
+  kthbform: FormGroup;
+  formdata: any;
+  formisinit = false;
+  formstatus;
+  formdescription;
+  formsubmitted = false;
   optionalfieldtext;
-  status;
-  description;
-  submitted = false;
-  isValidFormSubmitted = null;
-  showtoperrormessage = false;
+  
   posturl;
   warning = false;
+  showtoperrormessage = false;
   backendresponse = false;
   backendresult = false;
   backendresulterror;
@@ -60,47 +54,50 @@ export class DynamicFormComponent implements OnInit {
    * Hämta rätt formulärdata från JSON beroende på angivet formid i app-root attribute
    */
   async getFormData() {
+    const formGroup = {};
+
     this.formdata = await this.http.get(environment.formdataurl + this.formid + ".json" + '?time=' + Date.now()).toPromise();
+
     this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
     this.posturl = this.formdata.posturl;
     this.loaderurl = this.formdata.loaderurl;
-    this.status = this.formdata.status;
-    this.description = this.formdata.description;
-    //skapa ett object som t ex formulärtemplate kan iterera.
+    this.formstatus = this.formdata.status;
+    this.formdescription = this.formdata.description;
+
+    //Skapa ett object som t ex formulärtemplate kan iterera.
     this.objectFormfields = 
       Object.keys(this.formdata.formfields)
         .map(prop => {
           return Object.assign({}, { key: prop} , this.formdata.formfields[prop]);
         });
-    const formGroup = {};
+
+    //Validering
     for(let prop of Object.keys(this.formdata.formfields)) {
       formGroup[prop] = new FormControl(this.formdata.formfields[prop].value || '', this.mapValidators(this.formdata.formfields[prop].validation));
     }
-    this.form = new FormGroup(formGroup);
-    this.init = true;
-    //Kolla vilka sourceparametrar som finns angivna i "openurlsourceparameters" 
-    //om någon av dessa finns i url så får det anses vara en openurlrequest
+
+    this.kthbform = new FormGroup(formGroup);
+    this.formisinit = true;
+
+    //Källa
     if(this.formdata.openurlsourceparameters) {
       for(let source of this.formdata.openurlsourceparameters) {
         if(this.getParam(source)!= ""){
           this.isopenurl = true;
           this.openurlsource = this.getParam(source);
-          //sätt värde på source till form-fält
-          //this.form.get('source').setValue(this.openurlsource);
           break;
         }
       }
     }
 
+    //OpenURL, matcha fält i formulär mot openurlparametrar
     if(this.isopenurl){
-      //Gör parametrar till payload
       this.openurljson = this.openurlparametersToJSON();
-      //om openurlparameter matchar fält i formulär sätt fältets värde = värdet i parameter
       for(let prop of this.objectFormfields) {
         if(this.openurljson[prop.key]) {
-          this.form.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
+          this.kthbform.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
         }
       }
     }
@@ -114,16 +111,20 @@ export class DynamicFormComponent implements OnInit {
    * 
    * @param name 
    * 
-   * hämta eventuella urlparametrar
+   * Funktion för att hämta eventuella urlparametrar
    */
   getParam(name){
     const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if(!results){
       return "";
     }
-    return results[1] || "";
+    return decodeURIComponent(results[1]) || "";
   }
 
+  /**
+   * 
+   * Funktion för att skapa JSON av operurlparametrar
+   */
   openurlparametersToJSON() {	    		
     var pairs = location.search.slice(1).split('&');
     var result = {};
@@ -188,9 +189,19 @@ export class DynamicFormComponent implements OnInit {
    * annars valideras den som giltig.
    */
   checkboxchange(object) {
-    if (!this.form.get(object).value){
-      this.form.get(object).setValue("");
+    if (!this.kthbform.get(object).value){
+      this.kthbform.get(object).setValue("");
     }
+  }
+
+  /**
+   * 
+   * @param url 
+   * 
+   * Funktion för att skicka vidare till extern URL
+   */
+  changelocation (url) {
+    window.location.href = url;
   }
 
   /**
@@ -200,23 +211,52 @@ export class DynamicFormComponent implements OnInit {
    * @param object 
    * 
    * Hantera klick på formulärfält och aktivera/inaktivera beroende på inläst JSON
+   * 
+   * Fälten har "showcritera" som talar om ifall de ska visas eller inte beroende
+   * på värden i andra fält
+   * 
+   *  "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["student"]
+        },
+        {
+          "field": "genre",
+          "values": ["article"]
+        }
+      ],
+   * 
+   * Är det ett fält med options(exvis "radio") så kontrollera även
+   * varje option
+   * 
+   * "showcriteria": [{
+            "field": "iam",
+            "values": ["student","employee"]
+          }]
    */
-  onchangeformobject(domobj, object){
-    //kolla igenom alla fält och sätt enable = true/false beroende på aktuella värden
+  onchangeformobject(domobj, object, event){
     var validfield;
     var show;
     var optionvalidchoice;
     var enableoption;
+    //Om aktuellt objekts värde har en "link" så redirecta/popuppa dit
+    for(let option of this.formdata.formfields[object].options) {
+      if (this.kthbform.get(object).value == option.value) {
+        if (typeof option.link != "undefined") {
+          console.log( option.link);
+          window.location.href = option.link;
+          return;
+        }
+      }
+    }
+    //this.objectFormfields
     for(let prop of this.objectFormfields) {
       show = false;
-      //om fältet har kriterier för att visas
       if (prop.showcriteria) {
-        //hämta kriterier
         for(let index1 of Object.keys(prop.showcriteria)){
-          //för varje, kolla om kriterie är uppfyllt
           validfield = false;
           for(let index2 of Object.keys(prop.showcriteria[index1].values)){
-            if (this.form.get(prop.showcriteria[index1].field).value == prop.showcriteria[index1].values[index2] || prop.showcriteria[index1].values[index2] == "any") {
+            if (this.kthbform.get(prop.showcriteria[index1].field).value == prop.showcriteria[index1].values[index2] || prop.showcriteria[index1].values[index2] == "any") {
               validfield = true;
               break;
             } else {
@@ -225,9 +265,7 @@ export class DynamicFormComponent implements OnInit {
           }
           if (validfield){
             show = true;
-            //om ett radio-fält, kolla också kriterier för varje option
             if(prop.type=="radio") {
-              //om options finns
               if(prop.options) {
                 for (let index3 of Object.keys(prop.options) ){
                   optionvalidchoice = false                  
@@ -235,7 +273,7 @@ export class DynamicFormComponent implements OnInit {
                     for(let index4 of Object.keys(prop.options[index3].showcriteria)){
                       enableoption = false;
                       for(let index5 of Object.keys(prop.options[index3].showcriteria[index4].values)){
-                        if (this.form.get(prop.options[index3].showcriteria[index4].field).value == prop.options[index3].showcriteria[index4].values[index5] || prop.options[index3].showcriteria[index4].values[index5] == "any") {
+                        if (this.kthbform.get(prop.options[index3].showcriteria[index4].field).value == prop.options[index3].showcriteria[index4].values[index5] || prop.options[index3].showcriteria[index4].values[index5] == "any") {
                           optionvalidchoice = true;
                           break;                       
                         } else {
@@ -263,30 +301,32 @@ export class DynamicFormComponent implements OnInit {
             break;
           }
         }
+
+        /**
+         *
+         * Aktivera/Inaktivera och/eller visa/dölj fälten 
+         * 
+         * Visa inte de fält som kommer via openurl
+         * 
+         * Se till att de som är openurl är aktiva och 
+         * att de inte behöver valideras
+         */
         if (show) {
-          //gör fältet aktivt
-          this.form.get(prop.key).enable();
-          //visar fältet
+          this.kthbform.get(prop.key).enable();
           prop.enabled = true;
         } else {
-          // gör fältet inaktivt
-          this.form.get(prop.key).disable();
-          // döljer fältet
+          this.kthbform.get(prop.key).disable();
           prop.enabled = false;
         }
-        //hantera om formuläret är openurl
-          //visa inte de fält som kommer via openurl
-          
+
         if(this.isopenurl && !prop.openurlenabled) {
-          //gör fältet inaktivt
-          //this.form.get(prop.key).disable();
-          //gör fältet dolt
+          //this.kthbform.get(prop.key).disable();
           prop.enabled = false;
         }
-        //Se till att de som är openurl är aktiva och inte behöver valideras
+        
         if(this.isopenurl && prop.openurl) {
-          this.form.get(prop.key).enable();
-          this.form.get(prop.key).clearValidators();
+          this.kthbform.get(prop.key).enable();
+          this.kthbform.get(prop.key).clearValidators();
         }
       }
     }
@@ -294,21 +334,21 @@ export class DynamicFormComponent implements OnInit {
 
   /**
    * 
-   * @param form 
+   * @param kthbform 
    * 
    * Posta till backend
    */
-  postformvalues(form) {
-    this.backend.postForm(this.posturl + "?language=" + this.language, form).subscribe(
+  postformvalues(kthbform) {
+    this.backend.postForm(this.posturl + "?language=" + this.language, kthbform).subscribe(
       (result) => {
         //Allt är OK
         if(result.status == 201 || result.status == 200) {
           this.backendresponse = true;
           this.backendresult = true;
           this.loading = false;
-          this.submitted = false;
+          this.formsubmitted = false;
           window.scroll(0,0);
-          this.form.reset();
+          this.kthbform.reset();
           this.getFormData();
         }
         //Delvis OK (exvis användare skapad men mail misslyckades)
@@ -318,9 +358,9 @@ export class DynamicFormComponent implements OnInit {
           this.warning = true;
           this.backendresulterror = result.body.message;
           this.loading = false;
-          this.submitted = false;
+          this.formsubmitted = false;
           window.scroll(0,0);
-          this.form.reset();
+          this.kthbform.reset();
           this.getFormData();
         }
       },
@@ -346,39 +386,28 @@ export class DynamicFormComponent implements OnInit {
 
   /**
    * 
-   * @param form 
+   * @param kthbform 
    * 
    * Skicka formulärdata till backend
    * 
    * Skicka via http post
    */
-  onSubmit(form) {
+  onSubmit(kthbform) {
     this.backendresponse = false;
     this.warning = false;
-    this.submitted = true;
-    this.isValidFormSubmitted = false;
-    if (this.form.invalid) {
+    this.formsubmitted = true;
+    if (this.kthbform.invalid) {
       this.showtoperrormessage = true;
       window.scroll(0,0);
       return;
     }
-    this.isValidFormSubmitted = true;
-    if(this.form.valid) {
+    if(this.kthbform.valid) {
       this.loading = true;
       this.showtoperrormessage = false;
-      /*
-      // skapa ett sammanslaget objekt av form och openurljson
-      var newjson = {
-        "form" : {},
-        "openurl": {}
-      };
-      newjson.form=form;
-      newjson.openurl = this.openurljson;
-      */
       var postform = {
         "form" : {}
       };
-      postform.form = form;
+      postform.form = kthbform;
       this.postformvalues(postform);
     }
   }

@@ -38,6 +38,13 @@
       "english": "Please contact the library..."
     }
   },
+  "emailfrom": {
+    "emailaddress": "ask-kthb@kth.se",
+    "name": {
+      "swedish": "KTH Biblioteket",
+      "english": "KTH Library"
+    }
+  },
   "emailsubject": {
     "swedish": "Lyckad registering av bibliotekskonto",
     "english": "Sucessfull library account registration"
@@ -94,7 +101,8 @@
             "english": "Student or staff at KTH"
           }, 
           "value": "student",
-          "enabled": true
+          "enabled": true,
+          "link": "https://apps.lib.kth.se/aktiverapatron/aktiverapatron.php?formlanguage=@@lang"
         },
         { 
           "label": {

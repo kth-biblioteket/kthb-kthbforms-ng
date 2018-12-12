@@ -38,7 +38,20 @@
       "english": "Please contact the library..."
     }
   },
-  "requestemailedge": "tholind@kth.se",
+  "requestemailedge": {
+    "emailaddress": "tholind@kth.se",
+    "name": {
+      "swedish": "Edge",
+      "english": "Edge"
+    }
+  },
+  "emailfrom": {
+    "emailaddress": "noreply@kth.se",
+    "name": {
+      "swedish": "KTH Biblioteket",
+      "english": "KTH Library"
+    }
+  },
   "emailsubjectuser": {
     "swedish": "Beställning",
     "english": "Request"
@@ -496,7 +509,15 @@
       "swedish": "Bok",
       "english": "Book"
     },
+    "BK": {
+      "swedish": "Bok",
+      "english": "Book"
+    },
     "article": {
+      "swedish": "Artikel",
+      "english": "Article"
+    },
+    "CR": {
       "swedish": "Artikel",
       "english": "Article"
     },
@@ -532,7 +553,12 @@
   "formfields": {
     "source": {
       "value": "kthbforms",
-      "enabled": false
+      "enabled": false,
+      "openurlnames": {
+        "standard": "source",
+        "primo": "source",
+        "info:sid/libris.kb.se:libris": "rfr_id"
+      }
     },
     "iam": {
       "label": {
@@ -715,7 +741,6 @@
       "enabled": false,
       "openurlenabled": false,
       "hidden": false,
-      
       "showcriteria": [{
         "field": "iam",
         "values": ["any"]
@@ -1197,7 +1222,6 @@
       "isgrouped": true,
       "group":"genredetails",
       "enabled": false,
-      
       "showcriteria": [{
         "field": "genre",
         "values": ["article", "bookitem"]
@@ -1272,6 +1296,54 @@
         } 
       }
     },
+    "aufirst": {
+      "label": {
+        "swedish": "Författare förnamn",
+        "english": "Author first name"
+      },
+      "openurl": true,
+      "openurlnames": {
+        "standard": "aufirst",
+        "primo": "aufirst",
+        "info:sid/libris.kb.se:libris": "rft.aufirst"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "aulast": {
+      "label": {
+        "swedish": "Författare efternamn",
+        "english": "Author last name"
+      },
+      "openurl": true,
+      "openurlnames": {
+        "standard": "aulast",
+        "primo": "aulast",
+        "info:sid/libris.kb.se:libris": "rft.aulast"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
     "year": {
       "label": {
         "swedish": "År",
@@ -1292,6 +1364,30 @@
         "field": "genre",
         "values": ["book","article","bookitem"]
       }],
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+    "date": {
+      "label": {
+        "swedish": "Datum",
+        "english": "Date"
+      },
+      "openurl": true,
+      "openurlnames": {
+        "standard": "date",
+        "primo": "date",
+        "info:sid/libris.kb.se:libris": "rft.date"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,        
       "validation": {
         "required": {
           "value": false,
@@ -1472,6 +1568,24 @@
         "field": "genre",
         "values": ["book","article","bookitem"]
       }],
+      "validation": {
+        "required": false
+      }
+    },
+    "tpages": {
+      "label": {
+        "swedish": "Totalt antal sidor",
+        "english": "Total number of pages"
+      },
+      "openurl": true,
+      "openurlnames": {
+        "standard": "tpages",
+        "primo": "tpages",
+        "info:sid/libris.kb.se:libris": "rft.tpages"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
       "validation": {
         "required": false
       }
@@ -1729,6 +1843,7 @@
       "value": "",
       "type": "radio",
       "enabled": false,
+      "openurlenabled": true,
       "showcriteria": [{
         "field": "genre",
         "values": ["book"]

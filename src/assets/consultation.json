@@ -38,7 +38,17 @@
       "english": "Please contact the library..."
     }
   },
-  "consultationemail": "tholind@kth.se",
+  "consultationemail": {
+    "emailaddress": "tholind@kth.se",
+    "name": {
+      "swedish": "",
+      "english": ""
+    }
+  },
+  "emailsubject": {
+    "swedish": "Handledning i informationshantering",
+    "english": "Consultation in information..."
+  },
   "emailbody": {
     "swedish": [
       "<div><h3>Kontaktuppgifter</h3></div>",

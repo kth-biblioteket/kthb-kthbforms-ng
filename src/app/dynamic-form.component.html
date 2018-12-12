@@ -52,7 +52,7 @@
 </div>
 <!-- Eventuellt meddelande om att fält är ogilitga/inte ifyllda -->
 <div class="">
-  <div *ngIf="showtoperrormessage && form.invalid" class="alert alert-danger">
+  <div *ngIf="showtoperrormessage && kthbform.invalid" class="alert alert-danger">
     <div class="">
       <h4>
         {{language=='swedish' ? formdata.invalidforminfo.header.swedish : formdata.invalidforminfo.header.english}}
@@ -64,14 +64,14 @@
   </div>
 </div>
 <!-- Om formuläret initierats -->
-<div *ngIf="init">
+<div *ngIf="formisinit">
     <!-- Informationstext/Beskrivning -->
-    <div *ngIf="status=='closed'" style="margin-bottom:15px">
-      {{language=='swedish' ? description.closed.swedish : description.closed.english}}
+    <div *ngIf="formstatus=='closed'" style="margin-bottom:15px">
+      {{language=='swedish' ? formdescription.closed.swedish : formdescription.closed.english}}
     </div>
-    <div *ngIf="status=='open'">
-      <div *ngIf="description.open.swedish!='' && description.open.english!=''" style="margin-bottom:15px">
-        {{language=='swedish' ? description.open.swedish : description.open.english}}
+    <div *ngIf="formstatus=='open'">
+      <div *ngIf="formdescription.open.swedish!='' && formdescription.open.english!=''" style="margin-bottom:15px">
+        {{language=='swedish' ? formdescription.open.swedish : formdescription.open.english}}
       </div>
       <!-- Formuläret -->
       <div id="form_body">
@@ -106,7 +106,7 @@
             </div>
           </div>
         </div>
-        <form novalidate (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+        <form novalidate (ngSubmit)="onSubmit(kthbform.value)" [formGroup]="kthbform">
           <div style="margin-bottom:15px" *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
@@ -118,12 +118,12 @@
                 </span>
               </label>
               <!-- Felmeddelanden vid ogiltigt/inte ifyllt -->
-              <!--div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)"-->
-              <div class="error" *ngIf="submitted && form.get(prop.key).invalid">
-                <div *ngIf="form.get(prop.key).errors.required">
+              <!--div class="error" *ngIf="kthbform.get(prop.key).invalid && (kthbform.get(prop.key).dirty || kthbform.get(prop.key).touched)"-->
+              <div class="error" *ngIf="formsubmitted && kthbform.get(prop.key).invalid">
+                <div *ngIf="kthbform.get(prop.key).errors.required">
                   {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
                 </div>
-                <div *ngIf="form.get(prop.key).errors.pattern">
+                <div *ngIf="kthbform.get(prop.key).errors.pattern">
                   {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.pattern.errormessage.swedish : prop.validation.pattern.errormessage.english }}
                 </div>
               </div>
@@ -179,11 +179,16 @@
                 <div *ngSwitchCase="'radio'">
                   <div *ngFor="let option of prop.options">
                     <label style="margin-top:0px;font-weight: normal;" *ngIf="option.enabled">
-                      <input (change)="onchangeformobject(this,prop.key)"
-                        type="radio"
-                        [name]="prop.key"
-                        [formControlName]="prop.key"
-                        [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
+                      <div *ngIf="option.link">
+                        <input type="radio" value="option.value" (change)="changelocation(option.link)"> {{language=='swedish' ? option.label.swedish : option.label.english}}
+                      </div>
+                      <div *ngIf="!option.link">
+                        <input (change)="onchangeformobject(this,prop.key,$event)"
+                          type="radio"
+                          [name]="prop.key"
+                          [formControlName]="prop.key"
+                          [value]="option.value"> {{language=='swedish' ? option.label.swedish : option.label.english}}
+                      </div>
                     </label>
                   </div>
                 </div>
@@ -199,7 +204,7 @@
               </div
               >
               <!-- Om placement=after, border om det är en informationsbox-->
-              <div [ngClass]="{'alert alert-info': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationbox' ? {'border': '1px solid', 'padding': '5px', 'position': 'relative'} : {}">
+              <div [ngClass]="{'alert alert-info': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationbox' ? {'border': '1px solid', 'position': 'relative'} : {}">
                   <!-- Eventuell extra information/beskrivning-->
                   <div *ngIf="prop.description && prop.description.placement=='after'">
                       {{language=='swedish' ? prop.description.swedish : prop.description.english}}
@@ -227,8 +232,8 @@
       <div style="clear:both">
       <br/>
       <strong>Formulärvärden</strong>
-      <pre>{{ form.value | json }}</pre>
+      <pre>{{ kthbform.value | json }}</pre>
       <pre>{{ openurljson | json }}</pre>
-      <strong>Formulär är giltigt:</strong> {{form.valid}}
+      <strong>Formulär är giltigt:</strong> {{kthbform.valid}}
       </div>
     </div>
