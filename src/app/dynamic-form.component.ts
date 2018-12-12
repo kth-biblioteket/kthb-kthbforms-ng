@@ -239,17 +239,6 @@ export class DynamicFormComponent implements OnInit {
     var show;
     var optionvalidchoice;
     var enableoption;
-    //Om aktuellt objekts värde har en "link" så redirecta/popuppa dit
-    for(let option of this.formdata.formfields[object].options) {
-      if (this.kthbform.get(object).value == option.value) {
-        if (typeof option.link != "undefined") {
-          console.log( option.link);
-          window.location.href = option.link;
-          return;
-        }
-      }
-    }
-    //this.objectFormfields
     for(let prop of this.objectFormfields) {
       show = false;
       if (prop.showcriteria) {
