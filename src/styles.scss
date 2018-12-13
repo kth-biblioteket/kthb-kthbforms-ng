@@ -41,7 +41,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 */
 
-/**/
+/* Höjd på messageruta*/
 textarea.form-control {
   height: 150px;
 }
@@ -96,9 +96,15 @@ button.calendar, button.calendar:active {
 }
 
 /* Kalender, placering under knappen */
+/* depracated datepicker */
 ngb-datepicker {
   left: auto !important;
   right: 0px;
+}
+
+/* Datumfält ingen färgändring vid "invalid" */
+.mydp .invaliddate {
+  background-color: #ffffff !important;
 }
 
 /* laddnings-ikkonen */

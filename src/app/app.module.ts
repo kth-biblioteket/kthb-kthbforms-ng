@@ -13,7 +13,7 @@ import { AppConfigService } from './app-config.service';
 
 import { DynamicFormComponent } from './dynamic-form.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
 
 
 const appInitializerFn = (appConfig: AppConfigService) => {
@@ -33,7 +33,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    MyDatePickerModule 
   ],
   providers: [
     AppConfigService,

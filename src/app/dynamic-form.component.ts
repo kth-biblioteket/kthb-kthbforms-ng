@@ -5,6 +5,8 @@ import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 
+import {IMyDpOptions} from 'mydatepicker';
+
 //TODO Flytta style från inline i template till css
 @Component({
   selector: 'dynamic-form',
@@ -106,6 +108,17 @@ export class DynamicFormComponent implements OnInit {
   ngOnInit() {
     this.getFormData();
   }
+
+  /**
+   * 
+   * Funktion som konfigurerar datepicker
+   * 
+   * locale="sv" sätts på directive i html-component
+   */
+  public myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    alignSelectorRight: true
+  };
 
   /**
    * 
