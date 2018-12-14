@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private settings: AppConfigService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
   ) {
   }
 

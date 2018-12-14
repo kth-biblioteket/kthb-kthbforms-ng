@@ -17,6 +17,8 @@ export class DynamicFormComponent implements OnInit {
   @Input() language;
   @Input() formid;
 
+  currenturl = window.location.href;
+
   isprod = environment.production;
 
   loading = false;
@@ -214,6 +216,7 @@ export class DynamicFormComponent implements OnInit {
    * Funktion för att skicka vidare till extern URL
    */
   changelocation (url) {
+    console.log(url);
     window.location.href = url;
   }
 

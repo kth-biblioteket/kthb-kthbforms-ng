@@ -15,6 +15,8 @@ import { DynamicFormComponent } from './dynamic-form.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
 
+import { ActivateaccountComponent } from './activateaccount/activateaccount.component';
+
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -25,7 +27,8 @@ const appInitializerFn = (appConfig: AppConfigService) => {
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    ActivateaccountComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MyDatePickerModule 
+    MyDatePickerModule,
   ],
   providers: [
     AppConfigService,

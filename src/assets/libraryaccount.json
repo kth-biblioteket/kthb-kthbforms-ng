@@ -102,7 +102,7 @@
           }, 
           "value": "student",
           "enabled": true,
-          "link": "https://apps.lib.kth.se/aktiverapatron/aktiverapatron.php?formlanguage=@@lang"
+          "link": "https://apps.lib.kth.se/aktiverapatron/aktiverapatron_new.php"
         },
         { 
           "label": {
