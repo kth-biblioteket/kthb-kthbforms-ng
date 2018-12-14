@@ -38,14 +38,14 @@
       "english": "Please contact the library..."
     }
   },
-  "contactemail": {
+  "emailtoaddressedge": {
     "emailaddress": "tholind@kth.se",
     "name": {
       "swedish": "EDGE",
       "english": "EDGE"
     }
   },
-  "emailbody": {
+  "emailtobodyedge": {
     "swedish": [
       "<div><p>Fråga till: KTH Biblioteket</p></div>",
       "<div><p>Från: @@name, @@email</p></div>",

@@ -38,18 +38,18 @@
       "english": "Please contact the library..."
     }
   },
-  "consultationemail": {
+  "emailtoaddressedge": {
     "emailaddress": "tholind@kth.se",
     "name": {
       "swedish": "",
       "english": ""
     }
   },
-  "emailsubject": {
+  "emailtosubjectedge": {
     "swedish": "Handledning i informationshantering",
     "english": "Consultation in information..."
   },
-  "emailbody": {
+  "emailtobodyedge": {
     "swedish": [
       "<div><h3>Kontaktuppgifter</h3></div>",
       "<div>Namn: @@name</div>",
@@ -340,13 +340,33 @@
         } 
       }
     },
-	  "suggesteddate1": {
+    "suggesteddates": {
       "label": {
         "swedish": "Föreslå tre möjliga datum för handledningen",
         "english": "Suggest three possible dates for the consultation"
       },
+      "value": "dates",
+      "type": "grouplabel",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
+	  "suggesteddate1": {
+      "label": {
+        "swedish": "Datum 1",
+        "english": "Date 1"
+      },
       "value": "",
       "type": "datebox",
+      "isgrouped": true,
+      "group":"suggesteddates",
       "enabled": true,
       "validation": {
         "required": {
@@ -360,11 +380,13 @@
     },
 	  "suggesteddate2": {
       "label": {
-        "swedish": "",
-        "english": ""
+        "swedish": "Datum 2",
+        "english": "Date 2"
       },
       "value": "",
       "type": "datebox",
+      "isgrouped": true,
+      "group":"suggesteddates",
       "enabled": true,
       "validation": {
         "required": {
@@ -378,11 +400,13 @@
     },
 	  "suggesteddate3": {
       "label": {
-        "swedish": "",
-        "english": ""
+        "swedish": "Datum 3",
+        "english": "Date 3"
       },
       "value": "",
       "type": "datebox",
+      "isgrouped": true,
+      "group":"suggesteddates",
       "enabled": true,
       "validation": {
         "required": {

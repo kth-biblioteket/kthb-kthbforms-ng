@@ -38,129 +38,18 @@
       "english": "Please contact the library..."
     }
   },
-  "requestemailedge": {
+  "emailtoaddressedge": {
     "emailaddress": "tholind@kth.se",
     "name": {
       "swedish": "Edge",
       "english": "Edge"
     }
   },
-  "emailfrom": {
-    "emailaddress": "noreply@kth.se",
-    "name": {
-      "swedish": "KTH Biblioteket",
-      "english": "KTH Library"
-    }
-  },
-  "emailsubjectuser": {
-    "swedish": "Beställning",
-    "english": "Request"
-  },
-  "emailbodyuser": {
-    "swedish": [
-      "<div><p>Hej,</p></div>",
-      "<div><p>Tack för din beställning av följande material:</p></div>",
-      "<div>@@title</div> ",
-      "<div>@@jtitle</div> ",
-      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
-      "<div><p>Vänligen</p></div>",
-      "<div>KTH Biblioteket</div>",
-      "<div>Bibliotekspersonalen</div>",
-      "<div>Telefon: 08 - 790 70 88</div>",
-      "<div>Webb: www.kth.se/kthb</div>",
-      "<br>",
-      "<div><strong>Dokumenttyp</strong></div>",
-      "<div>@@genre</div>",
-      "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare: @@au</div>",
-      "<div>Upplaga: @@edition</div>",
-      "<div>Nummer: @@issue</div>", 
-      "<div>Sidor: @@pages</div>",
-      "<div>ISSN: @@issn</div>",
-      "<div>ISBN: @@isbn</div>",
-      "<div>Plats: @@place</div>",
-      "<div>Förlag: @@publisher</div>",
-      "<div>År: @@year</div>",
-      "<div>Volym: @@volume</div>",
-      "<div>Kapitel: @@chaptertitle</div>",
-      "<div>DOI: @@doi</div>",
-      "<br>",
-      "<div><strong>Källa för beställningen</strong></div>",
-      "<div>@@source</div>",
-      "<br>",
-      "<div><strong>Önskar hämta på</strong></div>",
-      "<div>@@pickup</div>",
-      "<br>",
-      "<div><strong>Kategori/Category</strong></div>",
-      "<div>@@iam</div>",
-      "<br>",
-      "<div><strong>Användarid/Userid</strong></div>",
-      "<div>@@username</div>",
-      "<br>",
-      "<div><strong>E-postadress</strong></div>",
-      "<div>@@username</div>",
-      "<br>",
-      "<div><strong>Accepterar kostnad</strong></div>",
-      "<div>@@cost</div>",
-      "<br>",
-      "<div><strong>Meddelande från beställare</strong></div>",
-      "<div>@@message</div>"
-    ],
-    "english": [
-      "<div><p>Hej,</p></div>",
-      "<div><p>Tack för din beställning av följande material:</p></div>",
-      "<div>@@title</div> ",
-      "<div>@@jtitle</div> ",
-      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
-      "<div><p>Vänligen</p></div>",
-      "<div>KTH Biblioteket</div>",
-      "<div>Bibliotekspersonalen</div>",
-      "<div>Telefon: 08 - 790 70 88</div>",
-      "<div>Webb: www.kth.se/kthb</div>",
-      "<br>",
-      "<div><strong>Dokumenttyp</strong></div>",
-      "<div>@@genre</div>",
-      "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare: @@au</div>",
-      "<div>Upplaga: @@edition</div>",
-      "<div>Nummer: @@issue</div>", 
-      "<div>Sidor: @@pages</div>",
-      "<div>ISSN: @@issn</div>",
-      "<div>ISBN: @@isbn</div>",
-      "<div>Plats: @@place</div>",
-      "<div>Förlag: @@publisher</div>",
-      "<div>År: @@year</div>",
-      "<div>Volym: @@volume</div>",
-      "<div>Kapitel: @@chaptertitle</div>",
-      "<div>DOI: @@doi</div>",
-      "<br>",
-      "<div><strong>Källa för beställningen</strong></div>",
-      "<div>@@source</div>",
-      "<br>",
-      "<div><strong>Önskar hämta på</strong></div>",
-      "<div>@@pickup</div>",
-      "<br>",
-      "<div><strong>Kategori/Category</strong></div>",
-      "<div>@@iam</div>",
-      "<br>",
-      "<div><strong>Användarid/Userid</strong></div>",
-      "<div>@@username</div>",
-      "<br>",
-      "<div><strong>E-postadress</strong></div>",
-      "<div>@@username</div>",
-      "<br>",
-      "<div><strong>Accepterar kostnad</strong></div>",
-      "<div>@@cost</div>",
-      "<br>",
-      "<div><strong>Meddelande från beställare</strong></div>",
-      "<div>@@message</div>"
-    ]
-  },
-  "emailsubjectedge": {
+  "emailtosubjectedge": {
     "swedish": "Förslag på prenumeration / Beställning",
     "english": "Suggestion for subscription / Request"
   },
-  "emailbodyedge": {
+  "emailtobodyedge": {
     "swedish": [
       "<div><strong>Titel</strong></div>",
       "<div>@@title</div> ",
@@ -208,9 +97,69 @@
       "<div>@@message</div>"
     ],
     "english": [
-      "<div><p>Titel</p></div>",
+      "<div><strong>Titel</strong></div>",
       "<div>@@title</div> ",
       "<div>@@jtitle</div> ",
+      "<br>",
+      "<div><strong>Dokumenttyp</strong></div>",
+      "<div>@@genre</div>",
+      "<br>",
+      "<div><strong>Bibliografisk information</strong></div>",
+      "<div>Författare: @@au</div>",
+      "<div>Upplaga: @@edition</div>",
+      "<div>Nummer: @@issue</div>", 
+      "<div>Sidor: @@pages</div>",
+      "<div>ISSN: @@issn</div>",
+      "<div>ISBN: @@isbn</div>",
+      "<div>Plats: @@place</div>",
+      "<div>Förlag: @@publisher</div>",
+      "<div>År: @@year</div>",
+      "<div>Volym: @@volume</div>",
+      "<div>Kapitel: @@chaptertitle</div>",
+      "<div>DOI: @@doi</div>",
+      "<br>",
+      "<div><strong>Källa för beställningen</strong></div>",
+      "<div>@@source</div>",
+      "<br>",
+      "<div><strong>Önskar hämta på</strong></div>",
+      "<div>@@pickup</div>",
+      "<br>",
+      "<div><strong>Beställarens namn</strong></div>",
+      "<div>@@fullname</div>",
+      "<br>",
+      "<div><strong>Kategori/Category</strong></div>",
+      "<div>@@iam</div>",
+      "<br>",
+      "<div><strong>Användarid/Userid</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>E-postadress</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div>@@cost</div>",
+      "<br>",
+      "<div><strong>Meddelande från beställare</strong></div>",
+      "<div>@@message</div>"
+    ]
+  },
+  "emailtosubjectuser": {
+    "swedish": "Beställning",
+    "english": "Request"
+  },
+  "emailtobodyuser": {
+    "swedish": [
+      "<div><p>Hej,</p></div>",
+      "<div><p>Tack för din beställning av följande material:</p></div>",
+      "<div>@@title</div> ",
+      "<div>@@jtitle</div> ",
+      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
+      "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Bibliotekspersonalen</div>",
+      "<div>Telefon: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/kthb</div>",
+      "<br>",
       "<div><strong>Dokumenttyp</strong></div>",
       "<div>@@genre</div>",
       "<div><strong>Bibliografisk information</strong></div>",
@@ -233,8 +182,54 @@
       "<div><strong>Önskar hämta på</strong></div>",
       "<div>@@pickup</div>",
       "<br>",
-      "<div><strong>Beställarens namn</strong></div>",
-      "<div>@@user</div>",
+      "<div><strong>Kategori/Category</strong></div>",
+      "<div>@@iam</div>",
+      "<br>",
+      "<div><strong>Användarid/Userid</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>E-postadress</strong></div>",
+      "<div>@@username</div>",
+      "<br>",
+      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div>@@cost</div>",
+      "<br>",
+      "<div><strong>Meddelande från beställare</strong></div>",
+      "<div>@@message</div>"
+    ],
+    "english": [
+      "<div><p>Hej,</p></div>",
+      "<div><p>Tack för din beställning av följande material:</p></div>",
+      "<div>@@title</div> ",
+      "<div>@@jtitle</div> ",
+      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
+      "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Bibliotekspersonalen</div>",
+      "<div>Telefon: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/kthb</div>",
+      "<br>",
+      "<div><strong>Dokumenttyp</strong></div>",
+      "<div>@@genre</div>",
+      "<div><strong>Bibliografisk information</strong></div>",
+      "<div>Författare: @@au</div>",
+      "<div>Upplaga: @@edition</div>",
+      "<div>Nummer: @@issue</div>", 
+      "<div>Sidor: @@pages</div>",
+      "<div>ISSN: @@issn</div>",
+      "<div>ISBN: @@isbn</div>",
+      "<div>Plats: @@place</div>",
+      "<div>Förlag: @@publisher</div>",
+      "<div>År: @@year</div>",
+      "<div>Volym: @@volume</div>",
+      "<div>Kapitel: @@chaptertitle</div>",
+      "<div>DOI: @@doi</div>",
+      "<br>",
+      "<div><strong>Källa för beställningen</strong></div>",
+      "<div>@@source</div>",
+      "<br>",
+      "<div><strong>Önskar hämta på</strong></div>",
+      "<div>@@pickup</div>",
       "<br>",
       "<div><strong>Kategori/Category</strong></div>",
       "<div>@@iam</div>",
@@ -251,6 +246,13 @@
       "<div><strong>Meddelande från beställare</strong></div>",
       "<div>@@message</div>"
     ]
+  },
+  "emailfromaddresslibrary": {
+    "emailaddress": "noreply@kth.se",
+    "name": {
+      "swedish": "KTH Biblioteket",
+      "english": "KTH Library"
+    }
   },
   "optionalfieldtext" : {
     "swedish": "Valfri",
@@ -1855,7 +1857,8 @@
             "english": "Main Library"
           }, 
           "value": "MAIN",
-          "enabled": true
+          "enabled": true,
+          "hidden": false
         },
         { 
           "label": {
@@ -1863,7 +1866,8 @@
             "english": "Kista"
           }, 
           "value": "ELECTRUM",
-          "enabled": true
+          "enabled": true,
+          "hidden": false
         },
         { 
           "label": {
@@ -1871,7 +1875,8 @@
             "english": "Södertälje"
           }, 
           "value": "TELGE",
-          "enabled": true
+          "enabled": true,
+          "hidden": true
         }
       ],
       "validation": {
