@@ -11,3 +11,13 @@ input[type=submit] {
 .btn-success[disabled]:hover {
     cursor: not-allowed;
 }
+
+.isgrouped {
+    margin-top: 0px;
+    font-weight: normal;
+}
+
+.isnotgrouped {
+    margin-top: 0px;
+    font-weight: bold;
+}

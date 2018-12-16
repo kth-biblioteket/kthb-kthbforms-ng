@@ -18,7 +18,7 @@
   },
   "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
   "loaderurl": "https://apps.lib.kth.se/kthbforms/assets/ajax_loader_blue_512.gif",
-  "postresponsetext" : {
+  "postresponseinfo" : {
     "header": {
       "swedish": "Tack för din beställning.",
       "english": "Thank you for ordering"
@@ -28,7 +28,7 @@
       "english": "We will contact you soon."
     }
   },
-  "posterrorresponsetext" : {
+  "posterrorresponseinfo" : {
     "header": {
       "swedish": "Något gick fel!",
       "english": "Something went wrong!"

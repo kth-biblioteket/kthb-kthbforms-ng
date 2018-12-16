@@ -18,7 +18,7 @@
   },
   "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/consultation",
   "loaderurl": "https://apps.lib.kth.se/kthbforms/assets/ajax_loader_blue_512.gif",
-  "postresponsetext" : {
+  "postresponseinfo" : {
     "header": {
       "swedish": "Tack för din förfrågan!",
       "english": "Thank you for your booking request!"
@@ -28,7 +28,7 @@
       "english": "We will confirm your booking within two days."
     }
   },
-  "posterrorresponsetext" : {
+  "posterrorresponseinfo" : {
     "header": {
       "swedish": "Något gick fel!",
       "english": "Something went wrong!"

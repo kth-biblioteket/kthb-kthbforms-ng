@@ -7,7 +7,6 @@ import { Title } from '@angular/platform-browser';
 
 import {IMyDpOptions} from 'mydatepicker';
 
-//TODO Flytta style från inline i template till css
 @Component({
   selector: 'dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -217,7 +216,7 @@ export class DynamicFormComponent implements OnInit {
    */
   changelocation (url) {
     console.log(url);
-    window.location.href = url;
+    window.location.href = url + '?language=' + this.language;
   }
 
   /**
