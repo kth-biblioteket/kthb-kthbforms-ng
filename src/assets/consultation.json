@@ -342,8 +342,8 @@
     },
     "suggesteddates": {
       "label": {
-        "swedish": "Föreslå tre möjliga datum för handledningen",
-        "english": "Suggest three possible dates for the consultation"
+        "swedish": "Föreslå tre möjliga datum för handledningen(åååå-mm-dd)",
+        "english": "Suggest three possible dates for the consultation(yyyy-mm-dd)s"
       },
       "value": "dates",
       "type": "grouplabel",
