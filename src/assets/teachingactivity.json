@@ -67,7 +67,7 @@
       "<div><strong>Datum:</strong> @@preferreddates</div>",
       "<div><strong>Other teaching:</strong> @@otherteaching</div>",
       "<div><strong>Facility for teaching:</strong> @@ownfacilityquestion</div>",
-      "<div><strong><strong>Name of own facility:</strong> @@facility</div>"
+      "<div><strong>Name of own facility:</strong> @@facility</div>"
     ],
     "english": [
       "<div><h3>Kontaktuppgifter</h3></div>",
@@ -86,7 +86,7 @@
       "<div><strong>Datum:</strong> @@preferreddates</div>",
       "<div><strong>Other teaching:</strong> @@otherteaching</div>",
       "<div><strong>Facility for teaching:</strong> @@ownfacilityquestion</div>",
-      "<div><strong><strong>Name of own facility:</strong> @@facility</div>"
+      "<div><strong>Name of own facility:</strong> @@facility</div>"
     ]
   },
   "optionalfieldtext" : {
@@ -208,7 +208,7 @@
         "english": "Course edition code"
       },
       "value": "",
-      "type": "textarea",
+      "type": "text",
       "enabled": true,
       "validation": {
         "required": {
@@ -226,7 +226,7 @@
         "english": "Number of students"
       },
       "value": "",
-      "type": "textarea",
+      "type": "text",
       "enabled": true,
       "validation": {
         "required": {
