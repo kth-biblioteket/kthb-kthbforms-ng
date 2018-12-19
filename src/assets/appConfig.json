@@ -5,5 +5,6 @@
   "description": {
     "swedish": "",
     "english": ""
-  }
+  },
+  "openurlsourceparameters" : ["source","rfr.id"]
 }

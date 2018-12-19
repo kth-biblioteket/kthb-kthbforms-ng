@@ -579,8 +579,12 @@
       },
       "value": "",
       "type": "radio",
-      "enabled": true,
-      "openurlenabled": false,
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["any"]
+      }],
       "options": [
         { 
           "label": {
@@ -588,7 +592,11 @@
             "english": "Student at KTH"
           }, 
           "value": "student",
-          "enabled": true
+          "enabled": false,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["any"]
+          }]
         },
         { 
           "label": {
@@ -596,7 +604,11 @@
             "english": "Staff/Doctoral student at KTH"
           }, 
           "value": "employee",
-          "enabled": true
+          "enabled": true,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["any"]
+          }]
         },
         { 
           "label": {
@@ -604,7 +616,11 @@
             "english": "Business"
           }, 
           "value": "business",
-          "enabled": true
+          "enabled": true,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["book", "article"]
+          }]
         },
         { 
           "label": {
@@ -612,7 +628,11 @@
             "english": "Other"
           }, 
           "value": "other",
-          "enabled": true
+          "enabled": true,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["book", "article"]
+          }]
         }
       ],
       "validation": {
@@ -790,12 +810,8 @@
       "value": "",
       "type": "radio",
       "enabled": false,
-      "openurlenabled": false,
+      "openurlenabled": true,
       "hidden": false,
-      "showcriteria": [{
-        "field": "iam",
-        "values": ["any"]
-      }],
       "options": [
         { 
           "label": {
@@ -803,11 +819,7 @@
             "english": "Book"
           }, 
           "value": "book",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["any"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -815,11 +827,7 @@
             "english": "Article (sent by mail to...)"
           }, 
           "value": "article",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["any"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -827,11 +835,7 @@
             "english": "Chapter in book"
           }, 
           "value": "bookitem",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["student","employee"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -839,11 +843,7 @@
             "english": "Journal"
           }, 
           "value": "journal",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["student","employee"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -851,11 +851,7 @@
             "english": "Database (suggest...)"
           }, 
           "value": "database",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["student","employee"]
-          }]
+          "enabled": true
         }
       ],
       "validation": {
@@ -890,7 +886,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -989,7 +985,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1088,7 +1084,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1196,7 +1192,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1232,7 +1228,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1257,7 +1253,7 @@
         "english": "As a private person you can only..."
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1282,7 +1278,7 @@
         "english": "As a private person you can only..."
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [

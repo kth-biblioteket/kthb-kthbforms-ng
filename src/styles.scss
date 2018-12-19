@@ -107,8 +107,8 @@ ngb-datepicker {
   background-color: #ffffff !important;
 }
 
-/* laddnings-ikkonen */
-.loading {
+/* laddnings-ikkonen/text */
+.loading-screen {
   width: 100%;
   height: 100%;
   top: 0;
@@ -121,11 +121,13 @@ ngb-datepicker {
   text-align: center;
 }
 
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+}
 .loading-image {
- position: absolute;
- top: 50%;
- left: 50%;
- z-index: 100;
  width: 40px;
 }
 

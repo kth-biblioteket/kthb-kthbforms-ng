@@ -114,7 +114,7 @@
     "email": {
       "label": {
         "swedish": "E-postadress",
-        "english": "email address"
+        "english": "Email address"
       },
       "value": "",
       "type": "text",

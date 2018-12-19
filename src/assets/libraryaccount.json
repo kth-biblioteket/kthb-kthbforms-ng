@@ -24,7 +24,7 @@
       "english": "Thank you for registering!"
     },
     "text": {
-      "swedish": "För att slutföra registreringen måste du besöka något av våra bibliotek. Ta med dig giltig ID-handling.",
+      "swedish": "För att slutföra registreringen måste du besöka något av våra bibliotek. Ta med dig en giltig ID-handling.",
       "english": "To finish the registration you have to visit one of our libraries. Please bring a valid ID."
     }
   },
@@ -34,18 +34,18 @@
       "english": "Something went wrong!"
     },
     "text": {
-      "swedish": "Kontakta bilioteket...",
-      "english": "Please contact the library..."
+      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om problemet kvarstår, kontakta biblioteket.",
+      "english": "Please make sure that all the fields have been filled out correctly. If the problem remainds, please contact the library."
     }
   },
   "emailtosubjectuser": {
     "swedish": "Lyckad registering av bibliotekskonto",
-    "english": "Sucessfull library account registration"
+    "english": "Successfull library account registration"
   },
   "emailtobodyuser": {
     "swedish": [
       "<div><p>Hej,</p></div>",
-      "<div><p>Tack för din registrering. Du kan aktivera ditt konto på Huvudbiblioteket eller något av våra filialbibliotek. Var vänlig ta med ID.</p></div>",
+      "<div><p>Tack för din registrering. Du kan aktivera ditt konto på något av KTH:s bibliotek. Var vänlig ta med ID.</p></div>",
       "<div>Ditt användarnamn är: @@email</div> ",
       "<div><p>Vänligen</p></div>",
       "<div>KTH Biblioteket</div>",
@@ -55,7 +55,7 @@
     ],
     "english": [
       "<div><p>Hi,</p></div>",
-      "<div><p>Thank you for registrering. You kan activate your account at the Main library or one of our... Please bring a valid ID.</p></div>",
+      "<div><p>Thank you for registrering. You can activate your account at one of the libraries at KTH. Please bring a valid ID.</p></div>",
       "<div>Your username is: @@email</div>",
       "<div><p>Kindly</p></div>",
       "<div>KTH Library</div>",
@@ -78,11 +78,11 @@
   "invalidforminfo": {
     "header": {
       "swedish": "Formuläret är inte korrekt ifyllt!",
-      "english": "Form not correct!"
+      "english": "The form has not been filled out correctly!"
     }, 
     "text": {
       "swedish": "Se rödmarkerad text nedan.",
-      "english": "Please see text marked as red below"
+      "english": "Please see text marked as red below."
     }
   }, 
   "formfields": {
@@ -98,7 +98,7 @@
         { 
           "label": {
             "swedish": "Student eller anställd på KTH",
-            "english": "Student or staff at KTH"
+            "english": "Student or staff member at KTH"
           }, 
           "value": "student",
           "enabled": true,
@@ -147,7 +147,7 @@
         { 
           "label": {
             "swedish": "Över 18 år men inte folkbokförd i Sverige",
-            "english": "Över 18 år men inte folkbokförd i Sverige"
+            "english": "Over 18 years old but not registered as a Swedish resident."
           }, 
           "value": "18_not_swedish",
           "enabled": true
@@ -155,7 +155,7 @@
         { 
           "label": {
             "swedish": "Anställd på Scania",
-            "english": "Anställd på Scania"
+            "english": "Scania employee"
           }, 
           "value": "scania",
           "enabled": true
@@ -187,7 +187,7 @@
       "description": {
         "placement": "after",
         "swedish": "Om du inte är KTH-anknuten och dessutom mellan 16 och 18 år eller inte folkbokförd i Sverige, behöver du lämna en borgensförbindelse. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras.",
-        "english": "If you are not....KTH-anknuten och dessutom mellan 16 och 18 år eller inte folkbokförd i Sverige, behöver du lämna en borgensförbindelse. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras."
+        "english": "If you are not affiliated with KTH and also between 16 and 18 years old, or not registered as a Swedish resident, you need to fill out a guarantee form. Anyone who stands surety must be working and registered in Sweden and over 18 years old. The guarantor must be present when the library card is issued and must show a valid ID."
       },
       "link": {
         "placement": "after",
@@ -539,7 +539,7 @@
     "accept": {
       "label": {
         "swedish": "Jag godkänner KTH Bibliotekets lånevillkor",
-        "english": "I accept KTH Bibliotekets lånevillkor"
+        "english": "I accept the KTH Library borrowing regulations."
       },
       "link": {
         "placement": "after",
@@ -549,7 +549,7 @@
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Lånevillkor"
+          "text": "Borrowing regulations"
         }
       },
       "value": "",

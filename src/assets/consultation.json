@@ -202,7 +202,7 @@
     "email": {
       "label": {
         "swedish": "E-postadress",
-        "english": "E-mail address"
+        "english": "Email address"
       }, 
       "value": "",
       "type": "text",
@@ -219,7 +219,7 @@
           "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
           "errormessage": {
             "swedish": "måste vara en godkänd emailadress",
-            "english": "must be valid email address"
+            "english": "must be a valid email address"
           }
         }	
       }
@@ -342,8 +342,8 @@
     },
     "suggesteddates": {
       "label": {
-        "swedish": "Föreslå tre möjliga datum för handledningen(åååå-mm-dd)",
-        "english": "Suggest three possible dates for the consultation(yyyy-mm-dd)"
+        "swedish": "Föreslå tre möjliga datum för handledningen (åååå-mm-dd)",
+        "english": "Suggest three possible dates for the consultation (yyyy-mm-dd)"
       },
       "value": "dates",
       "type": "grouplabel",

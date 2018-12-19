@@ -422,7 +422,7 @@
       "options": [
         { 
           "label": {
-            "swedish": "Maxwell (20 platser",
+            "swedish": "Maxwell (20 platser)",
             "english": "Maxwell (20 seats)"
           }, 
           "value": "Maxwell",
@@ -430,7 +430,7 @@
         },
         { 
           "label": {
-            "swedish": "Egen",
+            "swedish": "Egna",
             "english": "Own facilities"
           }, 
           "value": "own",
@@ -449,8 +449,8 @@
     },
     "facility": {
       "label": {
-        "swedish": "Ange namn för egen lokal?",
-        "english": "Enter the name of the facility?"
+        "swedish": "Ange namn för egen lokal",
+        "english": "Enter the name of the facility"
       },
       "value": "",
       "type": "textarea",
