@@ -6,5 +6,6 @@
     "swedish": "",
     "english": ""
   },
-  "openurlsourceparameters" : ["source","rfr.id"]
+  "openurlsourceparameters" : ["source","rfr.id"],
+  "emailstyle": "<style>div{font-family:Calibri;}</style>"
 }

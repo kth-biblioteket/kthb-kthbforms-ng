@@ -1,47 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
-//@import "~bootstrap/scss/bootstrap.scss";
-//@import '~bootstrap/scss/bootstrap-reboot';
-//@import '~bootstrap/scss/bootstrap-grid';
+/* Fontstorlek samma på labels och infotext som övrig text */
+@media (min-width: 768px) {
+  app-kthbforms,
+  app-kthbforms label, 
+  app-kthbforms .alert-info, 
+  app-kthbforms .alert-danger, 
+  app-kthbforms .alert-success,
+  app-kthbforms .informationbox {
+    font-size: 1rem;
+  }
+}
 
-
-//@import url('https://www.kth.se/css/kth.css?v=9.6.0;');
-////@import url('https://www.kth.se/form/static/css/bootstrap/bootstrap.min.css?v=1.0.0-22;');
-////@import url('https://www.kth.se/form/static/css/kth-style/kth-bootstrap-theme.css?v=1.0.0-22');
-////@import url('https://www.kth.se/form/static/css/jquery-ui.css?v=1.0.0-22');
-////@import url('https://www.kth.se/form/static/css/niseko-web.css?v=1.0.0-22');
-//@import url('https://www.kth.se/form/static/css/answer.css?v=1.0.0-22');
-////@import url('https://www.kth.se/form/static/css/font-awesome/font-awesome.min.css?v=1.0.0-22');
-
-/*
-body {
-    margin: 0;
+@media (max-width: 768px) {
+  app-kthbforms,
+  app-kthbforms label, 
+  app-kthbforms .alert-info, 
+  app-kthbforms .alert-danger, 
+  app-kthbforms .alert-success, 
+  app-kthbforms .informationbox {
+    font-size: 0.875rem;
   }
-  .demo-full-width {
-    width: 100%;
-  }
-  .margin-top {
-    margin-top: 15px;
-  }
-  .margin-left {
-    margin-left: 10px;
-  }
-  .radio-label-padding {
-    padding-right: 10px;
-    color: grey;
-  }
-  .form {
-    margin-left: 10px;
-    border: 2px solid lightgray;
-    width: 600px;
-    padding-left: 5px;
-    margin-top: 10px;
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-*/
-
+}
 /* Höjd på messageruta*/
+
 textarea.form-control {
   height: 150px;
 }

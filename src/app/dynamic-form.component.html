@@ -192,13 +192,13 @@
                   </div>
                 </div>
                 <!-- Om placement=after -->
-                <div [ngClass]="{'alert alert-info': prop.type=='informationboxalert' }" [ngStyle]="prop.type=='informationboxalert' ? {'position': 'relative'} : {}">
+                <div [ngClass]="{'alert alert-info': prop.type=='informationboxalert','informationbox': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationboxalert' ? {'position': 'relative'} : {}">
                   <!-- Eventuell extra information/beskrivning-->
                   <div *ngIf="prop.description && prop.description.placement=='after'">
                       {{language=='swedish' ? prop.description.swedish : prop.description.english}}
                   </div>
                   <!-- Eventuell länk-->
-                  <div style="margin-bottom:10px;font-size:0.875rem" *ngIf="prop.link && prop.link.placement=='after'">
+                  <div style="margin-bottom:10px" *ngIf="prop.link && prop.link.placement=='after'">
                       <a target="_new" href="{{language=='swedish' ? prop.link.swedish.url : prop.link.english.url}}">
                           {{language=='swedish' ? prop.link.swedish.text : prop.link.english.text}}
                       </a>

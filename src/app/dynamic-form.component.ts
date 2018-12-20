@@ -61,6 +61,7 @@ export class DynamicFormComponent implements OnInit {
    */
   async getFormData() {
     const formGroup = {};
+
     //Källa
     if(this.settings.config.openurlsourceparameters) {
       for(let source of this.settings.config.openurlsourceparameters) {
@@ -100,11 +101,17 @@ export class DynamicFormComponent implements OnInit {
     //OpenURL, matcha fält i formulär mot openurlparametrar
     if(this.isopenurl){
       this.openurljson = this.openurlparametersToJSON();
+      if(this.openurljson['atitle'] != '' && this.openurljson['genre'] == 'bookitem') {
+        //Hantera kapitel i bok, sätt ctitle och rensa atitle!
+        this.openurljson['ctitle']=this.openurljson['atitle'];
+        this.openurljson['atitle']='';
+      }
       for(let prop of this.objectFormfields) {
         if(this.openurljson[prop.key]) {
           this.kthbform.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
         }
       }
+      
       this.onchangeformobject('','','');
     }
   }
@@ -251,12 +258,23 @@ export class DynamicFormComponent implements OnInit {
             "field": "iam",
             "values": ["student","employee"]
           }]
-   */
+   *
+   * Vid klick på mainoption-fält så ska övriga optionfält rensas
+  */
   onchangeformobject(domobj, object, event){
     var validfield;
     var show;
     var optionvalidchoice;
     var enableoption;
+    if(typeof object !== 'undefined' && object!= '') {
+      if (this.formdata.formfields[object].mainoption) {
+        for(let prop of this.objectFormfields) {
+          if (prop.type=='radio' && !prop.mainoption) {
+            this.kthbform.get(prop.key).setValue('');
+          }
+        }
+      }
+    }
     for(let prop of this.objectFormfields) {
       show = false;
       if (prop.showcriteria) {

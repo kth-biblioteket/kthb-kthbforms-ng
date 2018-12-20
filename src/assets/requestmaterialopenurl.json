@@ -530,7 +530,7 @@
       "english": "Article"
     },
     "bookitem": {
-      "swedish": "Kaptiel i bok",
+      "swedish": "Kapitel i bok",
       "english": "Chapter in book"
     },
     "journal": {
@@ -1353,7 +1353,7 @@
       },
       "openurl": true,
       "openurlnames": {
-        "standard": "atitle",
+        "standard": "ctitle",
         "primo": "article",
         "info:sid/libris.kb.se:libris": "rft.atitle"
       },
