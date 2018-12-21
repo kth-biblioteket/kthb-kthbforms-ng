@@ -292,7 +292,7 @@
       "english": "Article"
     },
     "bookitem": {
-      "swedish": "Kaptiel i bok",
+      "swedish": "Kapitel i bok",
       "english": "Chapter in book"
     },
     "journal": {
@@ -341,9 +341,12 @@
       },
       "value": "",
       "type": "radio",
-      "mainoption": true,
-      "enabled": true,
-      "openurlenabled": false,
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["any"]
+      }],
       "options": [
         { 
           "label": {
@@ -351,7 +354,11 @@
             "english": "Student at KTH"
           }, 
           "value": "student",
-          "enabled": true
+          "enabled": false,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["any"]
+          }]
         },
         { 
           "label": {
@@ -359,7 +366,11 @@
             "english": "Staff/Doctoral student at KTH"
           }, 
           "value": "employee",
-          "enabled": true
+          "enabled": true,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["any"]
+          }]
         },
         { 
           "label": {
@@ -367,7 +378,11 @@
             "english": "Business"
           }, 
           "value": "business",
-          "enabled": true
+          "enabled": true,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["book", "article"]
+          }]
         },
         { 
           "label": {
@@ -375,7 +390,11 @@
             "english": "Other"
           }, 
           "value": "other",
-          "enabled": true
+          "enabled": true,
+          "showcriteria": [{
+            "field": "genre",
+            "values": ["book", "article"]
+          }]
         }
       ],
       "validation": {
@@ -505,6 +524,7 @@
         "swedish": "Användarnamn (e-postadress)",
         "english": "Username (email address)"
       },
+      "": {},
       "value": "",
       "type": "text",
       "enabled": false,
@@ -537,12 +557,8 @@
       "value": "",
       "type": "radio",
       "enabled": false,
-      "openurlenabled": false,
+      "openurlenabled": true,
       "hidden": false,
-      "showcriteria": [{
-        "field": "iam",
-        "values": ["any"]
-      }],
       "options": [
         { 
           "label": {
@@ -550,11 +566,7 @@
             "english": "Book"
           }, 
           "value": "book",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["any"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -562,11 +574,7 @@
             "english": "Article"
           }, 
           "value": "article",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["any"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -574,11 +582,7 @@
             "english": "Chapter in book"
           }, 
           "value": "bookitem",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["student","employee"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -586,11 +590,7 @@
             "english": "Journal"
           }, 
           "value": "journal",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["student","employee"]
-          }]
+          "enabled": true
         },
         { 
           "label": {
@@ -598,11 +598,7 @@
             "english": "Database"
           }, 
           "value": "database",
-          "enabled": true,
-          "showcriteria": [{
-            "field": "iam",
-            "values": ["student","employee"]
-          }]
+          "enabled": true
         }
       ],
       "validation": {
@@ -622,8 +618,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden tillkommer det en avgift.",
-        "english": "If we need to borrow the book from a library in the Nordic countries there will be a fee."
+        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden tilkommer det en avgift.",
+        "english": "If we need to borrow the book from a library outside the Nordic countries there will be a fee."
       },
       "link": {
         "placement": "after",
@@ -637,7 +633,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -682,7 +678,7 @@
         { 
           "label": {
             "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me about the fees before I accept them"
+            "english": "I want the library to contact me about any fees before I accept them"
           }, 
           "value": "contact",
           "enabled": true
@@ -720,7 +716,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -795,7 +791,7 @@
         "placement": "after",
         "swedish" : {
           "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Prislista"
+          "text": "Se prislista"
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
@@ -803,7 +799,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -895,7 +891,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -931,7 +927,7 @@
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -956,7 +952,7 @@
         "english": "As a private person you can only make book requests from the KTH Library closed stacks or old book collection."
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -981,7 +977,7 @@
         "english": "As a private person you can only make article requests from the KTH Library stacks."
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1056,7 +1052,7 @@
       },
       "openurl": true,
       "openurlnames": {
-        "standard": "atitle",
+        "standard": "ctitle",
         "primo": "article",
         "info:sid/libris.kb.se:libris": "rft.atitle"
       },
