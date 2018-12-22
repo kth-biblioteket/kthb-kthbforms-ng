@@ -19,10 +19,13 @@ export class AppConfigService {
      */
     loadAppConfig() {
         let http = this.injector.get(HttpClient);
-        return http.get(environment.configurl + '?time=' + Date.now())
+        return http.get(
+            environment.configurl + '?time=' + Date.now(),
+            { observe: 'response' }   
+        )
         .toPromise()
-        .then(data => {
-            this.appConfig = data;
+        .then(response => {
+            this.appConfig = response;
         })
     }
 
