@@ -18,10 +18,6 @@
   },
   "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/libraryaccount",
   "loaderurl": "https://apps.lib.kth.se/kthbforms/assets/ajax_loader_blue_512.gif",
-  "loaderinfo": {
-    "swedish": "Skickar...",
-    "english": "Sending..."
-  },
   "postresponseinfo" : {
     "header": {
       "swedish": "Tack för din registrering!",
@@ -39,29 +35,33 @@
     },
     "text": {
       "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om problemet kvarstår, kontakta biblioteket.",
-      "english": "Please make sure that all the fields have been filled out correctly. If the problem remains, please contact the library."
+      "english": "Please make sure that all the fields have been filled out correctly. If the problem remainds, please contact the library."
     }
   },
   "emailtosubjectuser": {
     "swedish": "Lyckad registering av bibliotekskonto",
-    "english": "Successful library account registration"
+    "english": "Successfull library account registration"
   },
   "emailtobodyuser": {
     "swedish": [
       "<div><p>Hej,</p></div>",
-      "<div><p>Tack för din registrering. För att slutföra registreringen måste du besöka något av våra bibliotek. Ta med dig en giltig ID-handling.</p></div>",
+      "<div><p>Tack för din registrering. Du kan aktivera ditt konto på något av KTH:s bibliotek. Var vänlig ta med ID.</p></div>",
       "<div>Ditt användarnamn är: @@email</div> ",
-      "<div><p>KTH Biblioteket</p></div>",
-      "<div>Telefon: 08-790 70 88</div>",
-      "<div>www.kth.se/biblioteket</div>"
+      "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Bibliotekspersonalen</div>",
+      "<div>Telefon: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/kthb</div>"
     ],
     "english": [
       "<div><p>Hi,</p></div>",
-      "<div><p>Thank you for registrering. To finish the registration you have to visit one of our libraries. Please bring a valid ID.</p></div>",
+      "<div><p>Thank you for registrering. You can activate your account at one of the libraries at KTH. Please bring a valid ID.</p></div>",
       "<div>Your username is: @@email</div>",
-      "<div><p>KTH Library</p></div>",
-      "<div>Phone: 08-790 70 88</div>",
-      "<div>www.kth.se/en/biblioteket</div>"
+      "<div><p>Kindly</p></div>",
+      "<div>KTH Library</div>",
+      "<div>The library staff</div>",
+      "<div>Phone: 08 - 790 70 88</div>",
+      "<div>Webb: www.kth.se/en/kthb</div>"
     ]
   },
   "emailfromaddresslibrary": {
@@ -88,8 +88,8 @@
   "formfields": {
     "iam": {
       "label": {
-        "swedish": "Användarkategori",
-        "english": "User group"
+        "swedish": "Jag är",
+        "english": "I am a"
       },
       "value": "",
       "type": "radio",
@@ -106,8 +106,8 @@
         },
         { 
           "label": {
-            "swedish": "Övrig",
-            "english": "Other"
+            "swedish": "Privatperson / Övrig",
+            "english": "Private person / Other"
           }, 
           "value": "other",
           "enabled": true
@@ -125,8 +125,8 @@
     },
     "otherinfo": {
       "label": {
-        "swedish": "Övrig",
-        "english": "Other"
+        "swedish": "Privatperson / Övrig",
+        "english": "Privateperson / Övrig"
       },
       "value": "",
       "type": "radio",
@@ -186,8 +186,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Om du inte är KTH-anknuten och dessutom mellan 16 och 18 år behöver du lämna en borgensförbindelse. Samma gäller om du inte är folkbokförd i Sverige. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras.",
-        "english": "If you are not affiliated with KTH and also between 16 and 18 years old you need to fill out a guarantee form. This also applies if you are not registered as a Swedish resident. Anyone who stands surety must be working and registered in Sweden and over 18 years old. The guarantor must be present when the library card is issued and must show a valid ID."
+        "swedish": "Om du inte är KTH-anknuten och dessutom mellan 16 och 18 år eller inte folkbokförd i Sverige, behöver du lämna en borgensförbindelse. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras.",
+        "english": "If you are not affiliated with KTH and also between 16 and 18 years old, or not registered as a Swedish resident, you need to fill out a guarantee form. Anyone who stands surety must be working and registered in Sweden and over 18 years old. The guarantor must be present when the library card is issued and must show a valid ID."
       },
       "link": {
         "placement": "after",
@@ -197,11 +197,11 @@
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Register as a new user"
+          "text": "Register as new user"
         }
       },
       "value": "informationbox",
-      "type": "informationboxalert",
+      "type": "informationbox",
       "enabled": false,
       "showcriteria": [{
         "field": "otherinfo",
@@ -379,8 +379,8 @@
     },
     "email": {
       "label": {
-        "swedish": "E-post (användarnamn)",
-        "english": "Email (username)"
+        "swedish": "E-post(användarnamn)",
+        "english": "E-email(username)"
       },
       "value": "",
       "type": "text",
@@ -401,8 +401,8 @@
         "pattern": {
           "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
           "errormessage": {
-            "swedish": "måste vara en godkänd e-postadress",
-            "english": "must be a valid email address"
+            "swedish": "måste vara en godkänd emailadress",
+            "english": "must be valid email address"
           }
         }
       }
@@ -440,7 +440,7 @@
     "pin": {
       "label": {
         "swedish": "PIN-kod",
-        "english": "PIN code"
+        "english": "PIN-code"
       },
       "value": "",
       "type": "password",
@@ -470,7 +470,7 @@
     "streetadress": {
       "label": {
         "swedish": "Gatuadress",
-        "english": "Street address"
+        "english": "Street adress"
       },
       "value": "",
       "type": "text",

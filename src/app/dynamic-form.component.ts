@@ -4,6 +4,7 @@ import { BackendService } from './backend.service';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { AppConfigService } from './app-config.service';
 
 import {IMyDpOptions} from 'mydatepicker';
 
@@ -24,6 +25,7 @@ export class DynamicFormComponent implements OnInit {
   loaderurl;
 
   isopenurl = false;
+  openurlsuffix = "";
   openurlsource;
   openurljson:any;
   objectOpenurl;
@@ -31,6 +33,7 @@ export class DynamicFormComponent implements OnInit {
   openurlboxlabel;  
 
   kthbform: FormGroup;
+  formdataresponse;
   formdata: any;
   formisinit = false;
   formstatus;
@@ -45,10 +48,13 @@ export class DynamicFormComponent implements OnInit {
   backendresult = false;
   backendresulterror;
 
+  token;
+
   constructor(
     public backend:BackendService,
     private http: HttpClient,
-    private titleService: Title
+    private titleService: Title,
+    private settings: AppConfigService,
   ) {
   }
   
@@ -58,9 +64,24 @@ export class DynamicFormComponent implements OnInit {
    */
   async getFormData() {
     const formGroup = {};
-
-    this.formdata = await this.http.get(environment.formdataurl + this.formid + ".json" + '?time=' + Date.now()).toPromise();
-
+    //Implementera token?
+    this.token = this.settings.config.headers.get('token');
+    //Källa
+    if(this.settings.config.body.openurlsourceparameters) {
+      for(let source of this.settings.config.body.openurlsourceparameters) {
+        if(this.getParam(source)!= ""){
+          this.isopenurl = true;
+          this.openurlsuffix = "openurl";
+          this.openurlsource = this.getParam(source);
+          break;
+        }
+      }
+    }
+    this.formdataresponse = await this.http.get(
+        environment.formdataurl + this.formid + this.openurlsuffix + ".json" + '?time=' + Date.now(),
+        { observe: 'response' }
+      ).toPromise();
+    this.formdata = this.formdataresponse.body;
     this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
@@ -84,25 +105,21 @@ export class DynamicFormComponent implements OnInit {
     this.kthbform = new FormGroup(formGroup);
     this.formisinit = true;
 
-    //Källa
-    if(this.formdata.openurlsourceparameters) {
-      for(let source of this.formdata.openurlsourceparameters) {
-        if(this.getParam(source)!= ""){
-          this.isopenurl = true;
-          this.openurlsource = this.getParam(source);
-          break;
-        }
-      }
-    }
-
     //OpenURL, matcha fält i formulär mot openurlparametrar
     if(this.isopenurl){
       this.openurljson = this.openurlparametersToJSON();
+      if(this.openurljson['atitle'] != '' && this.openurljson['genre'] == 'bookitem') {
+        //Hantera kapitel i bok, sätt ctitle och rensa atitle!
+        this.openurljson['ctitle']=this.openurljson['atitle'];
+        this.openurljson['atitle']='';
+      }
       for(let prop of this.objectFormfields) {
         if(this.openurljson[prop.key]) {
           this.kthbform.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
         }
       }
+      
+      this.onchangeformobject('','','');
     }
   }
 
@@ -215,7 +232,6 @@ export class DynamicFormComponent implements OnInit {
    * Funktion för att skicka vidare till extern URL
    */
   changelocation (url) {
-    console.log(url);
     window.location.href = url + '?language=' + this.language;
   }
 
@@ -248,12 +264,23 @@ export class DynamicFormComponent implements OnInit {
             "field": "iam",
             "values": ["student","employee"]
           }]
-   */
+   *
+   * Vid klick på mainoption-fält så ska övriga optionfält rensas
+  */
   onchangeformobject(domobj, object, event){
     var validfield;
     var show;
     var optionvalidchoice;
     var enableoption;
+    if(typeof object !== 'undefined' && object!= '') {
+      if (this.formdata.formfields[object].mainoption) {
+        for(let prop of this.objectFormfields) {
+          if (prop.type=='radio' && !prop.mainoption) {
+            this.kthbform.get(prop.key).setValue('');
+          }
+        }
+      }
+    }
     for(let prop of this.objectFormfields) {
       show = false;
       if (prop.showcriteria) {
@@ -321,12 +348,13 @@ export class DynamicFormComponent implements OnInit {
         } else {
           this.kthbform.get(prop.key).disable();
           prop.enabled = false;
+
         }
 
         if(this.isopenurl && !prop.openurlenabled) {
           //this.kthbform.get(prop.key).disable();
           prop.enabled = false;
-        }
+        } 
         
         if(this.isopenurl && prop.openurl) {
           this.kthbform.get(prop.key).enable();
