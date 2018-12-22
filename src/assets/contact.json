@@ -1,6 +1,9 @@
 {
   "id": "contact",
   "name": "Kontakta biblioteket",
+  "documentation": [
+    "Detta formulär används för..."
+  ],
   "header": {
     "swedish": "Kontakta oss",
     "english": "Contact us"

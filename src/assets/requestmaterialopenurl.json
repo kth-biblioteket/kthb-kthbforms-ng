@@ -7,7 +7,7 @@
     "Materialtyperna Bok, Artikel och Kapitel i bok hamnar som en request i Alma",
     "Typerna Tidskrift och Databas hamnar som ett ärende i RT/EDGE",
     "Ett bekräftelsemail(emailtobodyuser) går ut för Alma-requests till den address",
-    "beställaren har i Alma",
+    "beställaren har i Alma.",
     "RT/EDGE-ärenden går till emailtoaddressedge med innehåll(emailtobodyedge)",
     "RT/EDGE skickar sedan ett mail till beställaren om mottaget ärende."
   ],

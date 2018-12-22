@@ -1,6 +1,9 @@
 {
   "id": "teachingactivity",
   "name": "Undervisning",
+  "documentation": [
+    "Detta formulär används för..."
+  ],
   "header": {
     "swedish": "Boka undervisning",
     "english": "Book a teaching activity"

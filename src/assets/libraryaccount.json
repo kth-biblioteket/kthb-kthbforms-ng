@@ -1,6 +1,9 @@
 {
   "id": "libraryaccount",
   "name": "Ansökan om bibliotekskonto",
+  "documentation": [
+    "Detta formulär används för..."
+  ],
   "header": {
     "swedish": "Registrera dig",
     "english": "Register"

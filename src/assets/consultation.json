@@ -1,6 +1,9 @@
 {
   "id": "consultation",
   "name": "Handledning",
+  "documentation": [
+    "Detta formulär används för..."
+  ],
   "header": {
     "swedish": "Boka handledning",
     "english": "Book a consultation"

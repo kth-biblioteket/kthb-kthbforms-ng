@@ -1,6 +1,9 @@
 {
   "id": "kthbforms",
   "name" : "KTH Biblioteket Forms",
+  "documentation": [
+    "Detta formulär används för..."
+  ],
   "version": "1.1",
   "description": {
     "swedish": "",
