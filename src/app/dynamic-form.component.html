@@ -1,6 +1,9 @@
 <!-- Laddningsikon att visa vid exvis apianrop-->
-<div *ngIf="loading" class="loading">
-  <img class="loading-image" src="{{loaderurl}}" alt="Loading..." />
+<div *ngIf="loading" class="loading-screen">
+  <div class="loading">
+    <img class="loading-image" src="{{loaderurl}}" alt="{{language=='swedish' ? formdata.loaderinfo.swedish : formdata.loaderinfo.english}}" />
+    <div>{{language=='swedish' ? formdata.loaderinfo.swedish : formdata.loaderinfo.english}}</div>
+  </div>
 </div>
 <!-- Inforruta, OK svar från API-->
 <div *ngIf="backendresponse && backendresult && !warning" class="alert alert-success">
@@ -76,7 +79,7 @@
       <!-- Formuläret -->
       <div id="form_body">
         <!-- OpenUrl-ruta -->
-        <div *ngIf="isopenurl">
+        <div class="openurlbox" *ngIf="isopenurl">
           <label>{{language=='swedish' ? openurlboxlabel.swedish : openurlboxlabel.english}}</label>
           <div class="card">
             <div class="card-body">
@@ -98,8 +101,8 @@
           <div *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <div [ngStyle]="prop.type =='grouplabel' ? {'margin-bottom':'0px'} : {'margin-bottom':'15px'}">
-                <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationbox -->
-                <label *ngIf="prop.type != 'checkbox' && prop.type!='informationbox'" [ngClass]="{'isgrouped': prop.isgrouped, 'isnotgrouped': !prop.isgrouped }" [attr.for]="prop.key">
+                <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationboxalert -->
+                <label *ngIf="prop.type != 'checkbox' && prop.type!='informationboxalert' && prop.type!='informationbox'" [ngClass]="{'isgrouped': prop.isgrouped, 'isnotgrouped': !prop.isgrouped }" [attr.for]="prop.key">
                   {{language=='swedish' ? prop.label.swedish : prop.label.english}}
                   <!-- Fält valfritt? -->
                   <span style="font-style:italic;font-weight:normal">
@@ -189,7 +192,7 @@
                   </div>
                 </div>
                 <!-- Om placement=after -->
-                <div [ngClass]="{'alert alert-info': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationbox' ? {'position': 'relative'} : {}">
+                <div [ngClass]="{'alert alert-info': prop.type=='informationboxalert','informationbox': prop.type=='informationbox' }" [ngStyle]="prop.type=='informationboxalert' ? {'position': 'relative'} : {}">
                   <!-- Eventuell extra information/beskrivning-->
                   <div *ngIf="prop.description && prop.description.placement=='after'">
                       {{language=='swedish' ? prop.description.swedish : prop.description.english}}
