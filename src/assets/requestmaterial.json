@@ -1,6 +1,15 @@
 {
   "id": "requestmaterial",
   "name" : "Beställ material",
+  "documentation": [
+    "Detta formulär används för att beställa material",
+    "Materialtyperna Bok, Artikel och Kapitel i bok hamnar som en request i Alma",
+    "Typerna Tidskrift och Databas hamnar som ett ärende i RT/EDGE",
+    "Ett bekräftelsemail(emailtobodyuser) går ut för Alma-requests till den address",
+    "beställaren har i Alma",
+    "RT/EDGE-ärenden går till emailtoaddressedge med innehåll(emailtobodyedge)",
+    "RT/EDGE skickar sedan ett mail till beställaren om mottaget ärende."
+  ],
   "header" : {
       "swedish": "Beställ material",
       "english": "Request material"
@@ -55,32 +64,31 @@
   },
   "emailtobodyedge": {
     "swedish": [
-      "<div><strong>Titel</strong></div>",
-      "<div>@@title</div> ",
-      "<div>@@jtitle</div> ",
-      "<div>@@dbtitle</div> ",
-      "<br>",
-      "<div><strong>Dokumenttyp</strong></div>",
+      "<div><strong>Materialtyp</strong></div>",
       "<div>@@genre</div>",
       "<br>",
       "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare: @@au</div>",
-      "<div>Upplaga: @@edition</div>",
-      "<div>Nummer: @@issue</div>", 
-      "<div>Sidor: @@pages</div>",
-      "<div>ISSN: @@issn</div>",
-      "<div>ISBN: @@isbn</div>",
-      "<div>Plats: @@place</div>",
-      "<div>Förlag: @@publisher</div>",
-      "<div>År: @@year</div>",
-      "<div>Volym: @@volume</div>",
-      "<div>Kapitel: @@chaptertitle</div>",
-      "<div>DOI: @@doi</div>",
+      "<div showcritera='@@btitle'>Boktitel: @@btitle</div>",
+      "<div showcritera='@@atitle'>Artikeltitel: @@atitle</div>",
+      "<div showcritera='@@jtitle'>Tidskriftstitel: @@jtitle</div>",
+      "<div showcritera='@@dbtitle'>Databas: @@dbtitle</div>",
+      "<div showcritera='@@au'>Författare: @@au</div>",
+      "<div showcritera='@@edition'>Upplaga: @@edition</div>",
+      "<div showcritera='@@issue'>Nummer: @@issue</div>", 
+      "<div showcritera='@@pages'>Sidor: @@pages</div>",
+      "<div showcritera='@@issn'>ISSN: @@issn</div>",
+      "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
+      "<div showcritera='@@place'>Plats: @@place</div>",
+      "<div showcritera='@@publisher'>Förlag: @@publisher</div>",
+      "<div showcritera='@@year'>År: @@year</div>",
+      "<div showcritera='@@volume'>Volym: @@volume</div>",
+      "<div showcritera='@@ctitle'>Kapitel: @@ctitle</div>",
+      "<div showcritera='@@doi'>DOI: @@doi</div>",
       "<br>",
       "<div><strong>Källa för beställningen</strong></div>",
       "<div>@@source</div>",
       "<br>",
-      "<div><strong>Önskar hämta på</strong></div>",
+      "<div showcritera='@@pickup'><strong>Önskar hämta på</strong></div>",
       "<div>@@pickup</div>",
       "<br>",
       "<div><strong>Beställarens namn</strong></div>",
@@ -95,39 +103,38 @@
       "<div><strong>E-postadress</strong></div>",
       "<div>@@username</div>",
       "<br>",
-      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div showcritera='@@cost'><strong>Accepterar kostnad</strong></div>",
       "<div>@@cost</div>",
       "<br>",
-      "<div><strong>Meddelande från beställare</strong></div>",
+      "<div showcritera='@@message'><strong>Meddelande från beställare</strong></div>",
       "<div>@@message</div>"
     ],
     "english": [
-      "<div><strong>Titel</strong></div>",
-      "<div>@@title</div> ",
-      "<div>@@jtitle</div> ",
-      "<div>@@dbtitle</div> ",
-      "<br>",
-      "<div><strong>Dokumenttyp</strong></div>",
+      "<div><strong>Material type</strong></div>",
       "<div>@@genre</div>",
       "<br>",
       "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare: @@au</div>",
-      "<div>Upplaga: @@edition</div>",
-      "<div>Nummer: @@issue</div>", 
-      "<div>Sidor: @@pages</div>",
-      "<div>ISSN: @@issn</div>",
-      "<div>ISBN: @@isbn</div>",
-      "<div>Plats: @@place</div>",
-      "<div>Förlag: @@publisher</div>",
-      "<div>År: @@year</div>",
-      "<div>Volym: @@volume</div>",
-      "<div>Kapitel: @@chaptertitle</div>",
-      "<div>DOI: @@doi</div>",
+      "<div showcritera='@@btitle'>Book title: @@btitle</div>",
+      "<div showcritera='@@atitle'>Article title: @@atitle</div>",
+      "<div showcritera='@@jtitle'>Journal title: @@jtitle</div>",
+      "<div showcritera='@@dbtitle'>Database: @@dbtitle</div>",
+      "<div showcritera='@@au'>Författare: @@au</div>",
+      "<div showcritera='@@edition'>Upplaga: @@edition</div>",
+      "<div showcritera='@@issue'>Nummer: @@issue</div>", 
+      "<div showcritera='@@pages'>Sidor: @@pages</div>",
+      "<div showcritera='@@issn'>ISSN: @@issn</div>",
+      "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
+      "<div showcritera='@@place'>Plats: @@place</div>",
+      "<div showcritera='@@publisher'>Förlag: @@publisher</div>",
+      "<div showcritera='@@year'>År: @@year</div>",
+      "<div showcritera='@@volume'>Volym: @@volume</div>",
+      "<div showcritera='@@ctitle'>Kapitel: @@ctitle</div>",
+      "<div showcritera='@@doi'>DOI: @@doi</div>",
       "<br>",
       "<div><strong>Källa för beställningen</strong></div>",
       "<div>@@source</div>",
       "<br>",
-      "<div><strong>Önskar hämta på</strong></div>",
+      "<div showcritera='@@pickup'><strong>Önskar hämta på</strong></div>",
       "<div>@@pickup</div>",
       "<br>",
       "<div><strong>Beställarens namn</strong></div>",
@@ -142,10 +149,10 @@
       "<div><strong>E-postadress</strong></div>",
       "<div>@@username</div>",
       "<br>",
-      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div showcritera='@@cost'><strong>Accepterar kostnad</strong></div>",
       "<div>@@cost</div>",
       "<br>",
-      "<div><strong>Meddelande från beställare</strong></div>",
+      "<div showcritera='@@message'><strong>Meddelande från beställare</strong></div>",
       "<div>@@message</div>"
     ]
   },
@@ -156,101 +163,99 @@
   "emailtobodyuser": {
     "swedish": [
       "<div><p>Hej,</p></div>",
-      "<div><p>Tack för din beställning av följande material:</p></div>",
-      "<div>@@title</div> ",
-      "<div>@@jtitle</div> ",
-      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
-      "<div><p>Vänligen</p></div>",
-      "<div>KTH Biblioteket</div>",
-      "<div>Bibliotekspersonalen</div>",
-      "<div>Telefon: 08 - 790 70 88</div>",
-      "<div>Webb: www.kth.se/kthb</div>",
-      "<br>",
-      "<div><strong>Dokumenttyp</strong></div>",
+      "<div><p>Tack för din beställning! Vi meddelar dig när materialet är tillgängligt. Gäller beställningen en artikel skickas den per post till dig.</p></div>",
+      "<div><strong>Materialtyp</strong></div>",
       "<div>@@genre</div>",
+	    "<br>",
       "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare: @@au</div>",
-      "<div>Upplaga: @@edition</div>",
-      "<div>Nummer: @@issue</div>", 
-      "<div>Sidor: @@pages</div>",
-      "<div>ISSN: @@issn</div>",
-      "<div>ISBN: @@isbn</div>",
-      "<div>Plats: @@place</div>",
-      "<div>Förlag: @@publisher</div>",
-      "<div>År: @@year</div>",
-      "<div>Volym: @@volume</div>",
-      "<div>Kapitel: @@chaptertitle</div>",
-      "<div>DOI: @@doi</div>",
+      "<div showcritera='@@btitle'>Boktitel: @@btitle</div>",
+      "<div showcritera='@@atitle'>Artikeltitel: @@atitle</div>",
+      "<div showcritera='@@jtitle'>Tidskriftstitel: @@jtitle</div>",
+      "<div showcritera='@@au'>Författare: @@au</div>",
+      "<div showcritera='@@edition'>Upplaga: @@edition</div>",
+      "<div showcritera='@@issue'>Nummer: @@issue</div>", 
+      "<div showcritera='@@pages'>Sidor: @@pages</div>",
+      "<div showcritera='@@issn'>ISSN: @@issn</div>",
+      "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
+      "<div showcritera='@@publisher'>Förlag: @@publisher</div>",
+      "<div showcritera='@@year'>År: @@year</div>",
+      "<div showcritera='@@volume'>Volym: @@volume</div>",
+      "<div showcritera='@@ctitle'>Kapitel: @@ctitle</div>",
+      "<div showcritera='@@doi'>DOI: @@doi</div>",
       "<br>",
       "<div><strong>Källa för beställningen</strong></div>",
       "<div>@@source</div>",
       "<br>",
-      "<div><strong>Önskar hämta på</strong></div>",
+      "<div showcritera='@@pickup'><strong>Önskar hämta på</strong></div>",
       "<div>@@pickup</div>",
       "<br>",
-      "<div><strong>Kategori/Category</strong></div>",
+      "<div><strong>Kategori</strong></div>",
       "<div>@@iam</div>",
       "<br>",
-      "<div><strong>Användarid/Userid</strong></div>",
+      "<div><strong>Användarid</strong></div>",
       "<div>@@username</div>",
       "<br>",
       "<div><strong>E-postadress</strong></div>",
       "<div>@@username</div>",
       "<br>",
-      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div showcritera='@@cost'><strong>Accepterar kostnad</strong></div>",
       "<div>@@cost</div>",
       "<br>",
-      "<div><strong>Meddelande från beställare</strong></div>",
-      "<div>@@message</div>"
+      "<div showcritera='@@message'><strong>Meddelande från beställare</strong></div>",
+      "<div>@@message</div>",
+	    "<br>",
+	    "<div><p>Vänligen</p></div>",
+      "<div>KTH Biblioteket</div>",
+      "<div>Telefon: 08-790 70 88</div>",
+      "<div>www.kth.se/biblioteket</div>"
     ],
     "english": [
-      "<div><p>Hej,</p></div>",
-      "<div><p>Tack för din beställning av följande material:</p></div>",
-      "<div>@@title</div> ",
-      "<div>@@jtitle</div> ",
-      "<div><p>Vi har mottagit din beställning. Vi hanterar den så snabbt som möjligt och meddelar dig då materialet är tillgängligt för lån. Gäller beställningen en artikel så skickas den per post till dig.</p></div>",
-      "<div><p>Vänligen</p></div>",
-      "<div>KTH Biblioteket</div>",
-      "<div>Bibliotekspersonalen</div>",
-      "<div>Telefon: 08 - 790 70 88</div>",
-      "<div>Webb: www.kth.se/kthb</div>",
-      "<br>",
-      "<div><strong>Dokumenttyp</strong></div>",
+      "<div><p>Hi,</p></div>",
+      "<div><p>Thank you for your request! We will let you know when the material is available. Article copies will be sent to the mailing address you have registered in the library system.</p></div>",
+      "<div><strong>Material type</strong></div>",
       "<div>@@genre</div>",
-      "<div><strong>Bibliografisk information</strong></div>",
-      "<div>Författare: @@au</div>",
-      "<div>Upplaga: @@edition</div>",
-      "<div>Nummer: @@issue</div>", 
-      "<div>Sidor: @@pages</div>",
-      "<div>ISSN: @@issn</div>",
-      "<div>ISBN: @@isbn</div>",
-      "<div>Plats: @@place</div>",
-      "<div>Förlag: @@publisher</div>",
-      "<div>År: @@year</div>",
-      "<div>Volym: @@volume</div>",
-      "<div>Kapitel: @@chaptertitle</div>",
-      "<div>DOI: @@doi</div>",
+	    "<br>",
+      "<div><strong>Bibliographic information</strong></div>",
+      "<div showcritera='@@btitle'>Book title: @@btitle</div>",
+      "<div showcritera='@@atitle'>Article title: @@atitle</div>",
+      "<div showcritera='@@jtitle'>Journal title: @@jtitle</div>",
+      "<div showcritera='@@au'>Author: @@au</div>",
+      "<div showcritera='@@edition'>Edition: @@edition</div>",
+      "<div showcritera='@@issue'>Issue: @@issue</div>", 
+      "<div showcritera='@@pages'>Pages: @@pages</div>",
+      "<div showcritera='@@issn'>ISSN: @@issn</div>",
+      "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
+      "<div showcritera='@@publisher'>Publisher: @@publisher</div>",
+      "<div showcritera='@@year'>Year: @@year</div>",
+      "<div showcritera='@@volume'>Volume: @@volume</div>",
+      "<div showcritera='@@ctitle'>Chapter: @@ctitle</div>",
+      "<div showcritera='@@doi'>DOI: @@doi</div>",
       "<br>",
-      "<div><strong>Källa för beställningen</strong></div>",
+      "<div><strong>Request source</strong></div>",
       "<div>@@source</div>",
       "<br>",
-      "<div><strong>Önskar hämta på</strong></div>",
+      "<div showcritera='@@pickup'><strong>Pickup at</strong></div>",
       "<div>@@pickup</div>",
       "<br>",
-      "<div><strong>Kategori/Category</strong></div>",
+      "<div><strong>Category</strong></div>",
       "<div>@@iam</div>",
       "<br>",
-      "<div><strong>Användarid/Userid</strong></div>",
+      "<div><strong>User id</strong></div>",
       "<div>@@username</div>",
       "<br>",
-      "<div><strong>E-postadress</strong></div>",
+      "<div><strong>Email address</strong></div>",
       "<div>@@username</div>",
       "<br>",
-      "<div><strong>Accepterar kostnad</strong></div>",
+      "<div showcritera='@@cost'><strong>Accepting fees</strong></div>",
       "<div>@@cost</div>",
       "<br>",
-      "<div><strong>Meddelande från beställare</strong></div>",
-      "<div>@@message</div>"
+      "<div showcritera='@@message'><strong>Message from the requester</strong></div>",
+      "<div>@@message</div>",
+	    "<br>",
+	    "<div><p>Kind regards</p></div>",
+      "<div>KTH Library</div>",
+      "<div>Phone: 08-790 70 88</div>",
+      "<div>www.kth.se/en/biblioteket</div>"
     ]
   },
   "emailfromaddresslibrary": {
@@ -274,240 +279,6 @@
       "english": "Please see text marked as red below"
     }
   },
-  "openurlsourceparameters" : ["source","rfr.id"],
-  "depracated_openurlparameters" : [
-    {
-      "name": {
-        "standard": "genre",
-        "primo": "genre",
-        "info:sid/libris.kb.se:libris": "rft.genre"
-      },
-      "label":{
-        "swedish" : "Materialtyp",
-        "english":  "Type of material"
-      }
-    },
-    {
-      "name": {
-        "standard": "atitle",
-        "primo": "article",
-        "info:sid/libris.kb.se:libris": "rft.atitle"
-      },
-      "label":{
-        "swedish" : "Artikelns/kapitlets titel",
-        "english":  "Article/chapter title"
-      }
-    },
-    {
-      "name": {
-        "standard": "jtitle",
-        "primo": "journal",
-        "info:sid/libris.kb.se:libris": "rft.jtitle"
-      },
-      "label":{
-        "swedish" : "Tidskriftstitel",
-        "english":  "Journal title"
-      }
-    },
-    {
-      "name": {
-        "standard": "stitle",
-        "primo": "abbrev",
-        "info:sid/libris.kb.se:libris": "rft.stitle"
-      },
-      "label":{
-        "swedish" : "Förkortad tidskriftstitel",
-        "english":  "Abbreviated Journal title"
-      }
-    },
-    {
-      "name": {
-        "standard": "btitle",
-        "primo": "bookTitle",
-        "info:sid/libris.kb.se:libris": "rft.btitle"
-      },
-      "label":{
-        "swedish" : "Boktitel",
-        "english":  "Book title"
-      }
-    },
-    {
-      "name": {
-        "standard": "au",
-        "primo": "author",
-        "info:sid/libris.kb.se:libris": "rft.au"
-      },
-      "label":{
-        "swedish" : "Författare",
-        "english":  "Author"
-      }
-    },
-    {
-      "name": {
-        "standard": "pub",
-        "primo": "rft.pub",
-        "info:sid/libris.kb.se:libris": "rft.pub"
-      },
-      "label":{
-        "swedish" : "Publicerad av",
-        "english":  "Publisher name"
-      }
-    },
-    {
-      "name": {
-        "standard": "publisher",
-        "primo": "publisher",
-        "info:sid/libris.kb.se:libris": "rft.publisher"
-      },
-      "label":{
-        "swedish" : "Publicerad av",
-        "english":  "Publisher"
-      }
-    },
-    {
-      "name": {
-        "standard": "volume",
-        "primo": "volume",
-        "info:sid/libris.kb.se:libris": "rft.volume"
-      },
-      "label":{
-        "swedish" : "Volym",
-        "english":  "Volume"
-      }
-    },
-    {
-      "name": {
-        "standard": "issue",
-        "primo": "issue",
-        "info:sid/libris.kb.se:libris": "rft.issue"
-      },
-      "label":{
-        "swedish" : "Nummer",
-        "english":  "Issue"
-      }
-    },
-    {
-      "name": {
-        "standard": "edition",
-        "primo": "rft.edition",
-        "info:sid/libris.kb.se:libris": "rft.edition"
-      },
-      "label":{
-        "swedish" : "Upplaga",
-        "english":  "Edition"
-      }
-    },
-    {
-      "name": {
-        "standard": "pages",
-        "primo": "pages",
-        "info:sid/libris.kb.se:libris": "rft.pages"
-      },
-      "label":{
-        "swedish" : "Sidor",
-        "english":  "Pages"
-      }
-    },
-    {
-      "name": {
-        "standard": "isbn",
-        "primo": "ISBN",
-        "info:sid/libris.kb.se:libris": "rft.isbn"
-      },
-      "label":{
-        "swedish" : "ISBN",
-        "english":  "ISBN"
-      }
-    },
-    {
-      "name": {
-        "standard": "issn",
-        "primo": "ISSN",
-        "info:sid/libris.kb.se:libris": "rft.issn"
-      },
-      "label":{
-        "swedish" : "ISSN",
-        "english":  "ISSN"
-      }
-    },
-    {
-      "name": {
-        "standard": "eisbn",
-        "primo": "EISBN",
-        "info:sid/libris.kb.se:libris": "rft.eisbn"
-      },
-      "label":{
-        "swedish" : "EISBN",
-        "english":  "EISBN"
-      }
-    },
-    {
-      "name": {
-        "standard": "eissn",
-        "primo": "EISSN",
-        "info:sid/libris.kb.se:libris": "rft.eissn"
-      },
-      "label":{
-        "swedish" : "EISSN",
-        "english":  "EISSN"
-      }
-    },
-    {
-      "name": {
-        "standard": "doi",
-        "primo": "rft.doi",
-        "info:sid/libris.kb.se:libris": "rft.doi"
-      },
-      "label":{
-        "swedish" : "DOI",
-        "english":  "DOI"
-      }
-    },
-    {
-      "name": {
-        "standard": "year",
-        "primo": "year",
-        "info:sid/libris.kb.se:libris": "rft.year"
-      },
-      "label":{
-        "swedish" : "År",
-        "english":  "Year"
-      }
-    },
-    {
-      "name": {
-        "standard": "month",
-        "primo": "month",
-        "info:sid/libris.kb.se:libris": "rft.month"
-      },
-      "label":{
-        "swedish" : "Månad",
-        "english":  "Month"
-      }
-    },
-    {
-      "name": {
-        "standard": "number",
-        "primo": "rft.number",
-        "info:sid/libris.kb.se:libris": "rft.number"
-      },
-      "label":{
-        "swedish" : "Patentnummer",
-        "english":  "Patent number"
-      }
-    },
-    {
-      "name": {
-        "standard": "place",
-        "primo": "publiPlace",
-        "info:sid/libris.kb.se:libris": "rft.place"
-      },
-      "label":{
-        "swedish" : "Publiceringsort",
-        "english":  "Publication place"
-      }
-    }
-  ],
   "openurlboxlabel": {
     "swedish": "Beställningsinformation",
     "english": "Request information"
@@ -534,8 +305,8 @@
       "english": "Chapter in book"
     },
     "journal": {
-      "swedish": "Tidskrift / Databas",
-      "english": "Journal / Database"
+      "swedish": "Tidskrift",
+      "english": "Journal"
     },
     "conference": {
       "swedish": "Konferens",
@@ -574,8 +345,8 @@
     },
     "iam": {
       "label": {
-        "swedish": "Jag är",
-        "english": "I am a"
+        "swedish": "Användarkategori",
+        "english": "User category"
       },
       "value": "",
       "type": "radio",
@@ -609,7 +380,7 @@
         },
         { 
           "label": {
-            "swedish": "Övriga",
+            "swedish": "Övrig",
             "english": "Other"
           }, 
           "value": "other",
@@ -706,8 +477,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "För att kunna beställa material behöver du vara registrerad som användare i bibliotekssystemet. Är du registrerad än?",
-        "english": "To be able to order material..."
+        "swedish": "För att kunna beställa material behöver du vara registrerad som användare i bibliotekssystemet.",
+        "english": "To be able to order material you need to be registered as a user in the library system."
       },
       "link": {
         "placement": "after",
@@ -740,24 +511,8 @@
     },
     "username": {
       "label": {
-        "swedish": "Användarnamn",
-        "english": "Username"
-      },
-      "1description": {
-        "placement": "before",
-        "swedish": "För att kunna beställa material behöver du vara registrerad som användare i bibliotekssystemet. Är du registrerad än?",
-        "english": "To order material..."
-      },
-      "1link": {
-        "placement": "before",
-        "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Registrera dig som ny användare"
-        },
-        "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Register as new user"
-        }
+        "swedish": "Användarnamn (e-postadress)",
+        "english": "Username (email address)"
       },
       "value": "",
       "type": "text",
@@ -812,8 +567,8 @@
         },
         { 
           "label": {
-            "swedish": "Artikel (skickas per post till adressen på ditt bibliotekskonto)",
-            "english": "Article (sent by mail to...)"
+            "swedish": "Artikel",
+            "english": "Article"
           }, 
           "value": "article",
           "enabled": true,
@@ -848,8 +603,8 @@
         },
         { 
           "label": {
-            "swedish": "Databas (föreslå abonnemang)",
-            "english": "Database (suggest...)"
+            "swedish": "Databas",
+            "english": "Database"
           }, 
           "value": "database",
           "enabled": true,
@@ -876,14 +631,14 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden kan det tillkomma en avgift på 300 kr.",
-        "english": "If we need to borrow the book.... 300 SEK"
+        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden tillkommer det en avgift.",
+        "english": "If we need to borrow the book from a library in the Nordic countries there will be a fee."
       },
       "link": {
         "placement": "after",
         "swedish" : {
           "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
+          "text": "Prislista"
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
@@ -910,22 +665,6 @@
         "swedish": "Kostnader",
         "english": "Costs"
       },
-      "1description": {
-        "placement": "before",
-        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden kan det tillkomma en avgift på 300 kr.",
-        "english": "If we need to borrow the book.... "
-      },
-      "1link": {
-        "placement": "before",
-        "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
-        },
-        "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
-        }
-      },
       "value": "" ,
       "type": "radio",
       "enabled": false,
@@ -944,15 +683,15 @@
         { 
           "label": {
             "swedish": "Jag accepterar eventuella kostnader",
-            "english": "I accept charges..."
+            "english": "I accept any fees"
           }, 
-          "value": "accept",
+          "value": "acceptcost",
           "enabled": true
         },
         { 
           "label": {
             "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me..."
+            "english": "I want the library to contact me about the fees before I accept them"
           }, 
           "value": "contact",
           "enabled": true
@@ -975,14 +714,14 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Artiklar/kopior kostar 80-150 kr/styck.",
-        "english": "Articles/copies cost 80-150 SEK a piece."
+        "swedish": "För artikelbeställningar tillkommer det en avgift.",
+        "english": "Article requests are subject to a fee."
       },
       "link": {
         "placement": "after",
         "swedish" : {
           "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
+          "text": "Prislista"
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
@@ -1009,22 +748,6 @@
         "swedish": "Kostnader",
         "english": "Costs"
       },
-      "1description": {
-        "placement": "before",
-        "swedish": "Artiklar/kopior kostar 80-150 kr/styck.",
-        "english": "Articles/copies cost 80-150 SEK a piece."
-      },
-      "1link": {
-        "placement": "before",
-        "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
-        },
-        "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
-        }
-      },
       "value": "" ,
       "type": "radio",
       "enabled": false,
@@ -1043,15 +766,15 @@
         { 
           "label": {
             "swedish": "Jag accepterar eventuella kostnader",
-            "english": "I accept charges..."
+            "english": "I accept any fees"
           }, 
-          "value": "accept",
+          "value": "acceptcost",
           "enabled": true
         },
         { 
           "label": {
             "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me..."
+            "english": "I want the library to contact me about any fees before I accept them"
           }, 
           "value": "contact",
           "enabled": true
@@ -1074,14 +797,14 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Det kan tillkomma en avgift för beställningar av kapitel i bok.",
-        "english": "There might be costs..."
+        "swedish": "För beställningar av kapitel i bok kan det tillkomma en avgift.",
+        "english": "A requests for a chapter in a book can be subject to a fee."
       },
       "link": {
         "placement": "after",
         "swedish" : {
           "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
+          "text": "Prislista"
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
@@ -1117,22 +840,6 @@
         "swedish": "Kostnader",
         "english": "Costs"
       },
-      "1description": {
-        "placement": "before",
-        "swedish": "Det kan tillkomma en avgift för beställningar av kapitel i bok.",
-        "english": "There might be costs..."
-      },
-      "1link": {
-        "placement": "before",
-        "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
-        },
-        "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
-        }
-      },
       "value": "" ,
       "type": "radio",
       "enabled": false,
@@ -1151,15 +858,15 @@
         { 
           "label": {
             "swedish": "Jag accepterar eventuella kostnader",
-            "english": "I accept charges..."
+            "english": "I accept any fees"
           }, 
-          "value": "accept",
+          "value": "acceptcost",
           "enabled": true
         },
         { 
           "label": {
             "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me..."
+            "english": "I want the library to contact me about any fees before I accept them"
           }, 
           "value": "contact",
           "enabled": true
@@ -1183,13 +890,13 @@
       "description": {
         "placement": "after",
         "swedish": "Boklån är avgiftsbelagda för företag.",
-        "english": "There are costs..."
+        "english": "Book loans for companies are subject to a fee."
       },
       "link": {
         "placement": "after",
         "swedish" : {
           "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
+          "text": "Prislista"
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
@@ -1218,14 +925,14 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Artiklar/kopior är avgiftsbelagda för företag.",
-        "english": "There are costs..."
+        "swedish": "Artikelbeställningar är avgiftsbelagda för företag.",
+        "english": "Article requests for companies are subject to a fee."
       },
       "link": {
         "placement": "after",
         "swedish" : {
           "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
+          "text": "Prislista"
         },
         "english" : {
           "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
@@ -1254,8 +961,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Som privatperson kan du endast göra bokbeställningar från KTH Bibliotekets magasin eller äldre boksamling",
-        "english": "As a private person you can only..."
+        "swedish": "Som privatperson kan du endast göra bokbeställningar från KTH Bibliotekets magasin eller äldre boksamling.",
+        "english": "As a private person you can only make book requests from the KTH Library closed stacks or old book collection."
       },
       "value": "informationbox",
       "type": "informationboxalert",
@@ -1279,8 +986,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Som privatperson kan du endast göra artikelbeställningar från KTH Bibliotekets magasin",
-        "english": "As a private person you can only..."
+        "swedish": "Som privatperson kan du endast göra artikelbeställningar från KTH Bibliotekets magasin.",
+        "english": "As a private person you can only make article requests from the KTH Library stacks."
       },
       "value": "informationbox",
       "type": "informationboxalert",
@@ -1413,8 +1120,8 @@
     },
     "dbtitle": {
       "label": {
-        "swedish": "Databas",
-        "english": "Database"
+        "swedish": "Databasens namn",
+        "english": "Name of the database"
       },
       "value": "",
       "type": "text",
@@ -2050,7 +1757,7 @@
       "options": [
         { 
           "label": {
-            "swedish": "Huvudbibioteket",
+            "swedish": "Huvudbiblioteket",
             "english": "Main Library"
           }, 
           "value": "MAIN",
