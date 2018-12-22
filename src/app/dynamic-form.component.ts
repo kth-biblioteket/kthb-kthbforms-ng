@@ -64,18 +64,11 @@ export class DynamicFormComponent implements OnInit {
    */
   async getFormData() {
     const formGroup = {};
-<<<<<<< HEAD
     //Implementera token?
     this.token = this.settings.config.headers.get('token');
     //Källa
     if(this.settings.config.body.openurlsourceparameters) {
       for(let source of this.settings.config.body.openurlsourceparameters) {
-=======
-
-    //Källa
-    if(this.settings.config.openurlsourceparameters) {
-      for(let source of this.settings.config.openurlsourceparameters) {
->>>>>>> af9ef7b150e20cc04d46b101c28dec8d0be788d2
         if(this.getParam(source)!= ""){
           this.isopenurl = true;
           this.openurlsuffix = "openurl";
@@ -84,16 +77,11 @@ export class DynamicFormComponent implements OnInit {
         }
       }
     }
-<<<<<<< HEAD
     this.formdataresponse = await this.http.get(
         environment.formdataurl + this.formid + this.openurlsuffix + ".json" + '?time=' + Date.now(),
         { observe: 'response' }
       ).toPromise();
     this.formdata = this.formdataresponse.body;
-=======
-    this.formdata = await this.http.get(environment.formdataurl + this.formid + this.openurlsuffix + ".json" + '?time=' + Date.now()).toPromise();
-
->>>>>>> af9ef7b150e20cc04d46b101c28dec8d0be788d2
     this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
