@@ -143,7 +143,7 @@
                     [id]="prop.key" [type]="prop.type">
                   
                   <!-- Datum inputruta -->
-                  <div *ngSwitchCase="'datebox'" class="datebox" styale="display:flex; flex-direction: row;">
+                  <div *ngSwitchCase="'datebox'" class="datebox">
                     <my-date-picker [options]="myDatePickerOptions" [formControlName]="prop.key" locale="{{language=='swedish' ? 'sv' : 'en'}}"></my-date-picker>
                   </div>
 

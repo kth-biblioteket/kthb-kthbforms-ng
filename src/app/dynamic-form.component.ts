@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { AppConfigService } from './app-config.service';
 
-import {IMyDpOptions} from 'mydatepicker';
+import { IMyDpOptions } from 'mydatepicker';
 
 @Component({
   selector: 'dynamic-form',
@@ -136,6 +136,8 @@ export class DynamicFormComponent implements OnInit {
   public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'yyyy-mm-dd',
     alignSelectorRight: true
+    /*openSelectorOnInputClick: true,
+    editableDateField: false*/
   };
 
   /**
