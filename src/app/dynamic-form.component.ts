@@ -108,11 +108,14 @@ export class DynamicFormComponent implements OnInit {
     //OpenURL, matcha fält i formulär mot openurlparametrar
     if(this.isopenurl){
       this.openurljson = this.openurlparametersToJSON();
-      if(this.openurljson['atitle'] != '' && this.openurljson['genre'] == 'bookitem') {
-        //Hantera kapitel i bok, sätt ctitle och rensa atitle!
-        this.openurljson['ctitle']=this.openurljson['atitle'];
-        this.openurljson['atitle']='';
+      console.log(this.openurljson);
+      //Hantera kapitel i bok/artikel(båda har nämligen atitle som titel)
+      //ctitle sätts först(först i listan av formfields)
+      if(this.openurljson['ctitle'] != '' && this.openurljson['genre'] == 'article') { 
+        this.openurljson['atitle']=this.openurljson['ctitle'];
+        this.openurljson['ctitle']='';
       }
+      
       for(let prop of this.objectFormfields) {
         if(this.openurljson[prop.key]) {
           this.kthbform.get(prop.key).setValue(decodeURI(this.openurljson[prop.key]));
@@ -176,7 +179,6 @@ export class DynamicFormComponent implements OnInit {
       }
       result[pair[0]] = decodeURIComponent(pair[1] || '').replace(/\+/g, ' ');
     });
-    
     return result;
   }
 
