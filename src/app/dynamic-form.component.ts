@@ -82,7 +82,7 @@ export class DynamicFormComponent implements OnInit {
         { observe: 'response' }
       ).toPromise();
     this.formdata = this.formdataresponse.body;
-    this.setTitle(this.formdata.header.swedish);
+    //this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
     this.posturl = this.formdata.posturl;
