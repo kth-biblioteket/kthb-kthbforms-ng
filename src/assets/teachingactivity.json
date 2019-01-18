@@ -1,9 +1,6 @@
 {
   "id": "teachingactivity",
   "name": "Undervisning",
-  "documentation": [
-    "Detta formulär används för..."
-  ],
   "header": {
     "swedish": "Boka undervisning",
     "english": "Book a teaching activity"
@@ -11,7 +8,7 @@
   "status": "open",
   "description": {
     "open": {
-      "swedish": "Här kan du som är lärare på KTH anmäla intresse för vår undervisning. Vi kan maximalt ta emot 20 studenter i vår datorsal. Vi kan också komma till era lokaler för att ha föreläsning eller söklabb.",
+      "swedish": "",
       "english": ""
     },
     "closed": {
@@ -41,12 +38,12 @@
       "english": "Something went wrong!"
     },
     "text": {
-      "swedish": "Kontakta biblioteket...",
-      "english": "Please contact the library..."
+      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om felet kvarstår kontakta biblioteket.",
+      "english": "Please check that all the fields have been filled out correctly. If the problem remains please contact the library."
     }
   },
   "emailtoaddressedge": {
-    "emailaddress": "tholind@kth.se",
+    "emailaddress": "ask-kthb@kth.se",
     "name": {
       "swedish": "",
       "english": ""
@@ -473,6 +470,20 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
+        } 
+      }
+    },
+    "sendbutton": {
+      "label": {
+        "swedish": "Skicka",
+        "english": "Send"
+      },
+      "value": "",
+      "type": "button",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": false
         } 
       }
     }

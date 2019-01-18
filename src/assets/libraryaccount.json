@@ -1,9 +1,6 @@
 {
   "id": "libraryaccount",
   "name": "Ansökan om bibliotekskonto",
-  "documentation": [
-    "Detta formulär används för..."
-  ],
   "header": {
     "swedish": "Registrera dig",
     "english": "Register"
@@ -41,8 +38,8 @@
       "english": "Something went wrong!"
     },
     "text": {
-      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om problemet kvarstår, kontakta biblioteket.",
-      "english": "Please make sure that all the fields have been filled out correctly. If the problem remains, please contact the library."
+      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om problemet kvarstår kontakta biblioteket.",
+      "english": "Please make sure that all the fields have been filled out correctly. If the problem remains please contact the library."
     }
   },
   "emailtosubjectuser": {
@@ -89,55 +86,14 @@
     }
   }, 
   "formfields": {
-    "iam": {
+    "otherinfo": {
       "label": {
         "swedish": "Användarkategori",
-        "english": "User group"
+        "english": "User category"
       },
       "value": "",
       "type": "radio",
       "enabled": true,
-      "options": [
-        { 
-          "label": {
-            "swedish": "Student eller anställd på KTH",
-            "english": "Student or staff member at KTH"
-          }, 
-          "value": "student",
-          "enabled": true,
-          "lsink": "https://apps.lib.kth.se/aktiverapatron/aktiverapatron_new1.php"
-        },
-        { 
-          "label": {
-            "swedish": "Övrig",
-            "english": "Other"
-          }, 
-          "value": "other",
-          "enabled": true
-        }
-      ],
-      "validation": {
-        "required": {
-          "value": true,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
-    },
-    "otherinfo": {
-      "label": {
-        "swedish": "Övrig",
-        "english": "Other"
-      },
-      "value": "",
-      "type": "radio",
-      "enabled": false,
-      "showcriteria": [{
-        "field": "iam",
-        "values": ["other"]
-      }],
       "options": [
         { 
           "label": {
@@ -189,18 +145,18 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Om du inte är KTH-anknuten och dessutom mellan 16 och 18 år behöver du lämna en borgensförbindelse. Samma gäller om du inte är folkbokförd i Sverige. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras.",
-        "english": "If you are not affiliated with KTH and also between 16 and 18 years old you need to fill out a guarantee form. This also applies if you are not registered as a Swedish resident. Anyone who stands surety must be working and registered in Sweden and over 18 years old. The guarantor must be present when the library card is issued and must show a valid ID."
+        "swedish": "Om du är mellan 16 och 18 år och inte är KTH-anknuten behöver du lämna en borgensförbindelse. Samma gäller om du inte är folkbokförd i Sverige. Den som går i borgen ska vara yrkesverksam, folkbokförd i Sverige och över 18 år. Borgenspersonen måste vara närvarande och ska uppvisa ID när bibliotekskontot aktiveras.",
+        "english": "If you are between 16 and 18 years old and not affiliated with KTH you need to fill out a guarantee form. This also applies if you are not registered as a Swedish resident. Anyone who stands surety must be working and registered in Sweden and over 18 years old. The guarantor must be present when the library card is issued and must show a valid ID."
       },
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Registrera dig som ny användare"
+          "url": "https://apps.lib.kth.se/kthbforms/assets/borgensforbindelse.pdf",
+          "text": "Ladda ner borgensförbindelse"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Register as a new user"
+          "url": "https://apps.lib.kth.se/kthbforms/assets/borgensforbindelse.pdf",
+          "text": "Download the guarantee form"
         }
       },
       "value": "informationbox",
@@ -230,8 +186,8 @@
       "enabled": false,
       "showcriteria": [
         {
-          "field": "iam",
-          "values": ["student","other"]
+          "field": "otherinfo",
+          "values": ["any"]
         }
       ],
       "validation": {
@@ -254,8 +210,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -277,8 +233,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -300,8 +256,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -330,8 +286,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -360,8 +316,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -390,8 +346,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -420,8 +376,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -450,8 +406,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -480,8 +436,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -503,8 +459,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -526,8 +482,8 @@
       "isgrouped": true,
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -541,26 +497,26 @@
     },
     "accept": {
       "label": {
-        "swedish": "Jag godkänner KTH Bibliotekets lånevillkor",
-        "english": "I accept the KTH Library borrowing regulations."
+        "swedish": "Jag godkänner KTH Bibliotekets användarvillkor",
+        "english": "I accept the KTH Library terms of use."
       },
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Lånevillkor"
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/logga-in/anvandarvillkor-1.854843",
+          "text": "Användarvillkor"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/aktivera-bibliotekskonto-1.672983",
-          "text": "Borrowing regulations"
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/logga-in/anvandarvillkor-1.854843",
+          "text": "Terms of use"
         }
       },
       "value": "",
       "type": "checkbox",
       "enabled": false,
       "showcriteria": [{
-        "field": "iam",
-        "values": ["student","other"]
+        "field": "otherinfo",
+        "values": ["any"]
       }],
       "validation": {
         "required": {
@@ -569,6 +525,20 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
+        } 
+      }
+    },
+    "sendbutton": {
+      "label": {
+        "swedish": "Skicka",
+        "english": "Send"
+      },
+      "value": "",
+      "type": "button",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": false
         } 
       }
     }

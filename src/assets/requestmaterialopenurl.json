@@ -7,7 +7,7 @@
     "Materialtyperna Bok, Artikel och Kapitel i bok hamnar som en request i Alma",
     "Typerna Tidskrift och Databas hamnar som ett ärende i RT/EDGE",
     "Ett bekräftelsemail(emailtobodyuser) går ut för Alma-requests till den address",
-    "beställaren har i Alma.",
+    "beställaren har i Alma",
     "RT/EDGE-ärenden går till emailtoaddressedge med innehåll(emailtobodyedge)",
     "RT/EDGE skickar sedan ett mail till beställaren om mottaget ärende."
   ],
@@ -48,12 +48,12 @@
       "english": "Something went wrong!"
     },
     "text": {
-      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om felet kvarstår, kontakta biblioteket.",
-      "english": "Please check that all the fields have been filled out correctly. If the problem remains, please contact the library."
+      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om felet kvarstår kontakta biblioteket.",
+      "english": "Please check that all the fields have been filled out correctly. If the problem remains please contact the library."
     }
   },
   "emailtoaddressedge": {
-    "emailaddress": "tholind@kth.se",
+    "emailaddress": "media@ece.kth.se",
     "name": {
       "swedish": "Edge",
       "english": "Edge"
@@ -65,95 +65,81 @@
   },
   "emailtobodyedge": {
     "swedish": [
-      "<div><strong>Materialtyp</strong></div>",
-      "<div>@@genre</div>",
+      "<p><strong>Materialtyp</strong></p>",
+      "<p>@@genre</p>",
       "<br>",
-      "<div><strong>Bibliografisk information</strong></div>",
-      "<div showcritera='@@btitle'>Boktitel: @@btitle</div>",
-      "<div showcritera='@@atitle'>Artikeltitel: @@atitle</div>",
-      "<div showcritera='@@jtitle'>Tidskriftstitel: @@jtitle</div>",
-      "<div showcritera='@@dbtitle'>Databas: @@dbtitle</div>",
-      "<div showcritera='@@au'>Författare: @@au</div>",
-      "<div showcritera='@@edition'>Upplaga: @@edition</div>",
-      "<div showcritera='@@issue'>Nummer: @@issue</div>", 
-      "<div showcritera='@@pages'>Sidor: @@pages</div>",
-      "<div showcritera='@@issn'>ISSN: @@issn</div>",
-      "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
-      "<div showcritera='@@place'>Plats: @@place</div>",
-      "<div showcritera='@@publisher'>Förlag: @@publisher</div>",
-      "<div showcritera='@@year'>År: @@year</div>",
-      "<div showcritera='@@volume'>Volym: @@volume</div>",
-      "<div showcritera='@@ctitle'>Kapitel: @@ctitle</div>",
-      "<div showcritera='@@doi'>DOI: @@doi</div>",
-      "<br>",
-      "<div><strong>Källa för beställningen</strong></div>",
+      "<p><strong>Bibliografisk information</strong></p>",
+      "<p showcritera='@@btitle'>Boktitel: @@btitle</p>",
+      "<p showcritera='@@atitle'>Artikeltitel: @@atitle</p>",
+      "<p showcritera='@@jtitle'>Tidskriftstitel: @@jtitle</p>",
+      "<p showcritera='@@dbtitle'>Databas: @@dbtitle</p>",
+      "<p showcritera='@@au'>Författare: @@au</p>",
+      "<p showcritera='@@edition'>Upplaga: @@edition</p>",
+      "<p showcritera='@@issue'>Nummer: @@issue</p>", 
+      "<p showcritera='@@pages'>Sidor: @@pages</p>",
+      "<p showcritera='@@issn'>ISSN: @@issn</p>",
+      "<p showcritera='@@isbn'>ISBN: @@isbn</p>",
+      "<p showcritera='@@place'>Plats: @@place</p>",
+      "<p showcritera='@@publisher'>Förlag: @@publisher</p>",
+      "<p showcritera='@@year'>År: @@year</p>",
+      "<p showcritera='@@volume'>Volym: @@volume</p>",
+      "<p showcritera='@@ctitle'>Kapitel: @@ctitle</p>",
+      "<p showcritera='@@doi'>DOI: @@doi</p>",
+      "<p showcritera='@@coursecode'>Kurskod KTH: @@coursecode</p>",
+      "<p><strong>Källa för beställningen</strong></p>",
       "<div>@@source</div>",
-      "<br>",
-      "<div showcritera='@@pickup'><strong>Önskar hämta på</strong></div>",
+      "<p showcritera='@@pickup'><strong>Önskar hämta på</strong></p>",
       "<div>@@pickup</div>",
-      "<br>",
-      "<div><strong>Beställarens namn</strong></div>",
+      "<p><strong>Beställarens namn</strong></p>",
       "<div>@@fullname</div>",
-      "<br>",
-      "<div><strong>Kategori/Category</strong></div>",
+      "<p><strong>Kategori</strong></p>",
       "<div>@@iam</div>",
-      "<br>",
-      "<div><strong>Användarid/Userid</strong></div>",
+      "<p><strong>Användarid</strong></p>",
       "<div>@@username</div>",
-      "<br>",
-      "<div><strong>E-postadress</strong></div>",
-      "<div>@@username</div>",
-      "<br>",
-      "<div showcritera='@@cost'><strong>Accepterar kostnad</strong></div>",
+      "<p><strong>E-postadress</strong></p>",
+      "<div>@@emailadress</div>",
+      "<p showcritera='@@cost'><strong>Accepterar kostnad</strong></p>",
       "<div>@@cost</div>",
-      "<br>",
-      "<div showcritera='@@message'><strong>Meddelande från beställare</strong></div>",
+      "<p showcritera='@@message'><strong>Meddelande från beställare</strong></p>",
       "<div>@@message</div>"
     ],
     "english": [
-      "<div><strong>Material type</strong></div>",
-      "<div>@@genre</div>",
+      "<p><strong>Material type</strong></p>",
+      "<p>@@genre</p>",
       "<br>",
-      "<div><strong>Bibliografisk information</strong></div>",
-      "<div showcritera='@@btitle'>Book title: @@btitle</div>",
-      "<div showcritera='@@atitle'>Article title: @@atitle</div>",
-      "<div showcritera='@@jtitle'>Journal title: @@jtitle</div>",
-      "<div showcritera='@@dbtitle'>Database: @@dbtitle</div>",
-      "<div showcritera='@@au'>Författare: @@au</div>",
-      "<div showcritera='@@edition'>Upplaga: @@edition</div>",
-      "<div showcritera='@@issue'>Nummer: @@issue</div>", 
-      "<div showcritera='@@pages'>Sidor: @@pages</div>",
-      "<div showcritera='@@issn'>ISSN: @@issn</div>",
-      "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
-      "<div showcritera='@@place'>Plats: @@place</div>",
-      "<div showcritera='@@publisher'>Förlag: @@publisher</div>",
-      "<div showcritera='@@year'>År: @@year</div>",
-      "<div showcritera='@@volume'>Volym: @@volume</div>",
-      "<div showcritera='@@ctitle'>Kapitel: @@ctitle</div>",
-      "<div showcritera='@@doi'>DOI: @@doi</div>",
-      "<br>",
-      "<div><strong>Källa för beställningen</strong></div>",
+      "<p><strong>Bibliografic information</strong></p>",
+      "<p showcritera='@@btitle'>Book title: @@btitle</p>",
+      "<p showcritera='@@atitle'>Article title: @@atitle</p>",
+      "<p showcritera='@@jtitle'>Journal title: @@jtitle</p>",
+      "<p showcritera='@@dbtitle'>Database: @@dbtitle</p>",
+      "<p showcritera='@@au'>Author: @@au</p>",
+      "<p showcritera='@@edition'>Edition: @@edition</p>",
+      "<p showcritera='@@issue'>Issue: @@issue</p>", 
+      "<p showcritera='@@pages'>Pages: @@pages</p>",
+      "<p showcritera='@@issn'>ISSN: @@issn</p>",
+      "<p showcritera='@@isbn'>ISBN: @@isbn</p>",
+      "<p showcritera='@@place'>Place: @@place</p>",
+      "<p showcritera='@@publisher'>Publisher: @@publisher</p>",
+      "<p showcritera='@@year'>Year: @@year</p>",
+      "<p showcritera='@@volume'>Volume: @@volume</p>",
+      "<p showcritera='@@ctitle'>Chapter: @@ctitle</p>",
+      "<p showcritera='@@doi'>DOI: @@doi</p>",
+      "<p showcritera='@@coursecode'>Course code KTH: @@coursecode</p>",
+      "<p><strong>Source for the request</strong></p>",
       "<div>@@source</div>",
-      "<br>",
-      "<div showcritera='@@pickup'><strong>Önskar hämta på</strong></div>",
+      "<p showcritera='@@pickup'><strong>Pick up at:</strong></p>",
       "<div>@@pickup</div>",
-      "<br>",
-      "<div><strong>Beställarens namn</strong></div>",
+      "<p><strong>Name of requester</strong></p>",
       "<div>@@fullname</div>",
-      "<br>",
-      "<div><strong>Kategori/Category</strong></div>",
+      "<p><strong>Category</strong></p>",
       "<div>@@iam</div>",
-      "<br>",
-      "<div><strong>Användarid/Userid</strong></div>",
+      "<p><strong>User id</strong></p>",
       "<div>@@username</div>",
-      "<br>",
-      "<div><strong>E-postadress</strong></div>",
-      "<div>@@username</div>",
-      "<br>",
-      "<div showcritera='@@cost'><strong>Accepterar kostnad</strong></div>",
+      "<p><strong>E-mailaddress</strong></p>",
+      "<div>@@emailadress</div>",
+      "<p showcritera='@@cost'><strong>Accept costs</strong></p>",
       "<div>@@cost</div>",
-      "<br>",
-      "<div showcritera='@@message'><strong>Meddelande från beställare</strong></div>",
+      "<p showcritera='@@message'><strong>Message from requester</strong></p>",
       "<div>@@message</div>"
     ]
   },
@@ -172,17 +158,20 @@
       "<div showcritera='@@btitle'>Boktitel: @@btitle</div>",
       "<div showcritera='@@atitle'>Artikeltitel: @@atitle</div>",
       "<div showcritera='@@jtitle'>Tidskriftstitel: @@jtitle</div>",
+      "<div showcritera='@@dbtitle'>Databas: @@dbtitle</div>",
       "<div showcritera='@@au'>Författare: @@au</div>",
       "<div showcritera='@@edition'>Upplaga: @@edition</div>",
       "<div showcritera='@@issue'>Nummer: @@issue</div>", 
       "<div showcritera='@@pages'>Sidor: @@pages</div>",
       "<div showcritera='@@issn'>ISSN: @@issn</div>",
       "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
+      "<div showcritera='@@place'>Plats: @@place</div>",
       "<div showcritera='@@publisher'>Förlag: @@publisher</div>",
       "<div showcritera='@@year'>År: @@year</div>",
       "<div showcritera='@@volume'>Volym: @@volume</div>",
       "<div showcritera='@@ctitle'>Kapitel: @@ctitle</div>",
       "<div showcritera='@@doi'>DOI: @@doi</div>",
+      "<div showcritera='@@coursecode'>Kurskod KTH: @@coursecode</div>",
       "<br>",
       "<div><strong>Källa för beställningen</strong></div>",
       "<div>@@source</div>",
@@ -197,7 +186,7 @@
       "<div>@@username</div>",
       "<br>",
       "<div><strong>E-postadress</strong></div>",
-      "<div>@@username</div>",
+      "<div>@@emailadress</div>",
       "<br>",
       "<div showcritera='@@cost'><strong>Accepterar kostnad</strong></div>",
       "<div>@@cost</div>",
@@ -220,17 +209,20 @@
       "<div showcritera='@@btitle'>Book title: @@btitle</div>",
       "<div showcritera='@@atitle'>Article title: @@atitle</div>",
       "<div showcritera='@@jtitle'>Journal title: @@jtitle</div>",
+      "<div showcritera='@@dbtitle'>Database: @@dbtitle</div>",
       "<div showcritera='@@au'>Author: @@au</div>",
       "<div showcritera='@@edition'>Edition: @@edition</div>",
       "<div showcritera='@@issue'>Issue: @@issue</div>", 
       "<div showcritera='@@pages'>Pages: @@pages</div>",
       "<div showcritera='@@issn'>ISSN: @@issn</div>",
       "<div showcritera='@@isbn'>ISBN: @@isbn</div>",
+      "<div showcritera='@@place'>Place: @@place</div>",
       "<div showcritera='@@publisher'>Publisher: @@publisher</div>",
       "<div showcritera='@@year'>Year: @@year</div>",
       "<div showcritera='@@volume'>Volume: @@volume</div>",
       "<div showcritera='@@ctitle'>Chapter: @@ctitle</div>",
       "<div showcritera='@@doi'>DOI: @@doi</div>",
+      "<div showcritera='@@coursecode'>Course code KTH: @@coursecode</div>",
       "<br>",
       "<div><strong>Request source</strong></div>",
       "<div>@@source</div>",
@@ -245,7 +237,7 @@
       "<div>@@username</div>",
       "<br>",
       "<div><strong>Email address</strong></div>",
-      "<div>@@username</div>",
+      "<div>@@emailadress</div>",
       "<br>",
       "<div showcritera='@@cost'><strong>Accepting fees</strong></div>",
       "<div>@@cost</div>",
@@ -503,11 +495,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/lana-och-bestall/",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/logga-in/logga-in-registrera-dig-1.853001",
           "text": "Registrera dig som ny användare"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/lana-och-bestall/",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/logga-in/logga-in-registrera-dig-1.853001",
           "text": "Register as new user"
         }
       },
@@ -640,16 +632,16 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Price list"
         }
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -723,16 +715,16 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Price list"
         }
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -806,16 +798,16 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Se prislista"
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Pricelist"
         }
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -898,16 +890,16 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Price list"
         }
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -934,16 +926,16 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/kthb/lana-och-bestall/om-lan-och-bestallni/prislista-1.541872",
-          "text": "Pricelist"
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Price list"
         }
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -968,7 +960,7 @@
         "english": "As a private person you can only make book requests from the KTH Library closed stacks or old book collection."
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -993,7 +985,7 @@
         "english": "As a private person you can only make article requests from the KTH Library stacks."
       },
       "value": "informationbox",
-      "type": "informationbox",
+      "type": "informationboxalert",
       "enabled": false,
       "openurlenabled": true,
       "showcriteria": [
@@ -1475,7 +1467,7 @@
       "enabled": false,          
       "showcriteria": [{
         "field": "genre",
-        "values": ["book","article","bookitem"]
+        "values": ["article","bookitem"]
       }],
       "validation": {
         "required": false
@@ -1515,6 +1507,10 @@
       "isgrouped": true,
       "group":"genredetails",
       "enabled": false,
+      "showcriteria": [{
+        "field": "genre",
+        "values": ["article"]
+      }],
       "validation": {
         "required": {
           "value": false,
@@ -1793,6 +1789,20 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
+        } 
+      }
+    },
+    "sendbutton": {
+      "label": {
+        "swedish": "Skicka",
+        "english": "Send"
+      },
+      "value": "",
+      "type": "button",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": false
         } 
       }
     }

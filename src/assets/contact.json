@@ -1,9 +1,6 @@
 {
   "id": "contact",
   "name": "Kontakta biblioteket",
-  "documentation": [
-    "Detta formulär används för..."
-  ],
   "header": {
     "swedish": "Kontakta oss",
     "english": "Contact us"
@@ -11,7 +8,7 @@
   "status": "open",
   "description": {
     "open": {
-      "swedish": "Har du en fråga eller synpunkt? Kontakta oss genom formuläret nedan. Vi återkommer till dig inom kort.",
+      "swedish": "",
       "english": ""
     },
     "closed": {
@@ -27,8 +24,8 @@
   },
   "postresponseinfo" : {
     "header": {
-      "swedish": "Tack för din förfrågan.",
-      "english": "Thanks for your request."
+      "swedish": "Tack för din fråga eller feedback",
+      "english": "Thank you for your question or feedback"
     },
     "text": {
       "swedish": "Vi kontaktar dig snart.",
@@ -41,12 +38,12 @@
       "english": "Something went wrong!"
     },
     "text": {
-      "swedish": "Kontakta bilioteket...",
-      "english": "Please contact the library..."
+      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om felet kvarstår kontakta biblioteket.",
+      "english": "Please check that all the fields have been filled out correctly. If the problem remains please contact the library."
     }
   },
   "emailtoaddressedge": {
-    "emailaddress": "tholind@kth.se",
+    "emailaddress": "ask-kthb@kth.se",
     "name": {
       "swedish": "EDGE",
       "english": "EDGE"
@@ -139,7 +136,7 @@
           "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
           "errormessage": {
             "swedish": "måste vara en godkänd e-postadress",
-            "english": "must be valid email address"
+            "english": "must be a valid email address"
           }
         }
       }
@@ -177,6 +174,20 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
+        } 
+      }
+    },
+    "sendbutton": {
+      "label": {
+        "swedish": "Skicka",
+        "english": "Send"
+      },
+      "value": "",
+      "type": "button",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": false
         } 
       }
     }

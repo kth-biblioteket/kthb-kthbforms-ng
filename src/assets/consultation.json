@@ -1,9 +1,6 @@
 {
   "id": "consultation",
   "name": "Handledning",
-  "documentation": [
-    "Detta formulär används för..."
-  ],
   "header": {
     "swedish": "Boka handledning",
     "english": "Book a consultation"
@@ -11,7 +8,7 @@
   "status": "open",
   "description": {
     "open": {
-      "swedish": "Behöver du hjälp med informationssökning, referenshantering eller sökning i patentdatabaser eller andra databaser? Behöver du råd kring hur du kan göra dina publikationer fritt tillgängliga, så kallad Open Access, eller har du andra publiceringsfrågor? Boka enskild handledning genom KTH Biblioteket! Handledningen tar ca en timme.",
+      "swedish": "",
       "english": ""
     },
     "closed": {
@@ -31,7 +28,7 @@
       "english": "Thank you for your booking request!"
     },
     "text": {
-      "swedish": "Vi kommer att kontakta dig för att bekräfta din bokning inom två arbetsdagar.",
+      "swedish": "Vi kommer att bekräfta din bokning inom två arbetsdagar.",
       "english": "We will confirm your booking within two days."
     }
   },
@@ -41,23 +38,24 @@
       "english": "Something went wrong!"
     },
     "text": {
-      "swedish": "Kontakta bilioteket...",
-      "english": "Please contact the library..."
+      "swedish": "Kontrollera att du har fyllt i alla fält korrekt. Om felet kvarstår kontakta biblioteket.",
+      "english": "Please check that all the fields have been filled out correctly. If the problem remains please contact the library."
     }
   },
   "emailtoaddressedge": {
-    "emailaddress": "tholind@kth.se",
+    "emailaddress": "sokverkstad@ece.kth.se",
     "name": {
       "swedish": "",
       "english": ""
     }
   },
   "emailtosubjectedge": {
-    "swedish": "Handledning i informationshantering",
-    "english": "Consultation in information..."
+    "swedish": "Bokningsförfrågan för boka handledning",
+    "english": "Booking request for book a consultation"
   },
   "emailtobodyedge": {
     "swedish": [
+	  "<div><p>Tack för din förfrågan! Vi kommer att bekräfta din bokning inom två arbetsdagar.</p></div>",
       "<div><h3>Kontaktuppgifter</h3></div>",
       "<div>Namn: @@name</div>",
       "<div>Telefon: @@phone</div>",
@@ -77,6 +75,7 @@
       "<div>@@suggesteddate3</div>"
     ],
     "english": [
+	  "<div><p>Thank you for your booking request! We will confirm your booking within two days.</p></div>",
       "<div><h3>Contact details</h3></div>",
       "<div>Name: @@name</div>",
       "<div>Phone: @@phone</div>",
@@ -103,7 +102,7 @@
   "invalidforminfo": {
     "header": {
       "swedish": "Formuläret är inte korrekt ifyllt!",
-      "english": "Form not correct!"
+      "english": "The form has not been filled out correctly!"
     }, 
     "text": {
       "swedish": "Se rödmarkerad text nedan.",
@@ -113,8 +112,8 @@
   "formfields": {
     "iam": {
       "label": {
-        "swedish": "Jag är",
-        "english": "I am a"
+        "swedish": "Användarkategori",
+        "english": "User category"
       },
       "value": "",
       "type": "radio",
@@ -242,10 +241,10 @@
       "options": [
         { 
           "label": {
-            "swedish": "Huvudbibioteket",
+            "swedish": "Huvudbiblioteket",
             "english": "Main Library"
           }, 
-          "value": "Huvudbibioteket",
+          "value": "Huvudbiblioteket",
 		  "enabled": true
         },
         { 
@@ -313,8 +312,8 @@
     },
     "informationwhere": {
       "label": {
-        "swedish": "Var har du tidigare sökt efter information",
-        "english": "Where have you previously searched for information"
+        "swedish": "Var har du tidigare sökt efter information?",
+        "english": "Where have you previously searched for information?"
       },
       "value": "",
       "type": "textarea",
@@ -422,6 +421,20 @@
             "swedish": "måste fyllas i",
             "english": "is required"
           }
+        } 
+      }
+    },
+    "sendbutton": {
+      "label": {
+        "swedish": "Skicka",
+        "english": "Send"
+      },
+      "value": "",
+      "type": "button",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": false
         } 
       }
     }
