@@ -207,7 +207,6 @@
 
                 <!-- HTML-text -->
                 <div [ngClass]="{'htmltext': prop.type=='htmltext' }" [ngStyle]="prop.type=='htmltext' ? {'position': 'relative'} : {}">
-                    <!-- Eventuell extra information/beskrivning-->
                     <div *ngIf="prop.type=='htmltext' && prop.description && prop.description.placement=='after'">
                         <div [innerHtml]="language=='swedish' ? prop.description.swedish : prop.description.english"></div>
                     </div>

@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   configurl: "./assets/appConfig.json",
   //lägger på formulärets id + .json när den hämtas i dynamic-form
-  //formdataurl: "./assets/"
-  formdataurl: "https://apps.lib.kth.se/kthbforms/assets/"
+  formdataurl: "./assets/"
+  //formdataurl: "https://apps.lib.kth.se/kthbforms/assets/"
 };
 
 /*
