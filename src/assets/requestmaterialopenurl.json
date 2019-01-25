@@ -383,7 +383,7 @@
           "enabled": true,
           "showcriteria": [{
             "field": "genre",
-            "values": ["book", "article"]
+            "values": ["book", "article", "journal"]
           }]
         },
         { 
@@ -395,7 +395,7 @@
           "enabled": true,
           "showcriteria": [{
             "field": "genre",
-            "values": ["book", "article"]
+            "values": ["book", "article", "journal"]
           }]
         }
       ],
@@ -626,8 +626,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden tilkommer det en avgift.",
-        "english": "If we need to borrow the book from a library outside the Nordic countries there will be a fee."
+        "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden tillkommer det en avgift.",
+        "english": "If we need to borrow the book from a library in the Nordic countries there will be a fee."
       },
       "link": {
         "placement": "after",
@@ -686,7 +686,7 @@
         { 
           "label": {
             "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me about any fees before I accept them"
+            "english": "I want the library to contact me about the fees before I accept them"
           }, 
           "value": "contact",
           "enabled": true
@@ -719,7 +719,7 @@
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Price list"
         }
       },
@@ -803,7 +803,7 @@
         },
         "english" : {
           "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
-          "text": "Pricelist"
+          "text": "Price list"
         }
       },
       "value": "informationbox",
@@ -926,7 +926,7 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
@@ -996,6 +996,67 @@
         {
           "field": "genre",
           "values": ["article"]
+        }
+      ]
+    },
+    "costsotherjournalinfobox": {
+      "label": {
+        "swedish": "costsotherjournalinfobox",
+        "english": "costsotherjournalinfobox"
+      },
+      "description": {
+        "placement": "after",
+        "swedish": "Som privatperson kan du endast beställa tidskrifter från KTH Bibliotekets magasin.",
+        "english": "As a private person you can only request journals from the KTH Library stacks."
+      },
+      "value": "informationbox",
+      "type": "informationboxalert",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["other"]
+        },
+        {
+          "field": "genre",
+          "values": ["journal"]
+        }
+      ]
+    },
+    "costsbusinessjournalinfobox": {
+      "label": {
+        "swedish": "costsbusinessjournalinfobox",
+        "english": "costsbusinessjournalinfobox"
+      },
+      "description": {
+        "placement": "after",
+        "swedish": "Som företag kan du endast beställa tidskrifter från KTH Bibliotekets magasin. Dessa är avgiftsbelagda.",
+        "english": "As a company you can only request journals from the KTH Library stacks. These are subject to a fee."
+      },
+      "link": {
+        "placement": "after",
+        "swedish" : {
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Prislista"
+        },
+        "english" : {
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "text": "Price list"
+        }
+      },
+      "value": "informationbox",
+      "type": "informationboxalert",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": ["business"]
+        },
+        {
+          "field": "genre",
+          "values": ["journal"]
         }
       ]
     },
