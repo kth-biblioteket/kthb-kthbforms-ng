@@ -8,6 +8,9 @@ Bygg projektet med följande kommando
 
 ng build --prod --output-hashing none --base-href /kthbforms/
 
+local dev:
+ng server --host 0.0.0.0
+
 ## Dokumentation
 
 Formulär som byggs upp dynamiskt utifrån JSON-data(i filer/databas)

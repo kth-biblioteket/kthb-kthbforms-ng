@@ -9,7 +9,7 @@
   "description": {
     "open": {
       "swedish": "För att kunna reservera, låna och beställa material från biblioteket behöver du registrera dig som användare i vårt bibliotekssystem.",
-      "english": "In order to borrow or request materials from the library you need to be registered as a user in our library system."
+      "english": ""
     },
     "closed": {
       "swedish": "Stängt",
@@ -65,7 +65,7 @@
     ]
   },
   "emailfromaddresslibrary": {
-    "emailaddress": "ask-kthb@kth.se",
+    "emailaddress": "biblioteket@kth.se",
     "name": {
       "swedish": "KTH Biblioteket",
       "english": "KTH Library"
@@ -86,6 +86,29 @@
     }
   }, 
   "formfields": {
+    "header": {
+      "label": {
+        "swedish": "Test",
+        "english": "Test"
+      },
+      "description": {
+        "placement": "after",
+        "swedish": "<h1>Registrera dig</h1><p>För att kunna reservera, låna och beställa material från biblioteket behöver du registrera dig som användare i vårt bibliotekssystem.</p>",
+        "english": "<h1>Register</h1><p>In order to borrow or request materials from the library you need to be registered as a user in our library system.</p>"
+      },
+      "value": "htmltext",
+      "type": "htmltext",
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
     "otherinfo": {
       "label": {
         "swedish": "Användarkategori",
