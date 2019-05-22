@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { BackendService } from './backend.service';
 import { environment } from '../environments/environment';
@@ -17,6 +17,16 @@ export class DynamicFormComponent implements OnInit {
   @Input() language;
   @Input() formid;
 
+  /*för att ladda upp filer */
+  errors: Array<string> =[];
+  dragAreaClass: string = 'dragarea';
+  @Input() fileExt: string = "JPG, GIF, PNG, PDF";
+  @Input() maxFiles: number = 5;
+  @Input() maxSize: number = 5; // 5MB
+  @Output() uploadStatus = new EventEmitter();
+
+  public files: Set<File> = new Set();
+  filelistlength;
   currenturl = window.location.href;
 
   isprod = environment.production;
@@ -36,6 +46,7 @@ export class DynamicFormComponent implements OnInit {
   formdataresponse;
   formdata: any;
   formisinit = false;
+  formtype;
   formstatus;
   formdescription;
   formsubmitted = false;
@@ -54,7 +65,7 @@ export class DynamicFormComponent implements OnInit {
     public backend:BackendService,
     private http: HttpClient,
     private titleService: Title,
-    private settings: AppConfigService,
+    private settings: AppConfigService
   ) {
   }
   
@@ -89,6 +100,7 @@ export class DynamicFormComponent implements OnInit {
     this.loaderurl = this.formdata.loaderurl;
     this.formstatus = this.formdata.status;
     this.formdescription = this.formdata.description;
+    this.formtype = this.formdata.type;
 
     //Skapa ett object som t ex formulärtemplate kan iterera.
     this.objectFormfields = 
@@ -168,7 +180,7 @@ export class DynamicFormComponent implements OnInit {
     var formfields = this.objectFormfields;
     pairs.forEach(function(pair:any) {
       pair = pair.split('=');
-      //Översätt openurlparametrar som eventuellt har andra namn än standard
+      //Översätt openurlparametrar som eventuellt har andra namn än standard(primo och libris)
       for(let field of formfields) {
         if(typeof field.openurlnames !== "undefined") {
           if(field.openurlnames[openurlsource]==[pair[0]]){
@@ -368,14 +380,117 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
+  private isValidFileSize(file) {
+    var fileSizeinMB = file.size / (1024 * 1000);
+    var size = Math.round(fileSizeinMB * 100) / 100; // convert upto 2 decimal place
+    if (size > this.maxSize)
+        this.errors.push("Error (File Size): " + file.name + ": exceed file size limit of " + this.maxSize + "MB ( " + size + "MB )");
+  }
+
+  private isValidFileExtension(files){
+    // Make array of file extensions
+    var extensions = (this.fileExt.split(','))
+                    .map(function (x) { return x.toLocaleUpperCase().trim() });
+    for (var i = 0; i < files.length; i++) {
+        // Get file extension
+        var ext = files[i].name.toUpperCase().split('.').pop() || files[i].name;
+        // Check the extension exists
+        var exists = extensions.includes(ext);
+        if (!exists) {
+            this.errors.push("Error (Extension): " + files[i].name);
+        }
+        // Check file size
+        this.isValidFileSize(files[i]);
+    }
+  }
+
+  private isValidFiles(files){
+    // Check Number of files
+     if (files.length > this.maxFiles) {
+         this.errors.push("Error: At a time you can upload only " + this.maxFiles + " files");
+         return;
+     }        
+     this.isValidFileExtension(files);
+     return this.errors.length === 0;
+ }
+ 
+  saveFiles(files){
+    this.errors = []; // Clear error
+    // Validate file size and allowed extensions
+    if (files.length > 0 && (!this.isValidFiles(files))) {
+        this.uploadStatus.emit(false);
+        return;
+    }       
+    if (files.length > 0) {
+          let formData_: FormData = new FormData();
+          for (var j = 0; j < files.length; j++) {
+              formData_.append("file[]", files[j], files[j].name);
+              this.kthbform.get('files').setValue(files[j]);
+          }
+      } 
+  }
+
+  /**
+   * 
+   * @param event 
+   * 
+   * Hantera file inputs
+   */
+  onFileChange(event) {
+    const files_: { [key: string]: File } = event.target.files;
+    this.filelistlength = 0;
+    for (let key in files_) {
+      if (!isNaN(parseInt(key))) {
+        this.files.add(files_[key]);
+      }
+    }
+    
+    this.files.forEach(file => {
+      this.filelistlength++;
+    });
+    //addera filer till lista som visas
+    this.kthbform.get('files').setValue(this.files);
+    //rensa file input
+    this.kthbform.get(event.srcElement.attributes[3].value).setValue('');
+  }
+
+  /* Funktion som tar bort vald fil */
+  removeFile(file) {
+    var index = this.files.delete(file);
+    if (this.filelistlength > 0) {
+      this.filelistlength--;
+    }
+  }
+
   /**
    * 
    * @param kthbform 
    * 
    * Posta till backend
    */
-  postformvalues(kthbform) {
-    this.backend.postForm(this.posturl + "?language=" + this.language, kthbform).subscribe(
+  postformvalues(postform) {
+    //Är det ett json-form eller ett upload-form?
+    if(this.formtype == 'upload') {
+      const formData = new FormData();
+      let i=0;
+      //lägg till filer som ska skickas med.
+      //Validering? (storlek, antal, extension)
+        this.files.forEach(file => {
+          formData.append('localImage' + i, file, file.name);
+          i++;
+        });
+      //lägg till formulärets fält/värden
+      for (let item in this.kthbform.value) {
+        if (item !== 'files' && item !== 'file1') {
+            formData.append(item, this.kthbform.value[item]);
+        }
+      }
+      postform = formData;
+    }
+    
+    
+    this.backend.postForm(this.posturl + "?language=" + this.language, postform).subscribe(
+    //this.backend.postForm(this.posturl + "?language=" + this.language, formData).subscribe(
       (result) => {
         //Allt är OK
         if(result.status == 201 || result.status == 200) {
@@ -385,6 +500,9 @@ export class DynamicFormComponent implements OnInit {
           this.formsubmitted = false;
           window.scroll(0,0);
           this.kthbform.reset();
+          this.files.forEach(file => {
+            this.removeFile(file)
+          });
           this.getFormData();
         }
         //Delvis OK (exvis användare skapad men mail misslyckades)
@@ -399,6 +517,15 @@ export class DynamicFormComponent implements OnInit {
           this.kthbform.reset();
           this.getFormData();
         }
+        //Inte skickat json
+        if(result.status == 203) {
+          this.backendresponse = true;
+          this.backendresult = false;
+          this.backendresulterror = result.body.message;
+          this.loading = false;
+          this.formsubmitted = false;
+          window.scroll(0,0);
+        }
       },
       //FEL, api har gett ett felmeddelande(diverse orsaker) 
       (err) => {
@@ -406,6 +533,7 @@ export class DynamicFormComponent implements OnInit {
         this.backendresult = false;
         this.backendresulterror = err.error.message;
         this.loading = false;
+        //console.log(err);
         if(err.status == 422) {
           this.backendresponse = true;
           this.backendresult = false;

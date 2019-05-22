@@ -25,9 +25,9 @@ export class BackendService {
   postForm(url,payload) : Observable<HttpResponse<any>>{
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json'
-    }); 
+    });
     return this.http.post<any>(url, payload,{
-		  headers: httpHeaders,
+		  //headers: httpHeaders,
 		  observe: 'response' //ser till att även status etc returneras
 		});
   }

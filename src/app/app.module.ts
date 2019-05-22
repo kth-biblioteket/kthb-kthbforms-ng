@@ -17,6 +17,8 @@ import { MyDatePickerModule } from 'mydatepicker';
 
 import { ActivateaccountComponent } from './activateaccount/activateaccount.component';
 
+import { AngularFileUploaderModule } from "angular-file-uploader";
+
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -37,6 +39,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     FormsModule,
     HttpClientModule,
     MyDatePickerModule,
+    AngularFileUploaderModule
   ],
   providers: [
     AppConfigService,

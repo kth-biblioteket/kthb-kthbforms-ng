@@ -24,3 +24,23 @@ input[type=submit] {
 .openurlbox {
     padding-bottom: 10px;
 }
+
+.btn-label {position: relative;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn { margin-bottom:10px; }
+.fileremovebtn { padding: 0px 10px 0px 0px; }
+.fileremovebtnname { padding-left: 10px; }
+.filechoosebtn {
+    background-color: #007fae;
+    border-color: #007fae;
+    color: #fff;
+    border-radius: .25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: .5rem 1.5rem;
+    border: 1px solid;
+    line-height: normal;
+}

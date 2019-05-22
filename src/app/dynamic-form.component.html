@@ -101,16 +101,19 @@
           <div *ngFor="let prop of objectFormfields">
             <div *ngIf="prop.enabled && !prop.hidden">
               <div [ngStyle]="prop.type =='grouplabel' ? {'margin-bottom':'0px'} : {'margin-bottom':'15px'}">
-                <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationboxalert och htmltext och button -->
-                <label *ngIf="prop.type != 'checkbox' && prop.type!='informationboxalert' && prop.type!='informationbox' && prop.type!='htmltext' && prop.type!='button'" [ngClass]="{'isgrouped': prop.isgrouped, 'isnotgrouped': !prop.isgrouped }" [attr.for]="prop.key">
+                <!-- Label för varje fält, inte fet stil om fält ingår i gruppering, visa inte för checkbox och informationboxalert och htmltext och button och file -->
+                <label *ngIf="prop.type != 'checkbox' && prop.type != 'files' && prop.type!='informationboxalert' && prop.type!='informationbox' && prop.type!='htmltext' && prop.type!='button' && prop.type!='file'" 
+                        [ngClass]="{'isgrouped': prop.isgrouped, 'isnotgrouped': !prop.isgrouped }" [attr.for]="prop.key">
                   {{language=='swedish' ? prop.label.swedish : prop.label.english}}
-                  <!-- Fält valfritt? -->
-                  <span style="font-style:italic;font-weight:normal">
+                  <!-- Fält valfritt? Visa inte för fillista-->
+                  <span *ngIf="prop.type != 'files'" style="font-style:italic;font-weight:normal">
                     {{!prop.validation.required.value && language=='swedish' ? '(' + optionalfieldtext.swedish + ')': ''}}{{!prop.validation.required.value && language=='english' ? '(' + optionalfieldtext.english + ')' : ''}}
                   </span>
                 </label>
+                <label *ngIf="prop.type == 'files' && filelistlength > 0" [ngClass]="{'isgrouped': prop.isgrouped, 'isnotgrouped': !prop.isgrouped }" [attr.for]="prop.key">
+                  {{language=='swedish' ? prop.label.swedish : prop.label.english}}
+                </label>
                 <!-- Felmeddelanden vid ogiltigt/inte ifyllt -->
-                <!--div class="error" *ngIf="kthbform.get(prop.key).invalid && (kthbform.get(prop.key).dirty || kthbform.get(prop.key).touched)"-->
                 <div class="error" *ngIf="formsubmitted && kthbform.get(prop.key).invalid">
                   <div *ngIf="kthbform.get(prop.key).errors.required">
                     {{language=='swedish' ? prop.label.swedish : prop.label.english}} {{ language=='swedish' ? prop.validation.required.errormessage.swedish : prop.validation.required.errormessage.english }}
@@ -149,10 +152,34 @@
 
                   <!-- Meddelanderuta -->
                   <div *ngSwitchCase="'textarea'">
-                    <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key"></textarea>
+                    <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key" maxlength="{{prop.maxlength}}" [ngStyle]="prop.height!='' ? {'height': prop.height} : {}"></textarea>
+                  </div>
+
+                  <!-- File upload -->
+                  <div *ngSwitchCase="'file'" style="padding-top:10px">
+                      <div class="col-mdss-12 tssext-center" >
+                        <a href="javascript:void(0)" (click)="files.click()" class="filechoosebtn">
+                          {{language=='swedish' ? prop.label.swedish : prop.label.english}} 
+                        </a>
+                        <input 
+                              [id]="prop.key" 
+                              [type]="prop.type"
+                              [formControlName]="prop.key" 
+                              #files 
+                              (change) = "onFileChange($event)"
+                              style="display:none" />
+                      </div>
+                  </div>
+                  <!-- Lista valda filer -->
+                  <div *ngSwitchCase="'files'">
+                    <div *ngFor="let file of files">
+                      <button type="button" class="fileremovebtn btn btn-labeled btn-success" (click)="removeFile(file)">
+                        <span class="btn-label">X</span><span class="fileremovebtnname">{{file.name}}</span>
+                      </button>
+                    </div>
                   </div>
                   
-                  <!-- Använd grupperingsfält som label for checkbox -->
+                  <!-- Checkbox (använd grupperingsfält som label for checkbox) -->
                   <div *ngSwitchCase="'checkbox'">
                       <label style="margin-top:0px;font-weight: normal;">
                         <input (change)="checkboxchange(prop.key)"
@@ -161,6 +188,10 @@
                           [formControlName]="prop.key"
                           [value]=""> {{language=='swedish' ? prop.label.swedish : prop.label.english}}
                       </label>
+                      <!-- Fält valfritt? -->
+                      <span style="font-style:italic;font-weight:normal">
+                        {{!prop.validation.required.value && language=='swedish' ? '(' + optionalfieldtext.swedish + ')': ''}}{{!prop.validation.required.value && language=='english' ? '(' + optionalfieldtext.english + ')' : ''}}
+                      </span>
                   </div>
                   
                   <!-- Radio -->
@@ -212,18 +243,12 @@
                     </div>
                   </div>
               </div>
-              
               <!-- Skickaknapp -->
               <div style="display:flex;justify-content: flex-end" *ngIf="prop.type=='button'">
                   <input class="form-control btn-success" type="submit" value="{{language=='swedish' ? prop.label.swedish : prop.label.english}}">
               </div>
             </div>          
           </div>
-          <!-- Skickaknapp -->
-          <!--div class="controls"-->
-            <!--input [disabled]="!form.valid" class="form-control btn-success" type="submit" value="Skicka" -->
-            <!--input class="form-control btn-success" type="submit" value="Skicka">
-          </div-->
         </form>
         <div>
       <div>
