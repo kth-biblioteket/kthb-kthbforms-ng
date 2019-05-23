@@ -1,6 +1,6 @@
 # KTHB Forms
 
-## Angular app för att hantera formulär på KTH Bibliotket
+## Angular app för att hantera formulär på KTH Biblioteket
 
 ## Build
 
