@@ -474,7 +474,7 @@ export class DynamicFormComponent implements OnInit {
       const formData = new FormData();
       let i=0;
       //lägg till filer som ska skickas med.
-      //Validering? (storlek, antal, extension..)
+      //Validering? (storlek, antal, extension)
         this.files.forEach(file => {
           formData.append('localImage' + i, file, file.name);
           i++;
