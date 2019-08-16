@@ -4,12 +4,15 @@
 
 ## Build
 
-Bygg projektet med följande kommando
+Bygg projektet med följande kommandon
 
-ng build --prod --output-hashing none --base-href /kthbforms/
+### Production (environment.prod.ts)
+ng build --configuration=production --output-hashing none --base-href /kthbforms/ --output-path=dist/prod
+### Ref (environment.ref.ts)
+ng build --configuration=ref --output-hashing none --base-href /kthbforms/ --output-path=dist/ref
 
-local dev:
-ng server --host 0.0.0.0
+###local dev:
+ng serve --host 0.0.0.0 --configuration=ref
 
 ## Dokumentation
 
@@ -35,8 +38,8 @@ Formulären postas till en backend som är ett PHP LUMEN-api.
       "english": "Closed"
     }
   },
-  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/contact",
-  "loaderurl": "https://apps.lib.kth.se/kthbforms/assets/ajax_loader_blue_512.gif",
+  "posturl": "/webservices/kthbforms/api/v1/contact",
+  "loaderurl": "/kthbforms/assets/ajax_loader_blue_512.gif",
   "postresponseinfo" : {
     "header": {
       "swedish": "Tack för din förfrågan.",

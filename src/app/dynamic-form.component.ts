@@ -89,15 +89,15 @@ export class DynamicFormComponent implements OnInit {
       }
     }
     this.formdataresponse = await this.http.get(
-        environment.formdataurl + this.formid + this.openurlsuffix + ".json" + '?time=' + Date.now(),
+      environment.server + environment.formdataurl + this.formid + this.openurlsuffix + ".json" + '?time=' + Date.now(),
         { observe: 'response' }
       ).toPromise();
     this.formdata = this.formdataresponse.body;
     //this.setTitle(this.formdata.header.swedish);
     this.optionalfieldtext = this.formdata.optionalfieldtext;
     this.openurlboxlabel = this.formdata.openurlboxlabel;
-    this.posturl = this.formdata.posturl;
-    this.loaderurl = this.formdata.loaderurl;
+    this.posturl = environment.server + this.formdata.posturl;
+    this.loaderurl = environment.server + this.formdata.loaderurl;
     this.formstatus = this.formdata.status;
     this.formdescription = this.formdata.description;
     this.formtype = this.formdata.type;
@@ -120,7 +120,6 @@ export class DynamicFormComponent implements OnInit {
     //OpenURL, matcha fält i formulär mot openurlparametrar
     if(this.isopenurl){
       this.openurljson = this.openurlparametersToJSON();
-      console.log(this.openurljson);
       //Hantera kapitel i bok/artikel(båda har nämligen atitle som titel)
       //ctitle sätts först(först i listan av formfields)
       if(this.openurljson['ctitle'] != '' && this.openurljson['genre'] == 'article') { 

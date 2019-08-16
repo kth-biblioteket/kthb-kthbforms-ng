@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  server: "",
   configurl: "./assets/appConfig.json",
   //lägger på formulärets id + .json när den hämtas i dynamic-form
   formdataurl: "./assets/"

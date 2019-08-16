@@ -26,8 +26,8 @@
       "english": "Closed"
     }
   },
-  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/requestmaterial",
-  "loaderurl": "https://apps.lib.kth.se/kthbforms/assets/ajax_loader_blue_512.gif",
+  "posturl": "/webservices/kthbforms/api/v1/requestmaterial",
+  "loaderurl": "/kthbforms/assets/ajax_loader_blue_512.gif",
   "loaderinfo": {
     "swedish": "Skickar beställning...",
     "english": "Sending request..."
@@ -286,12 +286,12 @@
       "english": "Book"
     },
     "article": {
-      "swedish": "Artikel",
-      "english": "Article"
+      "swedish": "Tidskriftsartikel",
+      "english": "Article in journal"
     },
     "CR": {
-      "swedish": "Artikel",
-      "english": "Article"
+      "swedish": "Tidskriftsartikel",
+      "english": "Article in journal"
     },
     "bookitem": {
       "swedish": "Kapitel i bok",
@@ -482,6 +482,33 @@
         } 
       }
     },
+    "coursecode": {
+      "label": {
+        "swedish": "Kurskod på KTH",
+        "english": "Course Code at KTH"
+      },
+      "value": "",
+      "type": "text",
+      "enabled": false,
+      "openurlenabled": true,
+      "showcriteria": [
+        {
+          "field": "iam",
+          "values": [
+            "student"
+          ]
+        }
+      ],
+      "validation": {
+        "required": {
+          "value": true,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        } 
+      }
+    },
     "usernameinfobox": {
       "label": {
         "swedish": "usernameinfobox",
@@ -578,8 +605,8 @@
         },
         { 
           "label": {
-            "swedish": "Artikel",
-            "english": "Article"
+            "swedish": "Tidskriftsartikel",
+            "english": "Article in journal"
           }, 
           "value": "article",
           "enabled": true
@@ -594,8 +621,8 @@
         },
         { 
           "label": {
-            "swedish": "Tidskrift",
-            "english": "Journal"
+            "swedish": "Prenumeration av tidskrift",
+            "english": "Subscription of journal"
           }, 
           "value": "journal",
           "enabled": true
@@ -654,53 +681,6 @@
           "values": ["book"]
         }
       ]
-    }, 
-    "costsbooks": {
-      "label": {
-        "swedish": "Kostnader",
-        "english": "Costs"
-      },
-      "value": "" ,
-      "type": "radio",
-      "enabled": false,
-      "openurlenabled": true,
-      "showcriteria": [
-        {
-          "field": "iam",
-          "values": ["student"]
-        },
-        {
-          "field": "genre",
-          "values": ["book"]
-        }
-      ],
-      "options": [
-        { 
-          "label": {
-            "swedish": "Jag accepterar eventuella kostnader",
-            "english": "I accept any fees"
-          }, 
-          "value": "acceptcost",
-          "enabled": true
-        },
-        { 
-          "label": {
-            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me about the fees before I accept them"
-          }, 
-          "value": "contact",
-          "enabled": true
-        }
-      ],
-      "validation": {
-        "required": {
-          "value": true,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
     },
     "costsarticleinfobox": {
       "label": {
@@ -737,53 +717,6 @@
           "values": ["article"]
         }
       ]
-    }, 
-    "costsarticle": {
-      "label": {
-        "swedish": "Kostnader",
-        "english": "Costs"
-      },
-      "value": "" ,
-      "type": "radio",
-      "enabled": false,
-      "openurlenabled": true,
-      "showcriteria": [
-        {
-          "field": "iam",
-          "values": ["student"]
-        },
-        {
-          "field": "genre",
-          "values": ["article"]
-        }
-      ],
-      "options": [
-        { 
-          "label": {
-            "swedish": "Jag accepterar eventuella kostnader",
-            "english": "I accept any fees"
-          }, 
-          "value": "acceptcost",
-          "enabled": true
-        },
-        { 
-          "label": {
-            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me about any fees before I accept them"
-          }, 
-          "value": "contact",
-          "enabled": true
-        }
-      ],
-      "validation": {
-        "required": {
-          "value": true,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
     },
     "costsbookchaptersinfobox": {
       "label": {
@@ -830,10 +763,10 @@
         } 
       }
     },
-    "costsbookchapters": {
+    "costs": {
       "label": {
-        "swedish": "Kostnader",
-        "english": "Costs"
+        "swedish": "Jag accepterar eventuella kostnader",
+        "english": "I accept any fees"
       },
       "value": "" ,
       "type": "radio",
@@ -846,24 +779,24 @@
         },
         {
           "field": "genre",
-          "values": ["bookitem"]
+          "values": ["book","bookitem","article"]
         }
       ],
       "options": [
         { 
           "label": {
-            "swedish": "Jag accepterar eventuella kostnader",
-            "english": "I accept any fees"
+            "swedish": "Ja",
+            "english": "Yes"
           }, 
           "value": "acceptcost",
           "enabled": true
         },
         { 
           "label": {
-            "swedish": "Jag önskar att biblioteket hör av sig angående eventuella kostnader innan jag accepterar dem",
-            "english": "I want the library to contact me about any fees before I accept them"
+            "swedish": "Nej",
+            "english": "No"
           }, 
-          "value": "contact",
+          "value": "decline",
           "enabled": true
         }
       ],
@@ -1740,34 +1673,6 @@
       "value": "",
       "type": "text",
       "enabled": false,
-      "validation": {
-        "required": {
-          "value": false,
-          "errormessage": {
-            "swedish": "måste fyllas i",
-            "english": "is required"
-          }
-        } 
-      }
-    },
-    "coursecode": {
-      "label": {
-        "swedish": "Kurskod på KTH",
-        "english": "Course code at KTH"
-      },
-      "value": "",
-      "type": "text",
-      "enabled": false,
-      "showcriteria": [
-        {
-          "field": "genre",
-          "values": ["book"]
-        },
-        {
-          "field": "iam",
-          "values": ["student","employee"]
-        }
-      ],
       "validation": {
         "required": {
           "value": false,

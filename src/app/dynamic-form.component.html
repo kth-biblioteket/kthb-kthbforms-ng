@@ -257,9 +257,14 @@
     <div *ngIf="!isprod">
       <div style="clear:both">
       <br/>
+      <div>
+        <strong>Formulär är giltigt: </strong> <span [ngStyle]="kthbform.valid? {'color':'green'} : {'color':'red'}">{{kthbform.valid}}</span>
+      </div>
       <strong>Formulärvärden</strong>
       <pre>{{ kthbform.value | json }}</pre>
-      <pre>{{ openurljson | json }}</pre>
-      <strong>Formulär är giltigt:</strong> {{kthbform.valid}}
+      <div *ngIf="isopenurl">
+        <div>Openurl:</div>
+        <pre>{{ openurljson | json }}</pre>
+      </div>
       </div>
     </div>

@@ -16,8 +16,8 @@
       "english": "Closed"
     }
   },
-  "posturl": "https://apps.lib.kth.se/webservices/kthbforms/api/v1/consultation",
-  "loaderurl": "https://apps.lib.kth.se/kthbforms/assets/ajax_loader_blue_512.gif",
+  "posturl": "/webservices/kthbforms/api/v1/consultation",
+  "loaderurl": "/kthbforms/assets/ajax_loader_blue_512.gif",
   "loaderinfo": {
     "swedish": "Skickar...",
     "english": "Sending..."
