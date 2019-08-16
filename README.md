@@ -11,7 +11,7 @@ ng build --configuration=production --output-hashing none --base-href /kthbforms
 ### Ref (environment.ref.ts)
 ng build --configuration=ref --output-hashing none --base-href /kthbforms/ --output-path=dist/ref
 
-###local dev:
+### local dev:
 ng serve --host 0.0.0.0 --configuration=ref
 
 ## Dokumentation
