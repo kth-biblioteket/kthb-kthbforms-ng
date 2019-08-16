@@ -21,8 +21,8 @@
       "english": ""
     },
     "closed": {
-      "swedish": "Stängt",
-      "english": "Closed"
+      "swedish": "Stängt p.g.a underhåll",
+      "english": "Closed for maintenance"
     }
   },
   "posturl": "/webservices/kthbforms/api/v1/requestmaterial",
@@ -488,7 +488,7 @@
           }
         } 
       }
-    },
+    },  
     "usernameinfobox": {
       "label": {
         "swedish": "usernameinfobox",
@@ -574,10 +574,10 @@
       "options": [
         { 
           "label": {
-            "swedish": "Bok",
-            "english": "Book"
+            "swedish": "Tidskriftsartikel",
+            "english": "Article in journal"
           }, 
-          "value": "book",
+          "value": "article",
           "enabled": true,
           "showcriteria": [{
             "field": "iam",
@@ -586,10 +586,10 @@
         },
         { 
           "label": {
-            "swedish": "Tidskriftsartikel",
-            "english": "Article in journal"
+            "swedish": "Bok",
+            "english": "Book"
           }, 
-          "value": "article",
+          "value": "book",
           "enabled": true,
           "showcriteria": [{
             "field": "iam",
@@ -651,7 +651,7 @@
       "description": {
         "placement": "after",
         "swedish": "Ifall vi behöver låna in boken från ett bibliotek utanför Norden tillkommer det en avgift.",
-        "english": "If we need to borrow the book from a library in the Nordic countries there will be a fee."
+        "english": "If we need to borrow the book from a library outside the Nordic countries there will be a fee."
       },
       "link": {
         "placement": "after",
@@ -1732,7 +1732,7 @@
             "english": "Kista"
           }, 
           "value": "ELECTRUM",
-          "enabled": true,
+          "enabled": false,
           "hidden": false
         },
         { 
@@ -1741,7 +1741,7 @@
             "english": "Södertälje"
           }, 
           "value": "TELGE",
-          "enabled": true,
+          "enabled": false,
           "hidden": false
         }
       ],

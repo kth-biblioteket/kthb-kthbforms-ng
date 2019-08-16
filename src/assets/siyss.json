@@ -199,6 +199,7 @@
             },
             "value": "",
             "type": "text",
+            "isgrouped": true,
             "enabled": true,
             "validation": {
                 "required": {
