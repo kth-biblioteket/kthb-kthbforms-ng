@@ -1735,7 +1735,7 @@
             "english": "Kista"
           }, 
           "value": "ELECTRUM",
-          "enabled": false,
+          "enabled": true,
           "hidden": false
         },
         { 
@@ -1744,7 +1744,7 @@
             "english": "Södertälje"
           }, 
           "value": "TELGE",
-          "enabled": false,
+          "enabled": true,
           "hidden": false
         }
       ],
