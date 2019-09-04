@@ -200,8 +200,3 @@ Formulären postas till en backend som är ett PHP LUMEN-api.
 }
 ```
 
-
-
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
-

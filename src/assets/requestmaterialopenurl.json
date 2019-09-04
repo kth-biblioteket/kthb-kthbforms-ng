@@ -333,7 +333,8 @@
       "openurlnames": {
         "standard": "source",
         "primo": "source",
-        "info:sid/libris.kb.se:libris": "rfr_id"
+        "info:sid/libris.kb.se:libris": "rfr_id",
+        "LeanLibrary": "source"
       }
     },
     "iam": {
@@ -579,7 +580,7 @@
       },
       "documentation": [
         "Genre är materialtyp(bok, artikel etc). Det här fältet ska inte visas för openurl-requests som kommer från externa källor(primo, libris etc)",
-        "eftersom genre redan är förvald. Kategori som kan beställa materialet är beroende av värdet på genre",
+        "eftersom genre redan är förvald. Kategori av användare som kan beställa materialet är beroende av värdet på genre",
         "Openurl-fält ska inte valideras",
         ""
       ],
@@ -587,7 +588,8 @@
       "openurlnames": {
         "standard": "genre",
         "primo": "genre",
-        "info:sid/libris.kb.se:libris": "rft.genre"
+        "info:sid/libris.kb.se:libris": "rft.genre",
+        "LeanLibrary": "genre"
       },
       "value": "",
       "type": "radio",
@@ -1026,7 +1028,8 @@
       "openurlnames": {
         "standard": "btitle",
         "primo": "bookTitle",
-        "info:sid/libris.kb.se:libris": "rft.btitle"
+        "info:sid/libris.kb.se:libris": "rft.btitle",
+        "LeanLibrary": "bookTitle"
       },
       "value": "",
       "type": "text",
@@ -1056,7 +1059,8 @@
       "openurlnames": {
         "standard": "ctitle",
         "primo": "article",
-        "info:sid/libris.kb.se:libris": "rft.atitle"
+        "info:sid/libris.kb.se:libris": "rft.atitle",
+        "LeanLibrary": "article"
       },
       "value": "",
       "type": "text",
@@ -1086,7 +1090,8 @@
       "openurlnames": {
         "standard": "atitle",
         "primo": "article",
-        "info:sid/libris.kb.se:libris": "rft.atitle"
+        "info:sid/libris.kb.se:libris": "rft.atitle",
+        "LeanLibrary": "article"
       },
       "value": "",
       "type": "text",
@@ -1140,7 +1145,8 @@
       "openurlnames": {
         "standard": "jtitle",
         "primo": "journal",
-        "info:sid/libris.kb.se:libris": "rft.jtitle"
+        "info:sid/libris.kb.se:libris": "rft.jtitle",
+        "LeanLibrary": "journal"
       },
       "value": "",
       "type": "text",
@@ -1170,7 +1176,8 @@
       "openurlnames": {
         "standard": "au",
         "primo": "author",
-        "info:sid/libris.kb.se:libris": "rft.au"
+        "info:sid/libris.kb.se:libris": "rft.au",
+        "LeanLibrary": "author"
       },
       "value": "",
       "type": "text",
@@ -1200,7 +1207,8 @@
       "openurlnames": {
         "standard": "aufirst",
         "primo": "aufirst",
-        "info:sid/libris.kb.se:libris": "rft.aufirst"
+        "info:sid/libris.kb.se:libris": "rft.aufirst",
+        "LeanLibrary": "aufirst"
       },
       "value": "",
       "type": "text",
@@ -1224,7 +1232,8 @@
       "openurlnames": {
         "standard": "aulast",
         "primo": "aulast",
-        "info:sid/libris.kb.se:libris": "rft.aulast"
+        "info:sid/libris.kb.se:libris": "rft.aulast",
+        "LeanLibrary": "aulast"
       },
       "value": "",
       "type": "text",
@@ -1248,7 +1257,8 @@
       "openurlnames": {
         "standard": "year",
         "primo": "year",
-        "info:sid/libris.kb.se:libris": "rft.year"
+        "info:sid/libris.kb.se:libris": "rft.year",
+        "LeanLibrary": "year"
       },
       "value": "",
       "type": "text",
@@ -1278,7 +1288,8 @@
       "openurlnames": {
         "standard": "date",
         "primo": "date",
-        "info:sid/libris.kb.se:libris": "rft.date"
+        "info:sid/libris.kb.se:libris": "rft.date",
+        "LeanLibrary": "date"
       },
       "value": "",
       "type": "text",
@@ -1302,7 +1313,8 @@
       "openurlnames": {
         "standard": "isbn",
         "primo": "ISBN",
-        "info:sid/libris.kb.se:libris": "rft.isbn"
+        "info:sid/libris.kb.se:libris": "rft.isbn",
+        "LeanLibrary": "ISBN"
       },
       "value": "",
       "type": "text",
@@ -1332,7 +1344,8 @@
       "openurlnames": {
         "standard": "issn",
         "primo": "ISSN",
-        "info:sid/libris.kb.se:libris": "rft.issn"
+        "info:sid/libris.kb.se:libris": "rft.issn",
+        "LeanLibrary": "ISSN"
       },
       "value": "",
       "type": "text",
@@ -1362,7 +1375,8 @@
       "openurlnames": {
         "standard": "edition",
         "primo": "rft.edition",
-        "info:sid/libris.kb.se:libris": "rft.edition"
+        "info:sid/libris.kb.se:libris": "rft.edition",
+        "LeanLibrary": "rft.edition"
       },
       "value": "",
       "type": "text",
@@ -1392,7 +1406,8 @@
       "openurlnames": {
         "standard": "volume",
         "primo": "volume",
-        "info:sid/libris.kb.se:libris": "rft.volume"
+        "info:sid/libris.kb.se:libris": "rft.volume",
+        "LeanLibrary": "volume"
       },
       "value": "",
       "type": "text",
@@ -1422,7 +1437,8 @@
       "openurlnames": {
         "standard": "issue",
         "primo": "issue",
-        "info:sid/libris.kb.se:libris": "rft.issue"
+        "info:sid/libris.kb.se:libris": "rft.issue",
+        "LeanLibrary": "issue"
       },
       "value": "",
       "type": "text",
@@ -1452,7 +1468,8 @@
       "openurlnames": {
         "standard": "pages",
         "primo": "pages",
-        "info:sid/libris.kb.se:libris": "rft.pages"
+        "info:sid/libris.kb.se:libris": "rft.pages",
+        "LeanLibrary": "pages"
       },
       "value": "",
       "type": "text",
@@ -1476,7 +1493,8 @@
       "openurlnames": {
         "standard": "tpages",
         "primo": "tpages",
-        "info:sid/libris.kb.se:libris": "rft.tpages"
+        "info:sid/libris.kb.se:libris": "rft.tpages",
+        "LeanLibrary": "tpages"
       },
       "value": "",
       "type": "text",
@@ -1494,7 +1512,8 @@
       "openurlnames": {
         "standard": "doi",
         "primo": "rft.doi",
-        "info:sid/libris.kb.se:libris": "rft.doi"
+        "info:sid/libris.kb.se:libris": "rft.doi",
+        "LeanLibrary": "rft.doi"
       }, 
       "value": "",
       "type": "text",
@@ -1524,7 +1543,8 @@
       "openurlnames": {
         "standard": "pub",
         "primo": "rft.pub",
-        "info:sid/libris.kb.se:libris": "rft.pub"
+        "info:sid/libris.kb.se:libris": "rft.pub",
+        "LeanLibrary": "rft.pub"
       }, 
       "value": "",
       "type": "text",
@@ -1548,7 +1568,8 @@
       "openurlnames": {
         "standard": "publisher",
         "primo": "publisher",
-        "info:sid/libris.kb.se:libris": "rft.publisher"
+        "info:sid/libris.kb.se:libris": "rft.publisher",
+        "LeanLibrary": "publisher"
       }, 
       "value": "",
       "type": "text",
@@ -1572,7 +1593,8 @@
       "openurlnames": {
         "standard": "stitle",
         "primo": "abbrev",
-        "info:sid/libris.kb.se:libris": "rft.stitle"
+        "info:sid/libris.kb.se:libris": "rft.stitle",
+        "LeanLibrary": "abbrev"
       }, 
       "value": "",
       "type": "text",
@@ -1596,7 +1618,8 @@
       "openurlnames": {
         "standard": "number",
         "primo": "rft.number",
-        "info:sid/libris.kb.se:libris": "rft.number"
+        "info:sid/libris.kb.se:libris": "rft.number",
+        "LeanLibrary": "rft.number"
       }, 
       "value": "",
       "type": "text",
@@ -1644,7 +1667,8 @@
       "openurlnames": {
         "standard": "eissn",
         "primo": "EISSN",
-        "info:sid/libris.kb.se:libris": "rft.eissn"
+        "info:sid/libris.kb.se:libris": "rft.eissn",
+        "LeanLibrary": "EISSN"
       },
       "value": "",
       "type": "text",
@@ -1668,7 +1692,8 @@
       "openurlnames": {
         "standard": "place",
         "primo": "publiPlace",
-        "info:sid/libris.kb.se:libris": "rft.place"
+        "info:sid/libris.kb.se:libris": "rft.place",
+        "LeanLibrary": "publiPlace"
       },
       "value": "",
       "type": "text",
