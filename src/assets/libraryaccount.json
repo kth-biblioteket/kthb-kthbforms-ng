@@ -117,7 +117,7 @@
             "english": "Scania employee"
           }, 
           "value": "scania",
-          "enabled": true
+          "enabled": false
         },
         { 
           "label": {
@@ -503,11 +503,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/logga-in/anvandarvillkor-1.854843",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/anvandarvillkor-1.854843",
           "text": "Användarvillkor"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/logga-in/anvandarvillkor-1.854843",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/anvandarvillkor-1.854843",
           "text": "Terms of use"
         }
       },

@@ -245,7 +245,7 @@
             "english": "Main Library"
           }, 
           "value": "Huvudbiblioteket",
-		  "enabled": true
+		      "enabled": true
         },
         { 
           "label": {
@@ -253,7 +253,7 @@
             "english": "Kista"
           }, 
           "value": "Kista",
-		  "enabled": true
+		      "enabled": true
         },
         { 
           "label": {
@@ -261,7 +261,15 @@
             "english": "Södertälje"
           }, 
           "value": "Södertälje",
-		  "enabled": true
+		      "enabled": true
+        },
+        { 
+          "label": {
+            "swedish": "Distans via Zoom",
+            "english": "Remote via Zoom"
+          }, 
+          "value": "Zoom",
+		      "enabled": true
         }
       ],
       "validation": {

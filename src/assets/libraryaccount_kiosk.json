@@ -140,7 +140,7 @@
             "english": "Scania employee"
           }, 
           "value": "scania",
-          "enabled": true
+          "enabled": false
         },
         { 
           "label": {

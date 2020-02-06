@@ -523,11 +523,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/logga-in/logga-in-registrera-dig-1.853001",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/logga-in-registrera-dig-1.853001",
           "text": "Registrera dig som ny användare"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/logga-in/logga-in-registrera-dig-1.853001",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/logga-in-registrera-dig-1.853001",
           "text": "Register as new user"
         }
       },
@@ -661,11 +661,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Price list"
         }
       },
@@ -697,11 +697,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Price list"
         }
       },
@@ -733,11 +733,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Price list"
         }
       },
@@ -767,8 +767,8 @@
     },
     "costs": {
       "label": {
-        "swedish": "Jag accepterar eventuella kostnader",
-        "english": "I accept any fees"
+        "swedish": "Jag accepterar eventuella kostnader. Observera att beställningen är bindande och kostnaden läggs på ditt bibliotekskonto.",
+        "english": "I accept any fees. Please note that the request is binding and the fee will be added to Your library account."
       },
       "value": "" ,
       "type": "radio",
@@ -825,11 +825,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Price list"
         }
       },
@@ -861,11 +861,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Price list"
         }
       },
@@ -916,8 +916,8 @@
       },
       "description": {
         "placement": "after",
-        "swedish": "Som privatperson kan du endast göra artikelbeställningar från KTH Bibliotekets magasin.",
-        "english": "As a private person you can only make article requests from the KTH Library stacks."
+        "swedish": "Som privatperson kan du endast göra artikelbeställningar från KTH Bibliotekets magasin. Artikelbeställningar är avgiftsbelagda för privatpersoner",
+        "english": "As a private person you can only make article requests from the KTH Library stacks. Article requests are subject to a fee for private persons."
       },
       "value": "informationbox",
       "type": "informationboxalert",
@@ -972,11 +972,11 @@
       "link": {
         "placement": "after",
         "swedish" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Prislista"
         },
         "english" : {
-          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/lana-bestall/prislista-1.856222",
+          "url": "https://www.kth.se/en/biblioteket/anvanda-biblioteket/prislista-1.856222",
           "text": "Price list"
         }
       },
