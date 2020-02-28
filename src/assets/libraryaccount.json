@@ -248,8 +248,8 @@
     },
     "personalnumber": {
       "label": {
-        "swedish": "Personnummer",
-        "english": "Personal number"
+        "swedish": "Personnummer (ååmmddxxxx)",
+        "english": "Personal number (yymmddxxxx)"
       },
       "value": "",
       "type": "text",
