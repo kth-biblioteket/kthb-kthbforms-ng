@@ -9,7 +9,7 @@ Bygg projektet med följande kommandon
 ### Production (environment.prod.ts)
 ng build --configuration=production --output-hashing none --base-href /kthbforms/ --output-path=dist/prod
 ### Ref (environment.ref.ts)
-ng build --configuration=ref --output-hashing none --base-href /kthbforms/ --output-path=dist/ref
+ng build --configuration=ref --output-hashing none --base-href /kthbforms/ --output-path=dist/ref --source-map
 
 ### local dev:
 ng serve --host 0.0.0.0 --configuration=ref
