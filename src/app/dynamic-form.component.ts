@@ -61,6 +61,8 @@ export class DynamicFormComponent implements OnInit {
 
   token;
 
+  honeypotfieldname;
+
   constructor(
     public backend:BackendService,
     private http: HttpClient,
@@ -109,8 +111,11 @@ export class DynamicFormComponent implements OnInit {
           return Object.assign({}, { key: prop} , this.formdata.formfields[prop]);
         });
 
-    //Validering
+    //Validering, spam
     for(let prop of Object.keys(this.formdata.formfields)) {
+      if(this.formdata.formfields[prop].ishoneypot) {
+        this.honeypotfieldname = prop;
+      }
       formGroup[prop] = new FormControl(this.formdata.formfields[prop].value || '', this.mapValidators(this.formdata.formfields[prop].validation));
     }
 
@@ -487,7 +492,11 @@ export class DynamicFormComponent implements OnInit {
       postform = formData;
     }
     
-    
+    //Spam check
+    if(postform.form[this.honeypotfieldname]!= "") {
+      console.log('Spam!')
+    }
+    return; 
     this.backend.postForm(this.posturl + "?language=" + this.language, postform).subscribe(
     //this.backend.postForm(this.posturl + "?language=" + this.language, formData).subscribe(
       (result) => {
