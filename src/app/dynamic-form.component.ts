@@ -495,8 +495,14 @@ export class DynamicFormComponent implements OnInit {
     //Spam check
     if(postform.form[this.honeypotfieldname]!= "") {
       console.log('Spam!')
+      this.backendresponse = true;
+      this.backendresult = false;
+      this.backendresulterror = "oh no!";
+      this.loading = false;
+      window.scroll(0,0);
+      return;
     }
-    return; 
+
     this.backend.postForm(this.posturl + "?language=" + this.language, postform).subscribe(
     //this.backend.postForm(this.posturl + "?language=" + this.language, formData).subscribe(
       (result) => {

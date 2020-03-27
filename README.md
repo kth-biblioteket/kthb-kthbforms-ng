@@ -19,6 +19,8 @@ ng serve --host 0.0.0.0 --configuration=ref
 Formulär som byggs upp dynamiskt utifrån JSON-data(i filer/databas)
 Formulären postas till en backend som är ett PHP LUMEN-api.
 
+Honeypot-spam inlagt
+
 ## JSON-exempel
 ```json
 {
