@@ -61,7 +61,7 @@ export class DynamicFormComponent implements OnInit {
 
   token;
 
-  honeypotfieldname;
+  honeypotfieldname = "";
 
   constructor(
     public backend:BackendService,
@@ -492,19 +492,19 @@ export class DynamicFormComponent implements OnInit {
       postform = formData;
     }
     
-    //Spam check
-    if(postform.form[this.honeypotfieldname]!= "") {
-      console.log('Spam!')
-      this.backendresponse = true;
-      this.backendresult = false;
-      this.backendresulterror = "oh no!";
-      this.loading = false;
-      window.scroll(0,0);
-      return;
+    //Spam check om det finns ett aktivt honeypotfält
+    if(this.honeypotfieldname != "") {
+      if(postform.form[this.honeypotfieldname]!= "") {
+        this.backendresponse = true;
+        this.backendresult = false;
+        this.backendresulterror = "Oooops something went wrong!";
+        this.loading = false;
+        window.scroll(0,0);
+        return;
+      }
     }
 
     this.backend.postForm(this.posturl + "?language=" + this.language, postform).subscribe(
-    //this.backend.postForm(this.posturl + "?language=" + this.language, formData).subscribe(
       (result) => {
         //Allt är OK
         if(result.status == 201 || result.status == 200) {
