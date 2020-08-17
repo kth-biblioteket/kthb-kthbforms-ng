@@ -475,7 +475,9 @@ export class DynamicFormComponent implements OnInit {
   postformvalues(postform) {
     //Är det ett json-form eller ett upload-form?
     if(this.formtype == 'upload') {
+      const mData = JSON.stringify(this.kthbform.value)
       const formData = new FormData();
+      formData.append('item', mData);
       let i=0;
       //lägg till filer som ska skickas med.
       //Validering? (storlek, antal, extension)
@@ -484,11 +486,15 @@ export class DynamicFormComponent implements OnInit {
           i++;
         });
       //lägg till formulärets fält/värden
+      /*
       for (let item in this.kthbform.value) {
         if (item !== 'files' && item !== 'file1') {
             formData.append(item, this.kthbform.value[item]);
+            console.log(this.kthbform.value[item]);
         }
       }
+      */
+      
       postform = formData;
     }
     
