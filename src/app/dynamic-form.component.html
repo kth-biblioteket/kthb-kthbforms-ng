@@ -11,8 +11,7 @@
       <h4>
         {{language=='swedish' ? formdata.postresponseinfo.header.swedish : formdata.postresponseinfo.header.english}}
       </h4>
-      <div>
-        {{language=='swedish' ? formdata.postresponseinfo.text.swedish : formdata.postresponseinfo.text.english}}
+      <div [innerHtml]="language=='swedish' ? formdata.postresponseinfo.text.swedish : formdata.postresponseinfo.text.english">
       </div>
     </div>
 </div>
@@ -23,8 +22,7 @@
       <h4>
         {{language=='swedish' ? formdata.postresponseinfo.header.swedish : formdata.postresponseinfo.header.english}}
       </h4>
-      <div>
-        {{language=='swedish' ? formdata.postresponseinfo.text.swedish : formdata.postresponseinfo.text.english}}
+      <div [innerHtml]="language=='swedish' ? formdata.postresponseinfo.text.swedish : formdata.postresponseinfo.text.english">
       </div>
     </div>
     <div>
