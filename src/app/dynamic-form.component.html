@@ -145,7 +145,17 @@
                   
                   <!-- Datum inputruta -->
                   <div *ngSwitchCase="'datebox'" class="datebox">
-                    <my-date-picker [options]="myDatePickerOptions" [formControlName]="prop.key" locale="{{language=='swedish' ? 'sv' : 'en'}}"></my-date-picker>
+                    <mat-form-field appearance="fill">
+                      <input matInput
+                        style="box-shadow: none; border: none; background: none"
+                        class="form-control medium"
+                        [formControlName]="prop.key" 
+                        placeholder="Choose a date" 
+                        [matDatepicker]="picker">
+                      <mat-hint>YYYY-MM-DD</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
                   </div>
 
                   <!-- Meddelanderuta -->

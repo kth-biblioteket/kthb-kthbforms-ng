@@ -5,8 +5,7 @@ import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { AppConfigService } from './app-config.service';
-
-import { IMyDpOptions } from 'mydatepicker';
+import { ConsoleLogger } from '@angular/compiler-cli';
 
 @Component({
   selector: 'dynamic-form',
@@ -67,7 +66,7 @@ export class DynamicFormComponent implements OnInit {
     public backend:BackendService,
     private http: HttpClient,
     private titleService: Title,
-    private settings: AppConfigService
+    private settings: AppConfigService,
   ) {
   }
   
@@ -76,6 +75,7 @@ export class DynamicFormComponent implements OnInit {
    * Hämta rätt formulärdata från JSON beroende på angivet formid i app-root attribute
    */
   async getFormData() {
+    let formcontrolvalue = ""
     const formGroup = {};
     //Implementera token?
     this.token = this.settings.config.headers.get('token');
@@ -116,7 +116,17 @@ export class DynamicFormComponent implements OnInit {
       if(this.formdata.formfields[prop].ishoneypot) {
         this.honeypotfieldname = prop;
       }
-      formGroup[prop] = new FormControl(this.formdata.formfields[prop].value || '', this.mapValidators(this.formdata.formfields[prop].validation));
+
+      //Hantera om datum fält ska ha ett defaultdatum(att angivet datum eller plus eller minus antal dagar från dagens datum)
+      if (this.formdata.formfields[prop].type == "datebox" && this.formdata.formfields[prop].hasdefaultdate) {
+        let date      = new Date();
+        let next_date = new Date(date.setDate(date.getDate() + this.formdata.formfields[prop].defaultdatedaystoaddremove));
+        formcontrolvalue = next_date.toISOString().slice(0, 10)
+      } else {
+        formcontrolvalue = this.formdata.formfields[prop].value
+      }
+
+      formGroup[prop] = new FormControl(formcontrolvalue || '', this.mapValidators(this.formdata.formfields[prop].validation));
     }
 
     this.kthbform = new FormGroup(formGroup);
@@ -146,18 +156,6 @@ export class DynamicFormComponent implements OnInit {
     this.getFormData();
   }
 
-  /**
-   * 
-   * Funktion som konfigurerar datepicker
-   * 
-   * locale="sv" sätts på directive i html-component
-   */
-  public myDatePickerOptions: IMyDpOptions = {
-    dateFormat: 'yyyy-mm-dd',
-    alignSelectorRight: true
-    /*openSelectorOnInputClick: true,
-    editableDateField: false*/
-  };
 
   /**
    * 
@@ -187,7 +185,7 @@ export class DynamicFormComponent implements OnInit {
       //Översätt openurlparametrar som eventuellt har andra namn än standard(primo och libris)
       for(let field of formfields) {
         if(typeof field.openurlnames !== "undefined") {
-          if(field.openurlnames[openurlsource]==[pair[0]]){
+          if(field.openurlnames[openurlsource]==[pair[0]].toString()){
             pair[0] = field.openurlnames['standard'];
             break;
           }

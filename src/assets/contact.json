@@ -141,6 +141,33 @@
         }
       }
     },
+    "phone": {
+      "label": {
+        "swedish": "Telefon",
+        "english": "Phone"
+      },
+      "value": "",
+      "type": "text",
+      "ishoneypot": true,
+      "isgrouped": true,
+      "enabled": true,
+      "validation": {
+        "required": {
+          "value": false,
+          "errormessage": {
+            "swedish": "måste fyllas i",
+            "english": "is required"
+          }
+        },
+        "pattern": {
+          "value": "^([0-9a-zA-Z]([-._\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$",
+          "errormessage": {
+            "swedish": "måste vara ett godkänt nummer",
+            "english": "must be a valid number"
+          }
+        }
+      }
+    },
     "subject": {
       "label": {
         "swedish": "Ämne",

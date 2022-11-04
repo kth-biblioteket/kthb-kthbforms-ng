@@ -1,3 +1,32 @@
+//@import "~bootstrap/scss/bootstrap";
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$kthb-kthbforms-ng-primary: mat-palette($mat-indigo);
+$kthb-kthbforms-ng-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$kthb-kthbforms-ng-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$kthb-kthbforms-ng-theme: mat-light-theme($kthb-kthbforms-ng-primary, $kthb-kthbforms-ng-accent, $kthb-kthbforms-ng-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($kthb-kthbforms-ng-theme);
+
 /* Fontstorlek samma på labels och infotext som övrig text */
 @media (min-width: 768px) {
   app-kthbforms,
@@ -89,3 +118,19 @@ textarea.form-control {
 }
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button.mat-calendar-body-cell.mat-calendar-body-active:focus {
+  outline: none;
+}
+
+mat-month-view table thead tr th {
+  background-color: #fff;
+  color: #0000008a
+}
+
+mat-month-view table tbody tr td {
+  background-color: #fff;
+}

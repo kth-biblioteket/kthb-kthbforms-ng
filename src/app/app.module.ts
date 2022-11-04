@@ -13,7 +13,11 @@ import { AppConfigService } from './app-config.service';
 
 import { DynamicFormComponent } from './dynamic-form.component';
 
-import { MyDatePickerModule } from 'mydatepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { ActivateaccountComponent } from './activateaccount/activateaccount.component';
 
@@ -36,7 +40,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MyDatePickerModule
+    MatDatepickerModule, MatInputModule, MatNativeDateModule
   ],
   providers: [
     AppConfigService,
@@ -46,6 +50,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
       multi: true,
       deps: [AppConfigService]
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'sv-SE' },
     Title
   ],
   bootstrap: [AppComponent]

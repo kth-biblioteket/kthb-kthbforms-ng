@@ -245,7 +245,7 @@
             "english": "Main Library"
           }, 
           "value": "Huvudbiblioteket",
-		      "enabled": true
+		      "enabled": false
         },
         { 
           "label": {
@@ -253,7 +253,7 @@
             "english": "Kista"
           }, 
           "value": "Kista",
-		      "enabled": true
+		      "enabled": false
         },
         { 
           "label": {
@@ -261,7 +261,7 @@
             "english": "Södertälje"
           }, 
           "value": "Södertälje",
-		      "enabled": true
+		      "enabled": false
         },
         { 
           "label": {
