@@ -62,6 +62,8 @@ export class DynamicFormComponent implements OnInit {
 
   honeypotfieldname = "";
 
+  minDate: Date;
+
   constructor(
     public backend:BackendService,
     private http: HttpClient,
@@ -118,9 +120,12 @@ export class DynamicFormComponent implements OnInit {
       }
 
       //Hantera om datum fält ska ha ett defaultdatum(att angivet datum eller plus eller minus antal dagar från dagens datum)
+      //Hantera minimumdatum som kan anges
       if (this.formdata.formfields[prop].type == "datebox" && this.formdata.formfields[prop].hasdefaultdate) {
         let date      = new Date();
         let next_date = new Date(date.setDate(date.getDate() + this.formdata.formfields[prop].defaultdatedaystoaddremove));
+        let datemin      = new Date();
+        this.minDate = new Date(datemin.setDate(datemin.getDate() + this.formdata.formfields[prop].minDatedaystoaddremove));
         formcontrolvalue = next_date.toISOString().slice(0, 10)
       } else {
         formcontrolvalue = this.formdata.formfields[prop].value
