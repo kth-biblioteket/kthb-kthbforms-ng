@@ -12,6 +12,7 @@ import { ConsoleLogger } from '@angular/compiler-cli';
   templateUrl: './dynamic-form.component.html',
   styleUrls: [ './dynamic-form.component.scss']
 })
+
 export class DynamicFormComponent implements OnInit {
   @Input() language;
   @Input() formid;
@@ -52,6 +53,7 @@ export class DynamicFormComponent implements OnInit {
   optionalfieldtext;
   
   posturl;
+  iskiosk: boolean = false;
   warning = false;
   showtoperrormessage = false;
   backendresponse = false;
@@ -105,6 +107,7 @@ export class DynamicFormComponent implements OnInit {
     this.formstatus = this.formdata.status;
     this.formdescription = this.formdata.description;
     this.formtype = this.formdata.type;
+    this.iskiosk = this.formdata.iskiosk;
 
     //Skapa ett object som t ex formulärtemplate kan iterera.
     this.objectFormfields = 
@@ -157,10 +160,13 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
+  onInputChange = (event: any, propkey: any = '') => {
+    this.kthbform.get(propkey).setValue(event.target.value);
+  };
+
   ngOnInit() {
     this.getFormData();
   }
-
 
   /**
    * 

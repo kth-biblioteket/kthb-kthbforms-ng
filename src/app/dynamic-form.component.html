@@ -134,19 +134,20 @@
                 <!-- Fälten -->
                 <div [ngSwitch]="prop.type">
                   <!-- Vanlig textruta -->
-                  <input style="margin-top:0px;" [ngClass]="{'nallepuh': prop.ishoneypot,'form-control medium': 1==1}" *ngSwitchCase="'text'" 
+                  <input (change)="onInputChange($event, prop.key)" style="margin-top:0px;" [ngClass]="{'nallepuh': prop.ishoneypot,'form-control medium': 1==1}" *ngSwitchCase="'text'" 
                     [formControlName]="prop.key"
                     [id]="prop.key" [type]="prop.type" [attr.autocomplete]="prop.ishoneypot ? false : 'on'">
                   
                   <!-- Password textruta -->
-                  <input style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'password'" 
+                  <input (change)="onInputChange($event, prop.key)" style="margin-top:0px;" class="form-control medium" *ngSwitchCase="'password'" 
                     [formControlName]="prop.key"
                     [id]="prop.key" [type]="prop.type">
                   
                   <!-- Datum inputruta -->
                   <div *ngSwitchCase="'datebox'" class="datebox">
                     <mat-form-field appearance="fill">
-                      <input matInput
+                      <input 
+                        matInput
                         style="box-shadow: none; border: none; background: none"
                         class="form-control medium"
                         [formControlName]="prop.key" 
@@ -161,7 +162,7 @@
 
                   <!-- Meddelanderuta -->
                   <div *ngSwitchCase="'textarea'">
-                    <textarea class="form-control medium" [formControlName]="prop.key" [id]="prop.key" maxlength="{{prop.maxlength}}" [ngStyle]="prop.height!='' ? {'height': prop.height} : {}"></textarea>
+                    <textarea (change)="onInputChange($event, prop.key)" class="form-control medium" [formControlName]="prop.key" [id]="prop.key" maxlength="{{prop.maxlength}}" [ngStyle]="prop.height!='' ? {'height': prop.height} : {}"></textarea>
                   </div>
 
                   <!-- File upload -->
